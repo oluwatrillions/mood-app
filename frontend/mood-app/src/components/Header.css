@@ -1,0 +1,31 @@
+*, div {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+.header {
+    height: 10vh;
+    background-color: aqua;
+}
+
+.header-menu {
+    width: 2em;
+    height: 2em;
+    cursor: pointer;
+    color: rgb(97, 94, 94);
+}
+
+nav {
+    width: 100vw;
+    display: flex;
+    justify-content: flex-start;
+    padding: 3vh 1em;
+    gap: 30vw;
+}
+
+nav h3 {
+    font-size: 1.7em;
+    font-weight: 600;
+    color: rgb(69, 71, 73);
+}
