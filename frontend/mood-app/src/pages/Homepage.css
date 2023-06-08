@@ -1,0 +1,21 @@
+*, div {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+.hero {
+    display: flex;
+    min-height: 80vh;
+}
+
+.left-hero, .right-hero {
+    width: 20vw;
+    min-height: 80vh;
+    background-color: rgb(250, 250, 250);
+}
+
+.hero-page {
+    width: 60vw;
+    min-height: 80vh;
+}

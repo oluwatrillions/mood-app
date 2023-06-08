@@ -1,12 +1,16 @@
+import Footer from './components/Footer'
 import Header from './components/Header'
-import Hero from './components/Hero'
+import Layout from './components/Layout'
+import Homepage from './pages/Homepage'
+import {BrowserRouter as Router, Route} from 'react-router-dom'
 
 function App() {
 
   return (
-    <div>
-          <Header />
-          <Hero />
+      <div>
+          <Layout>
+              <Homepage />
+          </Layout>
     </div>
   )
 }
