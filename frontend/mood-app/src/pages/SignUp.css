@@ -1,0 +1,65 @@
+*, div {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+.register {
+    min-height: 80vh;
+    margin: 1em 20vh;
+    display: flex;
+    justify-content: center;
+}
+
+form {
+    margin-top: 2em;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: 1em;
+}
+
+.signup img {
+    width: 20em;
+    height: 20em;
+}
+
+.signup {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 50vw;
+}
+
+.inputs {
+    width: 30vw;
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 1em;
+}
+
+input {
+    font-size: 1.2em;
+    height: 2em;
+    outline: none;
+    border: 1px solid rgb(131, 151, 143);
+}
+
+label {
+    font-size: 1.2em;
+    color: rgb(61, 61, 60);
+    margin-top: .3em;
+}
+
+.signIn-btn {
+    margin-top: 2em;
+    height: 3em;
+    width: 12em;
+    margin: 0 auto;
+    font-size: 1.2em;
+    background-color: rgb(69, 146, 146);
+    color: aliceblue;
+    border: none;
+    outline: none;
+    cursor: pointer;border-radius: .5em;
+}
