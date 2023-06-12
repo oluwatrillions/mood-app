@@ -4,16 +4,12 @@ import AllUsers from '../components/AllUsers'
 
 const SignUp = () => {
 
-    const [signup, setSignup] = useState({
-        name: ' ',
-        password: '',
-    })
+    const [name, setName] = useState('')
+    const [password, setPassword] = useState()
 
     const handleSignup = (e) => {
         e.preventDefault();
-        setSignup({ ...signup})
-        setSignup()
-        console.log(signup);
+        console.log(name, password);
     }
 
   return (
@@ -26,20 +22,20 @@ const SignUp = () => {
                       <input
                           type="text"
                           name='name'
-                          value={signup.name}
+                          value={name}
                           required
-                          onChange={ ((e)=> setSignup(e.target.value))} />
+                          onChange={ ((e)=> setName(e.target.value))} />
                   </div>
                   <div className='inputs'>
                       <label htmlFor="password">Password:</label>
                       <input
                           type="password"
                           name='password'
-                          value={signup.password}
+                          value={password}
                           required
-                          onChange={((e) => setSignup(e.target.value))} />
+                          onChange={((e) => setPassword(e.target.value))} />
                   </div>
-                  <button className='signIn-btn'>Sign Up</button>
+                  <button className='signIn-btn' type='submit'>Sign Up</button>
               </form>
           </div>
     </div>
