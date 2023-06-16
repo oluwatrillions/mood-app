@@ -1,6 +1,7 @@
 import React, { useState } from 'react'
 import './SignUp.css'
 import AllUsers from '../components/AllUsers'
+import Data from '../components/Data'
 
 const SignUp = () => {
 
@@ -12,9 +13,16 @@ const SignUp = () => {
     const handleSignup = (e) => {
         e.preventDefault();
 
-        let usersLog = []
-        usersLog.push({...usersLog}, signup)
-        console.log(usersLog);
+        let usersLog = {}
+        let userInput = {
+            username: setSignup(e.target.name),
+            userPassword: setSignup(e.target.password)
+            console.log(username);
+        }
+
+        usersLog.users = Data
+        setSignup([...usersLog.users, userInput])
+        console.log(userInput);
     }
 
   return (
