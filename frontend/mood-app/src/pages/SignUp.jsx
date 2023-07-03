@@ -5,24 +5,25 @@ import Data from '../components/Data'
 
 const SignUp = () => {
 
+    let usersLog = {}
+    
     const [signup, setSignup] = useState({
-        name: '',
-        password: '',
+        name: "",
+        username: "",
+        password: ""
     })
 
     const handleSignup = (e) => {
         e.preventDefault();
-
-        let usersLog = {}
-        let userInput = {
-            username: setSignup(e.target.name),
-            userPassword: setSignup(e.target.password)
-            console.log(username);
+        const name = setSignup({[e.target.name]: e.target.value})
+        const password = setSignup({[e.target.password]: e.target.value})
+        const data = {
+            name: name,
+            username: username,
+            password: password,
         }
-
-        usersLog.users = Data
-        setSignup([...usersLog.users, userInput])
-        console.log(userInput);
+        setSignup(data)
+        console.log(data);
     }
 
   return (
@@ -36,6 +37,15 @@ const SignUp = () => {
                           type="text"
                           name='name'
                           value={signup.name}
+                          required
+                          onChange={ ((e)=> setSignup(e.target.value))} />
+                  </div>
+                  <div className='inputs'>
+                      <label htmlFor="username">Username:</label>
+                      <input
+                          type="text"
+                          name='username'
+                          value={signup.username}
                           required
                           onChange={ ((e)=> setSignup(e.target.value))} />
                   </div>
