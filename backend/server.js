@@ -8,13 +8,15 @@ const connectDB = require('./database/ConnectDB')
 dotenv.config({ path: './config/.env' })
 connectDB()
 app.use(express.json())
-app.use(express.urlencoded({extended: false}))
+app.use(express.urlencoded({ extended: false }))
+
+app.use('/login', require('./routes/api/users/login'))
+
 
 app.use('/signup', require('./routes/api/users/signup'))
 
 app.use('/users', require('./routes/api/users/users'))
 
-app.use('/login', require('./routes/api/users/login'))
 
 
 app.listen(process.env.PORT, () => {

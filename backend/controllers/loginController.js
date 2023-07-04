@@ -10,8 +10,8 @@ const handleLogin = async (req, res) => {
     if (!foundUser) return res.status(400).json({ message: 'This user does not exist' })
     const userPwd = await bcrypt.compare(pwd, foundUser.password) 
     if (userPwd) {
-        res.json({ message: 'You are logged in' })
-        res.json(users)
+        // const loggedUser = await foundUser.save()
+        res.json({message: `${foundUser.username} is logged in successfully`})
     } else {
         res.json({message: 'Incorrect password, Please try again'})
     }
