@@ -7,21 +7,21 @@ const getUsers = async (req, res) => {
     res.json(allUsers)
 }
 
-const createUser = async (req, res) => {
-    if (!req.body.name || !req.body.username || !req.body.password) {
-        return res.status(400).json({ message: 'please fill the following fields'})
-    }
-    try {
-        const user = await users.create({
-        name: req.body.name,
-        username: req.body.username,
-        password: req.body.password
-    })
-    res.status(201).json({ message: 'new user created successfully'})
-    } catch (error) {
-        console.log(error);
-    }  
-}
+// const createUser = async (req, res) => {
+//     if (!req.body.name || !req.body.username || !req.body.password) {
+//         return res.status(400).json({ message: 'please fill the following fields'})
+//     }
+//     try {
+//         const user = await users.create({
+//         name: req.body.name,
+//         username: req.body.username,
+//         password: req.body.password
+//     })
+//     res.status(201).json({ message: 'new user created successfully'})
+//     } catch (error) {
+//         console.log(error);
+//     }  
+// }
 
 const updateUser = async (req, res) => {
     if (!req.params.id) {
@@ -33,22 +33,22 @@ const updateUser = async (req, res) => {
     } else {
         user.username = req.body.username,
         user.name = req.body.name,
-        user.password = req.body.password
+        user.password = await bcrypt.hash(req.body.password, 12)
     }
     const updatedUser = user.save()
     res.json({message: 'User updated successfully'})
 }
 
 const deleteUser = async (req, res) => {
-    if (!req.body.id) {
+    if (!req.params.id) {
         res.json({message: 'Please enter a user ID'})
     }
-    const removeUser = await user.findOne({ _id: req.body.id }).exec()
+    const removeUser = await users.findOne({ _id: req.params.id }).exec()
     if (!removeUser) {
-        res.status(400).json({message: `No user with ID ${req.body.id}`})
+        return res.status(400).json({message: `No user with ID ${req.params.id}`})
     }
-    const deletedUser = await removeUser.delete()
-    res.status(204).json(deletedUser, {message: 'User deleted'})
+    const deletedUser = await users.deleteOne({_id: req.params.id})
+    res.json({message: 'User deleted'})
 }
 
 const getOneUser = async (req, res) => {
@@ -57,7 +57,7 @@ const getOneUser = async (req, res) => {
     }
     const singleUser = await users.findOne({ _id: req.params.id }).exec()
     if (!singleUser) {
-        res.json({message: `No user with the ID ${req.params.id}`})
+        return res.json({message: `No user with the ID ${req.params.id}`})
     }
     res.json(singleUser)
 }
