@@ -4,7 +4,7 @@ const bcrypt = require('bcrypt')
 const handleSignup = async (req, res) => {
     const { name, username, password} = req.body
     if (!name || !username || !password) {
-        res.json({message: 'Please enter the following fields'})
+        return res.json({message: 'Please enter the following fields'})
     }
     const user = await users.findOne({ username }).exec()
     if (user) {

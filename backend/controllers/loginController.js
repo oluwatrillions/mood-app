@@ -3,5 +3,18 @@ const bcrypt = require('bcrypt')
 
 const handleLogin = async (req, res) => {
     const { user, pwd } = req.body
-    if(!user )
+    if (!user || !pwd) {
+        return res.json({message: 'Please enter a valid username and password'})
+    }
+    const foundUser = await users.findOne({ username: user }).exec()
+    if (!foundUser) return res.status(400).json({ message: 'This user does not exist' })
+    const userPwd = await bcrypt.compare(pwd, foundUser.password) 
+    if (userPwd) {
+        res.json({ message: 'You are logged in' })
+        res.json(users)
+    } else {
+        res.json({message: 'Incorrect password, Please try again'})
+    }
 }
+
+module.exports = handleLogin

@@ -10,9 +10,11 @@ connectDB()
 app.use(express.json())
 app.use(express.urlencoded({extended: false}))
 
-app.use('/signup', require('./routes/signup'))
+app.use('/signup', require('./routes/api/users/signup'))
 
-app.use('/users', require('./routes/users'))
+app.use('/users', require('./routes/api/users/users'))
+
+app.use('/login', require('./routes/api/users/login'))
 
 
 app.listen(process.env.PORT, () => {

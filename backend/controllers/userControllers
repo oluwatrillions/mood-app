@@ -62,4 +62,4 @@ const getOneUser = async (req, res) => {
     res.json(singleUser)
 }
 
-module.exports = {getUsers, createUser, updateUser, deleteUser, getOneUser}
+module.exports = {getUsers, updateUser, deleteUser, getOneUser}
