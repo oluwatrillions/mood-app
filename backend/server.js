@@ -1,12 +1,15 @@
 const express = require("express")
 const app = express()
 const dotenv = require("dotenv")
+const cors = require('cors')
+const corsOptions = require('./config/corsOptions')
 const connectDB = require('./database/ConnectDB')
 
 
 
 dotenv.config({ path: './config/.env' })
 connectDB()
+app.use(cors(corsOptions))
 app.use(express.json())
 app.use(express.urlencoded({ extended: false }))
 

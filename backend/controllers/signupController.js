@@ -8,7 +8,7 @@ const handleSignup = async (req, res) => {
     }
     const user = await users.findOne({ username }).exec()
     if (user) {
-        return res.json({message: 'Duplicate user. Please change your username'})
+        return res.status(409).json({message: 'User exists. Please change your username'})
     }
     try {
         const hashedPwd = await bcrypt.hash(password, 12)
@@ -20,7 +20,7 @@ const handleSignup = async (req, res) => {
     } catch (error) {
         console.log(error);
     }
-    res.json({message: 'User created'})
+    res.json({message: `${name}'s account created successfully`})
 }
 
 module.exports = handleSignup
