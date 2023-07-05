@@ -11,7 +11,7 @@ const SignUp = () => {
 
     const navigate = useNavigate()
 
-     const AccountSuccess = () => {
+     const signupSuccess = () => {
             const timer = setTimeout(() => {
                 navigate('/signin')
                 const clear = () => {
@@ -38,7 +38,7 @@ const SignUp = () => {
                    setName('')
                    setUsername('')
                    setPassword('')
-                   AccountSuccess()
+                   signupSuccess()
                } else {
                     setName('')
                     setUsername('')
