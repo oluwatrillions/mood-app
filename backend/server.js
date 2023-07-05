@@ -15,10 +15,11 @@ app.use(express.urlencoded({ extended: false }))
 
 app.use('/login', require('./routes/api/users/login'))
 
-
 app.use('/signup', require('./routes/api/users/signup'))
 
 app.use('/users', require('./routes/api/users/users'))
+
+app.use('/create/post', require('./routes/api/posts/post'))
 
 
 
