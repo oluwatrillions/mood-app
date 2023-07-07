@@ -12,7 +12,7 @@ const SignIn = () => {
 
      const loginSuccess = () => {
             const timer = setTimeout(() => {
-                navigate('/posts')
+                navigate('/create/post')
                 const clear = () => {
                     clearTimeout(timer)
             }

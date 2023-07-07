@@ -1,7 +1,8 @@
 const mongoose = require('mongoose')
-const schema = mongoose.Schema
+const { ObjectId } = mongoose.Schema;
+const Schema = mongoose.Schema
 
-const Post = new schema({
+const Post = new Schema({
     name: {
         type: String,
     },
@@ -11,7 +12,13 @@ const Post = new schema({
     },
     image: {
         type: String,
+        required: true,
     },
+    // author: {
+    //     type: mongoose.Types.ObjectId,
+    //     required: true,
+    //     ref: 'Users'
+    // },
     postTime: {
         type: Date,
         default: Date.now()
