@@ -1,5 +1,4 @@
 const mongoose = require('mongoose')
-const { ObjectId } = mongoose.Schema;
 const Schema = mongoose.Schema
 
 const Post = new Schema({
@@ -14,11 +13,6 @@ const Post = new Schema({
         type: String,
         required: true,
     },
-    // author: {
-    //     type: mongoose.Types.ObjectId,
-    //     required: true,
-    //     ref: 'Users'
-    // },
     postTime: {
         type: Date,
         default: Date.now()

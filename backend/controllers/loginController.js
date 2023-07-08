@@ -1,7 +1,7 @@
 const users = require('../model/users')
 const bcrypt = require('bcrypt')
 
-const handleLogin = async (req, res) => {
+const handleLogin = async (req, res, next) => {
     const { user, pwd } = req.body
     if (!user || !pwd) {
         return res.json({message: 'Please enter a valid username and password'})
@@ -15,6 +15,7 @@ const handleLogin = async (req, res) => {
     } else {
         res.json({message: 'Incorrect password, Please try again'})
     }
+    next();
 }
 
 module.exports = handleLogin

@@ -2,7 +2,6 @@ const express = require("express")
 const app = express()
 const dotenv = require("dotenv")
 const cors = require('cors')
-const fileupload = require('express-fileupload')
 const corsOptions = require('./config/corsOptions')
 const connectDB = require('./database/ConnectDB')
 
@@ -12,8 +11,7 @@ dotenv.config({ path: './config/.env' })
 connectDB()
 app.use(cors(corsOptions))
 app.use(express.json())
-app.use(express.urlencoded({ extended: false }))
-app.use(fileupload())
+app.use(express.urlencoded({ extended: true }))
 
 
 app.use('/login', require('./routes/api/users/login'))

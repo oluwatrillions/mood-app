@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
 import './SignUp.css'
-import {useNavigate} from "react-router-dom"
+import { useNavigate } from "react-router-dom"
 
 const Post = () => {
 
@@ -22,20 +22,18 @@ const Post = () => {
 
     const handlePost = async (e) => {
         e.preventDefault()
-        // const form = new FormData()
-        // form.append('text', text)
-        // form.append('image', image)
+        const formData = new FormData()
+        formData.append('text', text)
+        formData.append('images', image)
         
        try {
            const postBtn = await fetch('http://localhost:4000/create/post', {
-               method: "POST",
-               headers: {
-                   "Content-Type": "application/json",
-               },
-               body: JSON.stringify({
-                   text,
-                   image
-               }),
+               method: 'POST',
+               body: formData,
+           }).then((res) => {
+               return res.json()
+           }).then((data) => {
+               console.log(data);
            })
        } catch (error) {
             console.log(error);
@@ -59,9 +57,9 @@ const Post = () => {
                       <label htmlFor="image">Image:</label>
                       <input
                           type="file"
-                          name='image'
+                          name='images'
                           accept='image/*'
-                          filename='postImage'
+                          filename='images'
                           onChange={(e)=> setImage(e.target.files[0])}
                         />
                   </div>
