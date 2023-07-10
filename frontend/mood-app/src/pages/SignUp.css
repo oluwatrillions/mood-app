@@ -71,3 +71,9 @@ label {
     outline: none;
     cursor: pointer;border-radius: .5em;
 }
+
+input[type='file'] {
+    outline: none;
+    border: none;
+    font-size: 1.5em;
+}

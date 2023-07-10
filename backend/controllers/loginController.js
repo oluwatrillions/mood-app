@@ -15,7 +15,6 @@ const handleLogin = async (req, res, next) => {
     } else {
         res.json({message: 'Incorrect password, Please try again'})
     }
-    next();
 }
 
 module.exports = handleLogin

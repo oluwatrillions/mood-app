@@ -6,6 +6,7 @@ const Post = () => {
 
     const [text, setText] = useState('')
     const [image, setImage] = useState('')
+    const [title, setTitle] = useState('')
     const [notif, setNotif] = useState(null)
 
     const navigate = useNavigate()
@@ -23,6 +24,7 @@ const Post = () => {
     const handlePost = async (e) => {
         e.preventDefault()
         const formData = new FormData()
+        formData.append('title', title)
         formData.append('text', text)
         formData.append('images', image)
         
@@ -44,6 +46,15 @@ const Post = () => {
           <div className='signup'>
               <h3 className='notif'>{ notif }</h3>
               <form onSubmit={handlePost} encType='multipart/form-data'> 
+                  <div className='inputs'>
+                      <label htmlFor="tite">Title:</label>
+                      <input
+                          type="text"
+                          name='title'
+                          value={title}
+                          onChange={(e)=> setText(e.target.value)}
+                        />
+                  </div>
                   <div className='inputs'>
                       <label htmlFor="text">Text:</label>
                       <input
