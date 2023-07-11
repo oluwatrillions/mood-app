@@ -32,19 +32,19 @@ const SignIn = () => {
                 user: username,
                 pwd: password,
             })
-        }).then(res => {
-                if (res.ok) {
-                    setUsername('')
-                    setPassword('')
-                    loginSuccess()
-                } else {
-                    setUsername('')
-                    setPassword('')  
-                }
-                return res.json();
-            }).then(data => {
-                setNotif(data.message)
-            })
+         }).then((response) => {
+             if (response.ok) {
+                 setUsername('')
+                 setPassword('')
+                 loginSuccess();
+             } else {
+                 setUsername('')
+                 setPassword('')
+             }
+            return response.json()
+         }).then((data) => {
+            setNotif(data.message)
+        })
        } catch (error) {
             console.log(error);
        }
