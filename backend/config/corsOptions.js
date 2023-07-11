@@ -1,12 +1,8 @@
-const whitelist = ['http://localhost:4000', 'http://localhost:5173', 'www.mydomain.com']
+const whitelist =['https://localhost:4000', 'http://localhost:5173', 'www.mydomain.com']
 const corsOptions = {
-  origin: (origin, callback) => {
-    if (whitelist.indexOf(origin) !== -1) {
-      callback(null, true)
-    } else {
-      callback(new Error())
-    }
-  }
-}
+    origin: whitelist,
+    credentials: true,
+    optionsSuccessStatus: 200
+};
 
 module.exports = corsOptions
