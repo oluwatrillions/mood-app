@@ -10,15 +10,14 @@ const SignIn = () => {
 
     const navigate = useNavigate()
 
-     const loginSuccess = () => {
-            const timer = setTimeout(() => {
-                navigate('/create/post')
-                const clear = () => {
-                    clearTimeout(timer)
+    const loginSuccess = () => {
+        const timer = setTimeout(() => {
+            navigate('/userprofile/:id')
+            const clear = () => {
+                clearTimeout(timer)
             }
-            }, 3000)
-        }
-    
+        }, 3000)
+    }   
 
     const handleLogin = async (e) => {
         e.preventDefault()

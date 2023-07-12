@@ -1,5 +1,8 @@
 const users = require('../model/users')
 const bcrypt = require('bcrypt')
+const jwt = require('jsonwebtoken')
+const dotenv = require('dotenv')
+dotenv.config({ path: '../controllers/config/.env' })
 
 const handleLogin = async (req, res, next) => {
     const { user, pwd } = req.body
@@ -10,8 +13,12 @@ const handleLogin = async (req, res, next) => {
     if (!foundUser) return res.status(400).json({ message: 'This user does not exist' })
     const userPwd = await bcrypt.compare(pwd, foundUser.password) 
     if (userPwd) {
-        // const loggedUser = await foundUser.save()
-        res.status(200).json({message: `${foundUser.username} is logged in successfully. Redirecting...`})
+        const accessToken = jwt.sign({ name: foundUser.username },
+            process.env.ACCESS_TOKEN_SECRET,
+            {expiresIn: '2 minutes'}
+        )
+        // res.status(200).json({message: `${foundUser.username} is logged in successfully. Redirecting...`})
+        res.json({accessToken})
     } else {
         res.status(400).json({message: 'Incorrect password, Please try again'})
     }

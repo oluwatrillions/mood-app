@@ -1,0 +1,22 @@
+div, * {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+.profile {
+    width: 100vw;
+    min-height: 80vh;
+    display: flex;
+    margin: 0 10vw;
+}
+
+.dashboard {
+    background-color: grey;
+    width: 25vw;
+}
+
+.user-content {
+    width: 55vw;
+    background-color: bisque;
+}
