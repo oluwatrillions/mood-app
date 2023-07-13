@@ -12,7 +12,8 @@ const Users = new userSchema({
     password: {
         type: String,
         required: true,
-    },  
+    },
+    refreshToken: String,
 }) 
 
 module.exports = mongoose.model('Users', Users)
