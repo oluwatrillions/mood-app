@@ -26,7 +26,7 @@ const handleLogin = async (req, res, next) => {
         res.cookie('user', refreshToken)
         res.json({ accessToken, message: `${foundUser.username} has successfully signed in`})
     } else {
-        res.sendStatus(401);
+        res.status(401).json({message: 'Invalid password'});
     }
 }
 
