@@ -1,8 +1,10 @@
-import React, { useState } from 'react'
+import React, { useContext, useState } from 'react'
 import './SignUp.css'
-import {useNavigate} from "react-router-dom"
+import { useNavigate } from "react-router-dom"
 
 const SignIn = () => {
+
+
 
     const [username, setUsername] = useState('')
     const [password, setPassword] = useState('')
@@ -32,6 +34,7 @@ const SignIn = () => {
                 pwd: password,
             })
          }).then((response) => {
+             console.log(response);
              if (response.ok) {
                  setUsername('')
                  setPassword('')
@@ -42,6 +45,7 @@ const SignIn = () => {
              }
             return response.json()
          }).then((data) => {
+             console.log(data);
             setNotif(data.message)
         })
        } catch (error) {
