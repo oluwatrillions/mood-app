@@ -52,7 +52,9 @@ const SignIn = () => {
        } catch (error) {
             console.log(error);
        }
-    }
+      
+}
+
   return (
     <div className='register'>
           <div className='signup'>
