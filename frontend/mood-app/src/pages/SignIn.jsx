@@ -46,6 +46,7 @@ const SignIn = () => {
             return response.json()
          }).then((data) => {
              console.log(data);
+             localStorage.setItem('userToken', data.accessToken)
             setNotif(data.message)
         })
        } catch (error) {

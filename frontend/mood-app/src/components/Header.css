@@ -36,4 +36,5 @@ nav button {
     border: none;
     background: transparent;
     margin-top: -.5em;
+    cursor: pointer;
 }
