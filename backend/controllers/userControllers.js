@@ -33,6 +33,7 @@ const updateUser = async (req, res) => {
     } else {
         user.username = req.body.username,
         user.name = req.body.name,
+        user.profileImage = req.body.profileImage    
         user.password = await bcrypt.hash(req.body.password, 12)
     }
     const updatedUser = user.save()

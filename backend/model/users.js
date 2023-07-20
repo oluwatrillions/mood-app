@@ -13,6 +13,9 @@ const Users = new userSchema({
         type: String,
         required: true,
     },
+    profileImage: {
+        type: String
+    },
     refreshToken: String,
 }) 
 

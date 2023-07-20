@@ -5,7 +5,7 @@ const cors = require('cors')
 const corsOptions = require('./config/corsOptions')
 const cookieParser = require('cookie-parser')
 const connectDB = require('./database/ConnectDB')
-const verifyLogin = require('./controllers/verifyLogin')
+const verifyUser = require('./controllers/verifyUser')
 
 
 
@@ -25,7 +25,7 @@ app.use('/refreshtoken', require('./routes/api/users/refreshtoken'))
 app.use('/logout', require('./routes/api/users/logout'))
 
 
-app.use(verifyLogin)
+app.use(verifyUser)
 app.use('/users', require('./routes/api/users/users'))
 
 
