@@ -1,0 +1,9 @@
+*, div {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+.all-posts {
+    min-height: 80vh;
+}

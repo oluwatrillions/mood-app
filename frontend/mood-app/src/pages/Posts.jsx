@@ -1,4 +1,5 @@
 import React from 'react'
+import './Posts.css'
 import axios from 'axios'
 
 const Posts = () => {
@@ -14,7 +15,7 @@ const Posts = () => {
     }
 
   return (
-      <div>
+      <div className='all-posts'>
           <div></div>
     </div>
   )

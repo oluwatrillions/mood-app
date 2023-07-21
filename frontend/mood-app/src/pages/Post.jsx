@@ -48,6 +48,7 @@ const Post = () => {
            setTitle("")
            setText("")
            imageRef.current.value = ''
+           loginSuccess()
        } catch (error) {
             console.log(error);
        }
