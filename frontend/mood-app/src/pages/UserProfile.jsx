@@ -1,4 +1,4 @@
-import React from 'react'
+import React, {useEffect} from 'react'
 import './UserProfile.css'
 import axios from 'axios'
 import jwt_decode from 'jwt-decode'
@@ -11,7 +11,7 @@ const UserProfile = () => {
 
     // const userInfo = async () => {
     //     try {
-    //         const profile = await axios.get(`http://localhost:4000/${params}`)
+    //         const profile = await axios.get(`http://localhost:4000/posts`)
     //             .then(response => {
     //             console.log(response.data);
     //         })

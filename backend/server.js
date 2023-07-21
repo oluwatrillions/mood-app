@@ -20,7 +20,8 @@ app.use(express.urlencoded({ extended: true }))
 
 app.use('/login', require('./routes/api/users/login'))
 app.use('/signup', require('./routes/api/users/signup'))
-app.use('/create/post', require('./routes/api/posts/post'))
+app.use('/post/create', require('./routes/api/posts/post'))
+app.use('/posts', require('./routes/api/posts/posts'))
 app.use('/refreshtoken', require('./routes/api/users/refreshtoken'))
 app.use('/logout', require('./routes/api/users/logout'))
 

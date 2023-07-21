@@ -37,7 +37,7 @@ const Post = () => {
         formData.append('images', image)
         
        try {
-           const postBtn = await fetch('http://localhost:4000/create/post', {
+           const postBtn = await fetch('http://localhost:4000/post/create', {
                method: 'POST',
                body: formData,
            }).then((res) => {

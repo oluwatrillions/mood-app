@@ -36,7 +36,7 @@ const updateUser = async (req, res) => {
         user.profileImage = req.body.profileImage    
         user.password = await bcrypt.hash(req.body.password, 12)
     }
-    const updatedUser = user.save()
+    const updatedUser = await user.save()
     res.json({message: 'User updated successfully'})
 }
 
