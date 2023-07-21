@@ -15,22 +15,20 @@ function App() {
 
   return (
       <div>
-          <Layout>
-              <LoginContext.Provider value={{
-                  isLoggedIn, setIsLoggedIn
-              }}>
-                <Router>
-                    <Routes>
-                        <Route path='/' element={<Homepage />} />
-                        <Route path='/signup' element={<SignUp/>} />
-                        <Route path='/signin' element={<SignIn/>} />
-                        <Route path='/create/post' element={<Post/>} />
-                        <Route path='/posts' element={<Posts/>} />
-                        <Route path='/userprofile/:id' element={<UserProfile/>} />
-                    </Routes>
-                </Router>
-                </LoginContext.Provider>
-          </Layout>
+          <Router>
+              <Layout>
+                   <LoginContext.Provider value={{isLoggedIn, setIsLoggedIn}}>
+                        <Routes>
+                            <Route path='/' element={<Homepage />} />
+                            <Route path='/signup' element={<SignUp/>} />
+                            <Route path='/signin' element={<SignIn/>} />
+                            <Route path='/create/post' element={<Post/>} />
+                            <Route path='/posts' element={<Posts/>} />
+                            <Route path='/userprofile/:id' element={<UserProfile/>} />
+                        </Routes>
+                  </LoginContext.Provider>
+                </Layout>
+            </Router>
     </div>
   )
 }

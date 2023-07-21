@@ -1,8 +1,10 @@
-import React, { useContext, useState } from 'react'
+import React, { useState } from 'react'
 import './SignUp.css'
-import { useNavigate } from "react-router-dom"
+import { useNavigate, useParams } from "react-router-dom"
 
 const SignIn = () => {
+
+    const {userId} = useParams()
 
 
 
@@ -14,7 +16,7 @@ const SignIn = () => {
 
     const loginSuccess = () => {
         const timer = setTimeout(() => {
-            navigate('/userprofile/:id')
+            navigate(`/userprofile/${userId}`)
             const clear = () => {
                 clearTimeout(timer)
             }

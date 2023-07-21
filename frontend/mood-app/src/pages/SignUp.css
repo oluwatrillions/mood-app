@@ -77,3 +77,9 @@ input[type='file'] {
     border: none;
     font-size: 1.5em;
 }
+
+.name-input {
+    display: flex;
+    justify-content: flex-start;
+    gap: 7em;
+}

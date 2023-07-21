@@ -1,4 +1,5 @@
 const post = require('../../model/post')
+const Users = require('../../model/users')
 const multer = require('multer')
 const path = require("path")
 
@@ -19,8 +20,10 @@ const upload = multer({
     },
 }).single('images');
 
-const createPost = async (req, res) => {
 
+const createPost = async (req, res) => {
+    const name = req.body.name
+    const title = req.body.title
     const image = req.file.filename
     const text = req.body.text
     
@@ -28,6 +31,8 @@ const createPost = async (req, res) => {
 
     try {
         const newPost = await post.create({
+            name,
+            title,
             text,
             image
         })

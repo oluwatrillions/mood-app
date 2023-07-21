@@ -1,6 +1,8 @@
-import React, { useState } from 'react'
+import React, { useRef, useState } from 'react'
 import './SignUp.css'
 import { useNavigate } from "react-router-dom"
+import jwt_decode from 'jwt-decode'
+
 
 const Post = () => {
 
@@ -10,6 +12,11 @@ const Post = () => {
     const [notif, setNotif] = useState(null)
 
     const navigate = useNavigate()
+    const imageRef = useRef()
+
+    const token = localStorage.getItem('userToken');
+            let decodedToken = jwt_decode(token);
+
 
      const loginSuccess = () => {
             const timer = setTimeout(() => {
@@ -24,6 +31,7 @@ const Post = () => {
     const handlePost = async (e) => {
         e.preventDefault()
         const formData = new FormData()
+        formData.append('name', decodedToken.name)
         formData.append('title', title)
         formData.append('text', text)
         formData.append('images', image)
@@ -37,6 +45,9 @@ const Post = () => {
            }).then((data) => {
                console.log(data);
            })
+           setTitle("")
+           setText("")
+           imageRef.current.value = ''
        } catch (error) {
             console.log(error);
        }
@@ -52,7 +63,7 @@ const Post = () => {
                           type="text"
                           name='title'
                           value={title}
-                          onChange={(e)=> setText(e.target.value)}
+                          onChange={(e)=> setTitle(e.target.value)}
                         />
                   </div>
                   <div className='inputs'>
@@ -71,6 +82,7 @@ const Post = () => {
                           name='images'
                           accept='image/*'
                           filename='images'
+                          ref={imageRef}
                           onChange={(e)=> setImage(e.target.files[0])}
                         />
                   </div>

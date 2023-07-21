@@ -5,6 +5,9 @@ const Post = new Schema({
     name: {
         type: String,
     },
+    title: {
+        type: String,
+    },
     text: {
         type: String,
         required: true,
