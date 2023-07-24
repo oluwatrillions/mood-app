@@ -61,7 +61,7 @@ const SignUp = () => {
               <h3 className='notif'>{ notif }</h3>
               <form onSubmit={handleSignup}>
                   <div className='inputs'>
-                      <label htmlFor="name">Name:</label>
+                      <label htmlFor="name" id='name'>Name:</label>
                       <input
                           type="text"
                           name='name'
@@ -70,7 +70,7 @@ const SignUp = () => {
                           onChange={ ((e)=> setName(e.target.value))} />
                   </div>
                   <div className='inputs'>
-                      <label htmlFor="username">Username:</label>
+                      <label htmlFor="username" id='username'>Username:</label>
                       <input
                           type="text"
                           name='username'
@@ -79,7 +79,7 @@ const SignUp = () => {
                           onChange={ ((e)=> setUsername(e.target.value))} />
                   </div>
                   <div className='inputs'>
-                      <label htmlFor="password">Password:</label>
+                      <label htmlFor="password" id='password'>Password:</label>
                       <input
                           type="password"
                           name='password'

@@ -59,7 +59,7 @@ const Post = () => {
               <h3 className='notif'>{ notif }</h3>
               <form onSubmit={handlePost} encType='multipart/form-data'> 
                   <div className='inputs'>
-                      <label htmlFor="tite">Title:</label>
+                      <label htmlFor="tite" id='title'>Title:</label>
                       <input
                           type="text"
                           name='title'
@@ -68,7 +68,7 @@ const Post = () => {
                         />
                   </div>
                   <div className='inputs'>
-                      <label htmlFor="text">Text:</label>
+                      <label htmlFor="text" id='text'>Text:</label>
                       <input
                           type="text"
                           name='text'
@@ -77,11 +77,11 @@ const Post = () => {
                         />
                   </div>
                   <div className='inputs'>
-                      <label htmlFor="image">Image:</label>
+                      <label htmlFor="image" id='image'>Image:</label>
                       <input
                           type="file"
                           name='images'
-                          accept='image/*'
+                          accept='image/jpg, image/jpeg, image/png, image/gif'
                           filename='images'
                           ref={imageRef}
                           onChange={(e)=> setImage(e.target.files[0])}

@@ -64,7 +64,7 @@ const SignIn = () => {
               <h3 className='notif'>{ notif }</h3>
               <form onSubmit={handleLogin}>
                   <div className='inputs'>
-                      <label htmlFor="name">Username:</label>
+                      <label htmlFor="name" id='username'>Username:</label>
                       <input
                           type="text"
                           name='username'
@@ -73,7 +73,7 @@ const SignIn = () => {
                         />
                   </div>
                   <div className='inputs'>
-                      <label htmlFor="password">Password:</label>
+                      <label htmlFor="password" id='password'>Password:</label>
                       <input
                           type="password"
                           name='password'
