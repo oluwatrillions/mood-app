@@ -15,18 +15,20 @@ app.use(cors(corsOptions))
 app.use(express.json())
 app.use(cookieParser())
 app.use(express.urlencoded({ extended: true }))
+app.use(express.static('/public'))
 
 
 app.use('/login', require('./routes/api/users/login'))
 app.use('/signup', require('./routes/api/users/signup'))
 app.use('/post/create', require('./routes/api/posts/post'))
+app.use('/getimage', require('./routes/api/posts/postImage'))
 app.use('/posts', require('./routes/api/posts/posts'))
 app.use('/refreshtoken', require('./routes/api/users/refreshtoken'))
 app.use('/logout', require('./routes/api/users/logout'))
 
 
 
-app.use(verifyUser)
+// app.use(verifyUser)
 app.use('/users', require('./routes/api/users/users'))
 
 
