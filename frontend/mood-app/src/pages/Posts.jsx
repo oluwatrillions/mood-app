@@ -28,8 +28,10 @@ const Posts = () => {
         //     console.log(error);
         // }
         const image = await axios('http://localhost:4000/getImage')
-            .then(res => setImage(res.data[0].image))
-            
+            .then((res) => {
+                setImage(res.data[0].image)
+                console.log(res.data[0].image);
+            })
     }
 
 
@@ -45,7 +47,7 @@ const Posts = () => {
                   const { title, text, name, _id } = post
                   return <div key={_id}>
                       <h3 className="title">{ title}</h3>
-                      <img src={'http://localhost:4000/images/' + image} alt='images' />
+                      <img src={`http://localhost:4000/public/${image}`} alt=''  className='img-div'/>
                       <h4 className="text-field">{text}</h4>
                       <h4 className="poster">posted by <span>{ name}</span></h4>
                   </div>

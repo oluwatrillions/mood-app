@@ -7,3 +7,8 @@
 .all-posts {
     min-height: 80vh;
 }
+
+.img-div {
+    width: 10em;
+    height: 10em;
+}
