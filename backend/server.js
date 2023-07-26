@@ -25,7 +25,6 @@ app.use('/getimage', require('./routes/api/posts/postImage'))
 app.use('/posts', require('./routes/api/posts/posts'))
 app.use('/refreshtoken', require('./routes/api/users/refreshtoken'))
 app.use('/logout', require('./routes/api/users/logout'))
- app.use('/uploads', express.static('uploads'));
 
 
 

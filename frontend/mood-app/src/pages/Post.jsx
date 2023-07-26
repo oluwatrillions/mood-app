@@ -53,6 +53,7 @@ const Post = () => {
             console.log(error);
        }
     }
+
   return (
     <div className='register'>
           <div className='signup'>
@@ -80,7 +81,7 @@ const Post = () => {
                       <label htmlFor="image" id='image'>Image:</label>
                       <input
                           type="file"
-                          name='images'
+                        //   name='images'
                           accept='image/jpg, image/jpeg, image/png, image/gif'
                           filename='images'
                           ref={imageRef}
