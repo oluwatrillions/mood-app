@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300&display=swap');
+
 *, div {
     margin: 0;
     padding: 0;
@@ -8,46 +10,65 @@
     width: 100vw;
     min-height: 80vh;
     background-color: rgb(58, 66, 73);
+    display: flex;
+    justify-content: center;
+    padding: 2em 0;
 }
 
 .all-posts {
+    width: 100vw;
     display: flex;
+    justify-content: center;
     flex-wrap: wrap;
     gap: 3em;
-    padding: 3em;
+}
+
+.image-div {
+    width: 20vw;
+    height: 25vh;
+    border-radius: 1em 1em 0 0;
 }
 
 .img-div {
     width: 20vw;
-    height: 20vh;
+    height: 25vh;
     border-radius: 1em 1em 0 0;
-    background-size: cover;
+    background-size:cover;
     background-repeat: no-repeat;
     background-position: center center fixed;
-    object-fit: cover;
+    object-fit:cover;
     vertical-align: middle;
 }
 
 .posts {
     width: 20vw;
-    height: 40vh;
+    height: 47vh;
     background-color: rgb(102, 100, 100);
     border-radius: 1em;
+    display: flex;
+    flex-direction: column;
 }
 
 .post-text {
-    padding-left: .7em;
-    height: 19vh;
+    padding: 0 .5em;
+    height: 20vh;
     display: flex;
     justify-content: space-between;
     flex-direction: column;
 }
 
 .title {
-    color: aliceblue;
-    font-weight: 400;
+    color: rgb(219, 225, 231);
+    font-weight: 600;
     width: 15vw;
-    text-align: center;
+    text-align: start;
+    font-family: 'Poppins', sans-serif;
+}
+
+.text-field {
+    font-size: 1em;
+    color: rgb(255, 255, 255);
+    font-weight: 300;
 }
 
 .post-detail {
@@ -67,5 +88,15 @@
     width: 3em;
     height: 3em;
     border-radius: 50%;
- 
+}
+
+.poster {
+    font-size: large;
+    font-weight: 300;
+    color: rgb(221, 221, 221);
+}
+
+.post-time {
+    color: azure;
+    font-weight: 100;
 }

@@ -26,7 +26,9 @@ const Posts = () => {
                     posts.map((post) => {
                         const { title, text, name, image, _id, postedAt, posterImage } = post
                         return <div key={_id} className='posts'>
-                                <img src={`http://localhost:4000/public/images/` + image} alt='images'  className='img-div'/>
+                                <div className='image-div'>
+                                    <img src={`http://localhost:4000/public/images/` + image} alt='images'  className='img-div'/>
+                                </div>
                                 <div className="post-text">
                                     <h3 className="title">{title}</h3>
                                     <h4 className="text-field">{text}</h4>
