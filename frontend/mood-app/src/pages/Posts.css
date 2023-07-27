@@ -4,11 +4,68 @@
     box-sizing: border-box;
 }
 
-.all-posts {
+.posts-div {
+    width: 100vw;
     min-height: 80vh;
+    background-color: rgb(58, 66, 73);
+}
+
+.all-posts {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 3em;
+    padding: 3em;
 }
 
 .img-div {
-    width: 10em;
-    height: 10em;
+    width: 20vw;
+    height: 20vh;
+    border-radius: 1em 1em 0 0;
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center center fixed;
+    object-fit: cover;
+    vertical-align: middle;
+}
+
+.posts {
+    width: 20vw;
+    height: 40vh;
+    background-color: rgb(102, 100, 100);
+    border-radius: 1em;
+}
+
+.post-text {
+    padding-left: .7em;
+    height: 19vh;
+    display: flex;
+    justify-content: space-between;
+    flex-direction: column;
+}
+
+.title {
+    color: aliceblue;
+    font-weight: 400;
+    width: 15vw;
+    text-align: center;
+}
+
+.post-detail {
+    display: flex;
+    gap: .5em;
+    margin-top: .5em;
+}
+
+.time {
+    display: flex;
+    flex-direction: column;
+
+    gap: .3em;
+}
+
+.poster-image {
+    width: 3em;
+    height: 3em;
+    border-radius: 50%;
+ 
 }

@@ -16,7 +16,10 @@ const Post = new Schema({
         type: String,
         required: true,
     },
-    postTime: {
+    posterImage: {
+        Type: String,
+    },
+    postedAt: {
         type: Date,
         default: Date.now()
     }
