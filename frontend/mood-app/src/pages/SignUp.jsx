@@ -7,6 +7,7 @@ const SignUp = () => {
     const [name, setName] = useState('')
     const [username, setUsername] = useState('')
     const [password, setPassword] = useState('')
+    const [avatar, setAvatar] = useState("")
     const [notif, setNotif] = useState(null)
 
     const navigate = useNavigate()
@@ -22,17 +23,16 @@ const SignUp = () => {
 
     const handleSignup = async (e) => {
         e.preventDefault();
-       try {
+        try {
+            const signupData = new FormData()
+            signupData.append('name', name)
+            signupData.append('username', username)
+            signupData.append('password', password)
+            signupData.append('avatar', avatar)
+
            const userDetails = await fetch('http://localhost:4000/signup', {
                method: 'POST',
-               headers: {
-                   "Content-Type": "application/json",
-               },
-               body: JSON.stringify({
-                   name,
-                   username,
-                   password
-               })
+               body: signupData,
            }).then(res => {
                if (res.ok) {
                    setName('')
@@ -46,7 +46,7 @@ const SignUp = () => {
                }
                return res.json();
            }).then(data => {
-               console.log(name, username, password);
+               console.log(data);
                setNotif(data.message)
            })
        } catch (error) {
@@ -86,6 +86,15 @@ const SignUp = () => {
                           value={password}
                           required
                           onChange={((e) => setPassword(e.target.value))} />
+                  </div>
+                  <div className='avatar'>
+                      <label htmlFor="avatar" id='avatar'>Profile Avatar:</label>
+                      <input
+                          type="file"
+                          accept='image/png, image/jpeg, image/jpg, image/gif'
+                          name='avatar'
+                          filename='avatar'
+                          onChange={((e) => setAvatar(e.target.files[0]))} />
                   </div>
                   <button className='signIn-btn' type='submit'>Sign Up</button>
               </form>

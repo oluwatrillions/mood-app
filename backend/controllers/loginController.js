@@ -13,7 +13,16 @@ const handleLogin = async (req, res, next) => {
     if (!foundUser) return res.status(400).json({ message: 'This user does not exist' })
     const userPwd = await bcrypt.compare(pwd, foundUser.password) 
     if (userPwd) {
-        const accessToken = jwt.sign({ 'name': foundUser.username },
+
+        const payload = {
+            name: foundUser.name,
+            username: foundUser.username,
+            password: foundUser.password,
+            avatar: foundUser.profileImage,
+            id: foundUser._id
+        }
+
+        const accessToken = jwt.sign(payload,
             process.env.ACCESS_TOKEN_SECRET,
             { expiresIn: '2 minutes' }
         )

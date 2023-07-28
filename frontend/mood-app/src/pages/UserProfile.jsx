@@ -30,7 +30,10 @@ const UserProfile = () => {
 
   return (
       <div className='profile'>
-          <div className="dashboard">{ decodedToken.name}</div>
+          <div className="dashboard">
+              <div className='user-info'>{decodedToken.name}</div>
+              <img src={`http://localhost:4000/public/avatar/` + decodedToken.avatar} alt="" />
+          </div>
           <div className="user-content">content page</div>
     </div>
   )
