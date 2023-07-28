@@ -16,7 +16,7 @@ const SignIn = () => {
 
     const loginSuccess = () => {
         const timer = setTimeout(() => {
-            navigate('/userprofile')
+            navigate(`/userprofile/${userId}`)
             const clear = () => {
                 clearTimeout(timer)
             }
@@ -49,7 +49,7 @@ const SignIn = () => {
          }).then((data) => {
              console.log(data);
              localStorage.setItem('userToken', data.accessToken)
-            setNotif(data.message)
+             setNotif(data.message)
         })
        } catch (error) {
             console.log(error);

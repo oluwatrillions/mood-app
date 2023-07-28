@@ -8,6 +8,7 @@ const Post = () => {
 
     const [text, setText] = useState('')
     const [image, setImage] = useState('')
+    const [avatar, setAvatar] = useState()
     const [title, setTitle] = useState('')
     const [notif, setNotif] = useState(null)
 
@@ -32,6 +33,7 @@ const Post = () => {
         e.preventDefault()
         const formData = new FormData()
         formData.append('name', decodedToken.name)
+        formData.append('avatar', decodedToken.avatar)
         formData.append('title', title)
         formData.append('text', text)
         formData.append('images', image)

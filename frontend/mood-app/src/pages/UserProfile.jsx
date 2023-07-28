@@ -1,4 +1,4 @@
-import React, {useEffect} from 'react'
+import React, {useEffect, useState} from 'react'
 import './UserProfile.css'
 import axios from 'axios'
 import jwt_decode from 'jwt-decode'
@@ -7,22 +7,27 @@ import { useParams } from 'react-router-dom'
 
 const UserProfile = () => {
 
+    const [user, setUser] = useState()
     const { params } = useParams()
 
-    // const userInfo = async () => {
-    //     try {
-    //         const profile = await axios.get(`http://localhost:4000/posts`)
-    //             .then(response => {
-    //             console.log(response.data);
-    //         })
-    //     } catch (error) {
-    //         console.log(error);
-    //     }
-    // }
+    const userInfo = async () => {
+        try {
+            const profile = await fetch(`http://localhost:4000/users`)
+                .then((response) => {
+                    console.log(response)
+                    return response.json()  
+                }).then((data) => {
+                    console.log(data)
+                    setUser(data)
+                })
+        } catch (error) {
+            console.log(error);
+        }
+    }
 
-    // useEffect(() => {
-    //     userInfo()
-    // }, [ ])
+    useEffect(() => {
+        userInfo()
+    }, [ ])
 
         const token = localStorage.getItem('userToken');
             let decodedToken = jwt_decode(token);
@@ -30,11 +35,10 @@ const UserProfile = () => {
 
   return (
       <div className='profile'>
-          <div className="dashboard">
-              <div className='user-info'>{decodedToken.name}</div>
-              <img src={`http://localhost:4000/public/avatar/` + decodedToken.avatar} alt="" />
-          </div>
-          <div className="user-content">content page</div>
+          {
+              user && 
+                user.filter
+          }
     </div>
   )
 }
