@@ -16,6 +16,10 @@
     color: rgb(97, 94, 94);
 }
 
+a {
+    text-decoration: none;
+}
+
 nav {
     width: 100vw;
     display: flex;

@@ -22,7 +22,6 @@ const Posts = () => {
 
     const token = localStorage.getItem('userToken');
             let decodedToken = jwt_decode(token);
-            console.log(decodedToken);
 
     return (
         <div className='posts-div'>

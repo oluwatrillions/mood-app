@@ -16,7 +16,8 @@ const Post = () => {
     const imageRef = useRef()
 
     const token = localStorage.getItem('userToken');
-            let decodedToken = jwt_decode(token);
+    let decodedToken = jwt_decode(token);
+    console.log(decodedToken.avatar);
 
 
      const loginSuccess = () => {
@@ -79,6 +80,16 @@ const Post = () => {
                           onChange={(e)=> setText(e.target.value)}
                         />
                   </div>
+                    {/* <div className='inputs'>
+                      <label htmlFor="avatar" id='avatar'>Avatar:</label>
+                      <input
+                          type="file"
+                        //   name='images'
+                          accept='image/jpg, image/jpeg, image/png, image/gif'
+                          filename='avatar'
+                          onChange={(e)=> setAvatar(e.target.files[0])}
+                        />
+                  </div> */}
                   <div className='inputs'>
                       <label htmlFor="image" id='image'>Image:</label>
                       <input
