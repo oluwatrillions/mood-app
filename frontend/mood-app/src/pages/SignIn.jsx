@@ -36,7 +36,6 @@ const SignIn = () => {
                 pwd: password,
             })
          }).then((response) => {
-             console.log(response);
              if (response.ok) {
                  setUsername('')
                  setPassword('')
@@ -48,7 +47,7 @@ const SignIn = () => {
             return response.json()
          }).then((data) => {
              console.log(data);
-             localStorage.setItem('userToken', data.accessToken)
+             localStorage.setItem('userToken', "Bearer " +  data.accessToken)
              setNotif(data.message)
         })
        } catch (error) {

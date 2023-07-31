@@ -17,18 +17,16 @@ const handleLogin = async (req, res, next) => {
         const payload = {
             name: foundUser.name,
             username: foundUser.username,
-            password: foundUser.password,
             avatar: foundUser.profileImage,
-            id: foundUser._id
         }
 
         const accessToken = jwt.sign(payload,
             process.env.ACCESS_TOKEN_SECRET,
-            { expiresIn: '2 minutes' }
+            { expiresIn: '10s' }
         )
         const refreshToken = jwt.sign({ 'name': foundUser.username },
             process.env.REFRESH_TOKEN_SECRET,
-            { expiresIn: '1d' }
+            { expiresIn: '10s' }
         )
         foundUser.refreshToken = refreshToken
         const verifiedUser = await foundUser.save()

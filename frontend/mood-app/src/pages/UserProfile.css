@@ -8,21 +8,35 @@ div, * {
     width: 100vw;
     min-height: 80vh;
     display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: rgb(71, 68, 68);
 }
 
 .dashboard {
-    background-color: grey;
-    width: 25vw;
+    width: 50vw;
     height: 80vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
 }
 
 .dashboard img {
-    width: 10em;
-    height: 10em;
+    width: 30vw;
+    height: 50vh;
     border-radius: 50%;
 }
 
-.user-content {
-    width: 55vw;
-    background-color: bisque;
+.dashboard h2 {
+    font-size: 1.9em;
+    margin-top: 1em;
+    color: rgb(202, 155, 93);
+}
+
+.dashboard h4 {
+    font-size: 1.5em;
+    font-weight: 400;
+    margin-top: .5em;
+    color: aliceblue;
 }
