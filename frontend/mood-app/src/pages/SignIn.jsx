@@ -16,7 +16,7 @@ const SignIn = () => {
 
     const loginSuccess = () => {
         const timer = setTimeout(() => {
-            navigate(`/userprofile/${userId}`)
+            navigate(`/userprofile`)
             const clear = () => {
                 clearTimeout(timer)
             }

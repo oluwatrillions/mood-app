@@ -10,24 +10,24 @@ const UserProfile = () => {
     const [user, setUser] = useState()
     const { params } = useParams()
 
-    const userInfo = async () => {
-        try {
-            const profile = await fetch(`http://localhost:4000/users`)
-                .then((response) => {
-                    console.log(response)
-                    return response.json()  
-                }).then((data) => {
-                    console.log(data)
-                    setUser(data)
-                })
-        } catch (error) {
-            console.log(error);
-        }
-    }
+    // const userInfo = async () => {
+    //     try {
+    //         const profile = await fetch(`http://localhost:4000/users`)
+    //             .then((response) => {
+    //                 console.log(response)
+    //                 return response.json()  
+    //             }).then((data) => {
+    //                 console.log(data)
+    //                 setUser(data)
+    //             })
+    //     } catch (error) {
+    //         console.log(error);
+    //     }
+    // }
 
-    useEffect(() => {
-        userInfo()
-    }, [ ])
+    // useEffect(() => {
+    //     userInfo()
+    // }, [ ])
 
         const token = localStorage.getItem('userToken');
             let decodedToken = jwt_decode(token);
@@ -35,10 +35,11 @@ const UserProfile = () => {
 
   return (
       <div className='profile'>
-          {
-              user && 
-                user.filter
-          }
+          <div className="dashboard">
+              <img src={`http://localhost:4000/` + decodedToken.avatar} alt="" />
+              <h2>{ decodedToken.name}</h2>
+          </div>
+          <div className="user-content"></div>
     </div>
   )
 }

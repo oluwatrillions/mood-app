@@ -24,7 +24,7 @@ function App() {
                             <Route path='/signin' element={<SignIn/>} />
                             <Route path='/post/create' element={<Post/>} />
                             <Route path='/posts' element={<Posts/>} />
-                            <Route path='/userprofile/:id' element={<UserProfile/>} />
+                            <Route path='/userprofile' element={<UserProfile/>} />
                         </Routes>
                   </LoginContext.Provider>
                 </Layout>

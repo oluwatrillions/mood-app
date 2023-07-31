@@ -27,7 +27,7 @@ app.use('/logout', require('./routes/api/users/logout'))
 
 
 
-// app.use(verifyUser)
+app.use(verifyUser)
 app.use('/users', require('./routes/api/users/users'))
 
 

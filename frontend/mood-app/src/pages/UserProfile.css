@@ -16,6 +16,12 @@ div, * {
     height: 80vh;
 }
 
+.dashboard img {
+    width: 10em;
+    height: 10em;
+    border-radius: 50%;
+}
+
 .user-content {
     width: 55vw;
     background-color: bisque;
