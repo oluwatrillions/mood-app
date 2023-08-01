@@ -1,0 +1,86 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300&display=swap');
+
+*, div {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+.single-post {
+    min-height: 80vh;
+    width: 100vw;
+    display: flex;
+    justify-content: center;
+    margin-top: 2em;
+}
+
+.featured-post {
+    width: 25vw;
+    height: 60vh;
+    background-color: rgb(78, 76, 76);
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    flex-direction: column;
+    border-radius: 1em;
+}
+
+.featured-img img {
+    width: 25vw;
+    height: 40vh;
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center center fixed;
+    object-fit: cover;
+    border-radius: 1em 1em 0 0;
+}
+
+.text-detail {
+    display: flex;
+    justify-content: space-between;
+    flex-direction: column;
+    height: 20vh;
+    margin-bottom: 1em;
+    margin-left: 1em;
+    
+}
+
+.titled {
+    color: rgb(219, 225, 231);
+    font-weight: 600;
+    width: 15vw;
+    text-align: start;
+    font-family: 'Poppins', sans-serif;
+    word-wrap: break-word;
+    font-size: 1.5em;
+}
+
+.text {
+    font-size: 1.1em;
+    color: rgb(255, 255, 255);
+    font-weight: 300;
+    word-wrap: break-word;
+    font-family: 'Poppins', sans-serif;
+}
+
+.poster-detail {
+    display: flex;
+    gap: .5em;
+    margin-top: .5em;
+}
+
+.poster-detail img {
+    width: 3em;
+    height: 3em;
+    border-radius: 1em;
+}
+
+.name {
+    color: blanchedalmond;
+    font-family: 'Poppins', sans-serif;
+}
+
+.postime {
+    color: rgb(255, 255, 255);
+    font-weight: 100;
+}

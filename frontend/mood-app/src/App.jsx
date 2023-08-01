@@ -8,6 +8,7 @@ import Posts from './pages/Posts'
 import Post from './pages/Post'
 import UserProfile from './pages/UserProfile'
 import {LoginContext} from './Contexts/LoginContext'
+import SinglePost from './pages/SinglePost'
 
 function App() {
 
@@ -24,6 +25,7 @@ function App() {
                             <Route path='/signin' element={<SignIn/>} />
                             <Route path='/post/create' element={<Post/>} />
                             <Route path='/posts' element={<Posts/>} />
+                            <Route path='/posts/:_id' element={<SinglePost/>} />
                             <Route path='/userprofile' element={<UserProfile/>} />
                         </Routes>
                   </LoginContext.Provider>

@@ -1,6 +1,7 @@
 import React, {useEffect, useState} from 'react'
 import './Posts.css'
 import jwt_decode from 'jwt-decode'
+import {Link} from 'react-router-dom'
 
 const Posts = () => {
 
@@ -30,6 +31,7 @@ const Posts = () => {
                     posts.map((post) => {
                         const { title, text, name, image, _id, postedAt, avatar } = post
                         return <div key={_id} className='posts'>
+                            <Link to={`/posts/${_id}`}>
                                 <div className='image-div'>
                                     <img src={`http://localhost:4000/public/images/` + image} alt='images'  className='img-div'/>
                                 </div>
@@ -43,7 +45,8 @@ const Posts = () => {
                                             <h5 className='post-time'>{ postedAt}</h5>
                                         </div>
                                     </div>
-                                </div>                         
+                                </div> 
+                                </Link>
                             </div>
                     }).reverse()
                 }
