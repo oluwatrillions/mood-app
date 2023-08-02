@@ -63,16 +63,30 @@
     font-family: 'Poppins', sans-serif;
 }
 
-.poster-detail {
+.post-action {
     display: flex;
     gap: .5em;
     margin-top: .5em;
 }
 
-.poster-detail img {
+.post-action img {
     width: 3em;
     height: 3em;
     border-radius: 1em;
+}
+
+.poster-detail {
+    display: flex;
+    justify-content: flex-start;
+    gap: 9vw;
+}
+
+.edit-icon {
+    color: wheat;
+    cursor: pointer;
+    width: 2em;
+    height: 2em;
+    position: relative;
 }
 
 .name {
@@ -83,4 +97,48 @@
 .postime {
     color: rgb(255, 255, 255);
     font-weight: 100;
+}
+
+.action-btn {
+    cursor: pointer;
+    display: none;
+}
+
+.action-btn h3{
+    color: wheat;
+}
+
+.show-action {
+    display: block;
+    position: absolute;
+    margin-top: -.5em;
+}
+
+.delete {
+    inset: 10vh 30vw ;
+    background-color: rgb(247, 244, 244);
+    position: absolute;
+    margin-top: 3vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    color: rgb(62, 65, 68);
+}
+
+.show-delete {
+    display: block;
+}
+
+.delete h2 {
+    font-weight: 100;
+}
+
+.answer {
+    width: 10vw;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 5vh;
+    cursor: pointer;
 }
