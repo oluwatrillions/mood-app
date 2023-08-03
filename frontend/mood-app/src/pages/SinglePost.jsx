@@ -1,17 +1,38 @@
 import React, {useEffect, useRef, useState} from 'react'
-import { useParams } from 'react-router-dom'
+import { useNavigate, useParams } from 'react-router-dom'
 import './SinglePost.css'
 import { HiDotsHorizontal } from "react-icons/hi"
 
 
 const SinglePost = () => {
 
+    const [filterPost, setFilterPost] = useState()
     const [singlePost, setSinglePost] = useState({}) 
     const [isEdit, setIsEdit] = useState(false)
     const [iseDelete, setIsDelete] = useState(false)
     const btnRef = useRef(null)
     const deleteRef = useRef(null)
     const { _id } = useParams()
+    const navigate = useNavigate()
+
+    const Back = () => {
+        navigate(-1)
+    }
+
+    const DeletePost = async () => {
+        try {
+            const response = await fetch(`http://localhost:4000/posts/`)
+               const data = await response.json()
+            const deletedPost = data.filter((post) => post._id != _id)
+            setFilterPost(deletedPost);
+        } catch (error) {
+            console.log(error);
+        }
+    }
+
+    useEffect(() => {
+        DeletePost()
+    }, [_id])
 
     const actionRef = () => {
         btnRef.current.classList.toggle('show-action')
@@ -49,13 +70,13 @@ const SinglePost = () => {
                           <HiDotsHorizontal className='edit-icon' onClick={actionRef}/>  
                         <div className="action-btn" ref={ btnRef}>
                             <h3>Edit</h3>                          
-                            <h3 className='' ref={deleteRef} onClick={deleteBtn}>Delete</h3>   
+                            <h3 onClick={deleteBtn}>Delete</h3>   
                           </div>
-                          <div className="delete">
+                          <div className="confirm" ref={deleteRef}>
                               <h2>Are you sure you want to DELETE this post?</h2>
                               <div className="answer">
-                                  <h2>YES</h2>
-                                  <h2>NO</h2>
+                                  <h2 onClick={DeletePost}>YES</h2>
+                                  <h2 onClick={Back}>NO</h2>
                               </div>
                           </div>
                       </div>
