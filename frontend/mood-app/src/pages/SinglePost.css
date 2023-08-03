@@ -102,6 +102,7 @@
 .action-btn {
     cursor: pointer;
     display: none;
+    position: relative;
 }
 
 .action-btn h3{
@@ -110,24 +111,27 @@
 
 .show-action {
     display: block;
-    position: absolute;
     margin-top: -.5em;
 }
 
+.confirm {
+    cursor: pointer;
+    display: none;
+}
+
 .delete {
-    inset: 10vh 30vw ;
-    background-color: rgb(247, 244, 244);
+    inset: 15vw 70vh ;
+    background-color: rgb(255, 255, 255);
     position: absolute;
-    margin-top: 3vh;
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    color: rgb(62, 65, 68);
+    color: rgb(103, 105, 107);
 }
 
-.show-delete {
-    display: block;
+.confirm h2 {
+    margin: 10vh auto;
 }
 
 .delete h2 {
@@ -140,5 +144,14 @@
     justify-content: space-between;
     align-items: center;
     margin-top: 5vh;
+    color: rgb(36, 37, 37);
+}
+
+.answer h2 {
+    padding: .5em;
+}
+
+.answer h2:hover {
+    background-color: aqua;
     cursor: pointer;
 }
