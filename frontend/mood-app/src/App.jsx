@@ -7,7 +7,7 @@ import SignIn from './pages/SignIn'
 import Posts from './pages/Posts'
 import Post from './pages/Post'
 import UserProfile from './pages/UserProfile'
-import {LoginContext} from './Contexts/LoginContext'
+import {authContext} from './Contexts/LoginContext'
 import SinglePost from './pages/SinglePost'
 
 function App() {
@@ -18,7 +18,7 @@ function App() {
       <div>
           <Router>
               <Layout>
-                   <LoginContext.Provider value={{isLoggedIn, setIsLoggedIn}}>
+                   <authContext.Provider value={{isLoggedIn, setIsLoggedIn}}>
                         <Routes>
                             <Route path='/' element={<Homepage />} />
                             <Route path='/signup' element={<SignUp/>} />
@@ -28,7 +28,7 @@ function App() {
                             <Route path='/posts/:_id' element={<SinglePost/>} />
                             <Route path='/userprofile' element={<UserProfile/>} />
                         </Routes>
-                  </LoginContext.Provider>
+                  </authContext.Provider>
                 </Layout>
             </Router>
     </div>

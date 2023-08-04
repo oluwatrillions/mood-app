@@ -30,7 +30,8 @@ const SignIn = () => {
             method: "POST",
             headers: {
                 "Content-Type": "application/json",
-            },
+             },
+            withCredentials: true,
             body: JSON.stringify({
                 user: username,
                 pwd: password,
@@ -47,7 +48,8 @@ const SignIn = () => {
             return response.json()
          }).then((data) => {
              console.log(data);
-             localStorage.setItem('userToken', "Bearer " +  data.accessToken)
+             localStorage.setItem('token', "Bearer " +  data.accessToken)
+             localStorage.setItem('refreshtoken', "Bearer " +  data.refreshToken)
              setNotif(data.message)
         })
        } catch (error) {

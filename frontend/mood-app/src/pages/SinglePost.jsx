@@ -21,10 +21,15 @@ const SinglePost = () => {
 
     const DeletePost = async () => {
         try {
-            const response = await fetch(`http://localhost:4000/posts/`)
-               const data = await response.json()
-            const deletedPost = data.filter((post) => post._id != _id)
-            setFilterPost(deletedPost);
+            const response = await fetch(`http://localhost:4000/posts/${_id}`, {
+                method: 'DELETE',
+                headers: {
+                    "Content-Type": "application/json"
+                }
+            })
+                .then((res) => res.json())
+            .then((data)=> console.log(data))
+               navigate('/posts')
         } catch (error) {
             console.log(error);
         }
