@@ -7,7 +7,7 @@ import SignIn from './pages/SignIn'
 import Posts from './pages/Posts'
 import Post from './pages/Post'
 import UserProfile from './pages/UserProfile'
-import {authContext} from './Contexts/LoginContext'
+import {AuthProvider} from './Contexts/AuthContext'
 import SinglePost from './pages/SinglePost'
 
 function App() {
@@ -17,10 +17,10 @@ function App() {
   return (
       <div>
           <Router>
-              <Layout>
-                   <authContext.Provider value={{isLoggedIn, setIsLoggedIn}}>
+              <AuthProvider>
+                    <Layout>
                         <Routes>
-                            <Route path='/' element={<Homepage />} />
+                            <Route path='/' element={<Homepage />} exact/>
                             <Route path='/signup' element={<SignUp/>} />
                             <Route path='/signin' element={<SignIn/>} />
                             <Route path='/post/create' element={<Post/>} />
@@ -28,8 +28,8 @@ function App() {
                             <Route path='/posts/:_id' element={<SinglePost/>} />
                             <Route path='/userprofile' element={<UserProfile/>} />
                         </Routes>
-                  </authContext.Provider>
-                </Layout>
+                    </Layout>
+                </AuthProvider>
             </Router>
     </div>
   )

@@ -1,62 +1,13 @@
-import React, { useState } from 'react'
+import React, { useContext, useState } from 'react'
 import './SignUp.css'
 import { useNavigate, useParams } from "react-router-dom"
+import AuthContext from '../Contexts/AuthContext'
 
 const SignIn = () => {
 
-    const {userId} = useParams()
-
-
-
-    const [username, setUsername] = useState('')
-    const [password, setPassword] = useState('')
-    const [notif, setNotif] = useState(null)
-
     const navigate = useNavigate()
 
-    const loginSuccess = () => {
-        const timer = setTimeout(() => {
-            navigate(`/userprofile`)
-            const clear = () => {
-                clearTimeout(timer)
-            }
-        }, 3000)
-    }   
-
-    const handleLogin = async (e) => {
-        e.preventDefault()
-       try {
-         const loginBtn = await fetch('http://localhost:4000/login', {
-            method: "POST",
-            headers: {
-                "Content-Type": "application/json",
-             },
-            withCredentials: true,
-            body: JSON.stringify({
-                user: username,
-                pwd: password,
-            })
-         }).then((response) => {
-             if (response.ok) {
-                 setUsername('')
-                 setPassword('')
-                 loginSuccess();
-             } else {
-                 setUsername('')
-                 setPassword('')
-             }
-            return response.json()
-         }).then((data) => {
-             console.log(data);
-             localStorage.setItem('token', "Bearer " +  data.accessToken)
-             localStorage.setItem('refreshtoken', "Bearer " +  data.refreshToken)
-             setNotif(data.message)
-        })
-       } catch (error) {
-            console.log(error);
-       }
-      
-}
+    const { notif, handleLogin } = useContext(AuthContext)
 
   return (
     <div className='register'>
@@ -69,8 +20,6 @@ const SignIn = () => {
                       <input
                           type="text"
                           name='username'
-                          value={username}
-                          onChange={(e)=> setUsername(e.target.value)}
                         />
                   </div>
                   <div className='inputs'>
@@ -78,8 +27,6 @@ const SignIn = () => {
                       <input
                           type="password"
                           name='password'
-                          value={password}
-                          onChange={(e)=> setPassword(e.target.value)}
                         />
                   </div>
                   <button className='signIn-btn' type='submit'>Sign In</button>

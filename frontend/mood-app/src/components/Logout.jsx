@@ -1,27 +1,29 @@
-import React from 'react'
-import { useNavigate } from 'react-router-dom';
+// import React, { useContext } from 'react'
+// import { useNavigate } from 'react-router-dom';
+// import { AuthContext } from "../Contexts/AuthContext";
 
-const Logout = () => {
+// const Logout = () => {
 
-    const navigate = useNavigate()
+//     const {handleLogout} = useContext()
 
-    const handleLogout = async (e) => {
-        e.preventDefault();
-        try {
-            const logout = await fetch('http://localhost:4000/logout', {
-                method: 'POST'
-            })
-            localStorage.removeItem('userToken')
-            localStorage.setItem('userToken', '')
-            navigate('/login')
-        } catch (error) {
-            console.log(error)
-        }
-    }
+//     const navigate = useNavigate()
 
-  return (
-    <div onClick={handleLogout}>Logout</div>
-  )
-}
+//     // const handleLogout = async (e) => {
+//     //     e.preventDefault();
+//     //     try {
+//     //         const logout = await fetch('http://localhost:4000/logout', {
+//     //             method: 'POST'
+//     //         })
+//     //         localStorage.removeItem('accesstoken')
+//     //         navigate('/home')
+//     //     } catch (error) {
+//     //         console.log(error)
+//     //     }
+//     // }
 
-export default Logout
+//   return (
+//     <div onClick={handleLogout}>Logout</div>
+//   )
+// }
+
+// export default Logout

@@ -21,7 +21,7 @@ const Posts = () => {
         const posts = AllPosts();
     }, [])
 
-    const token = localStorage.getItem('userToken');
+    const token = localStorage.getItem('accesstoken');
             let decodedToken = jwt_decode(token);
 
     return (

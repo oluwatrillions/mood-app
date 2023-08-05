@@ -7,7 +7,7 @@ import jwt_decode from 'jwt-decode'
 const UserProfile = () => {
 
 
-        const token = localStorage.getItem('userToken');
+        const token = localStorage.getItem('accesstoken');
             let decodedToken = jwt_decode(token);
             console.log(decodedToken);
 

@@ -32,6 +32,6 @@ app.use('/users', require('./routes/api/users/users'))
 
 
 
-app.listen(process.env.PORT, () => {
+app.listen(process.env.PORT, '127.0.0.1', () => {
     console.log(`listening on port ${process.env.PORT}`)
 })
