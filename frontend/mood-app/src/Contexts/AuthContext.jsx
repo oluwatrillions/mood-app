@@ -78,12 +78,10 @@ export const AuthProvider = ({ children }) => {
              }
             return response.json()
          }).then((data) => {
-             console.log(data);
              setUser(jwt_decode(data.accessToken).name)
              setUserToken(data.accessToken)
             localStorage.setItem('accesstoken', JSON.stringify(data.accessToken))
             setNotif(data.message)
-            console.log('login work');
         })
        } catch (error) {
             console.log(error);
