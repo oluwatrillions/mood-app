@@ -20,9 +20,9 @@ const handleRefreshToken = async (req, res) => {
                 "name": decoded.username
             },
                 process.env.ACCESS_TOKEN_SECRET,
-                { expiresIn: '20mins' }
+                { expiresIn: '10s' }
             );
-            res.json({ accessToken })
+            res.json(accessToken)
         }
     );
 }
