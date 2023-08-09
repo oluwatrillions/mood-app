@@ -1,7 +1,7 @@
 import { createContext, useEffect, useState } from "react";
 import jwt_decode from 'jwt-decode'
 import { useNavigate } from "react-router-dom";
-import Cookies from 'js-cookie';
+
 
 export const AuthContext = createContext()
     
@@ -18,20 +18,20 @@ export const AuthProvider = ({ children }) => {
     const [notif, setNotif] = useState(null)
 
     useEffect(() => {
-          try {
-        const token = localStorage.getItem('accesstoken');
-          if (token) {
-            let decodedToken = jwt_decode(token);
-        setUserToken(token)
-              setUser(decodedToken.name)
-            //   let cookieValue = document.cookie.replace(/(?:(?:^|.*;\s*)user\s*\=\s*([^;]*).*$)|^.*$/, "$1");
-            //     console.log(cookieValue);
-    } else {
-        navigate('/')
-    }
-    } catch (error) {
-        console.log(error);
-    }
+        try {
+            const token = localStorage.getItem('accesstoken');
+            if (token) {
+                let decodedToken = jwt_decode(token);
+                    setUserToken(token)
+                    setUser(decodedToken.name)
+                //   let cookieValue = document.cookie.replace(/(?:(?:^|.*;\s*)user\s*\=\s*([^;]*).*$)|^.*$/, "$1");
+                //     console.log(cookieValue);
+            } else {
+                navigate('/')
+                }
+        } catch (error) {
+                console.log(error);
+        }
     }, [])
 
     const loginSuccess = () => {
@@ -58,40 +58,6 @@ export const AuthProvider = ({ children }) => {
             console.log(error)
         }
     }
-
-    // const isExpired = async (e) => {
-    //     try {
-    //          let token = localStorage.getItem('accesstoken')
-    //         let decodedToken = jwt_decode(token)
-    //     let isexpired = decodedToken.exp
-    //     if (isexpired < Date.now()) {
-    //         return handleLogout()
-    //     }
-    //     } catch (error) {
-    //         console.log(error);
-    //     }
-    // }
-    // isExpired()
-
-    const refreshToken = async (refresh) => {
-        try {
-            const response = await fetch('http://localhost:4000/refreshtoken', {
-                method: 'POST',
-                headers: {
-                    "Content-Type": 'application/json'
-                },
-                credentials: "include",
-                body: JSON.stringify(refresh)
-            })
-            const data = await response.json()
-            Cookies.set('refresh', data, {expires: 1})
-            console.log(data);
-        } catch (error) {
-            console.log(error);
-        }
-    }
-
-    refreshToken()
 
     const handleLogin = async (e) => {
         e.preventDefault()
