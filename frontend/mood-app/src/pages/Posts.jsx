@@ -2,7 +2,6 @@ import React, {useContext, useEffect, useState} from 'react'
 import './Posts.css'
 import jwt_decode from 'jwt-decode'
 import { Link } from 'react-router-dom'
-import useFetcher from '../utils/useFetcher'
 import AuthContext from '../Contexts/AuthContext'
 
 const Posts = () => {

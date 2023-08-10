@@ -1,34 +1,35 @@
 import React, { useContext, useEffect, useState } from 'react'
+import jwt_decode from 'jwt-decode'
+import dayjs from 'dayjs'
 import AuthContext from '../Contexts/AuthContext'
-import useFetcher from '../utils/useFetcher'
+import fetchInstane from '../utils/fetchInstance'
+import axiosInstance from '../utils/axiosInstance'
 
 const Users = () => {
 
 
-    const api = useFetcher()
+    // const api = useFetcher()
     const [allUsers, setAllUsers] = useState([])
 
     const { userToken } = useContext(AuthContext)
     
-    useEffect(() => {
-        getUsers()
-    })
+    // useEffect(() => {
+    //     getUsers()
+    // })
 
     const getUsers = async () => {
 
-        try {
-            
-            let { response, data } = await api('/users')
-            if (response.statusText === 200) {
-                
-                setAllUsers(data)
-                console.log(data);
-            }
-        } catch (error) {
-            console.log(error);
+       try {
+           let response = await axiosInstance('/users')
+           
+           if (response.status === 200) {
+               setAllUsers(response.data)
+               console.log(response.data);
         }
 
-        
+       } catch (error) {
+            console.log(error);
+       }    
     }
 
     getUsers()
