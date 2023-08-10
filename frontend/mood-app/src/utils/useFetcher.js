@@ -30,7 +30,7 @@ let useFetcher = () => {
             const data = await response.json()
             localStorage.setItem('accesstoken', JSON.stringify(data))
             setUserToken(data)
-            setUser(jwt_decode(data).name)
+            setUser(jwt_decode(data))
             console.log(data);
             return data
         } catch (error) {
@@ -57,3 +57,5 @@ let useFetcher = () => {
 
     return callFetch
 }
+
+export default useFetcher;

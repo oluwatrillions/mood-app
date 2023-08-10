@@ -16,6 +16,7 @@ export const AuthProvider = ({ children }) => {
     const [user, setUser] = useState(()=> localStorage.getItem('accesstoken') ? jwt_decode(localStorage.getItem('accesstoken')).name : null)
     const [userToken, setUserToken] = useState(()=> localStorage.getItem('accesstoken') ? localStorage.getItem('accesstoken') : null)
     const [notif, setNotif] = useState(null)
+    const [allUsers, setAllUsers] = useState([])
 
     useEffect(() => {
         try {
@@ -95,7 +96,7 @@ export const AuthProvider = ({ children }) => {
         handleLogout: handleLogout,
         loginSuccess: loginSuccess,
         notif: notif,
-        setNotif: setNotif
+        setNotif: setNotif,
     }
     
 

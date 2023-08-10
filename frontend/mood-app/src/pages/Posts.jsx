@@ -1,11 +1,16 @@
-import React, {useEffect, useState} from 'react'
+import React, {useContext, useEffect, useState} from 'react'
 import './Posts.css'
 import jwt_decode from 'jwt-decode'
-import {Link} from 'react-router-dom'
+import { Link } from 'react-router-dom'
+import useFetcher from '../utils/useFetcher'
+import AuthContext from '../Contexts/AuthContext'
 
 const Posts = () => {
 
-    const [posts, setPosts] = useState();
+    const { user } = useContext(AuthContext)
+
+    const [posts, setPosts] = useState([]);
+
 
     const AllPosts = async () => {
         try {
@@ -27,7 +32,7 @@ const Posts = () => {
     return (
         <div className='posts-div'>
             <div className='all-posts'>
-                {posts &&
+                {user &&
                     posts.map((post) => {
                         const { title, text, name, image, _id, postedAt, avatar } = post
                         return <div key={_id} className='posts'>

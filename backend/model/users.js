@@ -17,6 +17,10 @@ const Users = new userSchema({
     profileImage: {
         type: String
     },
+    registeredAt: {
+        type: Date,
+        default: Date.now(),
+    },
     refreshToken: String,
 }) 
 

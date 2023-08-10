@@ -9,10 +9,11 @@ import Post from './pages/Post'
 import UserProfile from './pages/UserProfile'
 import {AuthProvider} from './Contexts/AuthContext'
 import SinglePost from './pages/SinglePost'
+import Users from './pages/Users'
+import PrivateRoute from './pages/PrivateRoute'
 
 function App() {
 
-    const [isLoggedIn, setIsLoggedIn] = useState(false)
 
   return (
       <div>
@@ -20,13 +21,14 @@ function App() {
               <AuthProvider>
                     <Layout>
                         <Routes>
+                            <Route  path='/users' element={<PrivateRoute><Users/></PrivateRoute>} />
                             <Route path='/' element={<Homepage />} exact/>
                             <Route path='/signup' element={<SignUp/>} />
                             <Route path='/signin' element={<SignIn/>} />
                             <Route path='/post/create' element={<Post/>} />
                             <Route path='/posts' element={<Posts/>} />
                             <Route path='/posts/:_id' element={<SinglePost/>} />
-                            <Route path='/userprofile' element={<UserProfile/>} />
+                            <Route path='/userprofile' element={<UserProfile />} />
                         </Routes>
                     </Layout>
                 </AuthProvider>

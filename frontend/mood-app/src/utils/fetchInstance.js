@@ -9,10 +9,9 @@ import dayjs from 'dayjs'
         let data = await response.json()
         console.log('originalRequest', data);
         return { response, data }
-    }
-    
+    }    
 
-  const refreshToken = async (refresh) => {
+    const refreshToken = async (refresh) => {
         try {
             const response = await fetch('http://localhost:4000/refreshtoken', {
                 method: 'POST',
@@ -23,39 +22,38 @@ import dayjs from 'dayjs'
                 body: JSON.stringify(refresh)
             })
             const data = await response.json()
-            Cookies.set('refresh', data, {expires: 1})
+            localStorage.setItem('accesstoken', JSON.stringify(data))
             console.log(data);
             return data
         } catch (error) {
             console.log(error);
         }
     }
-
     
-const fetcher = async (url, config={}) => {
-    let token = localStorage.getItem('accesstoken') ? JSON.parse(localStorage.getItem('accesstoken')) : null
-
-    config['headers'] = {
-        Authorization: `Bearer ${token}`
-    }
-
-    console.log('before');
-    let { response, data } = originalRequest(url, config)
-    console.log('after', data);
-    
-    if (response.statusText === 'Unauthorized') {
-        token = await refreshToken(refresh)
-
-            config['headers'] = {
+    const fetcher = async (url, config={}) => {
+        let token = localStorage.getItem('accesstoken') ? JSON.parse(localStorage.getItem('accesstoken')) : null
+        console.log(token);
+        config['headers'] = {
             Authorization: `Bearer ${token}`
         }
 
-        let recentResponse = await originalRequest(url, config)
-        response = recentResponse.response
-        data = recentResponse.data
-    }
+        console.log('before');
+        let { response, data } = originalRequest(url, config)
+        console.log('after', data);
+        
+        if (response.statusText === 'Unauthorized') {
+            token = await refreshToken(refresh)
 
-    return {response, data}
+                config['headers'] = {
+                Authorization: `Bearer ${token}`
+            }
+
+            let recentResponse = await originalRequest(url, config)
+            response = recentResponse.response
+            data = recentResponse.data
+        }
+
+        return { response, data }
 }
 
 export default fetcher;

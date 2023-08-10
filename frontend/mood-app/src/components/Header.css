@@ -28,6 +28,15 @@ nav {
     gap: 10vw;
 }
 
+.users-btn {
+    color: black;
+    width: 5em;
+    height: 3em;
+    cursor: pointer;
+    border: 1px solid black;
+    font-size: 1.5em;
+}
+
 nav h3 {
     font-size: 1.5em;
     font-weight: 600;
