@@ -3,7 +3,7 @@ const dotenv = require('dotenv')
 dotenv.config({ path: '../controllers/config/.env' })
 
 const AuthController = async (req, res, next) => {
-    const authHeader = req.headers['authorization']
+    const authHeader = req.headers['Authorization']
     if (!authHeader) return res.sendStatus(401)
 
     const token = authHeader && authHeader.split(' ')[1]

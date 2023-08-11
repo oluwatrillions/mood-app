@@ -7,7 +7,7 @@ const baseURL = 'http://localhost:4000'
 let token = localStorage.getItem('accesstoken') ? JSON.parse(localStorage.getItem('accesstoken')) : null
 console.log(token);
 
-   let cookieValue = document.cookie.replace(/(?:(?:^|.*;\s*)user\s*\=\s*([^;]*).*$)|^.*$/, "$1");
+//    let cookieValue = document.cookie.replace(/(?:(?:^|.*;\s*)user\s*\=\s*([^;]*).*$)|^.*$/, "$1");
         // console.log(cookieValue);
 
 const axiosInstance = axios.create({
@@ -27,7 +27,7 @@ axiosInstance.interceptors.request.use(async req => {
     if (!isExpired) return req
     
     const response = await axios.post(`${baseURL}/refreshtoken`, {
-        cookieValue
+        token
     })
     console.log(response);
     localStorage.setItem('accesstoken', JSON.stringify(response.data))

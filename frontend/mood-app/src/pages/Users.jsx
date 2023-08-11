@@ -2,13 +2,13 @@ import React, { useContext, useEffect, useState } from 'react'
 import jwt_decode from 'jwt-decode'
 import dayjs from 'dayjs'
 import AuthContext from '../Contexts/AuthContext'
-import fetchInstane from '../utils/fetchInstance'
+import useAxios from '../utils/useAxios'
 import axiosInstance from '../utils/axiosInstance'
 
 const Users = () => {
 
+    // let api = useAxios()
 
-    // const api = useFetcher()
     const [allUsers, setAllUsers] = useState([])
 
     const { userToken } = useContext(AuthContext)
@@ -20,7 +20,7 @@ const Users = () => {
     const getUsers = async () => {
 
        try {
-           let response = await axiosInstance('/users')
+           let response = await axiosInstance.get('/users')
            
            if (response.status === 200) {
                setAllUsers(response.data)
