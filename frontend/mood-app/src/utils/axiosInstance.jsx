@@ -5,6 +5,10 @@ import dayjs from 'dayjs'
 const baseURL = 'http://localhost:4000'
 
 let token = localStorage.getItem('accesstoken') ? JSON.parse(localStorage.getItem('accesstoken')) : null
+console.log(token);
+
+   let cookieValue = document.cookie.replace(/(?:(?:^|.*;\s*)user\s*\=\s*([^;]*).*$)|^.*$/, "$1");
+        // console.log(cookieValue);
 
 const axiosInstance = axios.create({
     baseURL,
@@ -18,17 +22,16 @@ axiosInstance.interceptors.request.use(async req => {
     }
 
     const user = jwt_decode(token)
-    console.log(user);
     const isExpired = dayjs.unix(user.exp).diff(dayjs()) < 1
     console.log('isExpired', isExpired);
     if (!isExpired) return req
     
     const response = await axios.post(`${baseURL}/refreshtoken`, {
-        token
+        cookieValue
     })
+    console.log(response);
     localStorage.setItem('accesstoken', JSON.stringify(response.data))
     req.headers.Authorization = `Bearer ${response.data}`
-    console.log(response);
     console.log(response.data);
     return req
 }) 

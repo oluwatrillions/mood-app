@@ -13,9 +13,9 @@ const Users = () => {
 
     const { userToken } = useContext(AuthContext)
     
-    // useEffect(() => {
-    //     getUsers()
-    // })
+    useEffect(() => {
+        getUsers()
+    }, [])
 
     const getUsers = async () => {
 
@@ -31,8 +31,6 @@ const Users = () => {
             console.log(error);
        }    
     }
-
-    getUsers()
 
   return (
       <div className='users'>
