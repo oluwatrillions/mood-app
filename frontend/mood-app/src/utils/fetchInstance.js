@@ -11,6 +11,7 @@ let originalRequest = async (url, config) => {
     let response = await fetch(url, config)
     console.log(response);
     let data = await response.json()
+    console.log(data);
     console.log('before or after', response);
     return { response, data }
 }

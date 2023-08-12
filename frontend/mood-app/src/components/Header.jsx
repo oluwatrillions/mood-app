@@ -1,11 +1,11 @@
-import React, { useState, useContext } from 'react'
+import React, { useState, useContext, useEffect } from 'react'
 import './Header.css'
 import { AiOutlineMenu } from 'react-icons/ai'
 import { Link } from 'react-router-dom'
 import AuthContext from '../Contexts/AuthContext'
 const Header = () => {
 
-    const {user, handleLogout, handleLogin} = useContext(AuthContext)
+    const { user, handleLogout } = useContext(AuthContext)
 
   return (
       <div className='header'>

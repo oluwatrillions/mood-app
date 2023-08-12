@@ -18,6 +18,46 @@ export const AuthProvider = ({ children }) => {
     const [notif, setNotif] = useState(null)
     const [allUsers, setAllUsers] = useState([])
 
+     const handleLogin = async (e) => {
+        e.preventDefault()
+        try {
+            const loginBtn = await fetch('http://localhost:4000/login', {
+                method: "POST",
+                headers: {
+                    "Content-Type": "application/json",
+                },
+                credentials: 'include',
+                withCredentials: true,
+                body: JSON.stringify({
+                    'user': e.target.username.value,
+                    'pwd': e.target.password.value,
+                })
+            }).then((response) => {
+                if (response.ok) {
+                    loginSuccess();
+                }
+                return response.json()
+            }).then((data) => {
+                console.log(data);
+                localStorage.setItem('accesstoken', JSON.stringify(data.accessToken))
+                setUserToken(data.accessToken)
+                setUser(jwt_decode(data.accessToken).name)
+                setNotif(data.message)
+            })
+        } catch (error) {
+            console.log(error);
+        }
+    }
+
+    const loginSuccess = () => {
+        const timer = setTimeout(() => {
+            navigate(`/userprofile`)
+            const clear = () => {
+                clearTimeout(timer)
+            }
+        }, 3000)
+    }
+
     useEffect(() => {
         try {
             const token = localStorage.getItem('accesstoken');
@@ -33,19 +73,9 @@ export const AuthProvider = ({ children }) => {
         } catch (error) {
                 console.log(error);
         }
-    }, [])
+    }, [])   
 
-    const loginSuccess = () => {
-        const timer = setTimeout(() => {
-            navigate(`/userprofile`)
-            const clear = () => {
-                clearTimeout(timer)
-            }
-        }, 3000)
-    }   
-
-    const handleLogout = async (e) => {
-        e.preventDefault();
+    const handleLogout = async () => {
         try {
             const logout = await fetch('http://localhost:4000/logout', {
                 method: 'POST',
@@ -59,37 +89,7 @@ export const AuthProvider = ({ children }) => {
             console.log(error)
         }
     }
-
-    const handleLogin = async (e) => {
-        e.preventDefault()
-       try {
-         const loginBtn = await fetch('http://localhost:4000/login', {
-            method: "POST",
-            headers: {
-                "Content-Type": "application/json",
-             },
-            credentials: 'include',
-            withCredentials: true,
-            body: JSON.stringify({
-                'user': e.target.username.value,
-                'pwd': e.target.password.value,
-            })
-         }).then((response) => {
-             if (response.ok) {
-                loginSuccess();
-             }
-            return response.json()
-         }).then((data) => {
-             setUser(jwt_decode(data.accessToken).name)
-             setUserToken(data.accessToken)
-            localStorage.setItem('accesstoken', JSON.stringify(data.accessToken))
-            setNotif(data.message)
-        })
-       } catch (error) {
-            console.log(error);
-       }
-    }
-
+    
     const UserContext = {
         user: user,
         handleLogin: handleLogin,

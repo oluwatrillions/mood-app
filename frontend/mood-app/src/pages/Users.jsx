@@ -13,16 +13,14 @@ const Users = () => {
 
     const { userToken } = useContext(AuthContext)
     
-    useEffect(() => {
-        getUsers()
-    }, [])
+    // useEffect(() => {
+    //     getUsers()
+    // }, [userToken])
 
     const getUsers = async () => {
-
+            let response = await axiosInstance.get('/users')
        try {
-           let response = await axiosInstance.get('/users')
-           
-           if (response.status === 200) {
+           if (response.statusCode === 200) {
                setAllUsers(response.data)
                console.log(response.data);
         }
@@ -31,6 +29,8 @@ const Users = () => {
             console.log(error);
        }    
     }
+
+    getUsers()
 
   return (
       <div className='users'>

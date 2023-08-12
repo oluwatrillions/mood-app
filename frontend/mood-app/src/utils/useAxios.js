@@ -23,7 +23,7 @@ const useAxios = () => {
 
         if (!isExpired) return req
 
-        const response = await axios.post(`${baseURL}${user}`, {
+        const response = await axios.post(`${baseURL}/refreshtoken`, {
             userToken
         });
 
@@ -32,8 +32,17 @@ const useAxios = () => {
         setUserToken(response.data)
         setUser(jwt_decode(response.data).name)
 
-        req.headers.Authorization = `Bearer ${response.data}`
-        return req
+        req.headers.Authorization = `Bearer ${response.data}`        
+
+       return req
+    }, function (error) {
+        return Promise.reject(error)
+    });
+
+    axiosConfig.interceptors.response.use((response) => {
+        return response
+    }, function (error) {
+        console.log(error.response);
     })
 
     return axiosConfig
