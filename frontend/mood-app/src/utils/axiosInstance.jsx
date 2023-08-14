@@ -28,7 +28,7 @@ axiosInstance.interceptors.request.use(async req => {
         if (!isExpired) return req
         
         const response = await axios.post(`${baseURL}/refreshtoken`, {
-            token
+            'refreshToken': document.cookie.replace(/(?:(?:^|.*;\s*)user\s*\=\s*([^;]*).*$)|^.*$/, "$1")
         })
         console.log(response);
         localStorage.setItem('accesstoken', JSON.stringify(response.data))

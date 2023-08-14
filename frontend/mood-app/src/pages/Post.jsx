@@ -1,7 +1,8 @@
-import React, { useRef, useState } from 'react'
+import React, { useContext, useRef, useState } from 'react'
 import './SignUp.css'
 import { useNavigate } from "react-router-dom"
 import jwt_decode from 'jwt-decode'
+import AuthContext from '../Contexts/AuthContext'
 
 
 const Post = () => {
@@ -12,22 +13,10 @@ const Post = () => {
     const [title, setTitle] = useState('')
     const [notif, setNotif] = useState(null)
 
+    const {loginSuccess, user} = useContext(AuthContext)
+
     const navigate = useNavigate()
     const imageRef = useRef()
-
-    const token = localStorage.getItem('userToken');
-    let decodedToken = jwt_decode(token);
-    console.log(decodedToken.avatar);
-
-
-     const loginSuccess = () => {
-            const timer = setTimeout(() => {
-                navigate('/posts')
-                const clear = () => {
-                    clearTimeout(timer)
-            }
-            }, 3000)
-        }
     
 
     const handlePost = async (e) => {

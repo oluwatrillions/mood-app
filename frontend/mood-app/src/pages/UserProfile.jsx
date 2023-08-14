@@ -1,22 +1,21 @@
-import React, {useEffect, useState} from 'react'
+import React, {useContext, useEffect, useState} from 'react'
 import './UserProfile.css'
 import axios from 'axios'
 import jwt_decode from 'jwt-decode'
+import AuthContext from '../Contexts/AuthContext'
 
 
 const UserProfile = () => {
 
-
-        const token = localStorage.getItem('accesstoken');
-            let decodedToken = jwt_decode(token);
-            console.log(decodedToken);
+    const { user } = useContext(AuthContext)
+  
 
   return (
       <div className='profile'>
           <div className="dashboard">
-              <img src={`http://localhost:4000/public/avatar/${decodedToken.avatar}`} alt="" />
-              <h2>{decodedToken.name}</h2>
-              <h4> @{ decodedToken.username}</h4>
+              <img src={`http://localhost:4000/public/avatar/${user.avatar}`} alt="" />
+              <h2>{user.name}</h2>
+              <h4> @{ user.username}</h4>
           </div>
     </div>
   )

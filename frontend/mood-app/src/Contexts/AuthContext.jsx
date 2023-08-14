@@ -13,7 +13,7 @@ export const AuthProvider = ({ children }) => {
 
     const navigate = useNavigate()
 
-    const [user, setUser] = useState(()=> localStorage.getItem('accesstoken') ? jwt_decode(localStorage.getItem('accesstoken')).name : null)
+    const [user, setUser] = useState(()=> localStorage.getItem('accesstoken') ? jwt_decode(localStorage.getItem('accesstoken')) : null)
     const [userToken, setUserToken] = useState(()=> localStorage.getItem('accesstoken') ? localStorage.getItem('accesstoken') : null)
     const [notif, setNotif] = useState(null)
     const [allUsers, setAllUsers] = useState([])
@@ -21,7 +21,7 @@ export const AuthProvider = ({ children }) => {
      const handleLogin = async (e) => {
         e.preventDefault()
         try {
-            const loginBtn = await fetch('http://localhost:4000/login', {
+            const response = await fetch('http://localhost:4000/login', {
                 method: "POST",
                 headers: {
                     "Content-Type": "application/json",
@@ -32,18 +32,15 @@ export const AuthProvider = ({ children }) => {
                     'user': e.target.username.value,
                     'pwd': e.target.password.value,
                 })
-            }).then((response) => {
-                if (response.ok) {
-                    loginSuccess();
-                }
-                return response.json()
-            }).then((data) => {
-                console.log(data);
+            })
+            const data = await response.json()
+            if (data?.accessToken) {
                 localStorage.setItem('accesstoken', JSON.stringify(data.accessToken))
                 setUserToken(data.accessToken)
-                setUser(jwt_decode(data.accessToken).name)
+                setUser(jwt_decode(data.accessToken))
                 setNotif(data.message)
-            })
+                loginSuccess()
+            }
         } catch (error) {
             console.log(error);
         }
@@ -56,24 +53,7 @@ export const AuthProvider = ({ children }) => {
                 clearTimeout(timer)
             }
         }, 3000)
-    }
-
-    useEffect(() => {
-        try {
-            const token = localStorage.getItem('accesstoken');
-            if (token) {
-                let decodedToken = jwt_decode(token);
-                    setUserToken(token)
-                    setUser(decodedToken.name)
-                //   let cookieValue = document.cookie.replace(/(?:(?:^|.*;\s*)user\s*\=\s*([^;]*).*$)|^.*$/, "$1");
-                //     console.log(cookieValue);
-            } else {
-                navigate('/')
-                }
-        } catch (error) {
-                console.log(error);
-        }
-    }, [])   
+    }  
 
     const handleLogout = async () => {
         try {
