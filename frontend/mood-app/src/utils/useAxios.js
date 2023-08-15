@@ -19,6 +19,7 @@ const useAxios = () => {
     axiosConfig.interceptors.request.use(async req => {
 
         const user = jwt_decode(userToken)
+        console.log(user);
         const isExpired = dayjs.unix(user.exp).diff(dayjs) < 1
 
         if (!isExpired) return req

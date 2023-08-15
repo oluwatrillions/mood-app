@@ -17,8 +17,12 @@ const Users = () => {
     //     getUsers()
     // }, [userToken])
 
+    
+
     const getUsers = async () => {
-            let response = await axiosInstance.get('/users')
+        let response = await axiosInstance.get('/users')
+        console.log(response);
+        console.log(response.data);
        try {
            if (response.statusCode === 200) {
                setAllUsers(response.data)

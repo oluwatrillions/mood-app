@@ -15,6 +15,8 @@ const axiosInstance = axios.create({
     headers: { Authorization: `Bearer ${token}` }
 });
 
+const CancelToken = axios.CancelToken;
+const source = CancelToken.source();
 axiosInstance.interceptors.request.use(async req => {
     if (!token) {
         token = localStorage.getItem('accesstoken') ? JSON.parse(localStorage.getItem('accesstoken')) : null
@@ -28,18 +30,16 @@ axiosInstance.interceptors.request.use(async req => {
         if (!isExpired) return req
         
         const response = await axios.post(`${baseURL}/refreshtoken`, {
-            'refreshToken': document.cookie.replace(/(?:(?:^|.*;\s*)user\s*\=\s*([^;]*).*$)|^.*$/, "$1")
+            'refreshToken': token,
         })
         console.log(response);
-        localStorage.setItem('accesstoken', JSON.stringify(response.data))
+        localStorage.setItem('access-token', JSON.stringify(response.data))
         req.headers.Authorization = `Bearer ${response.data}`
         console.log(response.data);
         return req
     } catch (error) {
         console.log(error);
     }
-}, function (error) {
-    return Promise.reject(error)
 }) 
 
 export default axiosInstance
