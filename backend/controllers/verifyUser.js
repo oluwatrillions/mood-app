@@ -12,8 +12,9 @@ const AuthController = async (req, res, next) => {
         token,
         process.env.ACCESS_TOKEN_SECRET,
         (err, decoded) => {
-            if (err) return res.status(403).json({message: 'error from here'})
-            req.username = decoded.name
+            console.log('line here ', err);
+            if (err) return res.status(403).json({ message: 'error from here' })
+            req.username = decoded.username
             next();
         }
     )

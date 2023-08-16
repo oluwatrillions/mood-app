@@ -15,7 +15,7 @@ const Users = () => {
     
     // useEffect(() => {
     //     getUsers()
-    // }, [userToken])
+    // }, [])
 
     
 
@@ -35,6 +35,7 @@ const Users = () => {
     }
 
     getUsers()
+
 
   return (
       <div className='users'>

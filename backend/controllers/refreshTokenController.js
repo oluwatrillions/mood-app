@@ -7,7 +7,7 @@ const handleRefreshToken = async (req, res) => {
     const refreshToken = cookies.user
 
     const user = await Users.findOne({ refreshToken }).exec()
-    console.log(user.username);
+    console.log(user.username, 'line 10');
     if (!user) return res.sendStatus(403);
 
     jwt.verify(
@@ -24,6 +24,7 @@ const handleRefreshToken = async (req, res) => {
                 { expiresIn: '1d' }
             );
             res.json(accessToken)
+            console.log(accessToken);
         }
     );
 }
