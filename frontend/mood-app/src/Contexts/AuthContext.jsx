@@ -77,6 +77,8 @@ export const AuthProvider = ({ children }) => {
         loginSuccess: loginSuccess,
         notif: notif,
         setNotif: setNotif,
+        userToken: userToken,
+        setUserToken: setUserToken
     }
     
 
