@@ -24,29 +24,26 @@ axiosInstance.interceptors.request.use(async req => {
         console.log(token);
         req.headers.Authorization = `Bearer ${token}`
     }
-    return req
+
+    const user = jwt_decode(token)
+    const isExpired = dayjs.unix(user.exp).diff(dayjs()) < 1
+
+    console.log('isExpired', isExpired);
+
+    if (!isExpired) return req
+
+     const response = await axios.post(`http://localhost:4000/refreshtoken`, null, {
+            withCredentials: true,
+        });
+        console.log(response);
+        localStorage.setItem('accesstoken', JSON.stringify(response.data))
+        req.headers.Authorization = `Bearer ${response.data}`
+        console.log(response.data);
+        return req
 },
     error => {
     Promise.reject(error)
-    }) 
+}) 
 
-axiosInstance.interceptors.response.use((response) => {
-        return response
-}, async function (error) {
-    const originalRequest = error.req
-    if (error.response.status === 403 && !originalRequest._retry) {
-        originalRequest._retry = true;
-        
-        const response = await axios.post(`${baseURL}/refreshtoken`, {
-            refreshToken: token,
-        })
-        console.log(response);
-        localStorage.setItem('access-token', JSON.stringify(response.data))
-        req.headers.Authorization = `Bearer ${response.data}`
-        console.log(response.data);
-        return axiosInstance(originalRequest)
-    }
-    return Promise.reject(error)
-    })
 
 export default axiosInstance

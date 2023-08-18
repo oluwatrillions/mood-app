@@ -18,6 +18,9 @@ export const AuthProvider = ({ children }) => {
     const [notif, setNotif] = useState(null)
     const [allUsers, setAllUsers] = useState([])
 
+       let cookieValue = document.cookie.replace(/(?:(?:^|.*;\s*)user\s*\=\s*([^;]*).*$)|^.*$/, "$1");
+        // console.log(cookieValue);
+
      const handleLogin = async (e) => {
         e.preventDefault()
         try {
@@ -61,7 +64,8 @@ export const AuthProvider = ({ children }) => {
                 method: 'POST',
                 headers: {
                     "Content-Type": "application/json"
-                }
+                },
+                withCredentials: true
             })
             localStorage.removeItem('accesstoken')
             navigate('/')
@@ -69,6 +73,7 @@ export const AuthProvider = ({ children }) => {
             console.log(error)
         }
     }
+
     
     const UserContext = {
         user: user,

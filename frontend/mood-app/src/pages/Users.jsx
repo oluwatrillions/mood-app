@@ -1,32 +1,31 @@
 import React, { useContext, useEffect, useState } from 'react'
 import useAxios from '../utils/useAxios'
-
+import AuthContext from '../Contexts/AuthContext'
 const Users = () => {
 
     let api = useAxios()
 
-    const [allUsers, setAllUsers] = useState([])
-    
-    useEffect(() => {
-        getUsers()
-    }, [])
+    const { userToken } = useContext(AuthContext)
 
+    const [allUsers, setAllUsers] = useState([])
+
+    console.log(allUsers);
     
 
     const getUsers = async () => {
         let response = await api.get('/users')
         console.log(response);
-        console.log(response.data);
        try {
            if (response.statusCode === 200) {
                setAllUsers(response.data)
-               console.log(response.data);
+               console.log(response);
         }
        } catch (error) {
             console.log(error);
        }    
     }
-
+    getUsers()
+      
   return (
       <div className='users'>
           <div className="all-users">

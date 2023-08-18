@@ -11,9 +11,9 @@ const verifyUser = require('./controllers/verifyUser')
 
 dotenv.config({ path: './config/.env' })
 connectDB()
+app.use(cookieParser())
 app.use(cors(corsOptions))
 app.use(express.json())
-app.use(cookieParser())
 app.use(express.urlencoded({ extended: true }))
 app.use('/public', express.static('public'))
 

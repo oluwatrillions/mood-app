@@ -3,7 +3,6 @@ const corsOptions = {
     origin: whitelist,
     credentials: true,
     optionsSuccessStatus: 200,
-    exposedHeaders: ['Set-Cookie', 'Date', 'ETag']
 };
 
 module.exports = corsOptions

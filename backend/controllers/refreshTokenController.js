@@ -5,26 +5,27 @@ const handleRefreshToken = async (req, res) => {
     const cookies = req.cookies
     if (!cookies.user) return res.sendStatus(401)
     const refreshToken = cookies.user
-
     const user = await Users.findOne({ refreshToken }).exec()
-    console.log(user.username, 'line 10');
+    console.log(user.username, 'from client');
     if (!user) return res.sendStatus(403);
 
     jwt.verify(
         refreshToken,
         process.env.REFRESH_TOKEN_SECRET,
         (err, decoded) => {
-            if (err || user.user !== decoded.username) {
-                return res.sendStatus(403)
+            if (err || user.username !== decoded.username) {
+                return res.status(403).json({message: 'from here'})
             }
-            const accessToken = jwt.sign({
-                "name": decoded.username
-            },
+            const payload = {
+                name: user.name,
+                username: user.username,
+                avatar: user.profileImage,
+            }
+            const accessToken = jwt.sign(payload,
                 process.env.ACCESS_TOKEN_SECRET,
                 { expiresIn: '1d' }
             );
             res.json(accessToken)
-            console.log(accessToken);
         }
     );
 }

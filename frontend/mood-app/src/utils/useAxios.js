@@ -12,51 +12,33 @@ const useAxios = () => {
     
     const axiosConfig = axios.create({
         baseURL,
-        headers: { Authorization : ` Bearer ${userToken}` }
+        headers: { Authorization: ` Bearer ${userToken}` },
     })
 
     axiosConfig.interceptors.request.use(async req => {
 
         const user = jwt_decode(userToken)
-        const isExpired = dayjs.unix(user.exp).diff(dayjs) < 1
+        const isExpired = dayjs.unix(user.exp).diff(dayjs()) < 1
+
+        console.log('isExpired', isExpired);
 
         if (!isExpired) return req
 
-        const response = await axios.post(`${baseURL}/refreshtoken`, {
-            refreshToken: userToken
+        const response = await axios.post(`http://localhost:4000/refreshtoken`, null, {
+            withCredentials: true,
         });
-
+        console.log(response);
         localStorage.setItem('accesstoken', JSON.stringify(response.data))
-        console.log(response.data);
         setUserToken(response.data)
-        setUser(jwt_decode(response.data).name)
-
         req.headers.Authorization = `Bearer ${response.data}`
+        console.log(response.data);
         return req
 
     }, function (error) {
         return Promise.reject(error)
     });
 
-    axiosConfig.interceptors.response.use((response) => {
-        return response
-        }, async function (error) {
-            const originalRequest = error.req
-            if (error.response.status === 403) {
-                
-                const response = await axios.post(`${baseURL}/refreshtoken`, {
-                    refreshToken: userToken,
-                })
-                console.log(response);
-                localStorage.setItem('access-token', JSON.stringify(response.data))
-                req.headers.Authorization = `Bearer ${response.data}`
-                console.log(response.data);
-                return axiosInstance(originalRequest)
-            }
-            return Promise.reject(error)
-        })
-
-    return axiosConfig
+        return axiosConfig
 }
 
 export default useAxios

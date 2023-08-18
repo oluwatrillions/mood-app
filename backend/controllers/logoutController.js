@@ -10,7 +10,6 @@ const logoutUser = async (req, res) => {
         res.clearCookie('user')
         return res.sendStatus(403)
     }
-    console.log('hi there');
     user.refreshToken = ''
     const loggedOutUser = await user.save()
     res.clearCookie('user')

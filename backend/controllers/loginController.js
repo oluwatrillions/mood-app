@@ -24,13 +24,13 @@ const handleLogin = async (req, res, next) => {
             process.env.ACCESS_TOKEN_SECRET,
             { expiresIn: '10s' }
         )
-        const refreshToken = jwt.sign({ 'name': foundUser.username },
+        const refreshToken = jwt.sign(payload,
             process.env.REFRESH_TOKEN_SECRET,
             { expiresIn: '1d' }
         )
         foundUser.refreshToken = refreshToken
         const verifiedUser = await foundUser.save()
-        res.cookie('user', refreshToken)
+        res.cookie('user', refreshToken, { httpOnly: true, maxAge: 24 * 60 * 60 * 1000})
         res.json({ accessToken, message: `${foundUser.username} has successfully signed in`})
     } else {
         res.status(401).json({message: 'Invalid password'});
