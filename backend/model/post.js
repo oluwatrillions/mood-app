@@ -16,6 +16,9 @@ const Post = new Schema({
         type: String,
         required: true,
     },
+    username: {
+        type: String
+    },
     posterImage: {
         Type: String,
     },

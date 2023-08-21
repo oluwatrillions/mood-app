@@ -22,8 +22,9 @@ const Post = () => {
     const handlePost = async (e) => {
         e.preventDefault()
         const formData = new FormData()
-        formData.append('name', decodedToken.name)
-        formData.append('avatar', decodedToken.avatar)
+        formData.append('name', user.name)
+        formData.append('username', user.username)
+        formData.append('avatar', user.avatar)
         formData.append('title', title)
         formData.append('text', text)
         formData.append('images', image)

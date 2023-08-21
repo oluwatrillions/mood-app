@@ -1,6 +1,6 @@
 import { createContext, useEffect, useState } from "react";
 import jwt_decode from 'jwt-decode'
-import { useNavigate } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 
 
 export const AuthContext = createContext()
@@ -13,13 +13,14 @@ export const AuthProvider = ({ children }) => {
 
     const navigate = useNavigate()
 
+
     const [user, setUser] = useState(()=> localStorage.getItem('accesstoken') ? jwt_decode(localStorage.getItem('accesstoken')) : null)
     const [userToken, setUserToken] = useState(()=> localStorage.getItem('accesstoken') ? localStorage.getItem('accesstoken') : null)
     const [notif, setNotif] = useState(null)
     const [allUsers, setAllUsers] = useState([])
 
-       let cookieValue = document.cookie.replace(/(?:(?:^|.*;\s*)user\s*\=\s*([^;]*).*$)|^.*$/, "$1");
-        // console.log(cookieValue);
+    //    let cookieValue = document.cookie.replace(/(?:(?:^|.*;\s*)user\s*\=\s*([^;]*).*$)|^.*$/, "$1");
+    //     // console.log(cookieValue);
 
      const handleLogin = async (e) => {
         e.preventDefault()
@@ -37,6 +38,7 @@ export const AuthProvider = ({ children }) => {
                 })
             })
             const data = await response.json()
+            console.log(data);
             if (data?.accessToken) {
                 localStorage.setItem('accesstoken', JSON.stringify(data.accessToken))
                 setUserToken(data.accessToken)
@@ -51,7 +53,7 @@ export const AuthProvider = ({ children }) => {
 
     const loginSuccess = () => {
         const timer = setTimeout(() => {
-            navigate(`/userprofile`)
+            navigate('/userprofile/')
             const clear = () => {
                 clearTimeout(timer)
             }

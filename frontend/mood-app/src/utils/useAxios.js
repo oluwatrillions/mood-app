@@ -31,7 +31,6 @@ const useAxios = () => {
         localStorage.setItem('accesstoken', JSON.stringify(response.data))
         setUserToken(response.data)
         req.headers.Authorization = `Bearer ${response.data}`
-        console.log(response.data);
         return req
 
     }, function (error) {

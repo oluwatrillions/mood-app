@@ -7,6 +7,7 @@ import AuthContext from '../Contexts/AuthContext'
 const Posts = () => {
 
     const { user } = useContext(AuthContext)
+    console.log(user);
 
     const [posts, setPosts] = useState([]);
 
@@ -15,6 +16,7 @@ const Posts = () => {
         try {
             const allPosts = await fetch('http://localhost:4000/posts')
             const response = await allPosts.json()
+            console.log(response);
             const posts = setPosts(response)
         } catch (error) {
             console.log(error);
@@ -22,18 +24,19 @@ const Posts = () => {
     }
 
     useEffect(() => {
-        const posts = AllPosts();
+        AllPosts();
     }, [])
 
-    const token = localStorage.getItem('accesstoken');
-            let decodedToken = jwt_decode(token);
 
     return (
         <div className='posts-div'>
             <div className='all-posts'>
                 {user &&
                     posts.map((post) => {
-                        const { title, text, name, image, _id, postedAt, avatar } = post
+                        const { title, text, name, image, _id, postedAt, username, avatar } = post
+                        // if (user.username === username) {
+                        //    return  avatuser.avatar
+                        // }
                         return <div key={_id} className='posts'>
                             <Link to={`/posts/${_id}`}>
                                 <div className='image-div'>
@@ -43,7 +46,7 @@ const Posts = () => {
                                     <h3 className="title">{title}</h3>
                                     <h4 className="text-field">{text}</h4>
                                     <div className='post-detail'>
-                                        <img src={ `http://localhost:4000/public/avatar/` + avatar} alt="" className='poster-image' />
+                                        <img src={user.username === username ? `http://localhost:4000/public/avatar/` + user.avatar : null } alt="" className='poster-image' />
                                         <div className="time">
                                             <h4 className="poster">{name}</h4>
                                             <h5 className='post-time'>{ postedAt}</h5>

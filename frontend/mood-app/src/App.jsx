@@ -28,7 +28,7 @@ function App() {
                             <Route path='/post/create' element={<Post/>} />
                             <Route path='/posts' element={<Posts/>} />
                             <Route path='/posts/:_id' element={<SinglePost/>} />
-                            <Route path='/userprofile' element={<UserProfile />} />
+                          <Route path='/userprofile' element={<UserProfile />} />
                         </Routes>
                     </Layout>
                 </AuthProvider>

@@ -22,6 +22,7 @@ const upload = multer({
 
 const createPost = async (req, res) => {
     const name = req.body.name
+    const username = req.body.username
     const title = req.body.title
     const image = req.file.filename
     const text = req.body.text
@@ -33,7 +34,8 @@ const createPost = async (req, res) => {
             name,
             title,
             text,
-            image
+            image,
+            username
         })
         res.status(201).json({ message: 'new post created' })
     } catch (error) {

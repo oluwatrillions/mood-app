@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300&display=swap');
+
 *, div {
     margin: 0;
     padding: 0;
@@ -20,21 +22,29 @@ a {
     text-decoration: none;
 }
 
-nav {
+nav{
     width: 100vw;
     display: flex;
     justify-content: space-between;
     padding: 3vh 1em;
-    gap: 10vw;
 }
 
 .users-btn {
-    color: black;
+    color: rgb(53, 60, 66);
     width: 5em;
     height: 3em;
     cursor: pointer;
-    border: 1px solid black;
     font-size: 1.5em;
+}
+
+.welcome span {
+    color: rgb(97, 78, 15);
+    font-family: 'Poppins', sans-serif;
+}
+
+.desc {
+    font-weight: 600;
+    font-family: 'Poppins', sans-serif;
 }
 
 nav h3 {
@@ -50,4 +60,14 @@ nav button {
     background: transparent;
     margin-top: -.5em;
     cursor: pointer;
+}
+
+@media screen and (min-width: 1268px){
+nav h3 {
+    font-size: 1.2em;
+}
+
+.users-btn {
+    font-size: 1.2em;
+}
 }

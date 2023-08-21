@@ -1,4 +1,6 @@
 import React, { useContext, useEffect, useState } from 'react'
+import './Users.css'
+import {Link} from 'react-router-dom'
 import useAxios from '../utils/useAxios'
 import AuthContext from '../Contexts/AuthContext'
 const Users = () => {
@@ -7,24 +9,22 @@ const Users = () => {
 
     const { userToken } = useContext(AuthContext)
 
-    const [allUsers, setAllUsers] = useState([])
-
-    console.log(allUsers);
-    
+    const [allUsers, setAllUsers] = useState([])    
 
     const getUsers = async () => {
         let response = await api.get('/users')
-        console.log(response);
        try {
-           if (response.statusCode === 200) {
+           if (response.data.length > 0) {
                setAllUsers(response.data)
-               console.log(response);
         }
        } catch (error) {
             console.log(error);
        }    
     }
-    getUsers()
+
+    useEffect(() => {
+        getUsers()
+    }, [])
       
   return (
       <div className='users'>
@@ -34,14 +34,14 @@ const Users = () => {
                       const { name, username, _id, profileImage, registeredAt } = user
                       return (
                           <div className="user" key={_id}>
-                              <img src={profileImage} alt="" />
-                              <h2>{name}</h2>
-                              <h3>{username}</h3>
-                              <h5>{ registeredAt}</h5>
-                              <div className="individuals">
-                                  <input type="button" placeholder='edit'/>
-                                  <input type="button" placeholder='Delete'/>
+                              <img src={`http://localhost:4000/public/avatar/` + profileImage} alt="" />
+                              <div className="user-info">
+                                  <Link to={`/userprofile/${_id}`}>
+                                    <h2>{name}</h2>
+                                    <h3>{username}</h3>
+                                  </Link>
                               </div>
+                              <h5>{registeredAt}</h5>
                           </div>
                       )
                   })

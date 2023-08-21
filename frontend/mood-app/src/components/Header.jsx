@@ -11,19 +11,19 @@ const Header = () => {
       <div className='header'>
           {
               user ? 
-                    <nav>
+                    <nav className='logged-in'>
                       <AiOutlineMenu className='header-menu' />
                         <Link to='/users'><h3 className='users-btn'>Users</h3></Link>
-                        <h3>Welcome { user.name}</h3>
-                        <h3>This is a social media app where users air out their moods</h3>
+                        <h3 className='welcome'>Welcome <span>{ user.name}</span></h3>
+                        <h3 className='desc'>This is a social media app where users air out their moods</h3>
                         <h3><Link to='/posts'>Posts</Link></h3>  
                         <h3><Link to="/post/create">Post a Message</Link></h3>
                         <button onClick={handleLogout}>Logout</button>
                     </nav>
                   :
-                    <nav>
+                    <nav className='logged-out'>
                         <AiOutlineMenu className='header-menu' />
-                        <h3>This is a social media app where users air out their moods</h3>
+                        <h3 className='desc'>This is a social media app where users air out their moods</h3>
                         <button type='submit'> <Link to='/signin'>Login</Link></button>
                     </nav>
         }
