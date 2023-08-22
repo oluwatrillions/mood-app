@@ -59,6 +59,14 @@ export const AuthProvider = ({ children }) => {
             }
         }, 3000)
     }  
+    const postSuccess = () => {
+        const timer = setTimeout(() => {
+            navigate('/posts')
+            const clear = () => {
+                clearTimeout(timer)
+            }
+        }, 3000)
+    }  
 
     const handleLogout = async () => {
         try {
@@ -85,7 +93,8 @@ export const AuthProvider = ({ children }) => {
         notif: notif,
         setNotif: setNotif,
         userToken: userToken,
-        setUserToken: setUserToken
+        setUserToken: setUserToken,
+        postSuccess: postSuccess
     }
     
 

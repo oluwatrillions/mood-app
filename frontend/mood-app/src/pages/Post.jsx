@@ -13,7 +13,7 @@ const Post = () => {
     const [title, setTitle] = useState('')
     const [notif, setNotif] = useState(null)
 
-    const {loginSuccess, user} = useContext(AuthContext)
+    const {postSuccess, user} = useContext(AuthContext)
 
     const navigate = useNavigate()
     const imageRef = useRef()
@@ -41,7 +41,7 @@ const Post = () => {
            setTitle("")
            setText("")
            imageRef.current.value = ''
-           loginSuccess()
+           postSuccess()
        } catch (error) {
             console.log(error);
        }
