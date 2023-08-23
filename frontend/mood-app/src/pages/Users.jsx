@@ -36,7 +36,7 @@ const Users = () => {
                           <div className="user" key={_id}>
                               <img src={`http://localhost:4000/public/avatar/` + profileImage} alt="" />
                               <div className="user-info">
-                                  <Link to={`/userprofile/${_id}`}>
+                                  <Link to={'/userprofile'}>
                                     <h2>{name}</h2>
                                     <h3>{username}</h3>
                                   </Link>
