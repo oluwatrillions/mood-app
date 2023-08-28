@@ -1,7 +1,5 @@
 import React, { useContext, useRef, useState } from 'react'
 import './SignUp.css'
-import { useNavigate } from "react-router-dom"
-import jwt_decode from 'jwt-decode'
 import AuthContext from '../Contexts/AuthContext'
 
 
@@ -13,9 +11,9 @@ const Post = () => {
     const [title, setTitle] = useState('')
     const [notif, setNotif] = useState(null)
 
-    const {postSuccess, user} = useContext(AuthContext)
+    const { postSuccess, user } = useContext(AuthContext)
+    console.log('hey');
 
-    const navigate = useNavigate()
     const imageRef = useRef()
     
 
@@ -24,7 +22,7 @@ const Post = () => {
         const formData = new FormData()
         formData.append('name', user.name)
         formData.append('username', user.username)
-        formData.append('avatar', user.avatar)
+        formData.append('avatar', user.profileImage)
         formData.append('title', title)
         formData.append('text', text)
         formData.append('images', image)

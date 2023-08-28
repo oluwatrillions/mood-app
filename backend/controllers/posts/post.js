@@ -26,6 +26,7 @@ const createPost = async (req, res) => {
     const title = req.body.title
     const image = req.file.filename
     const text = req.body.text
+    const avatar = req.body.posterImage
     
     if (!text || !image) return res.json({ message: 'Please fill the following fields' })
 

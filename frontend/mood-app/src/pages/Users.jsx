@@ -12,14 +12,9 @@ const Users = () => {
     const [allUsers, setAllUsers] = useState([])    
 
     const getUsers = async () => {
-        let response = await api.get('/users')
-       try {
-           if (response.data.length > 0) {
-               setAllUsers(response.data)
-        }
-       } catch (error) {
-            console.log(error);
-       }    
+        let response = await fetch('http://localhost:4000/users')
+        let data = await response.json()
+        setAllUsers(data)
     }
 
     useEffect(() => {

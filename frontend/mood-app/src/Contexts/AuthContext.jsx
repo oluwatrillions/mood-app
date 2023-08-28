@@ -4,16 +4,17 @@ import { useNavigate, useParams } from "react-router-dom";
 
 
 export const AuthContext = createContext()
-    
 
-        
+
+
+
 export default AuthContext
 
 export const AuthProvider = ({ children }) => {
-
+    
     const navigate = useNavigate()
-
-
+    
+    
     const [user, setUser] = useState(()=> localStorage.getItem('accesstoken') ? jwt_decode(localStorage.getItem('accesstoken')) : null)
     const [userToken, setUserToken] = useState(()=> localStorage.getItem('accesstoken') ? localStorage.getItem('accesstoken') : null)
     const [notif, setNotif] = useState(null)
@@ -66,7 +67,19 @@ export const AuthProvider = ({ children }) => {
                 clearTimeout(timer)
             }
         }, 3000)
-    }  
+    } 
+    
+    const handleUserImage = async () => {
+        const userImage = await fetch('http://localhost:4000/users')
+        const response = await userImage.json()
+        setAllUsers(response)
+        console.log(allUsers);
+    }
+
+    useEffect(() => {
+        handleUserImage()   
+    },[])
+
 
     const handleLogout = async () => {
         try {
@@ -94,7 +107,9 @@ export const AuthProvider = ({ children }) => {
         setNotif: setNotif,
         userToken: userToken,
         setUserToken: setUserToken,
-        postSuccess: postSuccess
+        postSuccess: postSuccess,
+        allUsers: allUsers,
+        setAllUsers: setAllUsers
     }
     
 
