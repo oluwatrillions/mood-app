@@ -20,7 +20,7 @@ const Post = new Schema({
         type: String
     },
     posterImage: {
-        Type: String,
+        type: String,
     },
     postedAt: {
         type: Date,

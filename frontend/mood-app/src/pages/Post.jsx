@@ -1,4 +1,4 @@
-import React, { useContext, useRef, useState } from 'react'
+import React, { useContext, useEffect, useRef, useState } from 'react'
 import './SignUp.css'
 import AuthContext from '../Contexts/AuthContext'
 
@@ -12,7 +12,7 @@ const Post = () => {
     const [notif, setNotif] = useState(null)
 
     const { postSuccess, user } = useContext(AuthContext)
-    console.log('hey');
+    console.log(user);
 
     const imageRef = useRef()
     
@@ -22,7 +22,7 @@ const Post = () => {
         const formData = new FormData()
         formData.append('name', user.name)
         formData.append('username', user.username)
-        formData.append('avatar', user.profileImage)
+        formData.append('posterImage', user.avatar)
         formData.append('title', title)
         formData.append('text', text)
         formData.append('images', image)
@@ -42,7 +42,7 @@ const Post = () => {
            postSuccess()
        } catch (error) {
             console.log(error);
-       }
+        }
     }
 
   return (
