@@ -43,7 +43,7 @@ const Posts = ({ post_Id }) => {
                                     <h3 className="title">{title}</h3>
                                     <h4 className="text-field">{text}</h4>
                                     <div className='post-detail'>
-                                        <UserImage userId={userId} />
+                                        <UserImage profileImage={`http://localhost:4000/public/avatar/` + posterImage} />
                                         <div className="time">
                                             <h4 className="poster">{name}</h4>
                                             <h5 className='post-time'>{postedAt}</h5>
