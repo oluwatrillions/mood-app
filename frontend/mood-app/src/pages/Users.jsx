@@ -30,8 +30,9 @@ const Users = () => {
                       const { name, username, _id, profileImage, registeredAt } = user
                       return (
                           <div className="user" key={_id}>
-                              <UserImage profileImage={`http://localhost:4000/public/avatar/` + profileImage } /> 
-                              {/* <img src={`http://localhost:4000/public/avatar/` + profileImage} alt="" /> */}
+                              <UserImage
+                                  username={username}
+                                  profileImage={`http://localhost:4000/public/avatar/` + profileImage} /> 
                               <div className="user-info">
                                   <Link to={'/userprofile'}>
                                     <h2>{name}</h2>

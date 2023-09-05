@@ -79,11 +79,10 @@
 .time {
     display: flex;
     flex-direction: column;
-
     gap: .3em;
 }
 
-.poster-image {
+.poster-image img{
     width: 3em;
     height: 3em;
     border-radius: 50%;

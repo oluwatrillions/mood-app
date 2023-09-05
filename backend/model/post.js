@@ -19,9 +19,6 @@ const Post = new Schema({
     username: {
         type: String
     },
-    posterImage: {
-        type: String,
-    },
     postedAt: {
         type: Date,
         default: Date.now()

@@ -8,6 +8,7 @@ import UserImage from '../components/UserImage'
 const Posts = ({ post_Id }) => {
 
     const { user, allUsers } = useContext(AuthContext)
+    console.log(allUsers);
 
     const [posts, setPosts] = useState([]);
     const [userImage, setUserImage] = useState([])
@@ -17,7 +18,6 @@ const Posts = ({ post_Id }) => {
             const allPosts = await fetch('http://localhost:4000/posts')
             const response = await allPosts.json()
             setPosts(response)
-            console.log(posts);
         } catch (error) {
             console.log(error);
         }
@@ -33,7 +33,7 @@ const Posts = ({ post_Id }) => {
             <div className='all-posts'>
                 {user &&
                     posts.map((post) => {
-                        const { title, text, name, image, _id, postedAt, username, posterImage } = post
+                        const { title, text, name, image, _id, postedAt, username } = post
                         return <div key={_id} className='posts'>
                             <Link to={`/posts/${_id}`}>
                                 <div className='image-div'>
@@ -43,7 +43,17 @@ const Posts = ({ post_Id }) => {
                                     <h3 className="title">{title}</h3>
                                     <h4 className="text-field">{text}</h4>
                                     <div className='post-detail'>
-                                        <UserImage profileImage={`http://localhost:4000/public/avatar/` + posterImage} />
+                                        {
+                                            allUsers.map((userImg) => {  
+                                                if (userImg.username === username) {
+                                                return <div key={userImg._id} className='poster-image'>
+                                                    <UserImage
+                                                        username = {userImg.username}
+                                                        profileImage={`http://localhost:4000/public/avatar/` + userImg.profileImage} />
+                                                </div>
+                                                }
+                                            })
+                                        }
                                         <div className="time">
                                             <h4 className="poster">{name}</h4>
                                             <h5 className='post-time'>{postedAt}</h5>

@@ -12,7 +12,6 @@ const Post = () => {
     const [notif, setNotif] = useState(null)
 
     const { postSuccess, user } = useContext(AuthContext)
-    console.log(user);
 
     const imageRef = useRef()
     
