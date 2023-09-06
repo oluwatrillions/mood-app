@@ -79,7 +79,8 @@
 .poster-detail {
     display: flex;
     justify-content: flex-start;
-    gap: 9vw;
+    gap: 7vw;
+    margin-right: 2em;
 }
 
 .edit-icon {
@@ -154,5 +155,11 @@
 
 .answer h2:hover {
     background-color: aqua;
+    cursor: pointer;
+}
+
+.go-back {
+    color: aliceblue;
+    margin-top: 1em;
     cursor: pointer;
 }

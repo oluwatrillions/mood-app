@@ -68,6 +68,14 @@ export const AuthProvider = ({ children }) => {
             }
         }, 3000)
     } 
+    const deleteSuccess = () => {
+        const timer = setTimeout(() => {
+            navigate('/posts')
+            const clear = () => {
+                clearTimeout(timer)
+            }
+        }, 2000)
+    } 
     
     const handleUserImage = async () => {
         const userImage = await fetch('http://localhost:4000/users')
@@ -108,6 +116,7 @@ export const AuthProvider = ({ children }) => {
         setUserToken: setUserToken,
         postSuccess: postSuccess,
         allUsers: allUsers,
+        deleteSuccess: deleteSuccess
     }
     
 

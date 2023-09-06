@@ -17,13 +17,13 @@ const SinglePost = () => {
     const { _id } = useParams()
     const navigate = useNavigate()
 
-    const {user, allUsers} = useContext(AuthContext)
+    const {user, allUsers, deleteSuccess} = useContext(AuthContext)
 
     const Back = () => {
         navigate(-1)
     }
 
-    const DeletePost = async () => {
+    const deletePost = async () => {
         try {
             const response = await fetch(`http://localhost:4000/posts/${_id}`, {
                 method: 'DELETE',
@@ -31,17 +31,14 @@ const SinglePost = () => {
                     "Content-Type": "application/json"
                 }
             })
-            .then((res) => res.json())
-            .then((data)=> console.log(data))
-               navigate('/posts')
+                .then((res) => res.json()
+                    .then((data) => console.log(data.message))
+            )
+            deleteSuccess()
         } catch (error) {
             console.log(error);
         }
     }
-
-    useEffect(() => {
-        DeletePost()
-    }, [_id])
 
     const actionRef = () => {
         btnRef.current.classList.toggle('show-action')
@@ -87,20 +84,25 @@ const SinglePost = () => {
                             <h5 className="postime">{ singlePost.postedAt}</h5>
                         </div>
                       </div>
-                      <div className="action">
-                          <HiDotsHorizontal className='edit-icon' onClick={actionRef}/>  
-                        <div className="action-btn" ref={ btnRef}>
-                            <h3>Edit</h3>                          
-                            <h3 onClick={deleteBtn}>Delete</h3>   
-                          </div>
-                          <div className="confirm" ref={deleteRef}>
-                              <h2>Are you sure you want to DELETE this post?</h2>
-                              <div className="answer">
-                                  <h2 onClick={DeletePost}>YES</h2>
-                                  <h2 onClick={Back}>NO</h2>
-                              </div>
-                          </div>
-                      </div>
+                      {
+                        user.username === singlePost.username ? 
+                            <div className="action">
+                                <HiDotsHorizontal className='edit-icon' onClick={actionRef}/>  
+                                <div className="action-btn" ref={ btnRef}>
+                                    <h3>Edit</h3>                          
+                                    <h3 onClick={deleteBtn}>Delete</h3>   
+                                </div>
+                                <div className="confirm" ref={deleteRef}>
+                                    <h2>Are you sure you want to DELETE this post?</h2>
+                                    <div className="answer">
+                                        <h2 onClick={deletePost}>YES</h2>
+                                        <h2 onClick={Back}>NO</h2>
+                                    </div>
+                                </div>
+                            </div>
+                              :
+                            <h2 onClick={Back} className='go-back'>Back</h2>
+                      } 
                   </div>
               </div>
           </div>
