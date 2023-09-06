@@ -8,7 +8,6 @@ import UserImage from '../components/UserImage'
 const Posts = ({ post_Id }) => {
 
     const { user, allUsers } = useContext(AuthContext)
-    console.log(allUsers);
 
     const [posts, setPosts] = useState([]);
     const [userImage, setUserImage] = useState([])

@@ -1,7 +1,9 @@
-import React, {useEffect, useRef, useState} from 'react'
+import React, {useContext, useEffect, useRef, useState} from 'react'
 import { useNavigate, useParams } from 'react-router-dom'
 import './SinglePost.css'
 import { HiDotsHorizontal } from "react-icons/hi"
+import UserImage from '../components/UserImage'
+import AuthContext from '../Contexts/AuthContext'
 
 
 const SinglePost = () => {
@@ -15,6 +17,8 @@ const SinglePost = () => {
     const { _id } = useParams()
     const navigate = useNavigate()
 
+    const {user, allUsers} = useContext(AuthContext)
+
     const Back = () => {
         navigate(-1)
     }
@@ -27,7 +31,7 @@ const SinglePost = () => {
                     "Content-Type": "application/json"
                 }
             })
-                .then((res) => res.json())
+            .then((res) => res.json())
             .then((data)=> console.log(data))
                navigate('/posts')
         } catch (error) {
@@ -65,7 +69,19 @@ const SinglePost = () => {
                   <h4 className="text">{singlePost.text}</h4>
                   <div className="poster-detail">
                       <div className="post-action">
-                        <img src="" alt="" />
+                          <div>
+                              {
+                                  allUsers.map((users) => {
+                                      if (users.username === singlePost.username) {
+                                          return <div key={users._id} className='poster-image'>
+                                                    <UserImage
+                                                        username = {users.username}
+                                                        profileImage={`http://localhost:4000/public/avatar/` + users.profileImage} />
+                                                </div> 
+                                      }
+                                  })
+                              }
+                        </div>
                         <div className="poster-name">
                             <h2 className="name">{singlePost.name}</h2>
                             <h5 className="postime">{ singlePost.postedAt}</h5>

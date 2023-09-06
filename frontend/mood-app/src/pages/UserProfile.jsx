@@ -3,6 +3,7 @@ import './UserProfile.css'
 import axios from 'axios'
 import jwt_decode from 'jwt-decode'
 import AuthContext from '../Contexts/AuthContext'
+import UserImage from '../components/UserImage'
 
 
 const UserProfile = () => {

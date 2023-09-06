@@ -73,7 +73,6 @@ export const AuthProvider = ({ children }) => {
         const userImage = await fetch('http://localhost:4000/users')
         const response = await userImage.json()
         setAllUsers(response)
-        console.log(allUsers);
     }
 
     useEffect(() => {
@@ -109,7 +108,6 @@ export const AuthProvider = ({ children }) => {
         setUserToken: setUserToken,
         postSuccess: postSuccess,
         allUsers: allUsers,
-        setAllUsers: setAllUsers
     }
     
 
