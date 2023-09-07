@@ -50,8 +50,8 @@ const SinglePost = () => {
                 headers: {
                     'Content-Type': 'application/json'
                 }
-            }).then((res) => console.log(res))
-            .then((data) => console.log(data))
+            }).then((res) => res.json())
+            .then((data) => setSinglePost(data))
         } catch (error) {
             console.log(error);
         }

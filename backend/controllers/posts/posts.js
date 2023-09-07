@@ -17,7 +17,7 @@ const updatePost = async (req, res) => {
         foundPost.image = req.body.image    
     }
     const editedPost = await foundPost.save()
-    return res.status(201).json(editedPost, {message: 'Post updated successfully'})
+    return res.status(201).json({message: 'Post updated successfully'})
 }
 
 const deletePost = async (req, res) => {

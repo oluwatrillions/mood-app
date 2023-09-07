@@ -121,7 +121,7 @@
 }
 
 .edit-post {
-    inset: 15vw 70vh ;
+    inset: 10vw 55vh ;
     background-color: rgb(88, 84, 84);
     position: absolute;
     display: flex;
