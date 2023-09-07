@@ -80,7 +80,7 @@
     display: flex;
     justify-content: flex-start;
     gap: 7vw;
-    margin-right: 2em;
+    margin-right: 1em;
 }
 
 .edit-icon {
@@ -114,6 +114,21 @@
 .show-action {
     display: block;
     margin-top: -.5em;
+}
+
+.editing-post {
+    display: none;
+}
+
+.edit-post {
+    inset: 15vw 70vh ;
+    background-color: rgb(88, 84, 84);
+    position: absolute;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    color: rgb(103, 105, 107);
 }
 
 .confirm {
