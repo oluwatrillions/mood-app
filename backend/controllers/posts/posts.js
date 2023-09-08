@@ -14,7 +14,7 @@ const updatePost = async (req, res) => {
     } else {
         foundPost.title = req.body.title,
         foundPost.text = req.body.text,
-        foundPost.image = req.body.image    
+        foundPost.image = req.file ? req.file.filename : req.body.image  
     }
     const editedPost = await foundPost.save()
     return res.status(201).json({message: 'Post updated successfully'})

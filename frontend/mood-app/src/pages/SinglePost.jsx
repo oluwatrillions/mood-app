@@ -8,7 +8,7 @@ import AuthContext from '../Contexts/AuthContext'
 
 const SinglePost = () => {
 
-    const [filterPost, setFilterPost] = useState()
+    const [editedPost, setEditedPost] = useState()
     const [singlePost, setSinglePost] = useState({}) 
     const [isEdit, setIsEdit] = useState(false)
     const [notif, setNotif] = useState(null)
@@ -46,12 +46,17 @@ const SinglePost = () => {
     const handleEdit = async () => {
         try {
             const updatePost = await fetch(`http://localhost:4000/posts/${_id}`, {
-                method: 'PUT',
+                method: 'PATCH',
                 headers: {
                     'Content-Type': 'application/json'
-                }
+                },
+                body: JSON.stringify(editedPost)
             }).then((res) => res.json())
-            .then((data) => setSinglePost(data))
+                .then((data) => {
+                    console.log(data)
+                    setSinglePost(data)
+                })
+            console.log('i am running');
         } catch (error) {
             console.log(error);
         }
@@ -76,8 +81,9 @@ const SinglePost = () => {
             .then((response) => response.json())
             .then((data) => {
                 setSinglePost(data)
+                setEditedPost(data)
         })
-    }, [_id])
+    }, [])
 
   return (
       <div className='single-post'>
@@ -119,41 +125,44 @@ const SinglePost = () => {
                              <div className='editing-post' ref={editRef}>
                                 <div className='signup'>
                                     <h3 className='notif'>{ notif }</h3>
-                                    <form encType='multipart/form-data' onClick={handleEdit}> 
+                                    <form encType='multipart/form-data' > 
                                         <div className='inputs'>
-                                            <label htmlFor="tite" id='title'>Title:</label>
-                                            <input type="text"
-                                                value={singlePost.title}
-                                                onChange={(e) => setSinglePost({
-                                                    ...singlePost, 
-                                                    title: e.target.value
-                                                })}
-                                                />
+                                            <label htmlFor="title" id='title'>Title:</label>
+                                                  <input type="text"
+                                                        name='title'
+                                                        value={editedPost.title}
+                                                        onChange={(e) => setEditedPost({
+                                                            ...editedPost, 
+                                                            title: e.target.value
+                                                        })}
+                                                    />
                                         </div>
                                         <div className='inputs'>
                                             <label htmlFor="text" id='text'>Text:</label>
-                                            <input type="text"
-                                                    value={singlePost.text}
-                                                    onChange={(e) => setSinglePost({
-                                                        ...singlePost, 
-                                                        text: e.target.value
-                                                    })}
-                                                />
+                                                  <input type="text"
+                                                        name='text'
+                                                        value={editedPost.text}
+                                                        onChange={(e) => setEditedPost({
+                                                            ...editedPost, 
+                                                            text: e.target.value
+                                                        })}
+                                                    />
                                         </div>
                                         <div className='inputs'>
                                             <label htmlFor="image" id='image'>Image:</label>
                                             <input
                                                 type="file"
+                                                name='image'
                                                 accept='image/jpg, image/jpeg, image/png, image/gif'
                                                 filename='images'
                                                 ref={imageRef}
-                                                    onChange={(e) => setSinglePost({
-                                                        ...singlePost,
+                                                    onChange={(e) => setEditedPost({
+                                                        ...editedPost,
                                                         image: e.target.files[0]
                                                     })}
                                                 />
                                         </div>
-                                        <button className='signIn-btn' type='submit'>Send Post</button>
+                                        <button className='signIn-btn' type='submit' onClick={handleEdit}>Send Post</button>
                                     </form>
                                 </div>
                             </div>          
