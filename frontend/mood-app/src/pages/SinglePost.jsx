@@ -126,7 +126,7 @@ const SinglePost = () => {
                                 <div className='signup'>
                                     <h3 className='notif'>{ notif }</h3>
                                     <form encType='multipart/form-data' > 
-                                        <div className='inputs'>
+                                        <div className='edit-inputs'>
                                             <label htmlFor="title" id='title'>Title:</label>
                                                   <input type="text"
                                                         name='title'
@@ -137,7 +137,7 @@ const SinglePost = () => {
                                                         })}
                                                     />
                                         </div>
-                                        <div className='inputs'>
+                                        <div className='edit-inputs'>
                                             <label htmlFor="text" id='text'>Text:</label>
                                                   <input type="text"
                                                         name='text'
@@ -148,7 +148,7 @@ const SinglePost = () => {
                                                         })}
                                                     />
                                         </div>
-                                        <div className='inputs'>
+                                        <div className='edit-inputs'>
                                             <label htmlFor="image" id='image'>Image:</label>
                                             <input
                                                 type="file"

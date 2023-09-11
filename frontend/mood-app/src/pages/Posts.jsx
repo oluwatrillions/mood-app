@@ -58,7 +58,7 @@ const Posts = ({ post_Id }) => {
                                         }
                                         <div className="time">
                                             <h4 className="poster">{name}</h4>
-                                            <h5 className='post-time'>{formattedDate}</h5>
+                                            <h5 className='post-time'>{postedAt}</h5>
                                         </div>
                                     </div>
                                 </div>

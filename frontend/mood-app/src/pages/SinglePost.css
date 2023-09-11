@@ -120,6 +120,17 @@
     display: none;
 }
 
+.edit-inputs {
+    width: 25vw;
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 1em;
+}
+
+.edit-inputs label {
+    color: rgb(195, 198, 201);
+}
+
 .edit-post {
     inset: 8vw 55vh ;
     background-color: rgb(88, 84, 84);
