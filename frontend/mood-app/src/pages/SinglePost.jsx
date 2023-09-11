@@ -46,7 +46,7 @@ const SinglePost = () => {
     const handleEdit = async () => {
         try {
             const updatePost = await fetch(`http://localhost:4000/posts/${_id}`, {
-                method: 'PATCH',
+                method: 'PUT',
                 headers: {
                     'Content-Type': 'application/json'
                 },
@@ -162,7 +162,7 @@ const SinglePost = () => {
                                                     })}
                                                 />
                                         </div>
-                                        <button className='signIn-btn' type='submit' onClick={handleEdit}>Send Post</button>
+                                        <button className='signIn-btn' type='submit' onClick={handleEdit}>Save Edit</button>
                                     </form>
                                 </div>
                             </div>          

@@ -48,7 +48,7 @@
 .titled {
     color: rgb(219, 225, 231);
     font-weight: 600;
-    width: 15vw;
+    width: 18vw;
     text-align: start;
     font-family: 'Poppins', sans-serif;
     word-wrap: break-word;
@@ -121,13 +121,14 @@
 }
 
 .edit-post {
-    inset: 10vw 55vh ;
+    inset: 8vw 55vh ;
     background-color: rgb(88, 84, 84);
     position: absolute;
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
+    border-radius: 1em;
     color: rgb(103, 105, 107);
 }
 
