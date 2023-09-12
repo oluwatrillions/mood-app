@@ -10,6 +10,7 @@ const SinglePost = () => {
 
     const [editedPost, setEditedPost] = useState()
     const [singlePost, setSinglePost] = useState({}) 
+    const [image, setImage] = useState() 
     const [isEdit, setIsEdit] = useState(false)
     const [notif, setNotif] = useState(null)
     const btnRef = useRef(null)
@@ -44,7 +45,6 @@ const SinglePost = () => {
     }
 
     const handleEdit = async () => {
-        setIsEdit(true);
         try {
             const updatePost = await fetch(`http://localhost:4000/posts/${_id}`, {
                 method: 'PUT',
@@ -54,13 +54,13 @@ const SinglePost = () => {
                 body: JSON.stringify(editedPost)
             }).then((res) => res.json())
                 .then((data) => {
-                    console.log(data)
                     setSinglePost(data)
+                    console.log(data)
                 })
-            console.log('i am running');
         } catch (error) {
             console.log(error);
         }
+        updatePost()
     }
 
     const isEditPost = async () => {
@@ -85,6 +85,36 @@ const SinglePost = () => {
                 setEditedPost(data)
         })
     }, [])
+
+
+        const [updatePostDetail, setUpdatePostDetail] = useState({
+            title: singlePost.title,
+            text: singlePost.text,
+            image: null
+        })
+    
+
+    const handleChange = async (e) => {
+        e.preventDefault();
+        const form = new FormData()
+        form.append('title', updatePostDetail.title)
+        form.append('text', updatePostDetail.text)
+        form.append('image', updatePostDetail.image);
+
+        try {
+            const response = await fetch(`http://localhost:4000/posts/${_id}`, {
+                method: 'PUT',
+                data: JSON.stringify(form)
+            })
+                .then((response) => response.json())
+                .then((data) => {
+                    console.log(data)
+                    setSinglePost(data)
+            })
+        } catch (error) {
+            console.log(error);
+        }
+    }
 
   return (
       <div className='single-post'>
@@ -133,8 +163,8 @@ const SinglePost = () => {
                                                         name='title'
                                                         value={editedPost.title}
                                                         onChange={(e) => setEditedPost({
-                                                            ...editedPost, 
-                                                            title: e.target.value
+                                                          ...editedPost,
+                                                          title: e.target.value
                                                         })}
                                                     />
                                         </div>
@@ -144,26 +174,26 @@ const SinglePost = () => {
                                                         name='text'
                                                         value={editedPost.text}
                                                         onChange={(e) => setEditedPost({
-                                                            ...editedPost, 
-                                                            text: e.target.value
+                                                          ...editedPost,
+                                                          text: e.target.value
                                                         })}
                                                     />
                                         </div>
                                         <div className='edit-inputs'>
                                             <label htmlFor="image" id='image'>Image:</label>
-                                            <input
-                                                type="file"
-                                                name='image'
-                                                accept='image/jpg, image/jpeg, image/png, image/gif'
-                                                filename='images'
-                                                ref={imageRef}
-                                                    onChange={(e) => setEditedPost({
-                                                        ...editedPost,
-                                                        image: e.target.files[0]
-                                                    })}
+                                                  <input
+                                                      type="file"
+                                                      name='image'
+                                                      accept='image/jpg, image/jpeg, image/png, image/gif'
+                                                      filename='images'
+                                                      ref={imageRef}
+                                                      onChange={(e) => setEditedPost({
+                                                          ...editedPost,
+                                                          image: e.target.files[0]
+                                                      })}
                                                 />
                                         </div>
-                                              <button className='signIn-btn' type='submit'>{ isEdit ? <span onClick={handleEdit}>Save Edit</span> : <span onClick={Back}>Cancel</span>}</button>
+                                              <button className='signIn-btn' type='submit' onClick={handleEdit}>Save Edit</button>
                                     </form>
                                 </div>
                             </div>          
