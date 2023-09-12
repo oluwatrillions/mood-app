@@ -44,6 +44,7 @@ const SinglePost = () => {
     }
 
     const handleEdit = async () => {
+        setIsEdit(true);
         try {
             const updatePost = await fetch(`http://localhost:4000/posts/${_id}`, {
                 method: 'PUT',
@@ -162,7 +163,7 @@ const SinglePost = () => {
                                                     })}
                                                 />
                                         </div>
-                                        <button className='signIn-btn' type='submit' onClick={handleEdit}>Save Edit</button>
+                                              <button className='signIn-btn' type='submit'>{ isEdit ? <span onClick={handleEdit}>Save Edit</span> : <span onClick={Back}>Cancel</span>}</button>
                                     </form>
                                 </div>
                             </div>          

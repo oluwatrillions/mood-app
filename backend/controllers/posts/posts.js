@@ -1,4 +1,23 @@
 const Posts = require('../../model/post')
+const multer = require('multer')
+
+
+const storage = multer.diskStorage({
+  destination: function(req, file, cb){
+    cb( null, path.join(__dirname, '../../public/images'));
+  },
+  filename: function(req, file, cb){
+    cb( null, file.originalname);
+  },
+})
+
+
+const upload = multer({
+    storage: storage,
+    limits: {
+        fieldSize: 1024 * 1024 * 3,
+    },
+}).single('images');
 
 const getAllPosts = async (req, res) => {
     const allPosts = await Posts.find()
@@ -12,9 +31,10 @@ const updatePost = async (req, res) => {
     if (!foundPost) {
         return res.status(401).json({ message: 'User not found' })
     } else {
+        
         foundPost.title = req.body.title,
         foundPost.text = req.body.text,
-        foundPost.image = req.file ? req.file.filename : req.body.image  
+        foundPost.image = req.body.image
     }
     const editedPost = await foundPost.save()
     return res.status(201).json({message: 'Post updated successfully'})
@@ -33,4 +53,4 @@ const getPost = async (req, res) => {
     res.json(foundPost)
 }
 
-module.exports = {getAllPosts, updatePost, deletePost, getPost}
+module.exports = {getAllPosts, updatePost, deletePost, getPost, upload}
