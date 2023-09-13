@@ -10,13 +10,16 @@ const SinglePost = () => {
 
     const [editedPost, setEditedPost] = useState()
     const [singlePost, setSinglePost] = useState({}) 
+    const [userPosts, setUserPosts] = useState({}) 
     const [image, setImage] = useState() 
+    const [imageEdit, setImageEdit] = useState() 
     const [isEdit, setIsEdit] = useState(false)
     const [notif, setNotif] = useState(null)
     const btnRef = useRef(null)
     const deleteRef = useRef(null)
     const editRef = useRef(null)
     const { _id } = useParams()
+    const { userId } = useParams()
     const navigate = useNavigate()
 
     const imageRef = useRef()
@@ -116,6 +119,19 @@ const SinglePost = () => {
         }
     }
 
+    const usersOtherPosts = async () => {
+        try {
+            const response = await fetch(`http://localhost:4000/users`)
+            const data = await response.json()
+            setUserPosts(data.filter(user => user.username === singlePost.username))
+            console.log(userPosts);
+        } catch (error) {
+            console.log(error);
+        }
+    }
+        
+
+
   return (
       <div className='single-post'>
         <div className="featured-post">
@@ -189,7 +205,7 @@ const SinglePost = () => {
                                                       ref={imageRef}
                                                       onChange={(e) => setEditedPost({
                                                           ...editedPost,
-                                                          image: e.target.files[0]
+                                                          image: e.target.image
                                                       })}
                                                 />
                                         </div>

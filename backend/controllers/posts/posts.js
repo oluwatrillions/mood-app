@@ -32,7 +32,7 @@ const updatePost = async (req, res) => {
     const editedPost = {
         title,
         text,
-        image: req.file ? req.file.filename : null
+        image: req.body.image
     }
 
     try {

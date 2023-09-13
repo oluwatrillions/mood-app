@@ -11,6 +11,7 @@ import {AuthProvider} from './Contexts/AuthContext'
 import SinglePost from './pages/SinglePost'
 import Users from './pages/Users'
 import PrivateRoute from './pages/PrivateRoute'
+import UserPosts from './pages/UserPosts'
 
 function App() {
 
@@ -22,6 +23,7 @@ function App() {
                     <Layout>
                         <Routes>
                             <Route  path='/users' element={<PrivateRoute><Users/></PrivateRoute>} />
+                            <Route  path='/users/:_id' element={<UserPosts/>} />
                             <Route path='/' element={<Homepage />} exact/>
                             <Route path='/signup' element={<SignUp/>} />
                             <Route path='/signin' element={<SignIn/>} />
