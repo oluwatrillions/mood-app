@@ -30,11 +30,9 @@ nav{
 }
 
 .users-btn {
-    color: rgb(53, 60, 66);
-    width: 5em;
-    height: 3em;
+    color: rgb(114, 118, 121);
     cursor: pointer;
-    font-size: 1.5em;
+    font-size: 1em;
 }
 
 .welcome span {
@@ -68,6 +66,6 @@ nav h3 {
 }
 
 .users-btn {
-    font-size: 1.2em;
+    font-size: 1em;
 }
 }

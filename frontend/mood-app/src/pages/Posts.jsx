@@ -5,22 +5,10 @@ import { Link } from 'react-router-dom'
 import AuthContext from '../Contexts/AuthContext'
 import UserImage from '../components/UserImage'
 
-const Posts = ({ post_Id }) => {
+const Posts = () => {
 
-    const { user, allUsers } = useContext(AuthContext)
-
-    const [posts, setPosts] = useState([]);
-    const [userImage, setUserImage] = useState([])
-
-    const AllPosts = async () => {
-        try {
-            const allPosts = await fetch('http://localhost:4000/posts')
-            const response = await allPosts.json()
-            setPosts(response)
-        } catch (error) {
-            console.log(error);
-        }
-    }
+    const { user, allUsers, posts, AllPosts } = useContext(AuthContext)
+   
 
     useEffect(() => {
         AllPosts();

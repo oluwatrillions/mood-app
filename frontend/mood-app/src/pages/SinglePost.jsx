@@ -10,7 +10,6 @@ const SinglePost = () => {
 
     const [editedPost, setEditedPost] = useState()
     const [singlePost, setSinglePost] = useState({}) 
-    const [userPosts, setUserPosts] = useState({}) 
     const [image, setImage] = useState() 
     const [imageEdit, setImageEdit] = useState() 
     const [isEdit, setIsEdit] = useState(false)
@@ -117,19 +116,7 @@ const SinglePost = () => {
         } catch (error) {
             console.log(error);
         }
-    }
-
-    const usersOtherPosts = async () => {
-        try {
-            const response = await fetch(`http://localhost:4000/users`)
-            const data = await response.json()
-            setUserPosts(data.filter(user => user.username === singlePost.username))
-            console.log(userPosts);
-        } catch (error) {
-            console.log(error);
-        }
-    }
-        
+    }   
 
 
   return (
@@ -142,7 +129,7 @@ const SinglePost = () => {
             <h3 className="titled">{singlePost.title}</h3>
             <h4 className="text">{singlePost.text}</h4>
             <div className="poster-detail">
-                <div className="post-action">
+                <div className="post-action">                              
                     <div>
                         {
                             allUsers.map((users) => {

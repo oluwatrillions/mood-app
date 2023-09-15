@@ -8,9 +8,10 @@ const Users = () => {
 
     let api = useAxios()
 
-    const { userToken } = useContext(AuthContext)
+    const { userToken, user } = useContext(AuthContext)
 
-    const [allUsers, setAllUsers] = useState([])    
+    const [allUsers, setAllUsers] = useState([]) 
+    const [userPosts, setUserPosts] = useState({}) 
 
     const getUsers = async () => {
         let response = await fetch('http://localhost:4000/users')
@@ -34,7 +35,7 @@ const Users = () => {
                                   username={username}
                                   profileImage={`http://localhost:4000/public/avatar/` + profileImage} /> 
                               <div className="user-info">
-                                  <Link to={'/userprofile'}>
+                                  <Link to={`/users/${_id}`}>
                                     <h2>{name}</h2>
                                     <h3>{username}</h3>
                                   </Link>
@@ -42,7 +43,7 @@ const Users = () => {
                               <h5>{registeredAt}</h5>
                           </div>
                       )
-                  })
+                  }).reverse()
               }
           </div>
     </div>

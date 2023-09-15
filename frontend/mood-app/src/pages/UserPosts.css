@@ -1,0 +1,81 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300&display=swap');
+
+.users-post {
+    width: 100vw;
+    min-height: 80vh;
+    display: flex;
+}
+
+.users-dashboard {
+    width: 35vw;
+    background-color: white;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    margin-top: 5vh;
+    align-items: flex-start;
+}
+
+
+.users-details {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: flex-start;
+    margin: 0 2em;
+}
+
+.users-dashboard img {
+    width: 32vw;
+    height: 50vh;
+    border-radius: 50%;
+    margin: 0 auto;
+}
+
+.user-posts {
+    background-color: white;
+    width: 65vw;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+    column-gap: 3em;
+}
+
+.posters-div {
+    width: 25vw;
+    height: 55vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+    margin-top: 5vh;
+}
+
+.posts-divide {
+    width: 25vw;
+}
+
+.posts-divide img {
+    width: 25vw;
+    height: 40vh;
+    border-radius: 1em;
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center center fixed;
+    object-fit: cover;
+}
+
+.posts-divide h3 {
+    font-family: 'Poppins', sans-serif;
+}
+
+.posts-divide h4 {
+    font-family: 'Poppins', sans-serif;
+    margin: .3em 0;
+}
+
+.posters-detail {
+    margin: 0 .5em;
+}
+
