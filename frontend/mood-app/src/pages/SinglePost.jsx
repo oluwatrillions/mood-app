@@ -4,6 +4,7 @@ import './SinglePost.css'
 import { HiDotsHorizontal } from "react-icons/hi"
 import UserImage from '../components/UserImage'
 import AuthContext from '../Contexts/AuthContext'
+import {FcLike} from 'react-icons/fc'
 
 
 const SinglePost = () => {
@@ -144,9 +145,9 @@ const SinglePost = () => {
                         }
                     </div>
                     <div className="poster-name">
-                        <h2 className="name">{singlePost.name}</h2>
+                        <h2 className="name">{singlePost.name} <span><FcLike/></span></h2>
                         <h5 className="postime">{ singlePost.postedAt}</h5>
-                    </div>
+                          </div>    
                 </div>
                 {
                     user.username === singlePost.username ? 

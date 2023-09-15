@@ -4,6 +4,7 @@ import jwt_decode from 'jwt-decode'
 import { Link } from 'react-router-dom'
 import AuthContext from '../Contexts/AuthContext'
 import UserImage from '../components/UserImage'
+import {FcLike} from 'react-icons/fc'
 
 const Posts = () => {
 
@@ -48,6 +49,7 @@ const Posts = () => {
                                             <h4 className="poster">{name}</h4>
                                             <h5 className='post-time'>{postedAt}</h5>
                                         </div>
+                                        <FcLike/>
                                     </div>
                                 </div>
                             </Link>

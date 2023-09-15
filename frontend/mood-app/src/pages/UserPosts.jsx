@@ -1,13 +1,12 @@
 import React, { useContext, useEffect, useState } from 'react'
 import './UserPosts.css'
-import { useParams } from 'react-router-dom'
+import { useParams, Link } from 'react-router-dom'
 import UserImage from '../components/UserImage'
 import AuthContext from '../Contexts/AuthContext'
 
 const UserPosts = () => {
 
-    const { posts } = useContext(AuthContext)
-    console.log(posts);
+    const { posts, AllPosts } = useContext(AuthContext)
     const { _id } = useParams()
     const [clickedUser, setClickedUser] = useState([])
 
@@ -16,13 +15,17 @@ const UserPosts = () => {
             .then((response) => response.json())
             .then((data) => {
                 setClickedUser(data)
-                console.log(data)
         })
+    }, [])
+
+    useEffect(() => {
+        AllPosts()
     }, [])
 
   return (
       <div className='users-post'>
           <div className='users-dashboard'>
+              <h2>Other posts by <span>{clickedUser.name }</span></h2>
               <UserImage
                   profileImage={`http://localhost:4000/public/avatar/` + clickedUser.profileImage}
               />
@@ -36,14 +39,16 @@ const UserPosts = () => {
                   posts.map((post) => {
                       if (post.username === clickedUser.username) {
                           return <div key={post._id} className='posters-div'>
+                              <Link to={`/posts/${post._id}`}>
                               <div className='posts-divide'>
                                   <img src={`http://localhost:4000/public/images/${post.image}`} alt={post.title} />
                                   <div className='posters-detail'>
                                       <h3>{post.title}</h3>
                                       <h4>{post.text}</h4>
-                                      <h5>{ post.postedAt}</h5>
+                                      <h5>{post.postedAt}</h5>
                                   </div>
-                              </div>
+                                  </div>
+                                </Link>
                           </div>
                       }
                   }).reverse()
