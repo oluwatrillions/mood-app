@@ -4,14 +4,20 @@ const userSchema = mongoose.Schema
 const Users = new userSchema({
     name: {
         type: String,
+        minlength: 4,
+        maxlength: 255,
         required: true,
     },
     username: {
         type: String,
+        minlength: 4,
+        maxlength: 255,
         required: true,
     },
     password: {
         type: String,
+        minlength: 4,
+        maxlength: 255,
         required: true,
     },
     profileImage: {

@@ -63,6 +63,7 @@
     background-size: cover;
     background-repeat: no-repeat;
     background-position: center center fixed;
+    vertical-align: middle;
     object-fit: cover;
 }
 

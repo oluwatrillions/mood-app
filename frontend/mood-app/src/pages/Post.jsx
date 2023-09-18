@@ -10,6 +10,7 @@ const Post = () => {
     const [avatar, setAvatar] = useState()
     const [title, setTitle] = useState('')
     const [notif, setNotif] = useState(null)
+    const [likes, setLikes] = useState([])
 
     const { postSuccess, user } = useContext(AuthContext)
 

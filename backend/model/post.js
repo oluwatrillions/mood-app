@@ -21,6 +21,9 @@ const Post = new Schema({
     postedAt: {
         type: Date,
         default: Date.now()
+    },
+    likes: {
+        type: Number
     }
 })
 

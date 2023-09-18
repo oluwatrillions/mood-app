@@ -20,6 +20,7 @@ export const AuthProvider = ({ children }) => {
     const [notif, setNotif] = useState(null)
     const [allUsers, setAllUsers] = useState([])
     const [posts, setPosts] = useState([])
+    const [likes, setLikes] = useState()
 
     //    let cookieValue = document.cookie.replace(/(?:(?:^|.*;\s*)user\s*\=\s*([^;]*).*$)|^.*$/, "$1");
     //     // console.log(cookieValue);
@@ -85,6 +86,7 @@ export const AuthProvider = ({ children }) => {
     }
 
     useEffect(() => {
+        AllPosts()
         handleUserImage()   
     },[])
 
@@ -111,6 +113,7 @@ export const AuthProvider = ({ children }) => {
             const allPosts = await fetch('http://localhost:4000/posts')
             const response = await allPosts.json()
             setPosts(response)
+            console.log(posts);
         } catch (error) {
             console.log(error);
         }

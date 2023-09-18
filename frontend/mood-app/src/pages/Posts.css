@@ -23,13 +23,30 @@
     gap: 3em;
 }
 
+.posts {
+    width: 20vw;
+    height: 48vh;
+    background-color: rgb(78, 76, 76);
+    border-radius: 1em;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.split {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    height: 32vh;
+}
+
 .image-div {
     width: 20vw;
     height: 25vh;
     border-radius: 1em 1em 0 0;
 }
 
-.img-div {
+.image-div img {
     width: 20vw;
     height: 25vh;
     border-radius: 1em 1em 0 0;
@@ -40,18 +57,9 @@
     vertical-align: middle;
 }
 
-.posts {
-    width: 20vw;
-    height: 47vh;
-    background-color: rgb(78, 76, 76);
-    border-radius: 1em;
-    display: flex;
-    flex-direction: column;
-}
-
 .post-text {
     padding: 0 .5em;
-    height: 20vh;
+    height: 7vh;
     display: flex;
     justify-content: space-between;
     flex-direction: column;
@@ -73,7 +81,8 @@
 
 .post-detail {
     display: flex;
-    margin-top: .5em;
+    height: 8vh;
+    margin: .5em 0 0 .3em;
 }
 
 .time {
@@ -83,8 +92,8 @@
 }
 
 .poster-image img{
-    width: 3em;
-    height: 3em;
+    width: 4em;
+    height: 4em;
     border-radius: 50%;
     background-size:cover;
     background-repeat: no-repeat;
@@ -102,4 +111,12 @@
 .post-time {
     color: azure;
     font-weight: 100;
+}
+
+.like-count {
+    display: flex;
+}
+
+.like-count h5 {
+    color: aliceblue;
 }

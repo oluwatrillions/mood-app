@@ -9,6 +9,12 @@ import {FcLike} from 'react-icons/fc'
 const Posts = () => {
 
     const { user, allUsers, posts, AllPosts } = useContext(AuthContext)
+
+    const [count, setCount] = useState(0)
+
+    const likeCount = () => {
+        setCount(prevState=> prevState + 1)
+    }
    
 
     useEffect(() => {
@@ -24,36 +30,45 @@ const Posts = () => {
             <div className='all-posts'>
                 {user &&
                     posts.map((post) => {
-                        const { title, text, name, image, _id, postedAt, username } = post
+                        const { title, text, name, image, _id, postedAt, username, likes } = post
                         return <div key={_id} className='posts'>
                             <Link to={`/posts/${_id}`}>
-                                <div className='image-div'>
-                                    <img src={`http://localhost:4000/public/images/` + image} alt='images' className='img-div' />
+                                <div className='split'>
+                                    <div className='image-div'>
+                                        <img src={`http://localhost:4000/public/images/` + image} alt='images' />
+                                    </div>
+                                    <div className="post-text">
+                                        <h3 className="title">{title}</h3>
+                                        <h4 className="text-field">{text}</h4>
+                                    </div>
                                 </div>
-                                <div className="post-text">
-                                    <h3 className="title">{title}</h3>
-                                    <h4 className="text-field">{text}</h4>
+                            </Link>
                                     <div className='post-detail'>
                                         {
                                             allUsers.map((userImg) => {  
                                                 if (userImg.username === username) {
-                                                return <div key={userImg._id} className='poster-image'>
+                                                    const {username, _id, profileImage} = userImg
+                                                return <Link to={`/users/${_id}`}><div key={_id} className='poster-image'>
                                                     <UserImage
-                                                        username = {userImg.username}
-                                                        profileImage={`http://localhost:4000/public/avatar/` + userImg.profileImage} />
+                                                        username = {username}
+                                                        profileImage={`http://localhost:4000/public/avatar/` + profileImage} />
                                                 </div>
+                                                     </Link>
                                                 }
                                             })
-                                        }
+                                }
+                                
                                         <div className="time">
                                             <h4 className="poster">{name}</h4>
                                             <h5 className='post-time'>{postedAt}</h5>
                                         </div>
-                                        <FcLike/>
+                               
+                                        <div className='like-count'>
+                                            <FcLike onClick={likeCount}/>
+                                            <h5>{likes === null ? 0 : count}</h5>
+                                        </div>
                                     </div>
-                                </div>
-                            </Link>
-                        </div>
+                            </div>
                     }).reverse()
                 }
             </div>

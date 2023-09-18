@@ -21,12 +21,14 @@ const upload = multer({
 }).single('images');
 
 
+
 const createPost = async (req, res) => {
     const name = req.body.name
     const username = req.body.username
     const title = req.body.title
     const image = req.file.filename
     const text = req.body.text
+    const likes = req.body.likes
 
     
     if (!text || !image) return res.json({ message: 'Please fill the following fields' })
@@ -38,7 +40,9 @@ const createPost = async (req, res) => {
             text,
             image,
             username,
+            likes
         })
+        console.log(newPost);
         res.status(201).json(newPost)
     } catch (error) {
         console.log(error);
