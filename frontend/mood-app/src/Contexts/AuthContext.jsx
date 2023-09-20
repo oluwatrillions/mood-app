@@ -113,7 +113,6 @@ export const AuthProvider = ({ children }) => {
             const allPosts = await fetch('http://localhost:4000/posts')
             const response = await allPosts.json()
             setPosts(response)
-            console.log(posts);
         } catch (error) {
             console.log(error);
         }
