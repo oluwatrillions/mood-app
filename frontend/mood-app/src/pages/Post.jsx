@@ -26,6 +26,7 @@ const Post = () => {
         formData.append('title', title)
         formData.append('text', text)
         formData.append('images', image)
+        formData.append('likes', likes)
         
        try {
            const postBtn = await fetch('http://localhost:4000/post/create', {

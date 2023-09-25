@@ -8,7 +8,7 @@ import {FcLike} from 'react-icons/fc'
 import Likes from '../components/Likes'
 
 
-const SinglePost = () => {
+const SinglePost = ({likes, count}) => {
 
     const [editedPost, setEditedPost] = useState()
     const [singlePost, setSinglePost] = useState({}) 
@@ -148,7 +148,7 @@ const SinglePost = () => {
                         }
                     </div>
                     <div className="poster-name">
-                        <h2 className="name">{singlePost.name} <span><Likes/></span></h2>
+                              <h2 className="name">{singlePost.name} <span><Likes /><h5>{ likes}</h5></span></h2>
                         <h5 className="postime">{ singlePost.postedAt}</h5>
                           </div>    
                 </div>

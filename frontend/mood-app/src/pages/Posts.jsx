@@ -66,7 +66,7 @@ const Posts = () => {
                                         </div>
                                     <div className="like-count">
                                         <Likes
-                                            likes={post.likes === null ? 0 : count}
+                                            likes={post.likes === 0 ? 0 : count}
                                             liked={liked}
                                             likeCount={likeCount} />
                                     </div>
