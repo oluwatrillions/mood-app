@@ -4,18 +4,18 @@ import jwt_decode from 'jwt-decode'
 import { Link } from 'react-router-dom'
 import AuthContext from '../Contexts/AuthContext'
 import UserImage from '../components/UserImage'
-import {FcLike} from 'react-icons/fc'
+import Likes from '../components/Likes'
 
 const Posts = () => {
 
     const { user, allUsers, posts, AllPosts } = useContext(AuthContext)
 
     const [count, setCount] = useState(0)
-
-    const likeCount = () => {
+    const [liked, setLiked] = useState(null)
+    
+     const likeCount = (id) => {
         setCount(prevState=> prevState + 1)
     }
-   
 
     useEffect(() => {
         AllPosts();
@@ -64,12 +64,13 @@ const Posts = () => {
                                             <h4 className="poster">{post.name}</h4>
                                             <h5 className='post-time'>{post.postedAt}</h5>
                                         </div>
-                               
-                                        <div className='like-count'>
-                                            <FcLike onClick={likeCount}/>
-                                            <h5>{post.likes === null ? 0 : count}</h5>
-                                        </div>
+                                    <div className="like-count">
+                                        <Likes
+                                            likes={post.likes === null ? 0 : count}
+                                            liked={liked}
+                                            likeCount={likeCount} />
                                     </div>
+                                </div>
                             </div>
                     }).reverse()
                 }

@@ -1,10 +1,11 @@
 import React, {useContext, useEffect, useRef, useState} from 'react'
-import { useNavigate, useParams } from 'react-router-dom'
+import { useNavigate, useParams, Link } from 'react-router-dom'
 import './SinglePost.css'
 import { HiDotsHorizontal } from "react-icons/hi"
 import UserImage from '../components/UserImage'
 import AuthContext from '../Contexts/AuthContext'
 import {FcLike} from 'react-icons/fc'
+import Likes from '../components/Likes'
 
 
 const SinglePost = () => {
@@ -136,16 +137,18 @@ const SinglePost = () => {
                             allUsers.map((users) => {
                                 if (users.username === singlePost.username) {
                                     return <div key={users._id} className='poster-image'>
+                                        <Link to={`/users/${users._id}`}>
                                                 <UserImage
                                                     username = {users.username}
                                                     profileImage={`http://localhost:4000/public/avatar/` + users.profileImage} />
-                                            </div> 
+                                        </Link>    
+                                    </div> 
                                 }
                             })
                         }
                     </div>
                     <div className="poster-name">
-                        <h2 className="name">{singlePost.name} <span><FcLike/></span></h2>
+                        <h2 className="name">{singlePost.name} <span><Likes/></span></h2>
                         <h5 className="postime">{ singlePost.postedAt}</h5>
                           </div>    
                 </div>
