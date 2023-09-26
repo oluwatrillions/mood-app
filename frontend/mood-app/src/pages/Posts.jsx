@@ -12,9 +12,13 @@ const Posts = () => {
 
     const [count, setCount] = useState(0)
     const [liked, setLiked] = useState(null)
+    const [likes, setLikes] = useState(0)
     
-     const likeCount = (id) => {
-        setCount(prevState=> prevState + 1)
+    const likeCount = (postId) => {
+        setCount((prevState) => ({
+            ...prevState,
+            [postId]: (prevState[postId] || 0) + 1
+        }))
     }
 
     useEffect(() => {
@@ -66,9 +70,9 @@ const Posts = () => {
                                         </div>
                                     <div className="like-count">
                                         <Likes
-                                            likes={post.likes === 0 ? 0 : count}
-                                            liked={liked}
-                                            likeCount={likeCount} />
+                                            key={post._id}
+                                            likes={typeof post.likes === 'number' ? likes : count}
+                                            onLike={()=> likeCount(post._id)} />
                                     </div>
                                 </div>
                             </div>

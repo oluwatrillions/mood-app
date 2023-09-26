@@ -3,14 +3,14 @@ import '../pages//Posts.css'
 import {FcLike} from 'react-icons/fc'
 import AuthContext from '../Contexts/AuthContext'
 
-const Likes = ({likes, liked, likeCount}) => {
+const Likes = ({likes, onLike}) => {
 
     const {posts} = useContext(AuthContext)
     
   return (
       <div className='likes-div'>
           <div className="like-count">
-              <FcLike onClick={likeCount} liked={ liked} />
+              <FcLike onClick={onLike} />
               <h5>{likes}</h5>
           </div>
     </div>
