@@ -54,6 +54,8 @@
 
 .posts-divide {
     width: 25vw;
+    background-color: rgb(78, 76, 76);
+    border-radius: 1em;
 }
 
 .posts-divide img {
@@ -69,11 +71,17 @@
 
 .posts-divide h3 {
     font-family: 'Poppins', sans-serif;
+    color: rgb(231, 231, 231);
 }
 
 .posts-divide h4 {
     font-family: 'Poppins', sans-serif;
     margin: .3em 0;
+    color: azure;
+}
+
+.posts-divide h5 {
+    color: rgb(175, 177, 177);
 }
 
 .posters-detail {

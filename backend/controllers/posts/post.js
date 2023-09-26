@@ -42,7 +42,6 @@ const createPost = async (req, res) => {
             username,
             likes
         })
-        console.log(newPost);
         res.status(201).json(newPost)
     } catch (error) {
         console.log(error);
