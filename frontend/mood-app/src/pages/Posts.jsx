@@ -71,7 +71,6 @@ const Posts = () => {
                                     <div className="like-count">
                                         <Likes
                                             key={post._id}
-                                            likes={typeof post.likes === 'number' ? likes : count}
                                             onLike={()=> likeCount(post._id)} />
                                     </div>
                                 </div>
