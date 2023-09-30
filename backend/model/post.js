@@ -22,9 +22,16 @@ const Post = new Schema({
         type: Date,
         default: Date.now()
     },
-    likes: {
-        type: Number
-    }
+    likes: [{
+        likeCount: {
+            type: Number,
+            default: 0
+        },
+        likedBy: {
+            type: Schema.ObjectId,
+            ref: 'Users'
+        }
+    }]
 })
 
 module.exports = mongoose.model('Post', Post)
