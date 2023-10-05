@@ -21,6 +21,17 @@ const Posts = () => {
         }))     
     }  
 
+     const likedPost = async () => {
+        try {
+            const allLikes = await fetch('http://localhost:4000/posts/likes')
+            const data = allLikes.json()
+            setLikes(data)
+            console.log(data);
+        } catch (error) {
+            console.log(error);
+        }
+    }
+
     useEffect(() => {
         AllPosts();
     }, [])
@@ -73,7 +84,7 @@ const Posts = () => {
                                         key={post._id}
                                         onLike={() => handleLike(post._id)}
                                         likes={ likes[post._id] || 0}
-                                    />
+                                        />
                                     </div>
                                 </div>
                             </div>
