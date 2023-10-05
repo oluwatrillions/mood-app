@@ -6,4 +6,6 @@ router.get('/', likes.getAllLikes)
 
 router.get('/:id', likes.getLikesForPost)
 
+router.post('/', likes.addLike)
+
 module.exports = router

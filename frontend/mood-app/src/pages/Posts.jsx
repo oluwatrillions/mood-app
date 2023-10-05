@@ -32,6 +32,11 @@ const Posts = () => {
         }
     }
 
+    // <div className="like-count">
+    //           <FcLike onClick={onLike} />
+    //           <h5>{likes}</h5>
+    //       </div>
+
     useEffect(() => {
         AllPosts();
     }, [])
@@ -83,7 +88,7 @@ const Posts = () => {
                                         <Likes
                                         key={post._id}
                                         onLike={() => handleLike(post._id)}
-                                        likes={ likes[post._id] || 0}
+                                        likes={ post.likeCount}
                                         />
                                     </div>
                                 </div>

@@ -3,12 +3,23 @@ const Posts = require('../../model/post')
 const Likes = require('../../model/likes')
 
 
+const addLike = async (req, res) => {
+    const {postId, userId} = req.body
+    try {
+        const newLike = new Likes({ postId, userId });
+        await newLike.save();
+        res.json({ message: 'Like added successfully' });
+    } catch (error) {
+        console.log(error);
+    }
+}
+
 const getAllLikes = async (req, res) => {
   try {
     const like = await Likes.find();
     res.json(like);
   } catch (error) {
-    res.status(500).json({ message: error.message });
+    console.log(error);
   }
 };
 
@@ -17,8 +28,8 @@ const getLikesForPost = async (req, res) => {
     const likedPost = await Likes.find({ _id: req.params.id });
     res.json(likedPost);
   } catch (error) {
-    res.status(500).json({ message: error.message });
+    console.log(error);
   }
 };
 
-module.exports = { getAllLikes, getLikesForPost }
+module.exports = { getAllLikes, getLikesForPost, addLike }
