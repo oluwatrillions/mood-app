@@ -1,6 +1,5 @@
 import React, { useContext, useEffect, useState } from 'react'
 import './Posts.css'
-import jwt_decode from 'jwt-decode'
 import { Link } from 'react-router-dom'
 import AuthContext from '../Contexts/AuthContext'
 import UserImage from '../components/UserImage'
@@ -10,9 +9,9 @@ const Posts = () => {
 
     const { user, allUsers, posts, AllPosts } = useContext(AuthContext)
 
-    const [count, setCount] = useState(0)
+    const [postLike, setPostLike] = useState([])
     const [likedBy, setLikedBy] = useState([])
-    const [likes, setLikes] = useState(0)
+    const [likes, setLikes] = useState([])
 
     const handleLike = (id) => {
         setLikes((prevState) => ({
@@ -20,6 +19,26 @@ const Posts = () => {
             [id]: (prevState[id] || 0) + 1
         }))     
     }  
+
+    const allLikes = async () => {
+        try {
+            const response = await fetch('http://localhost:4000/posts/likes', {
+                method: 'GET',
+                headers: {
+                    'Content-Type': 'application/json'
+                }
+            })
+              .then((response) => response.json())
+            .then((data) => setLikes(data))
+            console.log(data);  
+        } catch (error) {
+            console.log(error);
+        }
+    }
+
+//     useEffect(() => {
+//     allLikes()
+// }, [])
 
     const addLike = async (postId, username) => {
         try {
@@ -32,7 +51,7 @@ const Posts = () => {
             })
             const data = await response.json()
             console.log(data)
-            setLikedBy(response)
+            setPostLike(response)
         } catch (error) {
             console.log(error);
         }
@@ -94,7 +113,7 @@ const Posts = () => {
                                         <Likes
                                             key={post._id}
                                             onLike={() => addLike(post._id, post.username)}
-                                            likes={ post.likeCount}
+                                            likeCount={ post.likeCount}
                                         />
                                     </div>
                                 </div>
