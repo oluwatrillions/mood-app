@@ -25,10 +25,6 @@ const Post = new Schema({
     likeCount: {
         type: Number,
         default: 0
-    },
-    likedBy: {
-        type: mongoose.Schema.Types.ObjectId,
-        ref: 'Users'
     }
 })
 

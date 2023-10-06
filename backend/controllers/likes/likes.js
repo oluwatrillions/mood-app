@@ -1,14 +1,14 @@
-const Users = require('../../model/users')
-const Posts = require('../../model/post')
 const Likes = require('../../model/likes')
 
 
 const addLike = async (req, res) => {
-    const {postId, userId} = req.body
+    const { postId, username } = req.body
     try {
-        const newLike = new Likes({ postId, userId });
+        const newLike = new Likes({ postId, username });
+        console.log(postId, 'line 1', username, 'line 2');
+        console.log(newLike, 'line 3');
         await newLike.save();
-        res.json({ message: 'Like added successfully' });
+        res.json(newLike);
     } catch (error) {
         console.log(error);
     }

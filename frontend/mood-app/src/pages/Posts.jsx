@@ -11,7 +11,7 @@ const Posts = () => {
     const { user, allUsers, posts, AllPosts } = useContext(AuthContext)
 
     const [count, setCount] = useState(0)
-    const [liked, setLiked] = useState(null)
+    const [likedBy, setLikedBy] = useState([])
     const [likes, setLikes] = useState(0)
 
     const handleLike = (id) => {
@@ -21,12 +21,18 @@ const Posts = () => {
         }))     
     }  
 
-     const likedPost = async () => {
+    const addLike = async (postId, username) => {
         try {
-            const allLikes = await fetch('http://localhost:4000/posts/likes')
-            const data = allLikes.json()
-            setLikes(data)
-            console.log(data);
+            const response = await fetch('http://localhost:4000/posts/likes', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify({postId, username})
+            })
+            const data = await response.json()
+            console.log(data)
+            setLikedBy(response)
         } catch (error) {
             console.log(error);
         }
@@ -86,9 +92,9 @@ const Posts = () => {
                                         </div>
                                     <div className="like-count">
                                         <Likes
-                                        key={post._id}
-                                        onLike={() => handleLike(post._id)}
-                                        likes={ post.likeCount}
+                                            key={post._id}
+                                            onLike={() => addLike(post._id, post.username)}
+                                            likes={ post.likeCount}
                                         />
                                     </div>
                                 </div>
