@@ -1,10 +1,10 @@
-const Likes = require('../../model/likes')
+const likes = require('../../model/like')
 
 
 const addLike = async (req, res) => {
     const { postId, username } = req.body
     try {
-        const newLike = new Likes({ postId, username });
+        const newLike = new likes({ postId, username });
         await newLike.save();
         res.json(newLike);
     } catch (error) {
@@ -14,7 +14,8 @@ const addLike = async (req, res) => {
 
 const getAllLikes = async (req, res) => {
   try {
-    const like = await Likes.find();
+      const like = await likes.find();
+      console.log(like);
     res.json(like);
   } catch (error) {
     console.log(error);

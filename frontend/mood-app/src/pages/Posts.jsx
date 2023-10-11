@@ -22,18 +22,15 @@ const Posts = () => {
 
     const allLikes = async () => {
         try {
-            const response = await fetch('http://localhost:4000/posts/likes', {
-                method: 'GET',
-                headers: {
-                    'Content-Type': 'application/json'
-                }
-            })
+            const allTheLikes = await fetch('http://localhost:4000/posts/likes')
               .then((response) => response.json())
-            .then((data) => setLikes(data))
+                .then((data) => setLikes(data))
             console.log(data);  
+            console.log('yo');  
         } catch (error) {
             console.log(error);
         }
+        allTheLikes()
     }
 
 //     useEffect(() => {
@@ -51,7 +48,7 @@ const Posts = () => {
             })
             const data = await response.json()
             console.log(data)
-            setPostLike(response)
+            setPostLike(data)
         } catch (error) {
             console.log(error);
         }
@@ -113,7 +110,7 @@ const Posts = () => {
                                         <Likes
                                             key={post._id}
                                             onLike={() => addLike(post._id, post.username)}
-                                            likeCount={ post.likeCount}
+                                            likeCount={post.likeCount}
                                         />
                                     </div>
                                 </div>
