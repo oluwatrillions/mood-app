@@ -56,4 +56,16 @@ const getPost = async (req, res) => {
     res.json(foundPost)
 }
 
-module.exports = {getAllPosts, updatePost, deletePost, getPost, upload}
+const likePost = async (req, res) => {
+    try {
+        const postToLike = await Posts.findOne({ _id: req.params.id }).exec()
+        if (!postToLike) return res.status(400).json({ message: 'Post not found' })
+        postToLike.likeCount += 1
+        await postToLike.save()
+        res.json({message: 'Post liked successfully'})
+    } catch (error) {
+        console.log(error);
+    }
+}
+
+module.exports = {getAllPosts, updatePost, deletePost, getPost, upload, likePost}
