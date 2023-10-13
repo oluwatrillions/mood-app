@@ -12,6 +12,7 @@ const Posts = () => {
     const [postLike, setPostLike] = useState([])
     const [likedBy, setLikedBy] = useState([])
     const [likes, setLikes] = useState([])
+    const [numberOfLikes, setNumberOfLikes] = useState(0)
 
     const handleLike = (id) => {
         setLikes((prevState) => ({
@@ -54,10 +55,20 @@ const Posts = () => {
         }
     }
 
-    // <div className="like-count">
-    //           <FcLike onClick={onLike} />
-    //           <h5>{likes}</h5>
-    //       </div>
+    const likePost = async (id) => {
+        try {
+            const response = await fetch(`http://localhost:4000/posts/like/${id}`, {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                }
+            })
+            const data = await response.json()
+            console.log(data);
+        } catch (error) {
+            console.log(error);
+        }
+    }
 
     useEffect(() => {
         AllPosts();
@@ -110,8 +121,9 @@ const Posts = () => {
                                         <Likes
                                             key={post._id}
                                             onLike={() => addLike(post._id, post.username)}
-                                            likeCount={post.likeCount}
-                                        />
+                        
+                                    />
+                                    <h3 onClick={()=> likePost(post._id)}>{ post.likeCount}</h3>
                                     </div>
                                 </div>
                             </div>

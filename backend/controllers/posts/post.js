@@ -29,7 +29,6 @@ const createPost = async (req, res) => {
     const image = req.file.filename
     const text = req.body.text
     const likeCount= req.body.likeCount
-    const likedBy= req.body.likedBy
     
     if (!text || !image) return res.json({ message: 'Please fill the following fields' })
 
@@ -41,7 +40,6 @@ const createPost = async (req, res) => {
             image,
             username,
             likeCount,
-            likedBy
         })
         res.status(201).json(newPost)
     } catch (error) {
