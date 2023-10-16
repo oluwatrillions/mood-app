@@ -23,8 +23,18 @@ const Post = new Schema({
         default: Date.now()
     },
     likeCount: {
-        type: Number,
-        default: 0
+        count: {
+            type: Number,
+            default: 0
+        },
+        postId: {
+            type: mongoose.Schema.Types.ObjectId,
+            ref: 'Post',
+        },
+        username: {
+            type: mongoose.Schema.Types.String,
+            ref: 'Post',
+        }
     }
 })
 

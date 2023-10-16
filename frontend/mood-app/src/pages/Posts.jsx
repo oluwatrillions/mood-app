@@ -55,13 +55,14 @@ const Posts = () => {
         }
     }
 
-    const likePost = async (id) => {
+    const likePost = async (postId, username) => {
         try {
-            const response = await fetch(`http://localhost:4000/posts/like/${id}`, {
+            const response = await fetch(`http://localhost:4000/posts/like/${postId}`, {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json'
-                }
+                },
+                body: JSON.stringify({postId, username})
             })
             const data = await response.json()
             console.log(data);
@@ -120,10 +121,9 @@ const Posts = () => {
                                     <div className="like-count">
                                         <Likes
                                             key={post._id}
-                                            onLike={() => addLike(post._id, post.username)}
-                        
-                                    />
-                                    <h3 onClick={()=> likePost(post._id)}>{ post.likeCount}</h3>
+                                            onLike={()=> likePost(post.likeCount.postId, post.likeCount.username)}
+                                            likeCount={post.likeCount.count}
+                                        />
                                     </div>
                                 </div>
                             </div>
