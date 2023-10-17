@@ -64,6 +64,8 @@ const Posts = () => {
                 },
                 body: JSON.stringify({postId, username})
             })
+
+            console.log(response);
             const data = await response.json()
             console.log(data);
         } catch (error) {

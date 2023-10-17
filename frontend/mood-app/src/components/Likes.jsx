@@ -1,7 +1,6 @@
-import React, { useContext, useState } from 'react'
+import React from 'react'
 import '../pages//Posts.css'
 import {FcLike} from 'react-icons/fc'
-import AuthContext from '../Contexts/AuthContext'
 
 const Likes = ({onLike, likeCount}) => {
      

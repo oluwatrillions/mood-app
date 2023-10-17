@@ -4,12 +4,10 @@ const likeSchema = new mongoose.Schema({
     postId: {
         type: mongoose.Schema.Types.ObjectId,
         ref: 'Post',
-        required: true
     },
     username: {
         type: mongoose.Schema.Types.String,
-        ref: 'Post',
-        required: true
+        ref: 'Users',
     }
 });
 

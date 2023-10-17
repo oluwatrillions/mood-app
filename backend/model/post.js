@@ -20,7 +20,7 @@ const Post = new Schema({
     },
     postedAt: {
         type: Date,
-        default: Date.now()
+        default: Date.now
     },
     likeCount: {
         count: {

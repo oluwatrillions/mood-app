@@ -3,10 +3,12 @@ const likes = require('../../model/like')
 
 const addLike = async (req, res) => {
     const { postId, username } = req.body
+    console.log(postId, username);
     try {
         const newLike = new likes({ postId, username });
         await newLike.save();
         res.json(newLike);
+        console.log(newLike, 1);
     } catch (error) {
         console.log(error);
     }
