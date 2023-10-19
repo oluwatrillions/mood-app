@@ -57,7 +57,7 @@ const getPost = async (req, res) => {
 }
 
 const likePost = async (req, res) => {
-    const postId = req.params.id.trim()
+    const postId = req.params.id
     const username = req.body
     try {
         const postToLike = await Posts.findOne({ _id: postId }).exec()

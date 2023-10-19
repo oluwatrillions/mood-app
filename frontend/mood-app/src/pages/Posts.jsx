@@ -123,7 +123,7 @@ const Posts = () => {
                                     <div className="like-count">
                                         <Likes
                                             key={post._id}
-                                            onLike={()=> likePost(post.likeCount.postId, post.likeCount.username)}
+                                            onLike={()=> likePost(post._id, user.username)}
                                             likeCount={post.likeCount.count}
                                         />
                                     </div>
