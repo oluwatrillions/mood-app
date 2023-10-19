@@ -124,7 +124,7 @@ const Posts = () => {
                                         <Likes
                                             key={post._id}
                                             onLike={()=> likePost(post._id, user.username)}
-                                            likeCount={post.likeCount.count}
+                                            likeCount={post.count}
                                         />
                                     </div>
                                 </div>

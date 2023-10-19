@@ -22,11 +22,11 @@ const Post = new Schema({
         type: Date,
         default: Date.now
     },
-    likeCount: {
-        count: {
+    count: {
             type: Number,
             default: 0
         },
+    likeCount: [{
         postId: {
             type: mongoose.Schema.Types.ObjectId,
             ref: 'Post',
@@ -35,7 +35,7 @@ const Post = new Schema({
             type: mongoose.Schema.Types.String,
             ref: 'User',
         }
-    }
+    }]
 })
 
 module.exports = mongoose.model('Post', Post)
