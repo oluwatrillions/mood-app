@@ -33,7 +33,7 @@ const Post = new Schema({
         },
         username: {
             type: mongoose.Schema.Types.String,
-            ref: 'User',
+            ref: 'Users',
         }
     }]
 })
