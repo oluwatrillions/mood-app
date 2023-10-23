@@ -64,10 +64,7 @@ const Posts = () => {
                 },
                 body: JSON.stringify({postId, username})
             })
-
-            console.log(response);
             const data = await response.json()
-            console.log(data);
         } catch (error) {
             console.log(error);
         }
@@ -85,7 +82,7 @@ const Posts = () => {
         <div className='posts-div'>
             <div className='all-posts'>
                 {user &&
-                    posts.map((post) => {
+                    posts.map((post, index) => {
                         return <div key={post._id} className='posts'>
                             <Link to={`/posts/${post._id}`}>
                                 <div className='split'>
