@@ -63,8 +63,7 @@ const likePost = async (req, res) => {
         const postToLike = await Posts.findOne({ _id: postId }).exec()
         if (!postToLike) return res.status(400).json({ message: 'Post not found' })
         postToLike.count += 1
-        postToLike.likeCount.push({postId: postId})
-        postToLike.likeCount.push({username: username})
+        postToLike.likeCount.push({postId, username})
         await postToLike.save()
         res.json(postToLike)
     } catch (error) {
