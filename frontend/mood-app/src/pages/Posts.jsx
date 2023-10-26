@@ -4,6 +4,7 @@ import { Link } from 'react-router-dom'
 import AuthContext from '../Contexts/AuthContext'
 import UserImage from '../components/UserImage'
 import Likes from '../components/Likes'
+import Comments from '../components/Comments'
 
 const Posts = () => {
 
@@ -117,13 +118,18 @@ const Posts = () => {
                                             <h4 className="poster">{post.name}</h4>
                                             <h5 className='post-time'>{post.postedAt}</h5>
                                         </div>
-                                    <div className="like-count">
-                                        <Likes
-                                            key={post._id}
-                                            onLike={user.username !== post.username ? ()=> likePost(post._id, user.username) : null}
-                                            likeCount={post.count}
-                                        />
-                                    </div>
+                                        <div className='reactions'>
+                                            <div className="like-count">
+                                                <Likes
+                                                    key={post._id}
+                                                    onLike={user.username !== post.username ? ()=> likePost(post._id, user.username) : null}
+                                                    likeCount={post.count}
+                                                />
+                                            </div>
+                                            <div className='replies'>
+                                                <Comments/>
+                                            </div>
+                                        </div>
                                 </div>
                             </div>
                     }).reverse()

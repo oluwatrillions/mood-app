@@ -121,3 +121,17 @@
 .like-count h5 {
     color: aliceblue;
 }
+
+.msg-img {
+    color: white;
+}
+
+.comment-div {
+    display: flex;
+    color: white;
+}
+
+.reactions {
+    display: flex;
+    gap: .5em;
+}
