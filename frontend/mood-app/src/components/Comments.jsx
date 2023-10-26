@@ -7,7 +7,7 @@ const Comments = () => {
       <div className='comments'>
           <div className='comment-div'>
             <BiMessageRoundedDots className='msg-img' />
-            <h5>3</h5>
+            <h5>0</h5>
           </div>
     </div>
   )
