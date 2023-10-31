@@ -116,7 +116,7 @@ const Posts = () => {
                                 
                                         <div className="time">
                                             <h4 className="poster">{post.name}</h4>
-                                            <h5 className='post-time'>{post.postedAt}</h5>
+                                            <h5 className='post-time'>@{post.username}</h5>
                                         </div>
                                         <div className='reactions'>
                                             <div className="like-count">

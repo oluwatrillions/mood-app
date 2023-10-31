@@ -8,6 +8,7 @@ router.put('/:id', upload, PostController.updatePost)
 router.delete('/:id', PostController.deletePost)
 router.get('/:id', PostController.getPost)
 router.post('/like/:id', PostController.likePost)
+router.post('/comments/:id', PostController.userComment)
 
 
 module.exports = router

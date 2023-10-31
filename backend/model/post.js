@@ -35,6 +35,19 @@ const Post = new Schema({
             type: mongoose.Schema.Types.String,
             ref: 'Users',
         }
+    }],
+    comments: [{
+        postId: {
+            type: mongoose.Schema.Types.ObjectId,
+            ref: 'Post'
+        },
+        username: {
+            type: mongoose.Schema.Types.String,
+            ref: 'Users'
+        }, 
+        comment: {
+            type: String,
+        }
     }]
 })
 

@@ -77,4 +77,24 @@ const likePost = async (req, res) => {
     }
 }
 
-module.exports = {getAllPosts, updatePost, deletePost, getPost, upload, likePost}
+const userComment = async (req, res) => {
+    const postId = req.params.id
+    const username = req.body.username
+    const comment = req.body.comment
+
+    try {
+        const comments = await Posts.findOne({ _id: postId }).exec()
+        if (!comments) return res.json({message:'No comments with such id'})
+        
+        comments.postId = postId
+        comments.username = username
+        comments.comment = comment
+
+        await comments.save()
+        res.status(201).json({message: 'Comments added successfully'})
+    } catch (error) {
+        console.log(error);
+    }
+}
+
+module.exports = {getAllPosts, updatePost, deletePost, getPost, upload, likePost, userComment}

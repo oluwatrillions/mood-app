@@ -83,7 +83,7 @@
 .post-detail {
     display: flex;
     height: 8vh;
-    margin: .5em 0 0 .3em;
+    margin: .3em;
 }
 
 .time {
@@ -112,10 +112,12 @@
 .post-time {
     color: azure;
     font-weight: 100;
+    width: 6em;    
 }
 
 .like-count {
     display: flex;
+    gap: .1em;
 }
 
 .like-count h5 {
@@ -129,6 +131,11 @@
 .comment-div {
     display: flex;
     color: white;
+    gap: .1em;
+}
+
+.comment-div h5 {
+    margin-top: -.1em;
 }
 
 .reactions {
