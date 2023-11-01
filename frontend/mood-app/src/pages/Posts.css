@@ -31,6 +31,7 @@
     display: flex;
     flex-direction: column;
     justify-content: space-between;
+    position: relative;
 }
 
 .split {
@@ -141,4 +142,34 @@
 .reactions {
     display: flex;
     gap: .5em;
+}
+
+.user-cmt {
+    display: none;
+    position: absolute;
+    inset: 0vw 0vh;
+    background-color: transparent;
+}
+
+.user-cmt input {
+    width: 25vw;
+    height: 50vh;
+    outline: none;
+    border: none;
+    border-radius: 1em;
+}
+
+.user-cmt button {
+    height: 3em;
+    width: 25vw;
+    outline: none;
+    border: none;
+    font-size: 1.3em;
+    color: rgb(78, 76, 76);
+    border-radius: 1em;
+    margin-top: .1em;
+}
+
+.show-cmt {
+    display: block;
 }

@@ -1,4 +1,4 @@
-import React, { useContext, useEffect, useState } from 'react'
+import React, { useContext, useEffect, useState, useRef } from 'react'
 import './Posts.css'
 import { Link } from 'react-router-dom'
 import AuthContext from '../Contexts/AuthContext'
@@ -13,31 +13,7 @@ const Posts = () => {
     const [postLike, setPostLike] = useState([])
     const [likedBy, setLikedBy] = useState([])
     const [likes, setLikes] = useState([])
-    const [numberOfLikes, setNumberOfLikes] = useState(0)
-
-    const handleLike = (id) => {
-        setLikes((prevState) => ({
-            ...prevState,
-            [id]: (prevState[id] || 0) + 1
-        }))     
-    }  
-
-    const allLikes = async () => {
-        try {
-            const allTheLikes = await fetch('http://localhost:4000/posts/likes')
-              .then((response) => response.json())
-                .then((data) => setLikes(data))
-            console.log(data);  
-            console.log('yo');  
-        } catch (error) {
-            console.log(error);
-        }
-        allTheLikes()
-    }
-
-//     useEffect(() => {
-//     allLikes()
-// }, [])
+    const [numberOfLikes, setNumberOfLikes] = useState(0) 
 
     const addLike = async (postId, username) => {
         try {
@@ -78,6 +54,11 @@ const Posts = () => {
     const date = new Date();
     const formattedDate = `${date.getDate()}-${date.getMonth() + 1}-${date.getFullYear()}`;
 
+    const commmentRef = useRef()
+
+    const replyRef = () => {
+       commmentRef.current.classList.add('show-cmt') 
+    }
 
     return (
         <div className='posts-div'>
@@ -127,7 +108,15 @@ const Posts = () => {
                                                 />
                                             </div>
                                             <div className='replies'>
-                                                <Comments/>
+                                                 <div className="user-cmt" ref={commmentRef}>
+                                                    <input type="text" name='comment' />
+                                                    <button>Submit Comment</button>
+                                                </div>
+                                                <Comments 
+                                                    replyRef={replyRef} 
+                                                    replyTo={post.text}
+                                                    replyAt={post.username}
+                                                />
                                             </div>
                                         </div>
                                 </div>
