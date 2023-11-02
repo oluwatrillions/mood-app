@@ -5,6 +5,7 @@ import AuthContext from '../Contexts/AuthContext'
 import UserImage from '../components/UserImage'
 import Likes from '../components/Likes'
 import Comments from '../components/Comments'
+import ReplyToMessage from './ReplyToMessage'
 
 const Posts = () => {
 
@@ -109,13 +110,13 @@ const Posts = () => {
                                             </div>
                                             <div className='replies'>
                                                  <div className="user-cmt" ref={commmentRef}>
-                                                    <input type="text" name='comment' />
-                                                    <button>Submit Comment</button>
+                                                    <ReplyToMessage
+                                                        replyTo={post.text}
+                                                        replyAt={post.username}
+                                                    />
                                                 </div>
                                                 <Comments 
                                                     replyRef={replyRef} 
-                                                    replyTo={post.text}
-                                                    replyAt={post.username}
                                                 />
                                             </div>
                                         </div>
