@@ -83,18 +83,39 @@ const userComment = async (req, res) => {
     const comment = req.body.comment
 
     try {
-        const comments = await Posts.findOne({ _id: postId }).exec()
-        if (!comments) return res.json({message:'No comments with such id'})
+        const commentByUser = await Posts.findOne({ _id: postId }).exec()
+        if (!commentByUser) return res.json({message:'No comments with such id'})
         
-        comments.postId = postId
-        comments.username = username
-        comments.comment = comment
+        commentByUser.postId = postId
+        commentByUser.username = username
+        commentByUser.comment = comment
 
-        await comments.save()
-        res.status(201).json({message: 'Comments added successfully'})
+        await commentByUser.save()
+        res.status(201).json(commentByUser)
+        console.log(commentByUser);
     } catch (error) {
         console.log(error);
     }
 }
 
-module.exports = {getAllPosts, updatePost, deletePost, getPost, upload, likePost, userComment}
+const allComments = async (req, res) => {
+    const postId = req.params.id
+    const username = req.body.username
+    const comment = req.body.comment
+
+    try {
+        const userComments = await Posts.findOne({ _id: postId }).exec()
+        if (!userComments) return res.json({ message: 'No comments on this post' })
+        
+        userComments.comments.push({ postId, username, comment })
+
+        userComments.commentCount = userComments.comments.length 
+
+        await userComments.save()
+        res.status(200).json({message: 'Comments added to post successfully'})
+    } catch (error) {
+        console.log(error);
+    }
+}
+
+module.exports = {getAllPosts, updatePost, deletePost, getPost, upload, likePost, userComment, allComments}

@@ -1,11 +1,15 @@
-import React, {useState} from 'react'
+import React, { useState } from 'react'
+import './Posts.css'
 
-const ReplyToMessage = ({replyAt, replyTo}) => {
+const ReplyToMessage = ({replyAt, replyTo, onReply}) => {
   return (
-    <div>
-        <h5>{replyTo }</h5>
-        <h5>{replyAt }</h5>
-        <button>Submit Comment</button>
+      <div className='reply-div'>
+          <form onSubmit={onReply}>
+            <h5>{replyTo }</h5>
+            <h5>Replying to @{replyAt}</h5>
+            <input type="text" name='comment' />
+            <button>Submit Comment</button>
+          </form>
     </div>
   )
 }

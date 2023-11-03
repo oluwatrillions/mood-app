@@ -151,15 +151,19 @@
     background-color: transparent;
 }
 
-.user-cmt input {
-    width: 25vw;
-    height: 50vh;
-    outline: none;
-    border: none;
-    border-radius: 1em;
+.reply-div{
+    background-color: aliceblue;
 }
 
-.user-cmt button {
+.reply-div input {
+    width: 25vw;
+    height: 10vh;
+    outline: none;
+    border: none;
+    background-color: transparent;
+}
+
+.reply-div button {
     height: 3em;
     width: 25vw;
     outline: none;
@@ -168,6 +172,7 @@
     color: rgb(78, 76, 76);
     border-radius: 1em;
     margin-top: .1em;
+    background-color: transparent;
 }
 
 .show-cmt {

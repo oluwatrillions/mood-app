@@ -36,6 +36,10 @@ const Post = new Schema({
             ref: 'Users',
         }
     }],
+    commentCount: {
+        type: Number,
+        default: 0
+    },
     comments: [{
         postId: {
             type: mongoose.Schema.Types.ObjectId,
