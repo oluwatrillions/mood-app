@@ -100,8 +100,7 @@ const userComment = async (req, res) => {
 
 const allComments = async (req, res) => {
     const postId = req.params.id
-    const username = req.body.username
-    const comment = req.body.comment
+    const { username, comment } = req.body
 
     try {
         const userComments = await Posts.findOne({ _id: postId }).exec()
@@ -112,6 +111,7 @@ const allComments = async (req, res) => {
         userComments.commentCount = userComments.comments.length 
 
         await userComments.save()
+        console.log(userComments);
         res.status(200).json({message: 'Comments added to post successfully'})
     } catch (error) {
         console.log(error);

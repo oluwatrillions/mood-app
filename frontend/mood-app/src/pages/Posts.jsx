@@ -63,7 +63,7 @@ const Posts = () => {
 
     const commentOnMessage = async (postId, username, comment) => {
         try {
-            const response = await fetch(`http://localhost:4000/posts/comment/${postId}`, {
+            const response = await fetch(`http://localhost:4000/posts/comments/${postId}`, {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json'
@@ -71,6 +71,7 @@ const Posts = () => {
                 body: JSON.stringify({ postId, username, comment })
             })
             const data = await response.json()
+            console.log(data);
         } catch (error) {
             console.log(error);
         }
@@ -126,14 +127,16 @@ const Posts = () => {
                                             <div className='replies'>
                                                 <div className="user-cmt" ref={commmentRef}>
                                                     <ReplyToMessage
+                                                        key={post._id}
                                                         replyTo={post.text}
                                                         replyAt={post.username}
-                                                        onReply={()=> commentOnMessage(post._id, post.username, post.comments.comment)}
+                                                        onReply={()=> commentOnMessage(post._id, user.username, post.comments.comment)}
                                                     />
                                                 </div>
                                                 <Comments 
+                                                    key={post._id}
                                                     replyRef={replyRef}
-                                                    postReplies={post.comments}
+                                                    postReplies={post.comments.comment}
                                                     count={post.commentCount} 
                                                 />
                                             </div>
