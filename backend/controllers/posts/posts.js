@@ -88,7 +88,7 @@ const userComment = async (req, res) => {
         
         commentByUser.postId = postId
         commentByUser.username = username
-        commentByUser.comment = comment
+        commentByUser.comments.comment = comment
 
         await commentByUser.save()
         res.status(201).json(commentByUser)
@@ -100,7 +100,8 @@ const userComment = async (req, res) => {
 
 const allComments = async (req, res) => {
     const postId = req.params.id
-    const { username, comment } = req.body
+    const username = req.body.username
+    const comment = req.body.comment
 
     try {
         const userComments = await Posts.findOne({ _id: postId }).exec()
