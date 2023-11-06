@@ -2,7 +2,8 @@ import React, { useRef } from 'react'
 import '../pages/Posts.css'
 import {BiMessageRoundedDots} from 'react-icons/bi'
 
-const Comments = ({replyRef, postReplies, count}) => {
+const Comments = ({ replyRef, postReplies, count }) => {
+    console.log(postReplies);
 
   return (
       <div className='comments'>
