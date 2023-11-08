@@ -86,9 +86,7 @@ const userComment = async (req, res) => {
         const commentByUser = await Posts.findOne({ _id: postId }).exec()
         if (!commentByUser) return res.json({message:'No comments with such id'})
         
-        commentByUser.postId = postId
-        commentByUser.username = username
-        commentByUser.comments.comment = comment
+        commentByUser.comments.push({ postId, username, comment })
 
         await commentByUser.save()
         res.status(201).json(commentByUser)
@@ -101,13 +99,17 @@ const userComment = async (req, res) => {
 const allComments = async (req, res) => {
     const postId = req.params.id
     const username = req.body.username
-    const comment = req.body.comment
+    const comment = req.body
+    console.log(postId);
 
     try {
         const userComments = await Posts.findOne({ _id: postId }).exec()
+        console.log(userComments, 1);
         if (!userComments) return res.json({ message: 'No comments on this post' })
         
-        userComments.comments.push({ postId, username, comment })
+        userComments.comments.postId = postId
+        userComments.comments.username = username
+        userComments.comments.comment = comment
 
         userComments.commentCount = userComments.comments.length 
 

@@ -63,7 +63,7 @@ const Posts = () => {
 
     const commentOnMessage = async (postId, username, comment) => {
         try {
-            const response = await fetch(`http://localhost:4000/posts/comments/${postId}`, {
+            const response = await fetch(`http://localhost:4000/posts/comment/${postId}`, {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json'
@@ -72,10 +72,12 @@ const Posts = () => {
             })
             const data = await response.json()
             console.log(data);
+            console.log(postId);
         } catch (error) {
             console.log(error);
         }
     }
+    commentOnMessage()
 
     return (
         <div className='posts-div'>

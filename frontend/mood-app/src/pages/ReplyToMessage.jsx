@@ -7,7 +7,7 @@ const ReplyToMessage = ({ replyAt, replyTo, onReply }) => {
 
     const comment = async (id) => {
         try {
-            const response = await fetch(`http://localhost:4000/comment/${id}`, {
+            const response = await fetch(`http://localhost:4000/posts/comment/${id}`, {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json'
@@ -21,9 +21,10 @@ const ReplyToMessage = ({ replyAt, replyTo, onReply }) => {
             console.log(error);
         }
     }
+    comment()
   return (
       <div className='reply-div'>
-          <form onSubmit={onReply}>
+          <form onSubmit={comment}>
             <h5>{replyTo }</h5>
             <h5>Replying to @{replyAt}</h5>
             <input type="text" name='comment' value={userComment} onChange={(e)=> setUserComment(e.target.value)}/>
