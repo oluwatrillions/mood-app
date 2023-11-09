@@ -1,9 +1,9 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import './Posts.css'
 
 const ReplyToMessage = ({ replyAt, replyTo, onReply }) => {
     
-    const [userComment, setUserComment] = useState()
+    const [userComment, setUserComment] = useState([])
 
     const comment = async (id) => {
         try {
@@ -21,7 +21,11 @@ const ReplyToMessage = ({ replyAt, replyTo, onReply }) => {
             console.log(error);
         }
     }
-    comment()
+
+    useEffect(() => {
+        comment()
+    }, [])
+
   return (
       <div className='reply-div'>
           <form onSubmit={comment}>

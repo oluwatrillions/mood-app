@@ -78,7 +78,7 @@ const likePost = async (req, res) => {
 }
 
 const userComment = async (req, res) => {
-    const postId = req.params.id
+    const postId = req.params.postId
     const username = req.body.username
     const comment = req.body.comment
 
