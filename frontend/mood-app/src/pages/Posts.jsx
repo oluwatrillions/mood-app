@@ -140,7 +140,7 @@ const Posts = () => {
                                                 <Comments 
                                                     key={post._id}
                                                     replyRef={replyRef}
-                                                    postReplies={post.comments.comment}
+                                                    postReplies={post.comments}
                                                     count={post.commentCount} 
                                                 />
                                             </div>
