@@ -83,42 +83,44 @@ const userComment = async (req, res) => {
     const comment = req.body.comment
 
     try {
-        const commentByUser = await Posts.findOne({ _id: postId }).exec()
-        if (!commentByUser) return res.json({message:'No comments with such id'})
+        const commentByUser = await Posts.findOne({ postId }).exec()
         
-        commentByUser.comments.push({ postId, username, comment })
+        if (!commentByUser) return res.json({message:'No comments with such id'})
+
+        commentByUser.comments.push({ username, comment })
+        
+        commentByUser.commentCount = commentByUser.comments.length 
 
         await commentByUser.save()
-        res.status(201).json(commentByUser)
-        console.log(commentByUser);
+        res.json(commentByUser)
     } catch (error) {
         console.log(error);
     }
 }
 
-const allComments = async (req, res) => {
-    const postId = req.params.id
-    const username = req.body.username
-    const comment = req.body
-    console.log(postId);
+// const allComments = async (req, res) => {
+//     const postId = req.params.id
+//     const username = req.body.username
+//     const comment = req.body
+//     console.log(postId);
 
-    try {
-        const userComments = await Posts.findOne({ _id: postId }).exec()
-        console.log(userComments, 1);
-        if (!userComments) return res.json({ message: 'No comments on this post' })
+//     try {
+//         const userComments = await Posts.findOne({ _id: postId }).exec()
+//         console.log(userComments, 1);
+//         if (!userComments) return res.json({ message: 'No comments on this post' })
         
-        userComments.comments.postId = postId
-        userComments.comments.username = username
-        userComments.comments.comment = comment
+//         userComments.comments.postId = postId
+//         userComments.comments.username = username
+//         userComments.comments.comment = comment
 
-        userComments.commentCount = userComments.comments.length 
+//         userComments.commentCount = userComments.comments.length 
 
-        await userComments.save()
-        console.log(userComments);
-        res.status(200).json({message: 'Comments added to post successfully'})
-    } catch (error) {
-        console.log(error);
-    }
-}
+//         await userComments.save()
+//         console.log(userComments);
+//         res.status(200).json({message: 'Comments added to post successfully'})
+//     } catch (error) {
+//         console.log(error);
+//     }
+// }
 
-module.exports = {getAllPosts, updatePost, deletePost, getPost, upload, likePost, userComment, allComments}
+module.exports = {getAllPosts, updatePost, deletePost, getPost, upload, likePost, userComment}

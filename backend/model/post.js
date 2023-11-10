@@ -52,7 +52,7 @@ const Post = new Schema({
         comment: {
             type: String,
         }
-    }]
+    }],
 })
 
 module.exports = mongoose.model('Post', Post)

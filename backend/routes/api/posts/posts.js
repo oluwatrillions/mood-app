@@ -9,7 +9,7 @@ router.delete('/:id', PostController.deletePost)
 router.get('/:id', PostController.getPost)
 router.post('/like/:id', PostController.likePost)
 router.post('/comment/:id', PostController.userComment)
-router.post('/comments/:id', PostController.allComments)
+// router.post('/comments/:id', PostController.allComments)
 
 
 module.exports = router

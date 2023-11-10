@@ -61,23 +61,23 @@ const Posts = () => {
        commmentRef.current.classList.add('show-cmt') 
     }
 
-    const commentOnMessage = async (postId, username, comment) => {
+    const [userComment, setUserComment] = useState([])
+
+    const commentOnMessage = async (postId, username, comment) => {        
         try {
             const response = await fetch(`http://localhost:4000/posts/comment/${postId}`, {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json'
                 },
-                body: JSON.stringify({ postId, username, comment })
+                body: JSON.stringify({ username, comment })
             })
             const data = await response.json()
             console.log(data);
-            console.log(postId);
         } catch (error) {
             console.log(error);
         }
     }
-    commentOnMessage()
 
     return (
         <div className='posts-div'>
@@ -129,10 +129,12 @@ const Posts = () => {
                                             <div className='replies'>
                                                 <div className="user-cmt" ref={commmentRef}>
                                                     <ReplyToMessage
-                                                        key={post._id}
+                                                        post={post._id}
                                                         replyTo={post.text}
                                                         replyAt={post.username}
-                                                        onReply={()=> commentOnMessage(post._id, user.username, post.comments.comment)}
+                                                        userComment={userComment}
+                                                        setUserComment={setUserComment}
+                                                        onReply={()=> commentOnMessage(post._id, user.username, userComment)}
                                                     />
                                                 </div>
                                                 <Comments 
