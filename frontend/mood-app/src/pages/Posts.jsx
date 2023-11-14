@@ -11,28 +11,6 @@ const Posts = () => {
 
     const { user, allUsers, posts, AllPosts } = useContext(AuthContext)
 
-    const [postLike, setPostLike] = useState([])
-    const [likedBy, setLikedBy] = useState([])
-    const [likes, setLikes] = useState([])
-    const [numberOfLikes, setNumberOfLikes] = useState(0) 
-
-    const addLike = async (postId, username) => {
-        try {
-            const response = await fetch('http://localhost:4000/posts/likes', {
-                method: 'POST',
-                headers: {
-                    'Content-Type': 'application/json'
-                },
-                body: JSON.stringify({postId, username})
-            })
-            const data = await response.json()
-            console.log(data)
-            setPostLike(data)
-        } catch (error) {
-            console.log(error);
-        }
-    }
-
     const likePost = async (postId, username) => {
         try {
             const response = await fetch(`http://localhost:4000/posts/like/${postId}`, {
@@ -140,7 +118,7 @@ const Posts = () => {
                                                 <Comments 
                                                     key={post._id}
                                                     replyRef={replyRef}
-                                                    postReplies={post.comments}
+                                                    postReplies={post.comments.map(post => post.comment)}
                                                     count={post.commentCount} 
                                                 />
                                             </div>

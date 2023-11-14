@@ -8,7 +8,7 @@ const Comments = ({ replyRef, postReplies, count }) => {
 
   return (
       <div className='comments'>
-          <div className='comment-div' onClick={replyRef}>
+          <div className='comment-div' onClick={replyRef} >
                 <BiMessageRoundedDots className='msg-img' />
               <h5>{count}</h5>
               <h5>{ postReplies}</h5>
