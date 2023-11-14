@@ -4,8 +4,6 @@ import {BiMessageRoundedDots} from 'react-icons/bi'
 
 const Comments = ({ replyRef, postReplies, count }) => {
 
-    console.log(postReplies);
-
   return (
       <div className='comments'>
           <div className='comment-div' onClick={replyRef} >

@@ -35,8 +35,9 @@ const Posts = () => {
 
     const commmentRef = useRef()
 
-    const replyRef = () => {
-       commmentRef.current.classList.add('show-cmt') 
+    const replyRef = (id) => {
+        commmentRef.current.classList.add('show-cmt') 
+        console.log(id);
     }
 
     const [userComment, setUserComment] = useState([])
@@ -117,8 +118,8 @@ const Posts = () => {
                                                 </div>
                                                 <Comments 
                                                     key={post._id}
-                                                    replyRef={replyRef}
-                                                    postReplies={post.comments.map(post => post.comment)}
+                                                    replyRef={()=> replyRef(post._id)}
+                                                    // postReplies={post.comments.map(post => post.comment)}
                                                     count={post.commentCount} 
                                                 />
                                             </div>
