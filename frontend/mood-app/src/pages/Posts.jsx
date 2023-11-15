@@ -119,7 +119,8 @@ const Posts = () => {
                                                 <Comments 
                                                     key={post._id}
                                                     replyRef={()=> replyRef(post._id)}
-                                                    // postReplies={post.comments.map(post => post.comment)}
+                                                    postAuthor={post.comments.map(post=> post.username)}
+                                                    postReplies={post.comments.map(post => post.comment)}
                                                     count={post.commentCount} 
                                                 />
                                             </div>
