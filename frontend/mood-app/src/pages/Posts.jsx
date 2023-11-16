@@ -9,7 +9,7 @@ import ReplyToMessage from './ReplyToMessage'
 
 const Posts = () => {
 
-    const { user, allUsers, posts, AllPosts } = useContext(AuthContext)
+    const { user, allUsers, posts, AllPosts, commentOnMessage, userComment, setUserComment } = useContext(AuthContext)
 
     const likePost = async (postId, username) => {
         try {
@@ -40,23 +40,6 @@ const Posts = () => {
         console.log(id);
     }
 
-    const [userComment, setUserComment] = useState([])
-
-    const commentOnMessage = async (postId, username, comment) => {        
-        try {
-            const response = await fetch(`http://localhost:4000/posts/comment/${postId}`, {
-                method: 'POST',
-                headers: {
-                    'Content-Type': 'application/json'
-                },
-                body: JSON.stringify({ username, comment })
-            })
-            const data = await response.json()
-            console.log(data);
-        } catch (error) {
-            console.log(error);
-        }
-    }
 
     return (
         <div className='posts-div'>

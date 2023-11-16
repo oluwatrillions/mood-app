@@ -117,6 +117,24 @@ export const AuthProvider = ({ children }) => {
         }
     }
 
+    const [userComment, setUserComment] = useState([])
+
+    const commentOnMessage = async (postId, username, comment) => {        
+        try {
+            const response = await fetch(`http://localhost:4000/posts/comment/${postId}`, {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify({ username, comment })
+            })
+            const data = await response.json()
+            console.log(data);
+        } catch (error) {
+            console.log(error);
+        }
+    }
+
     
     const UserContext = {
         user: user,
@@ -131,7 +149,10 @@ export const AuthProvider = ({ children }) => {
         allUsers: allUsers,
         deleteSuccess: deleteSuccess,
         posts: posts,
-        AllPosts: AllPosts
+        AllPosts: AllPosts,
+        commentOnMessage: commentOnMessage,
+        userComment: userComment,
+        setUserComment: setUserComment
     }
     
 

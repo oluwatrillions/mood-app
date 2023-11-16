@@ -6,6 +6,7 @@ import UserImage from '../components/UserImage'
 import AuthContext from '../Contexts/AuthContext'
 import {FcLike} from 'react-icons/fc'
 import Likes from '../components/Likes'
+import Comments from '../components/Comments'
 
 
 const SinglePost = ({likes, count}) => {
@@ -25,7 +26,9 @@ const SinglePost = ({likes, count}) => {
 
     const imageRef = useRef()
 
-    const {user, allUsers, deleteSuccess} = useContext(AuthContext)
+    const { user, allUsers, deleteSuccess, posts } = useContext(AuthContext)
+    
+    console.log(posts);
 
     const Back = () => {
         navigate(-1)
@@ -215,7 +218,16 @@ const SinglePost = ({likes, count}) => {
                         :
                         <h2 onClick={Back} className='go-back'>Back</h2>
                 } 
-            </div>
+                  </div>
+                  {
+                      posts.map((post) => 
+                          <Comments
+                              key={post._id}
+                              postAuthor={post.comments.map}
+                              postReplies={post.comments.comment}
+                          />
+                      )
+                  }
         </div>
         </div>    
       </div>
