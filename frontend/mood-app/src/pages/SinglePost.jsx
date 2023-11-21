@@ -21,12 +21,13 @@ const SinglePost = ({likes, count}) => {
     const deleteRef = useRef(null)
     const editRef = useRef(null)
     const { _id } = useParams()
-    const { userId } = useParams()
     const navigate = useNavigate()
 
     const imageRef = useRef()
 
     const { user, allUsers, deleteSuccess, posts } = useContext(AuthContext)
+
+    console.log(singlePost);
     
 
     const Back = () => {
@@ -89,7 +90,7 @@ const SinglePost = ({likes, count}) => {
             .then((data) => {
                 setSinglePost(data)
                 setEditedPost(data)
-        })
+            });
     }, [])
 
 
@@ -100,31 +101,28 @@ const SinglePost = ({likes, count}) => {
         })
     
 
-    const handleChange = async (e) => {
-        e.preventDefault();
-        const form = new FormData()
-        form.append('title', updatePostDetail.title)
-        form.append('text', updatePostDetail.text)
-        form.append('image', updatePostDetail.image);
+    // const handleChange = async (e) => {
+    //     e.preventDefault();
+    //     const form = new FormData()
+    //     form.append('title', updatePostDetail.title)
+    //     form.append('text', updatePostDetail.text)
+    //     form.append('image', updatePostDetail.image);
 
-        try {
-            const response = await fetch(`http://localhost:4000/posts/${_id}`, {
-                method: 'PUT',
-                data: JSON.stringify(form)
-            })
-                .then((response) => response.json())
-                .then((data) => {
-                    console.log(data)
-                    setSinglePost(data)
-            })
-        } catch (error) {
-            console.log(error);
-        }
-    }   
+    //     try {
+    //         const response = await fetch(`http://localhost:4000/posts/${_id}`, {
+    //             method: 'PUT',
+    //             data: JSON.stringify(form)
+    //         })
+    //             .then((response) => response.json())
+    //             .then((data) => {
+    //                 console.log(data)
+    //                 setSinglePost(data)
+    //         })
+    //     } catch (error) {
+    //         console.log(error);
+    //     }
+    // }   
 
-    useEffect(() => {
-        handleChange()
-    }, [])
 
   return (
       <div className='single-post'>
@@ -140,7 +138,6 @@ const SinglePost = ({likes, count}) => {
                     <div>
                         {
                             allUsers.map((users) => {
-                                console.log(singlePost.comments.map(comment => comment.username));
                                 if (users.username === singlePost.username) {
                                     return <div key={users._id} className='poster-image'>
                                         <Link to={`/users/${users._id}`}>
@@ -229,7 +226,7 @@ const SinglePost = ({likes, count}) => {
                               comment={singlecomment.comment}
                           />
                           
-                     )) 
+                     )).reverse()
                   }
               </div>
         </div>    
