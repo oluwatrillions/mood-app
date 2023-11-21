@@ -10,7 +10,6 @@ import ReplyToMessage from './ReplyToMessage'
 const Posts = () => {
 
     const { user, allUsers, posts, AllPosts, commentOnMessage, userComment, setUserComment } = useContext(AuthContext)
-    console.log(posts);
     const likePost = async (postId, username) => {
         try {
             const response = await fetch(`http://localhost:4000/posts/like/${postId}`, {
@@ -100,23 +99,12 @@ const Posts = () => {
                                                     />
                                                 </div>
                                                 <div className="users-comments">
-                                                    {
-                                                posts.map((poster) => {
-                                                            console.log(post.commentCount);
-                                                            <div className="single-comments">
-                                                                {
-                                                                    poster.comments.map(usercomment => (
-                                                                        <Comments
-                                                                            replyRef={replyRef}
-                                                                            author={usercomment.username}
-                                                                            comment={usercomment.comment}
-                                                                            count={post.commentCount}
-                                                                        />
-                                                                    ))
-                                                                }
-                                                            </div>
-                                            })
-                                                    }
+                                                    <div className="single-comments">
+                                                        <Comments
+                                                            replyRef={replyRef}
+                                                            count={post.commentCount}
+                                                        />
+                                                    </div>
                                                 </div>
                                             </div>
                                         </div>

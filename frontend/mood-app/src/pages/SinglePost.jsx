@@ -28,7 +28,6 @@ const SinglePost = ({likes, count}) => {
 
     const { user, allUsers, deleteSuccess, posts } = useContext(AuthContext)
     
-    console.log(posts);
 
     const Back = () => {
         navigate(-1)
@@ -123,6 +122,9 @@ const SinglePost = ({likes, count}) => {
         }
     }   
 
+    useEffect(() => {
+        handleChange()
+    }, [])
 
   return (
       <div className='single-post'>
@@ -138,6 +140,7 @@ const SinglePost = ({likes, count}) => {
                     <div>
                         {
                             allUsers.map((users) => {
+                                console.log(singlePost.comments.map(comment => comment.username));
                                 if (users.username === singlePost.username) {
                                     return <div key={users._id} className='poster-image'>
                                         <Link to={`/users/${users._id}`}>
@@ -219,7 +222,15 @@ const SinglePost = ({likes, count}) => {
                         <h2 onClick={Back} className='go-back'>Back</h2>
                 } 
                   </div>
-                  <Comments/>
+                  {
+                      singlePost.comments.map((singlecomment) => (
+                          <Comments
+                              author={singlecomment.username}
+                              comment={singlecomment.comment}
+                          />
+                          
+                     )) 
+                  }
               </div>
         </div>    
       </div>

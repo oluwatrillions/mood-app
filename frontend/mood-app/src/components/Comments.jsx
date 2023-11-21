@@ -6,7 +6,6 @@ import AuthContext from '../Contexts/AuthContext'
 const Comments = ({ replyRef, author, comment, count }) => {
 
     const { userComment } = useContext(AuthContext)
-    console.log(author);
 
   return (
       <div className='comments'>
