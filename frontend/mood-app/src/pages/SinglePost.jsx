@@ -219,16 +219,8 @@ const SinglePost = ({likes, count}) => {
                         <h2 onClick={Back} className='go-back'>Back</h2>
                 } 
                   </div>
-                  {
-                      posts.map((post) => 
-                          <Comments
-                              key={post._id}
-                              postAuthor={post.comments.map}
-                              postReplies={post.comments.comment}
-                          />
-                      )
-                  }
-        </div>
+                  <Comments/>
+              </div>
         </div>    
       </div>
   )
