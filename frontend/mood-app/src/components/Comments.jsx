@@ -13,7 +13,7 @@ const Comments = ({ replyRef, author, comment, count, postId }) => {
                 <BiMessageRoundedDots className='msg-img' />
               <h5>{count}</h5>
               <div className="comment-section">
-                <h5>{author}</h5>
+                <h4>{author}</h4>
                 <h5>{comment}</h5>
               </div>
           </div>

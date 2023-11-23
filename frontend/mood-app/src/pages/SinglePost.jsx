@@ -27,7 +27,6 @@ const SinglePost = ({likes, count}) => {
 
     const { user, allUsers, deleteSuccess, posts } = useContext(AuthContext)
 
-    console.log(singlePost);
     
 
     const Back = () => {
@@ -126,11 +125,11 @@ const SinglePost = ({likes, count}) => {
 
   return (
       <div className='single-post'>
-        <div className="featured-post">
+        <div className={singlePost.commentCount > 0 ? 'see-comments' : 'featured-post'}>
         <div className="featured-img">
             <img src={`http://localhost:4000/public/images/${singlePost.image}`} alt="" />
         </div>
-        <div className="text-detail">
+        <div className={singlePost.commentCount > 0 ? 'see-all-comments' : 'text-detail'}>
             <h3 className="titled">{singlePost.title}</h3>
             <h4 className="text">{singlePost.text}</h4>
             <div className="poster-detail">
@@ -221,10 +220,12 @@ const SinglePost = ({likes, count}) => {
                   </div>
                   {
                       singlePost.comments && singlePost.comments.map((singlecomment) => (
-                          <Comments
-                              author={singlecomment.username}
-                              comment={singlecomment.comment}
-                          />
+                          <div className="commenters">
+                              <Comments
+                                  author={singlecomment.username}
+                                  comment={singlecomment.comment}
+                              />
+                          </div>
                           
                      )).reverse()
                   }

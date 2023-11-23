@@ -178,3 +178,24 @@
 .show-cmt {
     display: block;
 }
+
+.commenters {
+    margin-left: 1em;
+}
+
+.comment-section {
+    margin-top: -.2em;
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 1em;
+    gap: .1em;
+}
+
+.comment-section h4 {
+    color: rgb(231, 223, 223);
+}
+
+.comment-section h5 {
+    color: white;
+    font-weight: 100;
+}
