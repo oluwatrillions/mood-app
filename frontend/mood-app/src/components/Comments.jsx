@@ -9,7 +9,7 @@ const Comments = ({ replyRef, author, comment, count, postId }) => {
 
   return (
       <div className='comments'>
-          <div className='comment-div' onClick={replyRef} key={postId}>
+          <div className='comment-div' onClick={replyRef} >
                 <BiMessageRoundedDots className='msg-img' />
               <h5>{count}</h5>
               <div className="comment-section">

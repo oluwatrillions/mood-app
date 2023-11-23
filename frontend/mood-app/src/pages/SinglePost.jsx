@@ -25,7 +25,7 @@ const SinglePost = ({likes, count}) => {
 
     const imageRef = useRef()
 
-    const { user, allUsers, deleteSuccess, posts } = useContext(AuthContext)
+    const { user, allUsers, deleteSuccess } = useContext(AuthContext)
 
     
 

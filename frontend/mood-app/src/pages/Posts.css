@@ -144,11 +144,16 @@
     gap: .5em;
 }
 
+.replies {
+    width: 100vw;
+    position: relative;
+}
+
 .user-cmt {
     display: none;
     position: absolute;
-    inset: 0vw 0vh;
-    background-color: transparent;
+    inset: 0 5em;
+    background-color: white;
 }
 
 .reply-div{
@@ -157,7 +162,7 @@
 
 .reply-div input {
     width: 25vw;
-    height: 10vh;
+    height: 40vh;
     outline: none;
     border: none;
     background-color: transparent;
