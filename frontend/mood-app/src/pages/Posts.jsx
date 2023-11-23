@@ -101,6 +101,7 @@ const Posts = () => {
                                                 <div className="users-comments">
                                                     <div className="single-comments">
                                                         <Comments
+                                                            postId={post._id}
                                                             replyRef={replyRef}
                                                             count={post.commentCount}
                                                         />

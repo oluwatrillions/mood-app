@@ -220,7 +220,7 @@ const SinglePost = ({likes, count}) => {
                 } 
                   </div>
                   {
-                      singlePost.comments.map((singlecomment) => (
+                      singlePost.comments && singlePost.comments.map((singlecomment) => (
                           <Comments
                               author={singlecomment.username}
                               comment={singlecomment.comment}

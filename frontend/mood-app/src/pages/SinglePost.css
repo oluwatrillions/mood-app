@@ -16,7 +16,7 @@
 
 .featured-post {
     width: 30vw;
-    height: 65vh;
+    min-height: 65vh;
     background-color: rgb(78, 76, 76);
     display: flex;
     justify-content: flex-start;
