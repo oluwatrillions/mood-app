@@ -8,7 +8,7 @@ const ReplyToMessage = ({ replyAt, replyTo, onReply, userComment, setUserComment
           <form onSubmit={onReply} >
             <h5>{replyTo }</h5>
             <h5>Replying to @{replyAt}</h5>
-            <input type="text" name='comment' value={userComment} onChange={(e)=> setUserComment(e.target.value)}/>
+            <input type="text" maxLength="100" name='comment' value={userComment} onChange={(e)=> setUserComment(e.target.value)}/>
             <button>Submit Comment</button>
           </form>
     </div>

@@ -1,6 +1,6 @@
 @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300&display=swap');
 
-*, div {
+*, div, form {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
@@ -13,6 +13,7 @@
     display: flex;
     justify-content: center;
     padding: 2em 0;
+    position: relative;
 }
 
 .all-posts {
@@ -21,6 +22,7 @@
     justify-content: center;
     flex-wrap: wrap;
     gap: 3em;
+    position: relative;
 }
 
 .posts {
@@ -31,7 +33,6 @@
     display: flex;
     flex-direction: column;
     justify-content: space-between;
-    position: relative;
 }
 
 .split {
@@ -142,30 +143,49 @@
 .reactions {
     display: flex;
     gap: .5em;
+    width: 7vw;
 }
 
 .replies {
-    width: 100vw;
-    position: relative;
+    width: 7vw;
 }
 
 .user-cmt {
     display: none;
+    inset: 0 1em ;
+    background-color: rgba(255, 255, 255, 0.418);
     position: absolute;
-    inset: 0 5em;
-    background-color: white;
 }
 
 .reply-div{
-    background-color: aliceblue;
+    background-color: rgb(255, 255, 255);
+    margin: auto 0;
+    height: 60vh;
+    border-radius: 1em;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.reply-div form {
+    height: 50vh;
+    width: 28vw;
+    display: flex;
+    justify-content: center;
+}
+
+.reply-div h5 {
+    margin: 0 1em;
 }
 
 .reply-div input {
-    width: 25vw;
-    height: 40vh;
+    display: block;
+    width: 28vw;
+    height: 10vh;
+    word-wrap: break-word;
+    white-space: normal;
     outline: none;
     border: none;
-    background-color: transparent;
 }
 
 .reply-div button {
@@ -173,15 +193,16 @@
     width: 25vw;
     outline: none;
     border: none;
+    margin: 0 auto;
     font-size: 1.3em;
     color: rgb(78, 76, 76);
     border-radius: 1em;
-    margin-top: .1em;
-    background-color: transparent;
+    background-color: rgb(106, 188, 199);
 }
 
 .show-cmt {
-    display: block;
+    display: flex;
+    justify-content: center;
 }
 
 .commenters {
