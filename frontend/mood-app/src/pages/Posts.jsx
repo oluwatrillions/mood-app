@@ -32,10 +32,11 @@ const Posts = () => {
     const date = new Date();
     const formattedDate = `${date.getDate()}-${date.getMonth() + 1}-${date.getFullYear()}`;
 
-    const commmentRef = useRef()
+    // creating a ref to display the message being commented on 
+    const commmentRef = useRef({})
 
     const replyRef = (id) => {
-        commmentRef.current.classList.add('show-cmt') 
+        commmentRef.current[id].classList.add('show-cmt') 
         console.log(id);
     }
 
@@ -88,7 +89,7 @@ const Posts = () => {
                                                 />
                                             </div>
                                             <div className='replies'>
-                                                <div className="user-cmt" ref={commmentRef}>
+                                                <div className="user-cmt" ref={(el) => (commmentRef.current[post._id] = el)}>
                                                     <ReplyToMessage
                                                         post={post._id}
                                                         replyTo={post.text}

@@ -1,14 +1,19 @@
 import React, { useEffect, useState } from 'react'
 import './Posts.css'
 
-const ReplyToMessage = ({ replyAt, replyTo, onReply, userComment, setUserComment}) => {
+const ReplyToMessage = ({ post, replyAt, replyTo, onReply, userComment, setUserComment}) => {
 
   return (
       <div className='reply-div'>
-          <form onSubmit={onReply} >
+          <form onSubmit={(e) => onReply(e, post, userComment, setUserComment)} >
             <h5>{replyTo }</h5>
             <h5>Replying to @{replyAt}</h5>
-            <input type="text" maxLength="100" name='comment' value={userComment} onChange={(e)=> setUserComment(e.target.value)}/>
+              <input type="text"
+                  maxLength="100"
+                  name='comment'
+                  value={userComment}
+                  onChange={(e) => setUserComment(e.target.value)} 
+                  />
             <button>Submit Comment</button>
           </form>
     </div>
