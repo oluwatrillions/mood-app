@@ -1,11 +1,8 @@
 import React, { useContext } from 'react'
 import '../pages/Posts.css'
 import {BiMessageRoundedDots} from 'react-icons/bi'
-import AuthContext from '../Contexts/AuthContext'
 
 const Comments = ({ replyRef, author, comment, count, postId }) => {
-
-    const { userComment } = useContext(AuthContext)
 
   return (
       <div className='comments'>

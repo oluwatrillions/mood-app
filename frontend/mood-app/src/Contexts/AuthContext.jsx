@@ -126,7 +126,7 @@ export const AuthProvider = ({ children }) => {
                 headers: {
                     'Content-Type': 'application/json'
                 },
-                body: JSON.stringify({ username, comment })
+                body: JSON.stringify({ postId, username, comment })
             })
             const data = await response.json()
             console.log(data);
