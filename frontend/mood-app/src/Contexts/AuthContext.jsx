@@ -128,8 +128,23 @@ export const AuthProvider = ({ children }) => {
                 },
                 body: JSON.stringify({ postId, username, comment })
             })
+            
             const data = await response.json()
             console.log(data);
+
+            console.log(posts);
+
+            const updatedPosts = posts.map((post) => {
+                if (post._id === data.postId) {
+                    console.log(post._id);
+                    console.log(data.postId);
+                return { ...post, commentCount: data.commentCount };
+            }
+                return post;
+            });
+            
+            setPosts(updatedPosts);
+            setUserComment('');
         } catch (error) {
             console.log(error);
         }

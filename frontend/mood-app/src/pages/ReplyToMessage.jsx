@@ -1,11 +1,11 @@
 import React, { useEffect, useState } from 'react'
 import './Posts.css'
 
-const ReplyToMessage = ({ post, replyAt, replyTo, onReply, userComment, setUserComment}) => {
+const ReplyToMessage = ({ post, replyAt, replyTo, onReply, userComment, setUserComment, replyRef}) => {
 
   return (
       <div className='reply-div'>
-          <form onSubmit={(e) => onReply(e, post, userComment, setUserComment)} >
+          <form onSubmit={onReply} >
             <h5>{replyTo }</h5>
             <h5>Replying to @{replyAt}</h5>
               <input type="text"

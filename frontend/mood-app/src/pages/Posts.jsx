@@ -10,6 +10,7 @@ import ReplyToMessage from './ReplyToMessage'
 const Posts = () => {
 
     const { user, allUsers, posts, AllPosts, commentOnMessage, userComment, setUserComment } = useContext(AuthContext)
+    
     const likePost = async (postId, username) => {
         try {
             const response = await fetch(`http://localhost:4000/posts/like/${postId}`, {
@@ -96,7 +97,7 @@ const Posts = () => {
                                                         replyAt={post.username}
                                                         userComment={userComment}
                                                         setUserComment={setUserComment}
-                                                        onReply={()=> commentOnMessage(post._id, user.username, userComment)}
+                                                        onReply={() => commentOnMessage(post._id, user.username, userComment)}
                                                     />
                                                 </div>
                                                 <div className="users-comments">

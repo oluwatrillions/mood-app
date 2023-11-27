@@ -27,6 +27,7 @@
 
 .see-comments {
     width: 30vw;
+    height: fit-content;
     background-color: rgb(78, 76, 76);
     display: flex;
     justify-content:flex-start;
