@@ -78,13 +78,13 @@ const likePost = async (req, res) => {
 }
 
 const userComment = async (req, res) => {
-    const postId = req.params.postId
+    const postId = req.body.postId
     const { username, comment } = req.body
 
     try {
-        const commentByUser = await Posts.findOneAndUpdate({ postId }).exec()
+        const commentByUser = await Posts.findById({ _id: postId }).exec()
         
-        console.log(commentByUser);
+        console.log(commentByUser._id, 'clicked');
   
         if (!commentByUser) return res.json({message:'No comments with such id'})
 
@@ -95,8 +95,8 @@ const userComment = async (req, res) => {
             
         commentByUser.commentCount = commentByUser.comments.length  
         
-        console.log(commentByUser._id);
-        console.log(commentByUser.commentCount);
+        console.log(commentByUser._id, 'id here');
+        console.log(commentByUser.commentCount, 'count here');
 
         await commentByUser.save()
         res.status(201).json({
