@@ -79,24 +79,20 @@ const likePost = async (req, res) => {
 
 const userComment = async (req, res) => {
     const postId = req.body.postId
-    const { username, comment } = req.body
+    const { username, comment, profileImage } = req.body
 
     try {
-        const commentByUser = await Posts.findById({ _id: postId }).exec()
+        // Using Posts.findOne, Posts.findOneAndUpdate, Posts.findByIdAndUpdate all pointed to the first post in the Posts model even if it wasn't the post clicked. Using findById did point to the clicked post in the client side.
         
-        console.log(commentByUser._id, 'clicked');
-  
-        if (!commentByUser) return res.json({message:'No comments with such id'})
 
-        commentByUser.comments.push({ username, comment })
+        const commentByUser = await Posts.findById({ _id: postId }).exec()
+          
+        if (!commentByUser) return res.json({ message: 'No comments with such id' })
+        
 
-        // const numOfComment = commentByUser.comments.filter(comment => comment._id === postId)
-        // console.log(numOfComment);
+        commentByUser.comments.push({ username, comment, profileImage })
             
         commentByUser.commentCount = commentByUser.comments.length  
-        
-        console.log(commentByUser._id, 'id here');
-        console.log(commentByUser.commentCount, 'count here');
 
         await commentByUser.save()
         res.status(201).json({

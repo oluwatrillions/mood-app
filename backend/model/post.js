@@ -51,6 +51,10 @@ const Post = new Schema({
         }, 
         comment: {
             type: String,
+        },
+        profileImage: {
+            type: mongoose.Schema.Types.String,
+            ref: 'Users'
         }
     }],
 })

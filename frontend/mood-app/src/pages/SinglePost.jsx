@@ -219,8 +219,20 @@ const SinglePost = ({likes, count}) => {
                 } 
                   </div>
                   {
+                      
+                      //   This is where the comments are displayed on the singlePost component
+                      
                       singlePost.comments && singlePost.comments.map((singlecomment) => (
                           <div className="commenters">
+                              {
+                                  allUsers.map((user) => user.username === singlecomment.username ? 
+                                  <UserImage
+                                    username={singlecomment.username}
+                                    profileImage={`http://localhost:4000/public/avatar/` + user.profileImage}
+                                /> : null
+                                  
+                                  )
+                              }
                               <Comments
                                   author={singlecomment.username}
                                   comment={singlecomment.comment}

@@ -219,3 +219,8 @@ input[type='file'] {
     margin-top: 1em;
     cursor: pointer;
 }
+
+.commenters img {
+    width: 2em;
+    height: 2em;
+}
