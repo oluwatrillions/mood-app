@@ -7,7 +7,7 @@ import UserImage from './UserImage'
 
 const Comments = ({ replyRef, author, comment, count }) => {
 
-    const {allUsers} = useContext(AuthContext)
+    const { allUsers } = useContext(AuthContext)
 
   return (
       <div className='comments'>

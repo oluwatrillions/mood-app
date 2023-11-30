@@ -73,6 +73,7 @@
     font-family: 'Poppins', sans-serif;
     word-wrap: break-word;
     font-size: 1.2em;
+    margin-left: .3em;
 }
 
 .text {
@@ -81,6 +82,7 @@
     font-weight: 300;
     word-wrap: break-word;
     font-family: 'Poppins', sans-serif;
+    margin: 0 .3em;
 }
 
 .post-action {
@@ -222,8 +224,15 @@ input[type='file'] {
 
 .commenters {
     display: flex;
-    flex-direction: column;
+    justify-content: space-between;
     margin-bottom: .7em;
+}
+
+.commenters h6 {
+    color: aliceblue;
+    font-weight: 100;
+    margin-right: 2em;
+    margin-top: .5em;
 }
 
 .commenters .msg-img {

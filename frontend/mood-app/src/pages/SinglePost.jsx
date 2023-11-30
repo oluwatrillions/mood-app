@@ -7,6 +7,9 @@ import AuthContext from '../Contexts/AuthContext'
 import {FcLike} from 'react-icons/fc'
 import Likes from '../components/Likes'
 import Comments from '../components/Comments'
+import dayjs from 'dayjs'
+import relativeTime from 'dayjs/plugin/relativeTime';
+
 
 
 const SinglePost = ({likes, count}) => {
@@ -24,10 +27,12 @@ const SinglePost = ({likes, count}) => {
     const navigate = useNavigate()
 
     const imageRef = useRef()
-
-    const { user, allUsers, deleteSuccess } = useContext(AuthContext)
-
     
+    const { user, allUsers, deleteSuccess } = useContext(AuthContext)
+    
+    dayjs.extend(relativeTime);
+    
+    const formattedDate = dayjs(singlePost.postedAt).fromNow();
 
     const Back = () => {
         navigate(-1)
@@ -99,6 +104,7 @@ const SinglePost = ({likes, count}) => {
             image: null
         })
     
+    
 
     // const handleChange = async (e) => {
     //     e.preventDefault();
@@ -154,7 +160,7 @@ const SinglePost = ({likes, count}) => {
                     </div>
                     <div className="poster-name">
                         <h2 className="name">{singlePost.name}</h2>
-                        <h5 className="postime">{ singlePost.postedAt}</h5>
+                        <h5 className="postime">{ formattedDate}</h5>
                           </div>
                     <div className="post-likes">
                         <Likes likeCount={singlePost.count}/>
