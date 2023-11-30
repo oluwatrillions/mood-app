@@ -135,6 +135,8 @@ const SinglePost = ({likes, count}) => {
             <div className="poster-detail">
                 <div className="post-action">                              
                     <div>
+                              {/* Displaying the users image */}
+                              
                         {
                             allUsers.map((users) => {
                                 if (users.username === singlePost.username) {
@@ -142,7 +144,8 @@ const SinglePost = ({likes, count}) => {
                                         <Link to={`/users/${users._id}`}>
                                                 <UserImage
                                                     username = {users.username}
-                                                    profileImage={`http://localhost:4000/public/avatar/` + users.profileImage} />
+                                                    profileImage={`http://localhost:4000/public/avatar/` + users.profileImage}
+                                                />
                                         </Link>    
                                     </div> 
                                 }
@@ -150,9 +153,14 @@ const SinglePost = ({likes, count}) => {
                         }
                     </div>
                     <div className="poster-name">
-                              <h2 className="name">{singlePost.name} <span><Likes /><h5>{ likes}</h5></span></h2>
+                        <h2 className="name">{singlePost.name}</h2>
                         <h5 className="postime">{ singlePost.postedAt}</h5>
-                          </div>    
+                          </div>
+                    <div className="post-likes">
+                        <Likes likeCount={singlePost.count}/>
+                        <Comments count={singlePost.commentCount}/>      
+                    </div>
+                    
                 </div>
                 {
                     user.username === singlePost.username ? 
@@ -224,15 +232,6 @@ const SinglePost = ({likes, count}) => {
                       
                       singlePost.comments && singlePost.comments.map((singlecomment) => (
                           <div className="commenters">
-                              {
-                                  allUsers.map((user) => user.username === singlecomment.username ? 
-                                  <UserImage
-                                    username={singlecomment.username}
-                                    profileImage={`http://localhost:4000/public/avatar/` + user.profileImage}
-                                /> : null
-                                  
-                                  )
-                              }
                               <Comments
                                   author={singlecomment.username}
                                   comment={singlecomment.comment}
@@ -241,9 +240,9 @@ const SinglePost = ({likes, count}) => {
                           
                      )).reverse()
                   }
-              </div>
+            </div>
         </div>    
-      </div>
+    </div>
   )
 }
 

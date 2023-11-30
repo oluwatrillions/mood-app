@@ -220,7 +220,14 @@ input[type='file'] {
     cursor: pointer;
 }
 
-.commenters img {
-    width: 2em;
-    height: 2em;
+.commenters {
+    display: flex;
+    flex-direction: column;
+    padding-bottom: 1em;
+}
+
+.post-likes {
+    display: flex;
+    gap: .5em;
+    margin-top: .5em;
 }

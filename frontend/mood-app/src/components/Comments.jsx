@@ -2,8 +2,12 @@ import React, { useContext } from 'react'
 import '../pages/Posts.css'
 import {BiMessageRoundedDots} from 'react-icons/bi'
 import AuthContext from '../Contexts/AuthContext'
+import UserImage from './UserImage'
+
 
 const Comments = ({ replyRef, author, comment, count }) => {
+
+    const {allUsers} = useContext(AuthContext)
 
   return (
       <div className='comments'>
@@ -11,8 +15,21 @@ const Comments = ({ replyRef, author, comment, count }) => {
                 <BiMessageRoundedDots className='msg-img' />
               <h5>{count}</h5>
               <div className="comment-section">
-                <h4>{author}</h4>
-                <h5>{comment}</h5>
+                  <div className="comment-avatar">
+                      {
+                        allUsers.map((user) => user.username === author ? 
+                            <UserImage
+                                username={author}
+                                profileImage={`http://localhost:4000/public/avatar/` + user.profileImage}
+                            />
+                            : null                            
+                        )
+                    }
+                  </div>
+                  <div className="each-cmt">
+                    <h4>{author}</h4>
+                    <h5>{comment}</h5>
+                  </div>
               </div>
           </div>
       </div>

@@ -210,18 +210,21 @@
 }
 
 .comment-section {
-    margin-top: -.2em;
     display: flex;
-    flex-direction: column;
-    margin-bottom: 1em;
-    gap: .1em;
+    gap: .5em;
 }
 
-.comment-section h4 {
+.each-cmt h4 {
     color: rgb(231, 223, 223);
 }
 
-.comment-section h5 {
+.each-cmt h5 {
     color: white;
     font-weight: 100;
+}
+
+.comment-avatar img {
+    width: 2em;
+    height: 2em;
+    border-radius: 50%;
 }
