@@ -223,7 +223,17 @@ input[type='file'] {
 .commenters {
     display: flex;
     flex-direction: column;
-    padding-bottom: 1em;
+    margin-bottom: .7em;
+}
+
+.commenters .msg-img {
+    display: none;
+}
+
+hr {
+    width: 40%;
+    margin: 0 auto;
+    margin-bottom: 1em;
 }
 
 .post-likes {

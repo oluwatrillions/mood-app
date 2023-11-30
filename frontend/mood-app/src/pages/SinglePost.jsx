@@ -226,6 +226,7 @@ const SinglePost = ({likes, count}) => {
                         <h2 onClick={Back} className='go-back'>Back</h2>
                 } 
                   </div>
+                  { singlePost.commentCount > 0 && <hr />}
                   {
                       
                       //   This is where the comments are displayed on the singlePost component
@@ -237,7 +238,6 @@ const SinglePost = ({likes, count}) => {
                                   comment={singlecomment.comment}
                               />
                           </div>
-                          
                      )).reverse()
                   }
             </div>

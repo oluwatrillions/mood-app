@@ -11,6 +11,8 @@ const Posts = () => {
 
     const { user, allUsers, posts, AllPosts, commentOnMessage, userComment, setUserComment } = useContext(AuthContext)
     
+// Function that is called a user likes a post. It saves the user's username and the post_id of the post
+    
     const likePost = async (postId, username) => {
         try {
             const response = await fetch(`http://localhost:4000/posts/like/${postId}`, {
