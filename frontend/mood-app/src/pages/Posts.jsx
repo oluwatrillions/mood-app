@@ -6,10 +6,12 @@ import UserImage from '../components/UserImage'
 import Likes from '../components/Likes'
 import Comments from '../components/Comments'
 import ReplyToMessage from './ReplyToMessage'
+import dayjs from 'dayjs'
+import relativeTime from 'dayjs/plugin/relativeTime';
 
 const Posts = () => {
 
-    const { user, allUsers, posts, AllPosts, commentOnMessage, userComment, setUserComment } = useContext(AuthContext)
+    const { user, allUsers, posts, AllPosts, commentOnMessage, userComment, setUserComment, likes, setLikes } = useContext(AuthContext)
     
 // Function that is called a user likes a post. It saves the user's username and the post_id of the post
     
@@ -32,8 +34,12 @@ const Posts = () => {
         AllPosts();
     }, [])
 
-    const date = new Date();
-    const formattedDate = `${date.getDate()}-${date.getMonth() + 1}-${date.getFullYear()}`;
+    // const date = new Date();
+    // const formattedDate = `${date.getDate()}-${date.getMonth() + 1}-${date.getFullYear()}`;
+
+    dayjs.extend(relativeTime);
+    
+        const formattedDate = dayjs(posts.map(post=> post.postedAt)).fromNow();
 
     // creating a ref to display the message being commented on 
     const commmentRef = useRef({})
@@ -48,7 +54,7 @@ const Posts = () => {
         <div className='posts-div'>
             <div className='all-posts'>
                 {user &&
-                    posts.map((post, index) => {
+                    posts.map((post) => {
                         return <div key={post._id} className='posts'>
                             <Link to={`/posts/${post._id}`}>
                                 <div className='split'>
@@ -58,6 +64,7 @@ const Posts = () => {
                                     <div className="post-text">
                                         <h3 className="title">{post.title}</h3>
                                         <h4 className="text-field">{post.text}</h4>
+                                        <h6>{ formattedDate}</h6>
                                     </div>
                                 </div>
                             </Link>

@@ -67,6 +67,11 @@
     flex-direction: column;
 }
 
+.post-text h6 {
+    color: rgb(184, 186, 187);
+    font-weight: 100;
+}
+
 .title {
     color: rgb(219, 225, 231);
     font-weight: 600;
@@ -128,6 +133,7 @@
 
 .msg-img {
     color: white;
+    cursor: pointer;
 }
 
 .comment-div {

@@ -20,6 +20,7 @@ export const AuthProvider = ({ children }) => {
     const [notif, setNotif] = useState(null)
     const [allUsers, setAllUsers] = useState([])
     const [posts, setPosts] = useState([])
+    const [likes, setLikes] = useState()
 
     //    let cookieValue = document.cookie.replace(/(?:(?:^|.*;\s*)user\s*\=\s*([^;]*).*$)|^.*$/, "$1");
     //     // console.log(cookieValue);
@@ -167,7 +168,9 @@ export const AuthProvider = ({ children }) => {
         AllPosts: AllPosts,
         commentOnMessage: commentOnMessage,
         userComment: userComment,
-        setUserComment: setUserComment
+        setUserComment: setUserComment,
+        likes: likes,
+        setLikes: setLikes
     }
     
 
