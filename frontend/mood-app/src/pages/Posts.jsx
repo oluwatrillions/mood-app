@@ -11,9 +11,14 @@ import relativeTime from 'dayjs/plugin/relativeTime';
 
 const Posts = () => {
 
-    const { user, allUsers, posts, AllPosts, commentOnMessage, userComment, setUserComment, likes, setLikes } = useContext(AuthContext)
+    const { user, allUsers, posts, AllPosts, commentOnMessage, userComment, setUserComment } = useContext(AuthContext)
     
-// Function that is called a user likes a post. It saves the user's username and the post_id of the post
+    // Function that is called a user likes a post. It saves the user's username and the post_id of the post
+    useEffect(() => {
+        AllPosts();
+    }, [])
+    
+    const [likes, setLikes] = useState()
     
     const likePost = async (postId, username) => {
         try {
@@ -25,14 +30,12 @@ const Posts = () => {
                 body: JSON.stringify({postId, username})
             })
             const data = await response.json()
+            setLikes(posts.filter((post)=> post._id === postId ))
         } catch (error) {
             console.log(error);
         }
     }
 
-    useEffect(() => {
-        AllPosts();
-    }, [])
 
     // const date = new Date();
     // const formattedDate = `${date.getDate()}-${date.getMonth() + 1}-${date.getFullYear()}`;
