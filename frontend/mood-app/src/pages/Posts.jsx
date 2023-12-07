@@ -11,38 +11,16 @@ import relativeTime from 'dayjs/plugin/relativeTime';
 
 const Posts = () => {
 
-    const { user, allUsers, posts, AllPosts, commentOnMessage, userComment, setUserComment } = useContext(AuthContext)
+    const { user, allUsers, posts, setPosts, AllPosts, commentOnMessage, userComment, setUserComment } = useContext(AuthContext)
     
     // Function that is called a user likes a post. It saves the user's username and the post_id of the post
     useEffect(() => {
         AllPosts();
     }, [])
-    
-    const [likes, setLikes] = useState()
-    
-    const likePost = async (postId, username) => {
-        try {
-            const response = await fetch(`http://localhost:4000/posts/like/${postId}`, {
-                method: 'POST',
-                headers: {
-                    'Content-Type': 'application/json'
-                },
-                body: JSON.stringify({postId, username})
-            })
-            const data = await response.json()
-            setLikes(posts.filter((post)=> post._id === postId ))
-        } catch (error) {
-            console.log(error);
-        }
-    }
-
-
-    // const date = new Date();
-    // const formattedDate = `${date.getDate()}-${date.getMonth() + 1}-${date.getFullYear()}`;
 
     dayjs.extend(relativeTime);
     
-        const formattedDate = dayjs(posts.map(post=> post.postedAt)).fromNow();
+    const formattedDate = dayjs(posts.map(post=> post.postedAt)).fromNow();
 
     // creating a ref to display the message being commented on 
     const commmentRef = useRef({})
@@ -51,6 +29,16 @@ const Posts = () => {
         commmentRef.current[id].classList.add('show-cmt') 
         console.log(id);
     }
+
+    // Update the posts state with the new like count for the specific post
+
+    const handleLikeUpdate = (postId, newLikeCount) => {
+        setPosts((posts) =>
+            posts.map((post) =>
+            post._id === postId ? { ...post, likeCount: newLikeCount } : post
+            )
+        );
+    };
 
 
     return (
@@ -96,9 +84,10 @@ const Posts = () => {
                                         <div className='reactions'>
                                             <div className="like-count">
                                                 <Likes
-                                                    key={post._id}
-                                                    onLike={user.username !== post.username ? ()=> likePost(post._id, user.username) : null}
-                                                    likeCount={post.count}
+                                                    postId={post._id}
+                                                    onLike={(newLikeCount)=> handleLikeUpdate(post._id, newLikeCount)}
+                                                    likeCount={post.likeCount.length}
+                                                    username={post.username}
                                                 />
                                             </div>
                                             <div className='replies'>
