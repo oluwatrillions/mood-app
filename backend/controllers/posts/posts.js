@@ -80,7 +80,7 @@ const likePost = async (req, res) => {
         await postToLike.save()
         res.json({
             message: `${username} liked this post`,
-            likeCount: postToLike.likeCount.length
+            postToLike: postToLike
         })
     } catch (error) {
         console.log(error);

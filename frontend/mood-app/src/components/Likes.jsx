@@ -1,13 +1,17 @@
-import React, { useContext } from 'react'
+import React, { useContext, useEffect } from 'react'
 import '../pages//Posts.css'
 import {FcLike} from 'react-icons/fc'
 import AuthContext from '../Contexts/AuthContext'
 
-const Likes = ({ postId, onLike, likeCount, username }) => {
+const Likes = ({ postId, likeCount, username }) => {
 
-    const { user, posts } = useContext(AuthContext)
+    useEffect(() => {
+        AllPosts()
+    })
 
-     const likePost = async (username) => {
+    const { user, posts, setPosts, AllPosts } = useContext(AuthContext)
+
+     const likePost = async () => {
         try {
             const response = await fetch(`http://localhost:4000/posts/like/${postId}`, {
                 method: 'POST',
@@ -18,9 +22,7 @@ const Likes = ({ postId, onLike, likeCount, username }) => {
             })
             const data = await response.json()
             console.log(data);
-            if (onLike) {
-                onLike(data.likeCount);
-            }
+            setPosts(data.postToLike)
         } catch (error) {
             console.log(error);
         }

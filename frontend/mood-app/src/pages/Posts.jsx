@@ -20,7 +20,7 @@ const Posts = () => {
 
     dayjs.extend(relativeTime);
     
-    const formattedDate = dayjs(posts.map(post=> post.postedAt)).fromNow();
+    const formattedDate = dayjs(posts && posts.map(post=> post.postedAt)).fromNow();
 
     // creating a ref to display the message being commented on 
     const commmentRef = useRef({})
@@ -30,22 +30,11 @@ const Posts = () => {
         console.log(id);
     }
 
-    // Update the posts state with the new like count for the specific post
-
-    const handleLikeUpdate = (postId, newLikeCount) => {
-        setPosts((posts) =>
-            posts.map((post) =>
-            post._id === postId ? { ...post, likeCount: newLikeCount } : post
-            )
-        );
-    };
-
-
     return (
         <div className='posts-div'>
             <div className='all-posts'>
                 {user &&
-                    posts.map((post) => {
+                    posts && posts.map((post) => {
                         return <div key={post._id} className='posts'>
                             <Link to={`/posts/${post._id}`}>
                                 <div className='split'>
@@ -85,8 +74,7 @@ const Posts = () => {
                                             <div className="like-count">
                                                 <Likes
                                                     postId={post._id}
-                                                    onLike={(newLikeCount)=> handleLikeUpdate(post._id, newLikeCount)}
-                                                    likeCount={post.likeCount.length}
+                                                    likeCount={post.count}
                                                     username={post.username}
                                                 />
                                             </div>

@@ -164,6 +164,7 @@ export const AuthProvider = ({ children }) => {
         allUsers: allUsers,
         deleteSuccess: deleteSuccess,
         posts: posts,
+        setPosts: setPosts,
         AllPosts: AllPosts,
         commentOnMessage: commentOnMessage,
         userComment: userComment,
