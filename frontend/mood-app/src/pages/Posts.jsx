@@ -13,28 +13,27 @@ const Posts = () => {
 
     const { user, allUsers, posts, setPosts, AllPosts, commentOnMessage, userComment, setUserComment } = useContext(AuthContext)
     
-    // Function that is called a user likes a post. It saves the user's username and the post_id of the post
     useEffect(() => {
         AllPosts();
     }, [])
-
+    
     dayjs.extend(relativeTime);
     
-    const formattedDate = dayjs(posts && posts.map(post=> post.postedAt)).fromNow();
-
+    const formattedDate = dayjs(posts.map(post=> post.postedAt)).fromNow();
+    
     // creating a ref to display the message being commented on 
     const commmentRef = useRef({})
-
+    
     const replyRef = (id) => {
         commmentRef.current[id].classList.add('show-cmt') 
-        console.log(id);
     }
+    
 
     return (
         <div className='posts-div'>
             <div className='all-posts'>
                 {user &&
-                    posts && posts.map((post) => {
+                    posts.map((post) => {
                         return <div key={post._id} className='posts'>
                             <Link to={`/posts/${post._id}`}>
                                 <div className='split'>

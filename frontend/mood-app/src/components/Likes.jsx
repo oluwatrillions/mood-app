@@ -5,13 +5,12 @@ import AuthContext from '../Contexts/AuthContext'
 
 const Likes = ({ postId, likeCount, username }) => {
 
-    useEffect(() => {
-        AllPosts()
-    })
-
+    
     const { user, posts, setPosts, AllPosts } = useContext(AuthContext)
-
-     const likePost = async () => {
+    
+    // Function that is called a user likes a post. It saves the user's username and the post_id of the post
+    
+    const likePost = async () => {
         try {
             const response = await fetch(`http://localhost:4000/posts/like/${postId}`, {
                 method: 'POST',
@@ -22,12 +21,21 @@ const Likes = ({ postId, likeCount, username }) => {
             })
             const data = await response.json()
             console.log(data);
-            setPosts(data.postToLike)
+
+            const updatedPosts = posts.map((post) => {
+                if (post && post._id === postId && post.count !== undefined) {
+                return { ...post, count: data.postToLike.count };
+            }
+            return post;
+        });
+
+            setPosts(updatedPosts);
+            
         } catch (error) {
             console.log(error);
         }
     }
-     
+    
   return (
       <div className='likes-div'>
           <div className="like-count">
