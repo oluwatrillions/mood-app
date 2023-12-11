@@ -14,7 +14,7 @@ const ReplyToMessage = ({ post, replyAt, replyTo, onReply, userComment, setUserC
                   value={userComment}
                   onChange={(e) => setUserComment(e.target.value)} 
                   />
-            <button>Submit Comment</button>
+              <button>{ userComment.length > 0 ? <h3>Submit Comment</h3> : <h3>Back</h3>}</button>
           </form>
     </div>
   )

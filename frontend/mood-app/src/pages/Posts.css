@@ -129,6 +129,7 @@
 
 .like-count h5 {
     color: aliceblue;
+    cursor: pointer;
 }
 
 .msg-img {

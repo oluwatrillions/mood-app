@@ -20,19 +20,20 @@ const Likes = ({ postId, likeCount, username }) => {
                 body: JSON.stringify({postId, username: user.username})
             })
             const data = await response.json()
-            console.log(data);
 
-            const updatedPosts = posts.map((post) => {
-                if (post && post._id === postId && post.count !== undefined) {
-                return { ...post, count: data.postToLike.count };
-            }
-            return post;
-        });
+            // Check if the post id(from the database) is equal to the clicked post(postId), then increment the number of likes in real time
+
+                const updatedPosts = posts.map((post) => {
+                    if ( post._id === postId ) {
+                    return { ...post, count: data.postToLike.count };
+                }
+                return post;
+            });
 
             setPosts(updatedPosts);
             
         } catch (error) {
-            console.log(error);
+            console.log(error.message);
         }
     }
     

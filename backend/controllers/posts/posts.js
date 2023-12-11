@@ -114,29 +114,4 @@ const userComment = async (req, res) => {
     }
 }
 
-// const allComments = async (req, res) => {
-//     const postId = req.params.id
-//     const username = req.body.username
-//     const comment = req.body
-//     console.log(postId);
-
-//     try {
-//         const userComments = await Posts.findOne({ _id: postId }).exec()
-//         console.log(userComments, 1);
-//         if (!userComments) return res.json({ message: 'No comments on this post' })
-        
-//         userComments.comments.postId = postId
-//         userComments.comments.username = username
-//         userComments.comments.comment = comment
-
-//         userComments.commentCount = userComments.comments.length 
-
-//         await userComments.save()
-//         console.log(userComments);
-//         res.status(200).json({message: 'Comments added to post successfully'})
-//     } catch (error) {
-//         console.log(error);
-//     }
-// }
-
 module.exports = {getAllPosts, updatePost, deletePost, getPost, upload, likePost, userComment}
