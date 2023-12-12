@@ -8,7 +8,6 @@
 
 .register {
     min-height: 80vh;
-    margin: 1em 20vh;
     display: flex;
     justify-content: center;
 }
@@ -20,23 +19,29 @@
 }
 
 form {
-    margin-top: 2em;
     display: flex;
     flex-direction: column;
     justify-content: center;
+    align-items: center;
     gap: 1em;
 }
 
 .signup img {
     width: 10em;
     height: 10em;
+    margin-bottom: 2vh;
 }
 
 .signup {
     display: flex;
     flex-direction: column;
+    justify-content: center;
     align-items: center;
     width: 50vw;
+}
+
+.signup .sign-in-img {
+    width: 15vw;
 }
 
 .inputs {
@@ -63,7 +68,7 @@ label {
 .signIn-btn {
     margin-top: 2em;
     height: 3em;
-    width: 12em;
+    width: 30vw;
     margin: 0 auto;
     font-size: 1.2em;
     background-color: rgb(69, 146, 146);

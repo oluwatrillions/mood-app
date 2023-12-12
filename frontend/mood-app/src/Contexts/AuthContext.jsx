@@ -1,4 +1,4 @@
-import { createContext, useEffect, useState } from "react";
+import { createContext, useEffect, useRef, useState } from "react";
 import jwt_decode from 'jwt-decode'
 import { useNavigate, useParams } from "react-router-dom";
 
@@ -13,7 +13,6 @@ export default AuthContext
 export const AuthProvider = ({ children }) => {
     
     const navigate = useNavigate()
-    
     
     const [user, setUser] = useState(()=> localStorage.getItem('accesstoken') ? jwt_decode(localStorage.getItem('accesstoken')) : null)
     const [userToken, setUserToken] = useState(()=> localStorage.getItem('accesstoken') ? localStorage.getItem('accesstoken') : null)
@@ -150,6 +149,13 @@ export const AuthProvider = ({ children }) => {
         }
     }
 
+     // creating a ref to display the message being commented on 
+    const commmentRef = useRef({})
+    
+    const replyRef = (id) => {
+        commmentRef.current[id].classList.add('show-cmt') 
+    }
+
     
     const UserContext = {
         user: user,
@@ -169,6 +175,8 @@ export const AuthProvider = ({ children }) => {
         commentOnMessage: commentOnMessage,
         userComment: userComment,
         setUserComment: setUserComment,
+        commmentRef: commmentRef,
+        replyRef: replyRef
     }
     
 

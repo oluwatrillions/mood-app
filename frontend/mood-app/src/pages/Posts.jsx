@@ -11,7 +11,7 @@ import relativeTime from 'dayjs/plugin/relativeTime';
 
 const Posts = () => {
 
-    const { user, allUsers, posts, setPosts, AllPosts, commentOnMessage, userComment, setUserComment } = useContext(AuthContext)
+    const { user, allUsers, posts, setPosts, AllPosts, commentOnMessage, userComment, setUserComment, commmentRef, replyRef } = useContext(AuthContext)
     
     useEffect(() => {
         AllPosts();
@@ -21,12 +21,7 @@ const Posts = () => {
     
     const formattedDate = dayjs(posts.map(post=> post.postedAt)).fromNow();
     
-    // creating a ref to display the message being commented on 
-    const commmentRef = useRef({})
-    
-    const replyRef = (id) => {
-        commmentRef.current[id].classList.add('show-cmt') 
-    }
+   
     
 
     return (

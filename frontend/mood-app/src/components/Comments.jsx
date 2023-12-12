@@ -5,7 +5,7 @@ import AuthContext from '../Contexts/AuthContext'
 import UserImage from './UserImage'
 
 
-const Comments = ({ replyRef, author, comment, count }) => {
+const Comments = ({ replyRef, author, comment, count, postId }) => {
 
     const { allUsers } = useContext(AuthContext)
 

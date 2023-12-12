@@ -130,7 +130,7 @@ const SinglePost = ({likes, count}) => {
 
 
   return (
-      <div className='single-post'>
+      <div className='single-post' key={singlePost._id}>
         <div className={singlePost.commentCount > 0 ? 'see-comments' : 'featured-post'}>
         <div className="featured-img">
             <img src={`http://localhost:4000/public/images/${singlePost.image}`} alt="" />
@@ -149,6 +149,7 @@ const SinglePost = ({likes, count}) => {
                                     return <div key={users._id} className='poster-image'>
                                         <Link to={`/users/${users._id}`}>
                                                 <UserImage
+                                                    postId={users._id}
                                                     username = {users.username}
                                                     profileImage={`http://localhost:4000/public/avatar/` + users.profileImage}
                                                 />
@@ -163,8 +164,15 @@ const SinglePost = ({likes, count}) => {
                         <h5 className="postime">{ formattedDate}</h5>
                           </div>
                     <div className="post-likes">
-                        <Likes likeCount={singlePost.count}/>
-                        <Comments count={singlePost.commentCount}/>      
+                              <Likes
+                                postId={singlePost._id}
+                                likeCount={singlePost.count}
+                                username={singlePost.username}    
+                              />
+                              <Comments
+                                postId={singlePost._id}
+                                count={singlePost.commentCount}
+                              />      
                     </div>
                     
                 </div>
@@ -240,6 +248,7 @@ const SinglePost = ({likes, count}) => {
                       singlePost.comments && singlePost.comments.map((singlecomment) => (
                           <div className="commenters">
                               <Comments
+                                  postId={singlecomment._id}
                                   author={singlecomment.username}
                                   comment={singlecomment.comment}
                               />

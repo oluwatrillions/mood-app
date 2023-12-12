@@ -5,16 +5,12 @@ import AuthContext from '../Contexts/AuthContext'
 
 const SignIn = () => {
 
-    const navigate = useNavigate()
-
     const { notif, handleLogin } = useContext(AuthContext)
-
-    
 
   return (
     <div className='register'>
           <div className='signup'>
-              <img src="./images/signin.jpg" alt="" />
+              <img src="./images/signin.jpg" alt="" className='sign-in-img'/>
               <h3 className='notif'>{ notif }</h3>
               <form onSubmit={handleLogin}>
                   <div className='inputs'>

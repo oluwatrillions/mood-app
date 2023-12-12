@@ -87,7 +87,7 @@ const SignUp = () => {
                           required
                           onChange={((e) => setPassword(e.target.value))} />
                   </div>
-                  <div className='avatar'>
+                  <div className='inputs'>
                       <label htmlFor="avatar" id='avatar'>Profile Avatar:</label>
                       <input
                           type="file"
