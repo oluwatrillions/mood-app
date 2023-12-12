@@ -235,3 +235,37 @@
     height: 2em;
     border-radius: 50%;
 }
+
+@media screen and (max-width: 480px){
+    .posts-div {
+        width: 100vw;
+        height: 100vh;
+    }
+
+    .all-posts {
+        width: 100vw;
+        gap: 1.5em;
+    }
+
+    .posts {
+        width: 85vw;
+        height: 50vh;
+        display: flex;
+    }
+
+    .image-div {
+        width: 85vw;
+    }
+
+    .image-div img {
+        width: 85vw;
+    }
+
+    .title {
+        width: 70vw;
+    }
+
+    .post-detail {
+        height: 10vh;
+    }
+}

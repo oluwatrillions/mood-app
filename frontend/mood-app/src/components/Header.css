@@ -18,9 +18,9 @@
     color: rgb(97, 94, 94);
 }
 
-a {
+.header a {
     text-decoration: none;
-}
+    color: rgb(82, 82, 199);}
 
 nav{
     width: 100vw;
@@ -60,12 +60,29 @@ nav button {
     cursor: pointer;
 }
 
-@media screen and (min-width: 1268px){
-nav h3 {
-    font-size: 1.2em;
-}
+@media screen and (max-width: 480px){
+    .header {
+        width: 100vw;
+    }
+    
+    .logged-in {
+        width: 100vw;
+    }
 
-.users-btn {
-    font-size: 1em;
-}
+    .header-menu {
+        width: 1em;
+        height: 1em;
+    }
+
+    nav h3 {
+        font-size: .65em;
+    }
+    
+    nav button {
+        font-size: 1em;
+    }
+
+    nav {
+        padding: 3vh .2em;
+    }
 }

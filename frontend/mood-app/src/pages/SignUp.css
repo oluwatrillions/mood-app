@@ -90,3 +90,60 @@ input[type='file'] {
     justify-content: flex-start;
     gap: 7em;
 }
+
+@media screen and (max-width: 480px){
+    .signup {
+        width: 100vw;
+        margin-top: 5vh;
+        display: flex;
+        justify-content: flex-start;
+    }
+
+    .signup img {
+        width: 5em;
+        height: 5em;
+        margin: 0 auto;
+        margin-bottom: 2vh;
+    } 
+
+    form {
+        width: 90vw;
+        display: flex;
+        flex-direction: column;
+        justify-content: flex-start;
+    }
+
+    input {
+        font-size: 1em;
+        padding: 0.5em;
+        height: 2em;
+        border-radius: .2em;
+    }
+
+    .inputs {
+        width: 80vw;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+    }
+
+    label {
+        font-size: 1em;
+        color: rgb(61, 61, 60);
+        margin-top: .3em;
+    }
+
+    input[type='file'] {
+        font-size: 1em !important;
+    }
+
+    .signIn-btn {
+        width: 80vw;
+    }
+
+    .signup .sign-in-img {
+        width: 7em;
+        height: 12vh;
+        margin-top: 10vh;
+    }
+}

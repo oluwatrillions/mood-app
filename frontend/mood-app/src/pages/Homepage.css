@@ -40,8 +40,30 @@
     gap: .5em;
 }
 
+.hero-prompts a {
+    color: rgb(82, 82, 199);
+}
+
 .hero-prompts h5 {
     font-size: 1em;
     font-family: 'Poppins', sans-serif;
     color: rgb(52, 68, 82);
+}
+
+@media screen and (max-width: 480px){
+    .hero {
+        height: 100vh;
+    }   
+
+    .left-hero, .right-hero {
+        display: none;
+    }
+
+    .hero-page {
+        width: 100vw;
+    }
+
+    .hero-page img {
+        width: 95vw;
+    }
 }

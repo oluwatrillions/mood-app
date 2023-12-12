@@ -40,3 +40,9 @@ div, * {
     margin-top: .5em;
     color: aliceblue;
 }
+
+@media screen and (max-width: 480px){
+    .dashboard img {
+        width: 85vw;
+    }
+}
