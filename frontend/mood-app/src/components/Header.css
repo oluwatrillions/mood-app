@@ -79,10 +79,23 @@ nav button {
     }
     
     nav button {
-        font-size: 1em;
+        font-size: .8em;
     }
 
     nav {
         padding: 3vh .2em;
+    }
+
+    .users-btn {
+        font-size: .5em;
+    }
+
+    .welcome {
+        font-size: .6em;
+    }
+
+    .desc {
+        text-align: center;
+        font-size: .6em;
     }
 }
