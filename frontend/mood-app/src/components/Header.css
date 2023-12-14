@@ -60,7 +60,7 @@ nav button {
     cursor: pointer;
 }
 
-@media screen and (max-width: 480px){
+@media screen and (max-width: 414px){
     .header {
         width: 100vw;
     }

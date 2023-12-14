@@ -21,7 +21,7 @@
     display: flex;
     justify-content: center;
     flex-wrap: wrap;
-    gap: 3em;
+    gap: 2em;
     position: relative;
 }
 
@@ -137,6 +137,10 @@
     cursor: pointer;
 }
 
+.users-comments {
+    width: 3vw;
+}
+
 .comment-div {
     display: flex;
     color: white;
@@ -236,20 +240,14 @@
     border-radius: 50%;
 }
 
-@media screen and (max-width: 480px){
-    .posts-div {
+@media screen and (max-width: 375px){
+   .posts-div {
         width: 100vw;
-        height: 100vh;
-    }
-
-    .all-posts {
-        width: 100vw;
-        gap: 1.5em;
     }
 
     .posts {
-        width: 85vw;
-        height: 50vh;
+        width: 85vw !important;
+        height: 50vh !important;
         display: flex;
     }
 
@@ -258,14 +256,99 @@
     }
 
     .image-div img {
-        width: 85vw;
+        width: 85vw !important;
+    }
+
+    .post-detail {
+        height: 10vh !important;
+    } 
+}
+
+@media screen and (max-width: 414px){
+    .posts-div {
+        width: 100vw;
+    }
+
+    .all-posts {
+        width: 100vw;
+        gap: 1.5em;
+    }
+
+    .posts {
+        width: 85vw !important;
+        height: 45vh;
+        display: flex;
+    }
+
+    .image-div {
+        width: 85vw !important;
+    }
+
+    .image-div img {
+        width: 85vw !important;
     }
 
     .title {
         width: 70vw;
     }
 
+    .users-comments {
+        width: 10vw;
+    }
+
     .post-detail {
-        height: 10vh;
+        height: 8vh;
     }
 }
+
+@media screen and (max-width: 480px) {
+    .posts {
+        width: 80vw;
+        height: 45vh;
+    }
+
+    .image-div {
+        width: 80vw;
+    }
+
+    .image-div img {
+        width: 80vw;
+    }
+
+    .title {
+        width: 70vw;
+    }
+
+    .users-comments {
+        width: 10vw;
+    }
+
+    .post-detail {
+        height: 8vh;
+    }
+}
+
+@media screen and (max-width: 600px){
+   .all-posts {
+        gap: 1em;
+   } 
+
+   .posts {
+        width: 45vw;
+   }
+
+   .title {
+    width: 40vw;
+   }
+
+   .image-div {
+    width: 45vw;
+   }
+
+   .image-div img{
+        width: 45vw;
+   }
+
+
+}
+

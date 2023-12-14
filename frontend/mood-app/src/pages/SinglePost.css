@@ -250,3 +250,183 @@ hr {
     gap: .5em;
     margin-top: .5em;
 }
+
+@media screen and (max-width: 375px){
+    .poster-detail {
+       gap: 3vw; 
+    }
+
+    .post-action img {
+        width: 3em;
+        height: 3em;
+    }
+
+    .name {
+        font-size: 1em;
+    }
+
+    .postime {
+        font-size: .6em;
+    }
+
+    .go-back {
+        font-size: 1em;
+    }
+
+    .see-comments {
+        width: 95vw !important;
+    }
+
+    .see-all-comments {
+        width: 93vw !important;
+    }
+    
+    .featured-post{
+        width: 95vw !important;
+    }
+
+    .featured-img img {
+        width: 95vw !important;
+    }
+}
+
+@media screen and (max-width: 414px){
+    .featured-post {
+        width: 90vw;
+    }
+
+    .featured-img img {
+        width: 90vw;
+    }
+
+    .text-detail {
+        width: 90vw;
+    }
+
+    .titled {
+        width: 70vw;
+    }
+
+    .see-comments {
+        width: 90vw;
+    }
+
+    .see-all-comments {
+        width: 88vw;
+        margin-left: 0;
+    }
+
+      .poster-detail {
+       gap: 7vw; 
+    }
+
+    .post-action img {
+        width: 3em;
+        height: 3em;
+    }
+
+    .name {
+        font-size: 1.2em;
+    }
+
+    .postime {
+        font-size: .6em;
+    }
+
+    .go-back {
+        font-size: 1em;
+    }
+}
+
+@media screen and (max-width: 480px){
+    .featured-post {
+        width: 90vw;
+    }
+
+    .featured-img img {
+        width: 90vw;
+    }
+
+    .text-detail {
+        width: 85vw;
+        margin-left: 0;
+    }
+
+    .titled {
+        width: 70vw;
+    }
+
+    .see-comments {
+        width: 90vw;
+    }
+
+    .see-all-comments {
+        width: 88vw;
+        margin-left: 0;
+    }
+
+      .poster-detail {
+       gap: 10vw; 
+    }
+
+    .post-action img {
+        width: 3em;
+        height: 3em;
+    }
+
+    .name {
+        font-size: 1.2em;
+    }
+
+    .postime {
+        font-size: .6em;
+    }
+
+    .go-back {
+        font-size: 1em;
+    }
+}
+
+@media screen and (max-width: 600px){
+    .see-comments {
+        width: 70vw;
+    }
+    
+    .featured-post {
+        width: 70vw;
+    }
+
+    .featured-img img {
+        width: 70vw;
+    }
+
+    .text-detail {
+        width: 65vw;
+        margin-left: 0;
+    }
+
+    .see-all-comments {
+        width: 68vw;
+    }
+
+    .name {
+        font-size: 1em;
+    }
+
+    .postime {
+        font-size: .6em;
+    }
+
+    .post-action img {
+        width: 3em;
+        height: 3em;
+    }
+
+    .go-back {
+        font-size: 1em;
+    }
+
+    .titled {
+        width: 60vw;
+    }
+}
