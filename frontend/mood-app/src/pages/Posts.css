@@ -348,7 +348,27 @@
    .image-div img{
         width: 45vw;
    }
+}
 
+@media screen and (min-width: 600px) {
+    .all-posts {
+        gap: 1em;
+    }
 
+    .posts {
+        width: 45vw;
+    }
+
+    .title {
+        width: 40vw;
+    }
+
+    .image-div {
+        width: 45vw;
+    }
+
+    .image-div img {
+        width: 45vw;
+    }
 }
 
