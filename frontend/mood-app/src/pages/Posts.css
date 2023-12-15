@@ -302,16 +302,16 @@
 }
 
 @media screen and (max-width: 480px) {
-    .posts {
+    .all-posts .posts {
         width: 80vw;
         height: 45vh;
     }
 
-    .image-div {
+    .split .image-div {
         width: 80vw;
     }
 
-    .image-div img {
+    .split .image-div img {
         width: 80vw;
     }
 

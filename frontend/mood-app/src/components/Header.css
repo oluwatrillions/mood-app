@@ -60,6 +60,32 @@ nav button {
     cursor: pointer;
 }
 
+@media screen and (max-width: 375px){
+    .logged-in h3 {
+        font-size: .6em;
+    }
+
+    .logged-in .users-btn {
+        font-size: .5em;
+    }
+
+    nav .desc {
+        font-size: .5em;
+    }
+
+    nav a {
+        font-size: .8em;
+    }
+
+    .logged-in button {
+        font-size: .6em;
+    }
+
+    .logged-in .welcome {
+        font-size: .5em;
+    }
+}
+
 @media screen and (max-width: 414px){
     .header {
         width: 100vw;
@@ -97,5 +123,58 @@ nav button {
     .desc {
         text-align: center;
         font-size: .6em;
+    }
+}
+
+@media screen and (max-width: 480px){
+   nav h3 {
+    font-size: .7em;
+   } 
+
+   .users-btn {
+    font-size: .6em;
+   }
+
+   nav button {
+    font-size: .8em;
+   }
+
+   .welcome {
+    font-size: .6em;
+   }
+
+   .desc {
+    font-size: .6em;
+   }
+
+   nav span  {
+    font-size: 1em;
+   }
+}
+
+@media screen and (max-width: 600px){
+    .users-btn {
+        font-size: .7em;
+    }
+
+    .desc {
+        font-size: .7em;
+        text-align: center;
+    }
+
+    .welcome {
+        font-size: .7em;
+    }
+
+    nav a {
+        font-size: .7em;
+    }
+
+    nav button {
+        font-size: .8em;
+    }
+
+    nav .header-menu {
+        display: none;
     }
 }

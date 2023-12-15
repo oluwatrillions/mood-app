@@ -291,15 +291,15 @@ hr {
 }
 
 @media screen and (max-width: 414px){
-    .featured-post {
+    .single-post .featured-post {
         width: 90vw;
     }
 
-    .featured-img img {
+    .featured-post .featured-img img {
         width: 90vw;
     }
 
-    .text-detail {
+    .single-post .text-detail {
         width: 90vw;
     }
 
@@ -307,11 +307,11 @@ hr {
         width: 70vw;
     }
 
-    .see-comments {
+    .single-post .see-comments {
         width: 90vw;
     }
 
-    .see-all-comments {
+    .single-post .see-all-comments {
         width: 88vw;
         margin-left: 0;
     }
@@ -339,15 +339,15 @@ hr {
 }
 
 @media screen and (max-width: 480px){
-    .featured-post {
+    .single-post .featured-post {
         width: 90vw;
     }
 
-    .featured-img img {
+    .single-post .featured-img img {
         width: 90vw;
     }
 
-    .text-detail {
+    .single-post .text-detail {
         width: 85vw;
         margin-left: 0;
     }
@@ -356,11 +356,11 @@ hr {
         width: 70vw;
     }
 
-    .see-comments {
+    .single-post .see-comments {
         width: 90vw;
     }
 
-    .see-all-comments {
+    .single-post .see-all-comments {
         width: 88vw;
         margin-left: 0;
     }
