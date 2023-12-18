@@ -16,7 +16,7 @@
 
 .featured-post {
     width: 30vw;
-    height: 65vh;
+    height: fit-content;
     background-color: rgb(78, 76, 76);
     display: flex;
     justify-content:flex-start;
@@ -58,7 +58,7 @@
 .text-detail {
     width: 30vw;
     display: flex;
-    height: 25vh;
+    height: fit-content;
     flex-direction: column;
     justify-content: space-between;
     margin-bottom: .5em;
@@ -265,6 +265,10 @@ hr {
         font-size: 1em;
     }
 
+    .text-detail {
+        margin-left: -1em !important;
+    }
+
     .postime {
         font-size: .6em;
     }
@@ -354,6 +358,11 @@ hr {
 
     .titled {
         width: 70vw;
+        margin-left: 0;
+    }
+
+    .text {
+        margin-left: 0;
     }
 
     .single-post .see-comments {
@@ -432,37 +441,29 @@ hr {
 }
 @media screen and (min-width: 601px){
     .see-comments {
-        width: 70vw;
+        width: 60vw;
     }
     
     .featured-post {
-        width: 70vw;
+        width: 60vw;
+    }
+
+    .featured-img {
+        height: 45vh;
     }
 
     .featured-img img {
-        width: 70vw;
+        width: 60vw;
+        height: 45vh;
     }
 
     .text-detail {
-        width: 65vw;
-        margin-left: 0;
+        width: 55vw;
+        margin-left: -1.5em;
     }
 
     .see-all-comments {
-        width: 68vw;
-    }
-
-    .name {
-        font-size: 1em;
-    }
-
-    .postime {
-        font-size: .6em;
-    }
-
-    .post-action img {
-        width: 3em;
-        height: 3em;
+        width: 60vw;
     }
 
     .go-back {
@@ -470,6 +471,90 @@ hr {
     }
 
     .titled {
-        width: 60vw;
+        width: 55vw;
+    }
+
+    .post-action img {
+        width: 3em;
+        height: 3em;
+    }
+
+    .name {
+        font-size: 1em;
+    }
+}
+@media screen and (min-width: 769px){
+    .see-comments {
+        width: 50vw;
+    }
+    
+    .featured-post {
+        width: 50vw;
+    }
+
+    .featured-img {
+        height: 30vh;
+    }
+
+    .featured-img img {
+        width: 50vw;
+        height: 30vh;
+    }
+
+    .text-detail {
+        width: 45vw;
+        margin-left: -2em;
+    }
+
+    .see-all-comments {
+        width: 50vw;
+    }
+
+    .go-back {
+        font-size: 1em;
+    }
+
+    .titled {
+        width: 45vw;
+    }
+
+    .post-action img {
+        width: 3em;
+        height: 3em;
+    }
+
+    .name {
+        font-size: 1em;
+    }
+}
+@media screen and (min-width: 913px){
+    .see-comments {
+        width: 40vw;
+    }
+    
+    .featured-post {
+        width: 40vw;
+    }
+
+    .featured-img {
+        height: 30vh;
+    }
+
+    .featured-img img {
+        width: 40vw;
+        height: 30vh;
+    }
+
+    .text-detail {
+        width: 35vw;
+        margin-left: -2em;
+    }
+
+    .see-all-comments {
+        width: 40vw;
+    }
+
+    .titled {
+        width: 35vw;
     }
 }
