@@ -376,18 +376,18 @@
         width: 45vw;
     }
 }
-@media screen and (min-width: 769px) {
+@media screen and (min-width: 768px) {
     .all-posts {
         gap: 1em;
     }
 
     .posts {
         width: 40vw;
-        height: 39vh;
+        height: 42vh;
     }
 
     .post-detail {
-        height: 5vh;
+        height: 6.5vh;
     }
 
     .users-comments {
@@ -410,7 +410,47 @@
         height: 6vh;
     }
 }
-@media screen and (min-width: 913px) {
+@media screen and (min-width: 912px) {
+    .all-posts {
+        gap: 1em;
+    }
+
+    .posts {
+        width: 30vw;
+        height: 30em;
+    }
+
+    .post-detail {
+        height: 4em;
+    }
+
+    .users-comments {
+        width: 5em;
+    }
+
+    .title {
+        width: 35vw;
+    }
+
+    .split {
+        height: 5em;
+    }
+
+    .image-div {
+        width: 30vw;
+        height: 20em;
+    }
+
+    .image-div img {
+        width: 30vw;
+        height: 20em;
+    }
+
+    .post-text {
+        height: 6vh;
+    }
+}
+@media screen and (min-width: 1024px) {
     .all-posts {
         gap: 1em;
     }
