@@ -429,7 +429,8 @@
     }
 
     .title {
-        width: 35vw;
+        width: 25vw;
+        font-size: 1em;
     }
 
     .split {
@@ -456,20 +457,15 @@
     }
 
     .posts {
-        width: 30vw;
-        height: 39vh;
+        height: 35vh;
+    }
+
+    .title {
+        font-size: 1.2em;
     }
 
     .post-detail {
         height: 5vh;
-    }
-
-    .users-comments {
-        width: 5em;
-    }
-
-    .title {
-        width: 35vw;
     }
 
     .image-div {
@@ -478,10 +474,6 @@
 
     .image-div img {
         width: 30vw;
-    }
-
-    .post-text {
-        height: 6vh;
     }
 }
 

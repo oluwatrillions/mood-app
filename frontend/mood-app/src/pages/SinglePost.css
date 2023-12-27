@@ -537,12 +537,12 @@ hr {
     }
 
     .featured-img {
-        height: 50vh;
+        height: 20em;
     }
 
     .featured-img img {
         width: 40vw;
-        height: 50vh;
+        height: 20em;
     }
 
     .text-detail {
@@ -556,5 +556,9 @@ hr {
 
     .titled {
         width: 35vw;
+    }
+
+    .postime {
+        font-size: .7em;
     }
 }
