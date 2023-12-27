@@ -457,7 +457,7 @@
     }
 
     .posts {
-        height: 35vh;
+        height: 30em;
     }
 
     .title {
@@ -465,15 +465,17 @@
     }
 
     .post-detail {
-        height: 5vh;
+        height: 4em;
     }
 
     .image-div {
         width: 30vw;
+        height: 20em;
     }
 
     .image-div img {
         width: 30vw;
+        height: 20em;
     }
 }
 
