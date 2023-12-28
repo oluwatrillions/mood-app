@@ -562,3 +562,73 @@ hr {
         font-size: .7em;
     }
 }
+
+@media screen and (min-width: 1280px){
+    .see-comments {
+        width: 35vw;
+    }
+
+    .featured-post {
+        width: 35vw;
+    }
+
+    .featured-img {
+        height: 50vh;
+        width: 35vw;
+    }
+
+    .featured-img img {
+        width: 35vw;
+        height: 50vh;
+    }
+
+     .see-all-comments {
+        width: 35vw;
+    }
+
+    .text-detail {
+        width: 31.5vw;
+    }
+}
+
+@media screen and (min-width: 1536px){
+    .see-comments {
+        width: 30em;
+    }
+
+    .featured-post {
+        width: 30em;
+    }
+
+    .featured-img {
+        width: 30em;
+    }
+
+    .featured-img img {
+        width: 30em;
+    }
+
+    .see-all-comments {
+        width: 30em;
+    }
+
+    .text-detail {
+        width: 27em;
+    }
+
+    .titled {
+        width: 20em;
+    }
+
+    .text {
+        width: 28em;
+    }
+
+    .commenters {
+        width: 28em;
+    }
+
+    .poster-detail {
+        width: 28em;
+    }
+}

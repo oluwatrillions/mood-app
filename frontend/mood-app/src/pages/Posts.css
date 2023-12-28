@@ -479,3 +479,61 @@
     }
 }
 
+@media screen and (min-width: 1280px){
+    .posts {
+        width: 25vw;
+    }
+
+    .image-div {
+        width: 25vw;
+    }
+
+    .image-div img {
+        width: 25vw;
+    }
+}
+
+@media screen and (min-width:1440px){
+    .posts {
+        width: 23vw;
+    }
+
+    .image-div {
+        width: 23vw;
+    }
+
+    .image-div img {
+        width: 23vw;
+    }
+
+    .title {
+        width: 20vw;
+    }
+}
+
+@media screen and (min-width: 1536px){
+    .posts {
+        width: 20vw;
+    }
+
+    .image-div {
+        width: 20vw;
+    }
+
+    .image-div img {
+        width: 20vw;
+    }
+
+    .title {
+        width: 18vw;
+    }
+
+    .all-posts {
+        gap: 2em;
+    }
+
+    .text-field {
+        width: 18vw;
+    }
+}
+

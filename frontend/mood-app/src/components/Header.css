@@ -37,7 +37,8 @@ nav{
 }
 
 .welcome span {
-    color: rgb(97, 78, 15);
+    cursor: pointer;
+    color: rgb(20, 149, 235);
     font-family: 'Poppins', sans-serif;
 }
 
@@ -174,7 +175,9 @@ nav button {
     nav button {
         font-size: .8em;
     }
+}
 
+@media screen and (min-width: 600px){
     nav .header-menu {
         display: none;
     }
