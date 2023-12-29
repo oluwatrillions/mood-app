@@ -96,3 +96,67 @@
     color: rgb(64, 64, 158);
 }
 
+@media screen and (max-width:414px) {
+    .users-dashboard h2 {
+        font-size: 1em;
+        width: 70vw;
+    }
+
+    .users-dashboard {
+        margin-left: 1em;
+        width: 70vw;
+    }
+
+    .users-post {
+        display: flex;
+        flex-direction: column;
+    }
+
+    .users-dashboard img {
+        width: 5em;
+        height: 5em;
+        margin: 0;
+    }
+
+    .users-details {
+        margin: 0;
+    }
+
+    .users-details h3 {
+        font-size: 1em;
+    }
+
+    .user-posts {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        width: 100vw;
+        margin: 1em 0;
+    }
+
+    .posters-div {
+        width: 80vw;
+        margin-top: 0;
+        justify-content: center;
+    }
+
+    .posts-divide {
+        width: 80vw;
+    }
+
+    .posts-divide img {
+        width: 80vw;
+        height: 30vh;
+    }
+
+    .posters-detail {
+        padding-bottom: .5em;
+    }
+
+    .posters-detail h4 {
+        font-size: .8em;
+    }
+}
+
+
