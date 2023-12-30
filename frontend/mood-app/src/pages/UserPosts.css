@@ -86,6 +86,8 @@
 
 .posters-detail {
     margin: 0 .5em;
+    display: flex;
+    flex-direction: column;
 }
 
 .users-dashboard h2 {
@@ -96,7 +98,7 @@
     color: rgb(64, 64, 158);
 }
 
-@media screen and (max-width:414px) {
+@media screen and (max-width:480px) {
     .users-dashboard h2 {
         font-size: 1em;
         width: 70vw;
@@ -132,26 +134,29 @@
         justify-content: center;
         align-items: center;
         width: 100vw;
-        margin: 1em 0;
+        gap: 1em;
+        margin-top: 1em;
     }
 
     .posters-div {
         width: 80vw;
+        height: 25em;
         margin-top: 0;
-        justify-content: center;
     }
 
     .posts-divide {
         width: 80vw;
+        height: 25em;
     }
 
     .posts-divide img {
         width: 80vw;
-        height: 30vh;
+        height: 18em;
     }
 
     .posters-detail {
         padding-bottom: .5em;
+        height: 7em;
     }
 
     .posters-detail h4 {
