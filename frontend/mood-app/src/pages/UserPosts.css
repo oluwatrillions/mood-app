@@ -164,4 +164,71 @@
     }
 }
 
+@media screen and (max-width:600px){
+     .users-dashboard h2 {
+        font-size: 1em;
+        width: 50vw;
+    }
+
+    .users-dashboard {
+        margin-left: 1em;
+        width: 50vw;
+    }
+
+    .users-post {
+        display: flex;
+        flex-direction: column;
+    }
+
+    .users-dashboard img {
+        width: 7em;
+        height: 7em;
+        margin: 0;
+    }
+
+    .users-details {
+        margin: 0;
+    }
+
+    .users-details h3 {
+        font-size: 1em;
+    }
+
+    .user-posts {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        width: 100vw;
+        gap: 1em;
+        margin-top: 1em;
+    }
+
+    .posters-div {
+        width: 70vw;
+        height: 25em;
+        margin-top: 0;
+    }
+
+    .posts-divide {
+        width: 70vw;
+        height: 25em;
+    }
+
+    .posts-divide img {
+        width: 70vw;
+        height: 18em;
+    }
+
+    .posters-detail {
+        padding-bottom: .5em;
+        height: 6em;
+    }
+
+    .posters-detail h4 {
+        width: 60vw;
+        font-size: .8em;
+    }
+}
+
 
