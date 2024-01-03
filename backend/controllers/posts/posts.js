@@ -32,11 +32,14 @@ const updatePost = async (req, res) => {
     const editedPost = {
         title,
         text,
-        image: req.body.image
+        image: req.body.file
     }
 
+    console.log(editedPost);
+
     try {
-        const foundPost = await Posts.findByIdAndUpdate(req.params.id, editedPost, {new: true})
+        const foundPost = await Posts.findByIdAndUpdate(req.params.id, editedPost, { new: true })
+        console.log(foundPost);
         res.json({message: 'Post updated successfully'})
     } catch (error) {
         console.log(error);

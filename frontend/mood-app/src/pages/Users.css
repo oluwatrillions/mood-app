@@ -56,20 +56,32 @@ a {
     color: black;
 }
 
-@media screen and (max-width: 480px){
+@media screen and (min-width: 375px){
     .all-users {
         width: 100vw;
         display: flex;
         justify-content: center;
+        flex-wrap: wrap;
+        gap: 1em;
     }
 
     .user {
         display: flex;
-        width: 80vw;
+        width: 20em;
     }
 
     .user img {
-        width: 90vw;
+        width: 20em;
+        height: 20em;
+    }
+
+    .user-info h2 {
+        text-decoration: none;
+        font-size: 1.2em;
+    }
+
+    .user-info h3 {
+        font-size: 1em;
     }
 }
 

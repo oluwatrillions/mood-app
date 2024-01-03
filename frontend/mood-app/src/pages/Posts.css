@@ -164,13 +164,13 @@
 .user-cmt {
     display: none;
     inset: 0 1em ;
-    background-color: rgba(255, 255, 255, 0.418);
+    background-color: rgba(0, 0, 0, 0.418);
     position: absolute;
 }
 
 .reply-div{
-    background-color: rgb(255, 255, 255);
-    margin: auto 0;
+    background-color: rgb(107, 103, 103);
+    margin: 5vh 0;
     height: 60vh;
     border-radius: 1em;
     display: flex;
@@ -187,12 +187,15 @@
 
 .reply-div h5 {
     margin: 0 1em;
+    color: white;
+    font-size: 1em;
 }
 
 .reply-div input {
     display: block;
-    width: 28vw;
+    width: 26vw;
     height: 10vh;
+    border-radius: .5em;
     word-wrap: break-word;
     white-space: normal;
     outline: none;
@@ -513,19 +516,19 @@
 
 @media screen and (min-width: 1536px){
     .posts {
-        width: 20vw;
+        width: 25em;
     }
 
     .image-div {
-        width: 20vw;
+        width: 25em;
     }
 
     .image-div img {
-        width: 20vw;
+        width: 25em;
     }
 
     .title {
-        width: 18vw;
+        width: 20em;
     }
 
     .all-posts {
@@ -533,7 +536,7 @@
     }
 
     .text-field {
-        width: 18vw;
+        width: 22em;
     }
 }
 
