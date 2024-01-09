@@ -16,8 +16,10 @@ const Header = () => {
                         <Link to='/users'><h3 className='users-btn'>Most Recent Users</h3></Link>
                         <h3 className='welcome'>Welcome <span>{ user.name}</span></h3>
                         <h3 className='desc'>This is a social media app where users air out their moods</h3>
-                        <h3><Link to='/posts'> View Posts</Link></h3>  
-                        <h3><Link to="/post/create">Post a Message</Link></h3>
+                        <div className="post-links">
+                            <h3><Link to='/posts'> View Posts</Link></h3>  
+                            <h3><Link to="/post/create">Post a Message</Link></h3>
+                        </div>
                         <button onClick={handleLogout}>Logout</button>
                     </nav>
                   :
