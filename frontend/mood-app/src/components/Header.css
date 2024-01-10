@@ -47,6 +47,10 @@ nav{
     font-family: 'Poppins', sans-serif;
 }
 
+.post-links {
+    display: flex;
+}
+
 nav h3 {
     font-size: 1.5em;
     font-weight: 600;
@@ -180,5 +184,18 @@ nav button {
 @media screen and (min-width: 600px){
     nav .header-menu {
         display: none;
+    }
+
+    .welcome {
+        font-size: 1.2em;
+    }
+
+    .post-links {
+        display: flex;
+        gap: .5em;
+    }
+
+    .post-links h3 {
+        font-size: 1.2em;
     }
 }

@@ -340,6 +340,15 @@
         width: 45vw;
    }
 
+   .comment-div {
+    width: 2.5em;
+   }
+
+   .msg-img {
+    height: 1em;
+    width: 1em;
+   }
+
    .title {
     width: 40vw;
    }
