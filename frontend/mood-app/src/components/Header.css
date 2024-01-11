@@ -28,6 +28,7 @@ nav{
     display: flex;
     justify-content: space-between;
     padding: 3vh 1em;
+    position: relative;
 }
 
 .users-btn {
@@ -66,7 +67,15 @@ nav button {
     cursor: pointer;
 }
 
-@media screen and (max-width: 375px){
+.show-sidebar {
+    width: 10em;
+    background-color: aliceblue;
+    position: absolute;
+    height: 50vh;
+    z-index: 10;
+}
+
+@media screen and (max-width: 375px){    
     .logged-in h3 {
         font-size: .6em;
     }
