@@ -20,6 +20,7 @@
     height: 2em;
     cursor: pointer;
     color: rgb(97, 94, 94);
+    visibility: hidden;
 }
 
 nav {
@@ -73,9 +74,17 @@ nav button {
         font-size: .6em;
     }
 
-    nav .desc {
-        width: 60vw;
-        font-size: .6em;
+    .header-menu {
+        width: 1.5em;
+        height: 1.5em;
+        cursor: pointer;
+        color: rgb(97, 94, 94);
+        visibility: visible;
+    }
+
+    .logged-in .desc {
+        width: 60vw !important;
+        font-size: .6em !important;
     }
 
     nav a {
@@ -87,7 +96,7 @@ nav button {
     }
 
     .logged-in .welcome {
-        font-size: .6em;
+        font-size: .6em !important;
     }
 
     .show-links {
@@ -128,6 +137,9 @@ nav button {
     .header-menu {
         width: 1.2em;
         height: 1.2em;
+        cursor: pointer;
+        color: rgb(97, 94, 94);
+        visibility: visible;
     }
 
     nav h3 {
@@ -142,11 +154,11 @@ nav button {
         padding: 3vh .2em;
     }
 
-    .welcome {
+    .logged-in .welcome {
         font-size: .6em;
     }
 
-    .desc {
+    .logged-in .desc {
         text-align: center;
         font-size: .6em;
         width: 55vw;
@@ -183,21 +195,24 @@ nav button {
    } 
 
    .header-menu {
-    width: 1.4em;
-    height: 1.4em;
+       width: 1.5em;
+       height: 1.5em;
+       cursor: pointer;
+       color: rgb(97, 94, 94);
+       visibility: visible;
    }
 
    nav button {
     font-size: .8em;
    }
 
-   .welcome {
-    font-size: .6em;
+   .logged-in .welcome {
+    font-size: .8em;
    }
 
-   .desc {
-    font-size: .6em;
-    width: 50vw;
+   .logged-in .desc {
+    font-size: .8em;
+    width: 55vw;
    }
 
    .show-links {
@@ -232,6 +247,14 @@ nav button {
         text-align: center;
     }
 
+    .header-menu {
+       width: 1.5em;
+       height: 1.5em;
+       cursor: pointer;
+       color: rgb(97, 94, 94);
+       visibility: visible;
+   }
+
     .welcome {
         font-size: .9em;
     }
@@ -253,8 +276,8 @@ nav button {
    }
 
    .show-sidebar {
-       margin-top: 2em;
-       padding-top: 1em;
+       margin-top: 1.5em !important;
+       padding-top: 1em !important;
        padding-left: .5em;
        display: flex;
        flex-direction: column;
@@ -278,6 +301,14 @@ nav button {
        font-size: .9em;
    }
 
+   .header-menu {
+       width: 2em;
+       height: 2em;
+       cursor: pointer;
+       color: rgb(97, 94, 94);
+       visibility: visible;
+   }
+
    .show-sidebar {
        margin-top: 2em;
        padding-top: 2em;
@@ -295,7 +326,6 @@ nav button {
    }
 
     .desc {
-        font-size: 1em;
         width: 50vw;
         text-align: center;
     }
