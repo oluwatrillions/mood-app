@@ -390,7 +390,7 @@
 }
 @media screen and (min-width: 768px) {
     .all-posts {
-        gap: 1em;
+        column-gap: 2em;
     }
 
     .posts {
@@ -429,7 +429,7 @@
 
     .posts {
         width: 30vw;
-        height: 30em;
+        height: 28em;
     }
 
     .post-detail {
@@ -451,12 +451,12 @@
 
     .image-div {
         width: 30vw;
-        height: 20em;
+        height: 18em;
     }
 
     .image-div img {
         width: 30vw;
-        height: 20em;
+        height: 18em;
     }
 
     .post-text {

@@ -75,8 +75,8 @@ nav button {
     }
 
     .header-menu {
-        width: 1.5em;
-        height: 1.5em;
+        width: 1.5em !important;
+        height: 1.5em !important;
         cursor: pointer;
         color: rgb(97, 94, 94);
         visibility: visible;
@@ -135,8 +135,8 @@ nav button {
     }
 
     .header-menu {
-        width: 1.2em;
-        height: 1.2em;
+        width: 1.2em !important;
+        height: 1.2em !important;
         cursor: pointer;
         color: rgb(97, 94, 94);
         visibility: visible;
@@ -173,7 +173,7 @@ nav button {
     }
 
     .show-sidebar {
-        margin-top: 1.5em;
+        margin-top: 1.2em !important;
         padding-top: 1em;
         padding-left: .5em;
         display: flex;
@@ -195,8 +195,8 @@ nav button {
    } 
 
    .header-menu {
-       width: 1.5em;
-       height: 1.5em;
+       width: 1.5em !important;
+       height: 1.5em !important;
        cursor: pointer;
        color: rgb(97, 94, 94);
        visibility: visible;
