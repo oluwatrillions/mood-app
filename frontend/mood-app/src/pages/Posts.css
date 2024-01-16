@@ -497,6 +497,10 @@
         width: 25vw;
     }
 
+    .all-posts {
+        column-gap: 2em;
+    }
+
     .image-div {
         width: 25vw;
     }

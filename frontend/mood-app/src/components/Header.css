@@ -79,8 +79,8 @@ nav button {
     }
 
     .header-menu {
-        width: 1.5em !important;
-        height: 1.5em !important;
+        width: 1.2em !important;
+        height: 1.2em !important;
         cursor: pointer;
         color: rgb(97, 94, 94);
         visibility: visible;
@@ -164,7 +164,7 @@ nav button {
 
     .logged-in .desc {
         text-align: center;
-        font-size: .6em;
+        font-size: .6em !important;
         width: 55vw;
     }
 
@@ -199,8 +199,8 @@ nav button {
    } 
 
    .header-menu {
-       width: 1.5em !important;
-       height: 1.5em !important;
+       width: 1.3em !important;
+       height: 1.3em !important;
        cursor: pointer;
        color: rgb(97, 94, 94);
        visibility: visible;
@@ -257,6 +257,10 @@ nav button {
        cursor: pointer;
        color: rgb(97, 94, 94);
        visibility: visible;
+   }
+
+   .header {
+    height: 10vh !important;
    }
 
     .welcome {
@@ -396,11 +400,15 @@ nav button {
     nav button {
         font-size: 1em;
     }
+
+    .header {
+        height: 6vh;
+    }
 }
 
-@media screen and (max-width: 1200px){
+@media screen and (max-width: 1204px){
    .show-links a {
-       font-size: 1.1em;
+       font-size: 1em;
    }
 
     .desc {
