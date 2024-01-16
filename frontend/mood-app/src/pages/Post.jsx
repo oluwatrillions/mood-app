@@ -1,6 +1,7 @@
 import React, { useContext, useEffect, useRef, useState } from 'react'
 import './SignUp.css'
 import AuthContext from '../Contexts/AuthContext'
+import { useNavigate } from 'react-router-dom'
 
 
 const Post = () => {
@@ -13,6 +14,12 @@ const Post = () => {
     const [likes, setLikes] = useState([])
 
     const { postSuccess, user } = useContext(AuthContext)
+
+    const navigate = useNavigate()
+
+    const back = () => {
+        navigate('/posts')
+    }
 
     const imageRef = useRef()
     
@@ -49,7 +56,7 @@ const Post = () => {
     <div className='register'>
           <div className='signup'>
               <h3 className='notif'>{ notif }</h3>
-              <form onSubmit={handlePost} encType='multipart/form-data'> 
+              <form encType='multipart/form-data'> 
                   <div className='inputs'>
                       <label htmlFor="tite" id='title'>Title:</label>
                       <input
@@ -78,7 +85,7 @@ const Post = () => {
                           onChange={(e)=> setImage(e.target.files[0])}
                         />
                   </div>
-                  <button className='signIn-btn' type='submit'>Send Post</button>
+                  <button className='signIn-btn' type='submit' onClick={handlePost}>{ title.length > 0 ? <h3>Send Post</h3> : <h3 onClick={back}>Go Back</h3>}</button>
               </form>
           </div>
     </div>
