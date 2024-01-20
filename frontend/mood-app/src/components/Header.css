@@ -291,7 +291,7 @@ nav button {
        flex-direction: column;
        justify-content: flex-start;
        gap: 1em;
-       width: 50vw;
+       width: 50vw !important;
        background-color: rgb(236, 238, 240);
        position: absolute;
        height: 30vh;

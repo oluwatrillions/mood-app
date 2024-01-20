@@ -147,3 +147,26 @@ input[type='file'] {
         margin-top: 10vh;
     }
 }
+
+@media screen and (max-width:600px){
+    .register {
+        width: 100vw;
+    }
+    
+    .signup {
+        width: 100vw
+    }
+
+    form {
+        width: 60vw;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        margin: 0;
+    }
+
+    .inputs {
+        width: 50vw;
+    }
+}
