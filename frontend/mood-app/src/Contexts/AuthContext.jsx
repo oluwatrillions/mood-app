@@ -54,6 +54,7 @@ export const AuthProvider = ({ children }) => {
 
     const loginSuccess = () => {
         const timer = setTimeout(() => {
+            setNotif('')
             navigate('/userprofile/')
             const clear = () => {
                 clearTimeout(timer)

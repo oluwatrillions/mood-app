@@ -73,6 +73,14 @@ nav button {
     color: rgb(82, 82, 199)
 }
 
+.logged-out{
+    width: 100vw;
+}
+
+.logged-out h3{
+    width: 90vw;
+}
+
 @media screen and (max-width: 375px){    
     .logged-in h3 {
         font-size: .6em;
@@ -125,6 +133,10 @@ nav button {
         height: 30vh;
         border-radius: .2em;
         z-index: 10;
+    }
+
+    .logged-out h3{
+        width: 80vw !important;
     }
 }
 
@@ -191,6 +203,10 @@ nav button {
         border-radius: .2em;
         z-index: 10;
     }
+
+    .logged-out h3 {
+        width: 80vw !important;
+    }
 }
 
 @media screen and (max-width: 480px){
@@ -242,6 +258,10 @@ nav button {
        border-radius: .2em;
        z-index: 10;
    }
+
+    .logged-out h3 {
+        width: 80vw !important;
+    }
 }
 
 @media screen and (max-width: 600px){
@@ -298,6 +318,10 @@ nav button {
        border-radius: .2em;
        z-index: 10;
    }
+
+    .logged-out h3 {
+        width: 80vw !important;
+    }
 }
 
 @media screen and (max-width: 768px){
@@ -348,6 +372,10 @@ nav button {
 
     nav button {
         font-size: 1em;
+    }
+
+     .logged-out h3 {
+        width: 90vw !important;
     }
 }
 
@@ -403,6 +431,10 @@ nav button {
 
     .header {
         height: 6vh;
+    }
+
+     .logged-out h3 {
+        width: 90vw !important;
     }
 }
 

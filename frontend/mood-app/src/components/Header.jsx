@@ -32,7 +32,6 @@ const Header = () => {
                     </nav>
                   :
                     <nav className='logged-out'>
-                        <AiOutlineMenu className='header-menu' />
                         <h3 className='desc'>This is a social media app where users air out their moods</h3>
                         <button type='submit'> <Link to='/signin'>Login</Link></button>
                     </nav>
