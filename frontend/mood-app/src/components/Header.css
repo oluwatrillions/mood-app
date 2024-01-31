@@ -207,6 +207,16 @@ nav button {
     .logged-out h3 {
         width: 80vw !important;
     }
+
+    .close-btn {
+        width: 40vw !important;
+    }
+
+    .close-btn svg {
+        width: 1.5em;
+        height: 1.5em;
+        float: right;
+    }
 }
 
 @media screen and (max-width: 480px){
@@ -261,6 +271,16 @@ nav button {
 
     .logged-out h3 {
         width: 80vw !important;
+    }
+
+    .close-btn {
+        width: 40vw !important;
+    }
+
+    .close-btn svg {
+        width: 1.5em;
+        height: 1.5em;
+        float: right;
     }
 }
 
@@ -322,6 +342,17 @@ nav button {
     .logged-out h3 {
         width: 80vw !important;
     }
+
+    .close-btn {
+        width: 40vw !important;
+    }
+
+    .close-btn svg {
+        width: 1.5em;
+        height: 1.5em;
+        float: right;
+    }
+
 }
 
 @media screen and (max-width: 768px){
@@ -349,7 +380,7 @@ nav button {
        flex-direction: column;
        justify-content: flex-start;
        gap: 1em;
-       width: 50vw;
+       width: 50vw !important;
        background-color: rgb(236, 238, 240);
        position: absolute;
        height: 30vh;
@@ -376,6 +407,16 @@ nav button {
 
      .logged-out h3 {
         width: 90vw !important;
+    }
+
+    .close-btn {
+        width: 40vw;
+    }
+
+    .close-btn svg {
+        width: 1.5em;
+        height: 1.5em;
+        float: right;
     }
 }
 
@@ -436,6 +477,16 @@ nav button {
      .logged-out h3 {
         width: 90vw !important;
     }
+
+    .close-btn {
+        width: 25vw;
+    }
+
+    .close-btn svg {
+        width: 1.5em;
+        height: 1.5em;
+        float: right;
+    }
 }
 
 @media screen and (max-width: 1204px){
@@ -459,6 +510,12 @@ nav button {
 
     nav button {
         font-size: 1em;
+    }
+
+    @media screen and (min-width:1204px){
+        .close-btn {
+            display: none;
+        }
     }
 }
 
