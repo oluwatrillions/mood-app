@@ -15,6 +15,10 @@ const Header = () => {
         collapsedRef.current.classList.toggle('show-sidebar')
     }
 
+    const closeSidebar = () => {
+        collapsedRef.current.classList.remove('show-sidebar')
+    }
+
   return (
       <div className='header'>
           {
@@ -25,7 +29,7 @@ const Header = () => {
                       </div>
                       <div className="show-links" ref={collapsedRef}>
                           <div className="close-btn">
-                            <IoIosClose/>
+                            <IoIosClose onClick={closeSidebar}/>
                           </div>
                             <Link to='/users'><h3 className='users-btn'>Most Recent Users</h3></Link>
                             <Link to='/posts'><h3> View Posts</h3></Link> 

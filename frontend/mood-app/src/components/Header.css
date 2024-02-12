@@ -261,7 +261,7 @@ nav button {
 
    .logged-in .desc {
     font-size: .8em;
-    width: 55vw;
+    width: 55vw !important;
    }
 
    .show-links {
