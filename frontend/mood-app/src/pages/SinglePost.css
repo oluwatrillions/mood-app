@@ -292,6 +292,10 @@ hr {
     .featured-img img {
         width: 95vw !important;
     }
+
+    .commenters {
+        width: 80vw !important;
+    }
 }
 
 @media screen and (max-width: 414px){
@@ -339,6 +343,10 @@ hr {
 
     .go-back {
         font-size: 1em;
+    }
+
+     .commenters {
+        width: 80vw !important;
     }
 }
 
@@ -394,6 +402,10 @@ hr {
     .go-back {
         font-size: 1em;
     }
+
+     .commenters {
+        width: 70vw;
+    }
 }
 
 @media screen and (max-width: 600px){
@@ -436,6 +448,10 @@ hr {
     }
 
     .titled {
+        width: 60vw;
+    }
+
+     .commenters {
         width: 60vw;
     }
 }
@@ -482,6 +498,10 @@ hr {
     .name {
         font-size: 1em;
     }
+
+     .commenters {
+        width: 70vw;
+    }
 }
 @media screen and (min-width: 768px){
     .see-comments {
@@ -526,6 +546,10 @@ hr {
     .name {
         font-size: 1em;
     }
+
+     .commenters {
+        width: 45vw;
+    }
 }
 @media screen and (min-width: 912px){
     .see-comments {
@@ -561,6 +585,10 @@ hr {
     .postime {
         font-size: .7em;
     }
+
+     .commenters {
+        width: 35vw;
+    }
 }
 
 @media screen and (min-width: 1280px){
@@ -588,6 +616,10 @@ hr {
 
     .text-detail {
         width: 31.5vw;
+    }
+
+    .commenters {
+        width: 30vw;
     }
 }
 

@@ -182,7 +182,8 @@ const SinglePost = ({likes, count}) => {
                             <HiDotsHorizontal className='edit-icon' onClick={actionRef}/>  
                             <div className="action-btn" ref={btnRef}>
                                 <h3 onClick={editBtn}>Edit</h3>                          
-                                <h3 onClick={deleteBtn}>Delete</h3>   
+                                <h3 onClick={deleteBtn}>Delete</h3>
+                                <h3 onClick={Back}>Back</h3>   
                                 </div>
                              <div className='editing-post' ref={editRef}>
                                 <div className='signup'>

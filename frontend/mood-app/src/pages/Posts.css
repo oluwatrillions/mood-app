@@ -147,10 +147,6 @@
     gap: .1em;
 }
 
-.comment-div h5 {
-    margin-top: -.1em;
-}
-
 .reactions {
     display: flex;
     gap: .5em;
@@ -265,6 +261,10 @@
     .post-detail {
         height: 10vh !important;
     } 
+    
+    .comment-div {
+        width: 85vw !important;
+    }
 }
 
 @media screen and (max-width: 414px){
@@ -302,6 +302,10 @@
     .post-detail {
         height: 8vh;
     }
+
+    .comment-div {
+        width: 70vw !important;
+    }
 }
 
 @media screen and (max-width: 480px) {
@@ -328,6 +332,10 @@
 
     .post-detail {
         height: 8vh;
+    }
+
+    .comment-div {
+        width: 85vw !important;
     }
 }
 
@@ -361,6 +369,10 @@
 
    .image-div img{
         width: 45vw;
+   }
+
+   .comment-div {
+       width: 60vw !important;
    }
 }
 
@@ -423,6 +435,7 @@
     .post-text {
         height: 6vh;
     }
+
 }
 @media screen and (min-width: 912px) {
     .all-posts {
