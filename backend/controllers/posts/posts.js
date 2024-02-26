@@ -32,7 +32,7 @@ const updatePost = async (req, res) => {
     const editedPost = {
         title,
         text,
-        image: req.body.file
+        image: req.file
     }
 
     console.log(editedPost);

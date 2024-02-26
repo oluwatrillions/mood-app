@@ -265,6 +265,10 @@
     .comment-div {
         width: 85vw !important;
     }
+
+    .title {
+        width: 80vw !important;
+    }
 }
 
 @media screen and (max-width: 414px){
@@ -460,10 +464,6 @@
         font-size: 1em;
     }
 
-    .split {
-        height: 5em;
-    }
-
     .image-div {
         width: 30vw;
         height: 18em;
@@ -509,6 +509,7 @@
 @media screen and (min-width: 1280px){
     .posts {
         width: 25vw;
+        height: 30em;
     }
 
     .all-posts {
@@ -519,8 +520,21 @@
         width: 25vw;
     }
 
+    .split {
+        height: 25em;
+    }
+
     .image-div img {
         width: 25vw;
+        height: 20em;
+    }
+
+    .title{
+        width: 23vw;
+    }
+
+    .post-text {
+        height: 10vh;
     }
 }
 

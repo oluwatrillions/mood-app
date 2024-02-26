@@ -221,7 +221,7 @@ const SinglePost = ({likes, count}) => {
                                                       ref={imageRef}
                                                       onChange={(e) => setEditedPost({
                                                           ...editedPost,
-                                                          image: e.target.image
+                                                          image: e.target.files[0]
                                                       })}
                                                 />
                                         </div>
