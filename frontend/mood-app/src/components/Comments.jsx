@@ -19,6 +19,7 @@ const Comments = ({ replyRef, author, comment, count, postId }) => {
                       {
                         allUsers.map((user) => user.username === author ? 
                             <UserImage
+                                key={user._id}
                                 username={author}
                                 profileImage={`http://localhost:4000/public/avatar/` + user.profileImage}
                             />
