@@ -65,6 +65,7 @@ const SinglePost = ({likes, count}) => {
                 body: JSON.stringify(editedPost)
             }).then((res) => res.json())
                 .then((data) => {
+                    console.log(data);
                     setSinglePost(data)
                     console.log(data)
                 })
@@ -73,6 +74,10 @@ const SinglePost = ({likes, count}) => {
         }
         updatePost()
     }
+
+    useEffect(() => {
+        handleEdit()
+    }, [])
 
     const isEditPost = async () => {
         setIsEdit(true)
@@ -96,13 +101,6 @@ const SinglePost = ({likes, count}) => {
                 setEditedPost(data)
             });
     }, [])
-
-
-        const [updatePostDetail, setUpdatePostDetail] = useState({
-            title: singlePost.title,
-            text: singlePost.text,
-            image: null
-        })
     
     
 
