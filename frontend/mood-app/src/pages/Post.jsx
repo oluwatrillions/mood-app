@@ -79,7 +79,7 @@ const Post = () => {
                       <label htmlFor="image" id='image'>Image:</label>
                       <input
                           type="file"
-                          accept='image/jpg, image/jpeg, image/png, image/gif'
+                          accept='image/jpg, image/jpeg, image/png, image/gif, image/webp'
                           filename='images'
                           ref={imageRef}
                           onChange={(e)=> setImage(e.target.files[0])}

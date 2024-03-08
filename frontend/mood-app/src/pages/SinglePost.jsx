@@ -214,7 +214,7 @@ const SinglePost = ({likes, count}) => {
                                                   <input
                                                       type="file"
                                                       name='image'
-                                                      accept='image/jpg, image/jpeg, image/png, image/gif'
+                                                      accept='image/jpg, image/jpeg, image/png, image/gif, image/webp'
                                                       filename='images'
                                                       ref={imageRef}
                                                       onChange={(e) => setEditedPost({
