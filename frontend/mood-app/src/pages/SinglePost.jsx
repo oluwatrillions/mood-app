@@ -47,7 +47,7 @@ const SinglePost = ({likes, count}) => {
                 }
             })
                 .then((res) => res.json()
-                    .then((data) => console.log(data.message))
+                    .then((data))
             )
             deleteSuccess()
         } catch (error) {
@@ -67,17 +67,24 @@ const SinglePost = ({likes, count}) => {
                 .then((data) => {
                     console.log(data);
                     setSinglePost(data)
-                    console.log(data)
                 })
-        } catch (error) {
-            console.log(error);
-        }
-        updatePost()
+            } catch (error) {
+                console.log(error);
+            }
     }
 
     useEffect(() => {
         handleEdit()
     }, [])
+
+    const handleImageChange = (e) => {
+        const file = e.target.files[0].name
+        console.log(file);
+        setEditedPost({
+            ...editedPost,
+            image: file,
+        })
+    }
 
     const isEditPost = async () => {
         setIsEdit(true)
@@ -94,12 +101,15 @@ const SinglePost = ({likes, count}) => {
     }
 
     useEffect(() => {
-        fetch(`http://localhost:4000/posts/${_id}`)
+        setTimeout(() => {
+           const post = fetch(`http://localhost:4000/posts/${_id}`)
             .then((response) => response.json())
             .then((data) => {
                 setSinglePost(data)
                 setEditedPost(data)
             });
+            clearTimeout(post)
+        }, 3000)
     }, [])
     
     
@@ -206,7 +216,7 @@ const SinglePost = ({likes, count}) => {
                                                         onChange={(e) => setEditedPost({
                                                           ...editedPost,
                                                           text: e.target.value
-                                                        })}
+                                                        }, console.log(text))}
                                                     />
                                         </div>
                                         <div className='edit-inputs'>
@@ -217,10 +227,7 @@ const SinglePost = ({likes, count}) => {
                                                       accept='image/jpg, image/jpeg, image/png, image/gif, image/webp'
                                                       filename='images'
                                                       ref={imageRef}
-                                                      onChange={(e) => setEditedPost({
-                                                          ...editedPost,
-                                                          image: e.target.files[0]
-                                                      })}
+                                                      onChange={handleImageChange}
                                                 />
                                         </div>
                                               <button className='signIn-btn' type='submit' onClick={handleEdit}>Save Edit</button>

@@ -8,12 +8,11 @@ const storage = multer.diskStorage({
     cb( null, path.join(__dirname, '../../public/images'));
   },
     filename: function (req, file, cb) {
-        let filetype = file.mimetype
-        let originalname = filetype.split('/')[1]
-    cb( null, Date.now() + '_' + originalname);
-  },
+        // let filetype = file.mimetype
+        // let originalname = filetype.split('/')[1]
+    cb( null, Date.now() + '_' + file.originalname);
+    },  
 })
-
 
 const upload = multer({
     storage: storage,
@@ -35,16 +34,19 @@ const updatePost = async (req, res) => {
     const editedPost = {
         title,
         text,
+        image: req.body.image
     }
 
-    if (req.file) {
-        const image = req.file.filename
-        editedPost.image = image
-    }
+    console.log(editedPost.image);
+
+    // if (req.file) {
+    //     const image = req.file.filename
+    //     editedPost.image = image
+    //     console.log(editedPost.image, 'from file');
+    // }
 
     try {
-        const foundPost = await Posts.findByIdAndUpdate( req.params.id, editedPost, {new:true})
-        console.log(foundPost.image);
+        const foundPost = await Posts.findByIdAndUpdate(req.params.id, editedPost, { new: true })
         res.json({foundPost, message: 'Post updated successfully' })
     } catch (error) {
         console.log(error);
