@@ -78,8 +78,7 @@ const SinglePost = ({likes, count}) => {
     }, [])
 
     const handleImageChange = (e) => {
-        const file = e.target.files[0].name
-        console.log(file);
+        const file = e.target.files[0]
         setEditedPost({
             ...editedPost,
             image: file,
@@ -216,7 +215,7 @@ const SinglePost = ({likes, count}) => {
                                                         onChange={(e) => setEditedPost({
                                                           ...editedPost,
                                                           text: e.target.value
-                                                        }, console.log(text))}
+                                                        })}
                                                     />
                                         </div>
                                         <div className='edit-inputs'>

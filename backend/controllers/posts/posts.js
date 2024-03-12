@@ -8,8 +8,6 @@ const storage = multer.diskStorage({
     cb( null, path.join(__dirname, '../../public/images'));
   },
     filename: function (req, file, cb) {
-        // let filetype = file.mimetype
-        // let originalname = filetype.split('/')[1]
     cb( null, Date.now() + '_' + file.originalname);
     },  
 })
@@ -30,20 +28,15 @@ const updatePost = async (req, res) => {
     if (!req.params.id) return res.sendStatus(400)    
 
     const { title, text } = req.body 
+
+    console.log(req.file, 'file');
     
     const editedPost = {
-        title,
-        text,
-        image: req.body.image
-    }
-
-    console.log(editedPost.image);
-
-    // if (req.file) {
-    //     const image = req.file.filename
-    //     editedPost.image = image
-    //     console.log(editedPost.image, 'from file');
-    // }
+            title,
+            text,
+            image: req.body.image
+    };
+    console.log(editedPost);
 
     try {
         const foundPost = await Posts.findByIdAndUpdate(req.params.id, editedPost, { new: true })
