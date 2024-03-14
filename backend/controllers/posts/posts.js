@@ -33,9 +33,14 @@ const updatePost = async (req, res) => {
     
     const editedPost = {
             title,
-            text,
-            image: req.body.image
+            text
     };
+
+    if (req.file) {
+        const image = req.file.filename
+        editedPost.image = image;
+    }
+
     console.log(editedPost);
 
     try {

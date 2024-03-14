@@ -6,6 +6,7 @@ const corsOptions = require('./config/corsOptions')
 const cookieParser = require('cookie-parser')
 const connectDB = require('./database/ConnectDB')
 const verifyUser = require('./controllers/verifyUser')
+const bodyParser = require('body-parser')
 
 
 
@@ -16,6 +17,7 @@ app.use(cors(corsOptions))
 app.use(express.json())
 app.use(express.urlencoded({ extended: true }))
 app.use('/public', express.static('public'))
+app.use(bodyParser.urlencoded({extended: true}))
 
 
 app.use('/login', require('./routes/api/users/login'))

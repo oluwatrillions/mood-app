@@ -60,7 +60,8 @@ const SinglePost = ({likes, count}) => {
             const updatePost = await fetch(`http://localhost:4000/posts/${_id}`, {
                 method: 'PUT',
                 headers: {
-                    'Content-Type': 'application/json'
+                    'Content-Type': 'application/json',
+                    'accept': 'multipart/form-data'
                 },
                 body: JSON.stringify(editedPost)
             }).then((res) => res.json())
@@ -222,7 +223,7 @@ const SinglePost = ({likes, count}) => {
                                             <label htmlFor="image" id='image'>Image:</label>
                                                   <input
                                                       type="file"
-                                                      name='image'
+                                                      name='images'
                                                       accept='image/jpg, image/jpeg, image/png, image/gif, image/webp'
                                                       filename='images'
                                                       ref={imageRef}
