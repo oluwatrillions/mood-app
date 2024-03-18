@@ -42,6 +42,7 @@ const Post = () => {
            }).then((res) => {
                return res.json()
            }).then((data) => {
+               console.log(data);
            })
            setTitle("")
            setText("")

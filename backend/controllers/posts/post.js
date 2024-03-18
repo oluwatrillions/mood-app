@@ -6,7 +6,7 @@ const storage = multer.diskStorage({
   destination: function(req, file, cb){
         cb(null, path.join(__dirname, '../../public/images'));
     },
-  filename: function(req, file, cb){
+    filename: function (req, file, cb) {
     cb( null, Date.now() + '_' + file.originalname);
   },
 })
@@ -41,7 +41,7 @@ const createPost = async (req, res) => {
             likeCount,
             comments
         })
-        res.status(201).json(newPost)
+        res.status(201).json({message: 'post created successfully'})
     } catch (error) {
         console.log(error);
     }

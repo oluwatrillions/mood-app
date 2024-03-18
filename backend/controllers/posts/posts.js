@@ -8,6 +8,7 @@ const storage = multer.diskStorage({
     cb( null, path.join(__dirname, '../../public/images'));
   },
     filename: function (req, file, cb) {
+        console.log(file, 'not seen');
     cb( null, Date.now() + '_' + file.originalname);
     },  
 })
@@ -27,19 +28,20 @@ const getAllPosts = async (req, res) => {
 const updatePost = async (req, res) => {
     if (!req.params.id) return res.sendStatus(400)    
 
-    const { title, text } = req.body 
+    console.log(req.file);
 
-    console.log(req.file, 'file');
+    const { title, text } = req.body 
     
     const editedPost = {
             title,
-            text
+            text,
+            image: req.body.image
     };
 
-    if (req.file) {
-        const image = req.file.filename
-        editedPost.image = image;
-    }
+    // if (req.file) {
+    //     const image = req.file.filename
+    //     editedPost.image = image;
+    // }
 
     console.log(editedPost);
 

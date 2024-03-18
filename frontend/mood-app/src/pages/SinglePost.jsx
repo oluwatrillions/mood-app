@@ -47,7 +47,9 @@ const SinglePost = ({likes, count}) => {
                 }
             })
                 .then((res) => res.json()
-                    .then((data))
+                    .then((data) => {
+                        console.log(data);
+                    })
             )
             deleteSuccess()
         } catch (error) {
@@ -60,13 +62,11 @@ const SinglePost = ({likes, count}) => {
             const updatePost = await fetch(`http://localhost:4000/posts/${_id}`, {
                 method: 'PUT',
                 headers: {
-                    'Content-Type': 'application/json',
-                    'accept': 'multipart/form-data'
+                    'Content-Type': 'application/json'
                 },
                 body: JSON.stringify(editedPost)
             }).then((res) => res.json())
                 .then((data) => {
-                    console.log(data);
                     setSinglePost(data)
                 })
             } catch (error) {
@@ -104,12 +104,12 @@ const SinglePost = ({likes, count}) => {
         setTimeout(() => {
            const post = fetch(`http://localhost:4000/posts/${_id}`)
             .then((response) => response.json())
-            .then((data) => {
+               .then((data) => {
                 setSinglePost(data)
                 setEditedPost(data)
             });
             clearTimeout(post)
-        }, 3000)
+        }, 2000)
     }, [])
     
     
@@ -220,7 +220,7 @@ const SinglePost = ({likes, count}) => {
                                                     />
                                         </div>
                                         <div className='edit-inputs'>
-                                            <label htmlFor="image" id='image'>Image:</label>
+                                            <label htmlFor="images" id='images'>Image:</label>
                                                   <input
                                                       type="file"
                                                       name='images'
