@@ -14,7 +14,11 @@ import relativeTime from 'dayjs/plugin/relativeTime';
 
 const SinglePost = ({likes, count}) => {
 
-    const [editedPost, setEditedPost] = useState()
+    const [editedPost, setEditedPost] = useState({
+        title: '',
+        text: '',
+        image: null
+    })
     const [singlePost, setSinglePost] = useState({}) 
     const [image, setImage] = useState() 
     const [imageEdit, setImageEdit] = useState() 
@@ -38,6 +42,18 @@ const SinglePost = ({likes, count}) => {
         navigate(-1)
     }
 
+    useEffect(() => {
+        setTimeout(() => {
+           const post = fetch(`http://localhost:4000/posts/${_id}`)
+            .then((response) => response.json())
+               .then((data) => {
+                setSinglePost(data)
+                setEditedPost(data)
+            });
+            clearTimeout(post)
+        }, 2000)
+    }, [])
+
     const deletePost = async () => {
         try {
             const response = await fetch(`http://localhost:4000/posts/${_id}`, {
@@ -56,27 +72,6 @@ const SinglePost = ({likes, count}) => {
             console.log(error);
         }
     }
-
-    const handleEdit = async () => {
-        try {
-            const updatePost = await fetch(`http://localhost:4000/posts/${_id}`, {
-                method: 'PUT',
-                headers: {
-                    'Content-Type': 'application/json'
-                },
-                body: JSON.stringify(editedPost)
-            }).then((res) => res.json())
-                .then((data) => {
-                    setSinglePost(data)
-                })
-            } catch (error) {
-                console.log(error);
-            }
-    }
-
-    useEffect(() => {
-        handleEdit()
-    }, [])
 
     const handleImageChange = (e) => {
         const file = e.target.files[0]
@@ -100,16 +95,29 @@ const SinglePost = ({likes, count}) => {
         editRef.current.classList.add('edit-post')
     }
 
+    const handleEdit = async () => {
+
+        const formEdit = new FormData()
+            formEdit.append('title', editedPost.title)
+            formEdit.append('text', editedPost.text)
+            formEdit.append('images', editedPost.image)
+        
+        try {
+            const updatePost = await fetch(`http://localhost:4000/posts/${_id}`, {
+                method: 'PUT',
+                body: formEdit
+            }).then((res) => res.json())
+                .then((data) => {
+                    console.log(data);
+                    setSinglePost(data)
+                })
+            } catch (error) {
+                console.log(error);
+            }
+    }
+
     useEffect(() => {
-        setTimeout(() => {
-           const post = fetch(`http://localhost:4000/posts/${_id}`)
-            .then((response) => response.json())
-               .then((data) => {
-                setSinglePost(data)
-                setEditedPost(data)
-            });
-            clearTimeout(post)
-        }, 2000)
+        handleEdit()
     }, [])
     
     

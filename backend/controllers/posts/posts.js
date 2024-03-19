@@ -4,7 +4,8 @@ const path = require("path")
 
 
 const storage = multer.diskStorage({
-  destination: function(req, file, cb){
+    destination: function (req, file, cb) {
+        console.log(file, 'from destination');
     cb( null, path.join(__dirname, '../../public/images'));
   },
     filename: function (req, file, cb) {
@@ -13,12 +14,23 @@ const storage = multer.diskStorage({
     },  
 })
 
+const fileFilter = (req, file, cb) => {
+    // reject a file
+    if (file.mimetype === 'image/jpeg' || file.mimetype === 'image/png' || file.mimetype === 'image/jpg' || file.mimetype === 'image/webp') {
+      cb(null, true);
+    } else {
+      cb(null, false);
+    }
+  };
+
 const upload = multer({
     storage: storage,
     limits: {
         fieldSize: 1024 * 1024 * 3,
     },
+    fileFilter: fileFilter
 }).single('images');
+
 
 const getAllPosts = async (req, res) => {
     const allPosts = await Posts.find()
@@ -28,7 +40,7 @@ const getAllPosts = async (req, res) => {
 const updatePost = async (req, res) => {
     if (!req.params.id) return res.sendStatus(400)    
 
-    console.log(req.file);
+    console.log(req.file, 43);
 
     const { title, text } = req.body 
     
