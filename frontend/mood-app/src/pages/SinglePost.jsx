@@ -14,14 +14,8 @@ import relativeTime from 'dayjs/plugin/relativeTime';
 
 const SinglePost = ({likes, count}) => {
 
-    const [editedPost, setEditedPost] = useState({
-        title: '',
-        text: '',
-        image: null
-    })
+    const [editedPost, setEditedPost] = useState()
     const [singlePost, setSinglePost] = useState({}) 
-    const [image, setImage] = useState() 
-    const [imageEdit, setImageEdit] = useState() 
     const [isEdit, setIsEdit] = useState(false)
     const [notif, setNotif] = useState(null)
     const btnRef = useRef(null)
@@ -74,7 +68,9 @@ const SinglePost = ({likes, count}) => {
     }
 
     const handleImageChange = (e) => {
+        // const data = new FormData()
         const file = e.target.files[0]
+        // data.append('images', file)
         setEditedPost({
             ...editedPost,
             image: file,
@@ -105,7 +101,10 @@ const SinglePost = ({likes, count}) => {
         try {
             const updatePost = await fetch(`http://localhost:4000/posts/${_id}`, {
                 method: 'PUT',
-                body: formEdit
+                headers: {
+                    'Content-type': 'form-data'
+                },
+                body: JSON.stringify(editedPost)
             }).then((res) => res.json())
                 .then((data) => {
                     console.log(data);
