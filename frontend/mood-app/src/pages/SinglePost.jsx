@@ -14,19 +14,24 @@ import relativeTime from 'dayjs/plugin/relativeTime';
 
 const SinglePost = ({likes, count}) => {
 
-    const [editedPost, setEditedPost] = useState()
+    const { user, allUsers, deleteSuccess, posts } = useContext(AuthContext)
+    const { _id } = useParams()
+    const filteredPost = posts.filter((post) => post._id === _id)
+
+
+    const [editedPost, setEditedPost] = useState(filteredPost)
     const [singlePost, setSinglePost] = useState({}) 
     const [isEdit, setIsEdit] = useState(false)
     const [notif, setNotif] = useState(null)
     const btnRef = useRef(null)
     const deleteRef = useRef(null)
     const editRef = useRef(null)
-    const { _id } = useParams()
     const navigate = useNavigate()
-
+    
     const imageRef = useRef()
     
-    const { user, allUsers, deleteSuccess } = useContext(AuthContext)
+    
+    
     
     dayjs.extend(relativeTime);
     
@@ -41,8 +46,8 @@ const SinglePost = ({likes, count}) => {
            const post = fetch(`http://localhost:4000/posts/${_id}`)
             .then((response) => response.json())
                .then((data) => {
-                setSinglePost(data)
-                setEditedPost(data)
+                   setSinglePost(data)
+                   setEditedPost(data)
             });
             clearTimeout(post)
         }, 2000)
@@ -101,10 +106,7 @@ const SinglePost = ({likes, count}) => {
         try {
             const updatePost = await fetch(`http://localhost:4000/posts/${_id}`, {
                 method: 'PUT',
-                headers: {
-                    'Content-type': 'form-data'
-                },
-                body: JSON.stringify(editedPost)
+                body: formEdit
             }).then((res) => res.json())
                 .then((data) => {
                     console.log(data);
@@ -212,7 +214,7 @@ const SinglePost = ({likes, count}) => {
                                                         onChange={(e) => setEditedPost({
                                                           ...editedPost,
                                                           title: e.target.value
-                                                        })}
+                                                        }, console.log(title))}
                                                     />
                                         </div>
                                         <div className='edit-inputs'>
