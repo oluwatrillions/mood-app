@@ -19,7 +19,11 @@ const SinglePost = ({likes, count}) => {
     const filteredPost = posts.filter((post) => post._id === _id)
 
 
-    const [editedPost, setEditedPost] = useState(filteredPost)
+    const [editedPost, setEditedPost] = useState({
+        title: filteredPost.title,
+        text: filteredPost.text,
+        image: filteredPost.image
+    })
     const [singlePost, setSinglePost] = useState({}) 
     const [isEdit, setIsEdit] = useState(false)
     const [notif, setNotif] = useState(null)
@@ -70,16 +74,6 @@ const SinglePost = ({likes, count}) => {
         } catch (error) {
             console.log(error);
         }
-    }
-
-    const handleImageChange = (e) => {
-        // const data = new FormData()
-        const file = e.target.files[0]
-        // data.append('images', file)
-        setEditedPost({
-            ...editedPost,
-            image: file,
-        })
     }
 
     const isEditPost = async () => {
@@ -214,7 +208,7 @@ const SinglePost = ({likes, count}) => {
                                                         onChange={(e) => setEditedPost({
                                                           ...editedPost,
                                                           title: e.target.value
-                                                        }, console.log(title))}
+                                                        })}
                                                     />
                                         </div>
                                         <div className='edit-inputs'>
@@ -236,7 +230,10 @@ const SinglePost = ({likes, count}) => {
                                                       accept='image/jpg, image/jpeg, image/png, image/gif, image/webp'
                                                       filename='images'
                                                       ref={imageRef}
-                                                      onChange={handleImageChange}
+                                                      onChange={(e)=> setEditedPost({
+                                                        ...editedPost,
+                                                        image: e.target.files[0],
+                                                    })}
                                                 />
                                         </div>
                                               <button className='signIn-btn' type='submit' onClick={handleEdit}>Save Edit</button>

@@ -43,8 +43,6 @@ const updatePost = async (req, res) => {
     console.log(req.file, 43);
 
     const { title, text } = req.body 
-
-    console.log(req.body.file);
     
     const editedPost = {
             title,
