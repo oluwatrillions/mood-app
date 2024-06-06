@@ -19,10 +19,7 @@ const Posts = () => {
     
     dayjs.extend(relativeTime);
     
-    const formattedDate = dayjs(posts.map(post=> post.postedAt)).fromNow();
-    
-   
-    
+    const formattedDate = dayjs(posts.map(post=> post.postedAt)).fromNow(); 
 
     return (
         <div className='posts-div'>
