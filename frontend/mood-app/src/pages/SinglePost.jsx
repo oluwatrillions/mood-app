@@ -17,6 +17,8 @@ const SinglePost = ({likes, count}) => {
     const { user, allUsers, deleteSuccess, posts } = useContext(AuthContext)
     const { _id } = useParams()
     const filteredPost = posts.filter((post) => post._id === _id)
+    console.log(filteredPost);
+    
 
 
     const [editedPost, setEditedPost] = useState({
