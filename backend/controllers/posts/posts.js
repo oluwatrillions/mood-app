@@ -5,11 +5,9 @@ const path = require("path")
 
 const storage = multer.diskStorage({
     destination: function (req, file, cb) {
-        console.log(file, 'from destination');
     cb( null, path.join(__dirname, '../../public/images'));
   },
     filename: function (req, file, cb) {
-        console.log(file, 'not seen');
     cb( null, Date.now() + '_' + file.originalname);
     },  
 })
@@ -45,6 +43,7 @@ const updatePost = async (req, res) => {
     const editedPost = {
             title,
             text,
+            image: req.file.filename
     };
 
     // if (req.file) {

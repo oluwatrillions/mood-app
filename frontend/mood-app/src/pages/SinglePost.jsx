@@ -205,7 +205,10 @@ const SinglePost = ({likes, count}) => {
                                                       accept='image/jpg, image/jpeg, image/png, image/gif, image/webp'
                                                       filename='images'
                                                       ref={imageRef}
-                                                      onChange={(e)=> setSinglePost({image: e.target.files[0]})}
+                                                      onChange={(e)=> setSinglePost({
+                                                        ...singlePost,
+                                                        image: e.target.files[0]
+                                                      })}
                                                 />
                                         </div>
                                               <button className='signIn-btn' type='submit' onClick={handleEdit}>Save Edit</button>
