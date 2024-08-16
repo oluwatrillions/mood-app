@@ -17,15 +17,17 @@ const SinglePost = ({likes, count}) => {
     const { user, allUsers, deleteSuccess, posts } = useContext(AuthContext)
     const { _id } = useParams()
     const filteredPost = posts.filter((post) => post._id === _id)
-    console.log(filteredPost);
     
 
 
-    const [editedPost, setEditedPost] = useState({
-        title: filteredPost.title,
-        text: filteredPost.text,
-        image: filteredPost.image
-    })
+    // const [editedPost, setEditedPost] = useState({
+    //     title: filteredPost.title,
+    //     text: filteredPost.text,
+    //     image: filteredPost.image
+    // })
+
+    const [title, setTitle] = useState()
+    const [text, setText] = useState()
     const [singlePost, setSinglePost] = useState({}) 
     const [isEdit, setIsEdit] = useState(false)
     const [notif, setNotif] = useState(null)
@@ -34,9 +36,7 @@ const SinglePost = ({likes, count}) => {
     const editRef = useRef(null)
     const navigate = useNavigate()
     
-    const imageRef = useRef()
-    
-    
+    const imageRef = useRef()        
     
     
     dayjs.extend(relativeTime);
@@ -53,11 +53,31 @@ const SinglePost = ({likes, count}) => {
             .then((response) => response.json())
                .then((data) => {
                    setSinglePost(data)
-                   setEditedPost(data)
             });
             clearTimeout(post)
         }, 2000)
     }, [])
+
+    const handleEdit = async () => {
+
+        const formEdit = new FormData()
+            formEdit.append('title', singlePost.title)
+            formEdit.append('text', singlePost.text)
+            formEdit.append('images', singlePost.image)
+        
+        try {
+            const updatePost = await fetch(`http://localhost:4000/posts/${_id}`, {
+                method: 'PUT',
+                body: formEdit
+            }).then((res) => res.json())
+                .then((data) => {
+                    console.log(data);
+                    setSinglePost(data)
+                })
+            } catch (error) {
+                console.log(error);
+            }
+    }
 
     const deletePost = async () => {
         try {
@@ -92,55 +112,8 @@ const SinglePost = ({likes, count}) => {
         editRef.current.classList.add('edit-post')
     }
 
-    const handleEdit = async () => {
-
-        const formEdit = new FormData()
-            formEdit.append('title', editedPost.title)
-            formEdit.append('text', editedPost.text)
-            formEdit.append('images', editedPost.image)
-        
-        try {
-            const updatePost = await fetch(`http://localhost:4000/posts/${_id}`, {
-                method: 'PUT',
-                body: formEdit
-            }).then((res) => res.json())
-                .then((data) => {
-                    console.log(data);
-                    setSinglePost(data)
-                })
-            } catch (error) {
-                console.log(error);
-            }
-    }
-
-    useEffect(() => {
-        handleEdit()
-    }, [])
+   
     
-    
-
-    // const handleChange = async (e) => {
-    //     e.preventDefault();
-    //     const form = new FormData()
-    //     form.append('title', updatePostDetail.title)
-    //     form.append('text', updatePostDetail.text)
-    //     form.append('image', updatePostDetail.image);
-
-    //     try {
-    //         const response = await fetch(`http://localhost:4000/posts/${_id}`, {
-    //             method: 'PUT',
-    //             data: JSON.stringify(form)
-    //         })
-    //             .then((response) => response.json())
-    //             .then((data) => {
-    //                 console.log(data)
-    //                 setSinglePost(data)
-    //         })
-    //     } catch (error) {
-    //         console.log(error);
-    //     }
-    // }   
-
 
   return (
       <div className='single-post' key={singlePost._id}>
@@ -148,7 +121,7 @@ const SinglePost = ({likes, count}) => {
         <div className="featured-img">
             <img src={`http://localhost:4000/public/images/${singlePost.image}`} alt="" />
         </div>
-        <div className={singlePost.commentCount > 0 ? 'see-all-comments' : 'text-detail'}>
+        <div className={singlePost.commentCount > 0 ? 'see-all-comments' : 'text-detail'} key={singlePost._id}>
             <h3 className="titled">{singlePost.title}</h3>
             <h4 className="text">{singlePost.text}</h4>
             <div className="poster-detail">
@@ -206,10 +179,10 @@ const SinglePost = ({likes, count}) => {
                                             <label htmlFor="title" id='title'>Title:</label>
                                                   <input type="text"
                                                         name='title'
-                                                        value={editedPost.title}
-                                                        onChange={(e) => setEditedPost({
-                                                          ...editedPost,
-                                                          title: e.target.value
+                                                        value={singlePost.title}
+                                                        onChange={(e) => setSinglePost({
+                                                            ...singlePost,
+                                                            title: e.target.value
                                                         })}
                                                     />
                                         </div>
@@ -217,10 +190,10 @@ const SinglePost = ({likes, count}) => {
                                             <label htmlFor="text" id='text'>Text:</label>
                                                   <input type="text"
                                                         name='text'
-                                                        value={editedPost.text}
-                                                        onChange={(e) => setEditedPost({
-                                                          ...editedPost,
-                                                          text: e.target.value
+                                                        value={singlePost.text}
+                                                        onChange={(e) => setSinglePost({
+                                                            ...singlePost,
+                                                            text: e.target.value
                                                         })}
                                                     />
                                         </div>
@@ -232,10 +205,7 @@ const SinglePost = ({likes, count}) => {
                                                       accept='image/jpg, image/jpeg, image/png, image/gif, image/webp'
                                                       filename='images'
                                                       ref={imageRef}
-                                                      onChange={(e)=> setEditedPost({
-                                                        ...editedPost,
-                                                        image: e.target.files[0],
-                                                    })}
+                                                      onChange={(e)=> setSinglePost({image: e.target.files[0]})}
                                                 />
                                         </div>
                                               <button className='signIn-btn' type='submit' onClick={handleEdit}>Save Edit</button>

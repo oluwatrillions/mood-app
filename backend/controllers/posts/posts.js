@@ -38,9 +38,7 @@ const getAllPosts = async (req, res) => {
 }
 
 const updatePost = async (req, res) => {
-    if (!req.params.id) return res.sendStatus(400)    
-
-    console.log(req.file, 43);
+    if (!req.params.id) return res.sendStatus(400)            
 
     const { title, text } = req.body 
     
@@ -54,11 +52,12 @@ const updatePost = async (req, res) => {
     //     editedPost.image = image;
     // }
 
-    console.log(editedPost);
+    console.log(editedPost, "edited");
 
     try {
         const foundPost = await Posts.findByIdAndUpdate(req.params.id, editedPost, { new: true })
-        res.json({foundPost, message: 'Post updated successfully' })
+        
+        res.json({foundPost, message: 'Post updated successfully' })    
     } catch (error) {
         console.log(error);
     }
