@@ -121,7 +121,7 @@ const SinglePost = ({likes, count}) => {
         <div className="featured-img">
             <img src={`http://localhost:4000/public/images/${singlePost.image}`} alt="" />
         </div>
-        <div className={singlePost.commentCount > 0 ? 'see-all-comments' : 'text-detail'} key={singlePost._id}>
+        <div key={singlePost._id} className={singlePost.commentCount > 0 ? 'see-all-comments' : 'text-detail'}>
             <h3 className="titled">{singlePost.title}</h3>
             <h4 className="text">{singlePost.text}</h4>
             <div className="poster-detail">

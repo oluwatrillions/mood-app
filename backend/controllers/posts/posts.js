@@ -43,15 +43,8 @@ const updatePost = async (req, res) => {
     const editedPost = {
             title,
             text,
-            image: req.file.filename
+            image: req.file ? req.file.filename : req.body.image
     };
-
-    // if (req.file) {
-    //     const image = req.file.filename
-    //     editedPost.image = image;
-    // }
-
-    console.log(editedPost, "edited");
 
     try {
         const foundPost = await Posts.findByIdAndUpdate(req.params.id, editedPost, { new: true })
