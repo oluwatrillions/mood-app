@@ -4,6 +4,7 @@ import {Link} from 'react-router-dom'
 import useAxios from '../utils/useAxios'
 import AuthContext from '../Contexts/AuthContext'
 import UserImage from '../components/UserImage'
+import Loading from '../components/Loading'
 const Users = () => {
 
     let api = useAxios()
@@ -11,17 +12,24 @@ const Users = () => {
     const { userToken, user } = useContext(AuthContext)
 
     const [allUsers, setAllUsers] = useState([]) 
+    const [isLoading, setIsLoading] = useState(true)
     const [userPosts, setUserPosts] = useState({}) 
 
-    const getUsers = async () => {
-        let response = await fetch('http://localhost:4000/users')
-        let data = await response.json()
-        setAllUsers(data)
-    }
-
     useEffect(() => {
-        getUsers()
+        setTimeout(()=>{
+            const getUsers = async () => {
+                let response = await fetch('http://localhost:4000/users')
+                let data = await response.json()
+                setAllUsers(data)
+                setIsLoading(false)
+            }
+            getUsers()
+        }, 1000)
     }, [])
+
+    if(isLoading){
+        return <Loading/>
+    }
       
   return (
       <div className='users'>
