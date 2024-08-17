@@ -9,6 +9,7 @@ import Likes from '../components/Likes'
 import Comments from '../components/Comments'
 import dayjs from 'dayjs'
 import relativeTime from 'dayjs/plugin/relativeTime';
+import Loading from "../components/Loading"
 
 
 
@@ -16,28 +17,18 @@ const SinglePost = ({likes, count}) => {
 
     const { user, allUsers, deleteSuccess, posts } = useContext(AuthContext)
     const { _id } = useParams()
-    const filteredPost = posts.filter((post) => post._id === _id)
-    
+    // const filteredPost = posts.filter((post) => post._id === _id)
 
-
-    // const [editedPost, setEditedPost] = useState({
-    //     title: filteredPost.title,
-    //     text: filteredPost.text,
-    //     image: filteredPost.image
-    // })
-
-    const [title, setTitle] = useState()
-    const [text, setText] = useState()
     const [singlePost, setSinglePost] = useState({}) 
     const [isEdit, setIsEdit] = useState(false)
     const [notif, setNotif] = useState(null)
+    const [isLoading, setIsLoading] = useState(true)
     const btnRef = useRef(null)
     const deleteRef = useRef(null)
     const editRef = useRef(null)
     const navigate = useNavigate()
     
     const imageRef = useRef()        
-    
     
     dayjs.extend(relativeTime);
     
@@ -53,10 +44,15 @@ const SinglePost = ({likes, count}) => {
             .then((response) => response.json())
                .then((data) => {
                    setSinglePost(data)
+                   setIsLoading(false)
             });
             clearTimeout(post)
-        }, 2000)
+        }, 1000)
     }, [])
+
+    if (isLoading){
+        return <Loading/>
+    }
 
     const handleEdit = async () => {
 
@@ -71,7 +67,6 @@ const SinglePost = ({likes, count}) => {
                 body: formEdit
             }).then((res) => res.json())
                 .then((data) => {
-                    console.log(data);
                     setSinglePost(data)
                 })
             } catch (error) {

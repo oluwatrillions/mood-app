@@ -157,10 +157,6 @@ export const AuthProvider = ({ children }) => {
         commmentRef.current[id].classList.add('show-cmt') 
     }
 
-    const userPost = () => {
-        
-    }
-
     
     const UserContext = {
         user: user,
