@@ -17,7 +17,8 @@ const Post = () => {
 
     const navigate = useNavigate()
 
-    const back = () => {
+    const back = (e) => {
+        e.preventDefault()
         navigate('/posts')
     }
 
@@ -63,6 +64,7 @@ const Post = () => {
                           type="text"
                           name='title'
                           value={title}
+                          required
                           onChange={(e)=> setTitle(e.target.value)}
                         />
                   </div>
@@ -72,6 +74,7 @@ const Post = () => {
                           type="text"
                           name='text'
                           value={text}
+                          required
                           onChange={(e)=> setText(e.target.value)}
                         />
                   </div>
@@ -79,8 +82,10 @@ const Post = () => {
                       <label htmlFor="image" id='image'>Image:</label>
                       <input
                           type="file"
+                          name='images'
                           accept='image/jpg, image/jpeg, image/png, image/gif, image/webp'
                           filename='images'
+                          required
                           ref={imageRef}
                           onChange={(e)=> setImage(e.target.files[0])}
                         />

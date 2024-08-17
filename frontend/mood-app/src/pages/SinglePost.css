@@ -11,8 +11,8 @@
     width: 100vw;
     display: flex;
     justify-content: center;
-    padding-top: 2em;
-    background-color: rgb(149, 153, 156);
+    padding: 2em;
+    background-color: aliceblue;
 }
 
 .featured-post {

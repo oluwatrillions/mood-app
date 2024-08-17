@@ -24,13 +24,12 @@ const createPost = async (req, res) => {
     const name = req.body.name
     const username = req.body.username
     const title = req.body.title
-    const image = req.file.filename
+    const image= req.file ? req.file.filename : req.body.image
     const text = req.body.text
     const likeCount = req.body.likeCount
     const comments = req.body.comments
     
-    if (!text || !image) return res.json({ message: 'Please fill the following fields' })
-
+        if(!title || !image || !text) return res.status(204).json({ message: 'Please fill the following fields' })
     try {
         const newPost = await post.create({
             name,
@@ -41,6 +40,8 @@ const createPost = async (req, res) => {
             likeCount,
             comments
         })
+
+
         res.status(201).json({message: 'post created successfully'})
     } catch (error) {
         console.log(error);
