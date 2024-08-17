@@ -8,18 +8,38 @@ import Comments from '../components/Comments'
 import ReplyToMessage from './ReplyToMessage'
 import dayjs from 'dayjs'
 import relativeTime from 'dayjs/plugin/relativeTime';
+import Loading from '../components/Loading'
 
 const Posts = () => {
 
-    const { user, allUsers, posts, setPosts, AllPosts, commentOnMessage, userComment, setUserComment, commmentRef, replyRef } = useContext(AuthContext)
+    const { user, allUsers, AllPosts, commentOnMessage, userComment, setUserComment, commmentRef, replyRef } = useContext(AuthContext)
     
-    useEffect(() => {
-        AllPosts();
-    }, [])
+   const [isLoading, setIsLoading] = useState(true)
+   const [posts, setPosts] = useState([])
+
+   
+   useEffect(()=>{
+       setTimeout(() => {
+           const post = fetch(`http://localhost:4000/posts`)
+           .then((response) => response.json())
+           .then((data) => {
+               setPosts(data)
+               setIsLoading(false)
+            });
+            clearTimeout(post)
+        }, 1000)
+    })
+    
+    if(isLoading){
+ 
+     return <Loading/>
+ 
+    } 
+   
     
     dayjs.extend(relativeTime);
-    
     const formattedDate = dayjs(posts.map(post=> post.postedAt)).fromNow(); 
+    
 
     return (
         <div className='posts-div'>

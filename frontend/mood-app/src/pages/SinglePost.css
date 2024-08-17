@@ -7,11 +7,12 @@
 }
 
 .single-post {
-    min-height: 80vh;
+    min-height: 90vh;
     width: 100vw;
     display: flex;
     justify-content: center;
-    margin-top: 2em;
+    padding-top: 2em;
+    background-color: rgb(149, 153, 156);
 }
 
 .featured-post {
