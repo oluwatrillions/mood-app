@@ -12,7 +12,7 @@ import Loading from '../components/Loading'
 
 const Posts = () => {
 
-    const { user, allUsers, AllPosts, commentOnMessage, userComment, setUserComment, commmentRef, replyRef } = useContext(AuthContext)
+    const { user, allUsers, commentOnMessage, userComment, setUserComment, commmentRef, replyRef } = useContext(AuthContext)
     
    const [isLoading, setIsLoading] = useState(true)
    const [posts, setPosts] = useState([])

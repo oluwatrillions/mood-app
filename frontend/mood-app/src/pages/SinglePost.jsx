@@ -15,7 +15,7 @@ import Loading from "../components/Loading"
 
 const SinglePost = ({likes, count}) => {
 
-    const { user, allUsers, deleteSuccess, posts } = useContext(AuthContext)
+    const { user, allUsers, deleteSuccess } = useContext(AuthContext)
     const { _id } = useParams()
     // const filteredPost = posts.filter((post) => post._id === _id)
 
@@ -68,6 +68,7 @@ const SinglePost = ({likes, count}) => {
             }).then((res) => res.json())
                 .then((data) => {
                     setSinglePost(data)
+                    setNotif(data.message)
                 })
             } catch (error) {
                 console.log(error);
@@ -84,17 +85,13 @@ const SinglePost = ({likes, count}) => {
             })
                 .then((res) => res.json()
                     .then((data) => {
-                        console.log(data);
+                        setNotif(data.message)
                     })
             )
             deleteSuccess()
         } catch (error) {
             console.log(error);
         }
-    }
-
-    const isEditPost = async () => {
-        setIsEdit(true)
     }
 
     const actionRef = () => {
@@ -112,6 +109,7 @@ const SinglePost = ({likes, count}) => {
 
   return (
       <div className='single-post' key={singlePost._id}>
+        <h3 className='notif'>{notif}</h3>
         <div className={singlePost.commentCount > 0 ? 'see-comments' : 'featured-post'}>
         <div className="featured-img">
             <img src={`http://localhost:4000/public/images/${singlePost.image}`} alt="" />
@@ -168,7 +166,6 @@ const SinglePost = ({likes, count}) => {
                                 </div>
                              <div className='editing-post' ref={editRef}>
                                 <div className='signup'>
-                                    <h3 className='notif'>{ notif }</h3>
                                     <form encType='multipart/form-data' > 
                                         <div className='edit-inputs'>
                                             <label htmlFor="title" id='title'>Title:</label>

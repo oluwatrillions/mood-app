@@ -58,7 +58,7 @@ const updatePost = async (req, res) => {
 const deletePost = async (req, res) => {
     if (!req.params.id) return res.sendStatus(400)
     const foundPost = await Posts.deleteOne({ _id: req.params.id })
-    res.json({message: 'Post deleted successfully'})
+    res.json({message: 'Post deleted successfully. Redirecting...'})
 }
 
 const getPost = async (req, res) => {

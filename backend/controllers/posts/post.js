@@ -40,9 +40,7 @@ const createPost = async (req, res) => {
             likeCount,
             comments
         })
-
-
-        res.status(201).json({message: 'post created successfully'})
+        res.status(201).json({message: 'post created successfully, Redirecting...'})
     } catch (error) {
         console.log(error);
     }

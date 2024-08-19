@@ -43,6 +43,9 @@ const Post = () => {
            }).then((res) => {
                return res.json()
            }).then((data) => {
+            setNotif(data.message)
+            console.log(data);
+            
            })
            setTitle("")
            setText("")

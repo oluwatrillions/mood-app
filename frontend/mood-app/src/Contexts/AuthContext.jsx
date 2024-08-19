@@ -67,7 +67,7 @@ export const AuthProvider = ({ children }) => {
             const clear = () => {
                 clearTimeout(timer)
             }
-        }, 3000)
+        }, 2000)
     }  
     const postSuccess = () => {
         const timer = setTimeout(() => {
@@ -75,8 +75,18 @@ export const AuthProvider = ({ children }) => {
             const clear = () => {
                 clearTimeout(timer)
             }
-        }, 3000)
+        }, 2000)
     } 
+
+    const editSuccess = () => {
+        const timer = setTimeout(() => {
+            navigate('/posts')
+            const clear = () => {
+                clearTimeout(timer)
+            }
+        }, 2000)
+    } 
+
     const deleteSuccess = () => {
         const timer = setTimeout(() => {
             navigate('/posts')
@@ -185,7 +195,8 @@ export const AuthProvider = ({ children }) => {
         userComment: userComment,
         setUserComment: setUserComment,
         commmentRef: commmentRef,
-        replyRef: replyRef
+        replyRef: replyRef,
+        editSuccess: editSuccess
     }
     
 

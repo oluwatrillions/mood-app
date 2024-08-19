@@ -10,7 +10,9 @@
     min-height: 90vh;
     width: 100vw;
     display: flex;
+    flex-direction: column;
     justify-content: center;
+    align-items: center;
     padding: 2em;
     background-color: aliceblue;
 }
@@ -69,7 +71,7 @@
 .titled {
     color: rgb(219, 225, 231);
     font-weight: 600;
-    width: 18vw;
+    width: 25vw !important;
     text-align: start;
     font-family: 'Poppins', sans-serif;
     word-wrap: break-word;
@@ -126,6 +128,10 @@
     font-weight: 100;
 }
 
+.notif {
+    color: rgb(71, 63, 63)
+}
+
 .action-btn {
     cursor: pointer;
     display: none;
@@ -164,7 +170,7 @@ input[type='file'] {
 }
 
 .edit-post {
-    inset: 8vw 55vh ;
+    inset: 17vw 42vh !important;
     background-color: rgb(88, 84, 84);
     position: absolute;
     display: flex;
@@ -181,7 +187,7 @@ input[type='file'] {
 }
 
 .delete {
-    inset: 15vw 70vh ;
+    inset: 15vw 53vh ;
     background-color: rgb(255, 255, 255);
     position: absolute;
     display: flex;
@@ -189,6 +195,7 @@ input[type='file'] {
     justify-content: center;
     align-items: center;
     color: rgb(103, 105, 107);
+    width: 25vw;
 }
 
 .confirm h2 {
@@ -213,7 +220,8 @@ input[type='file'] {
 }
 
 .answer h2:hover {
-    background-color: aqua;
+    background-color: rgb(69, 71, 71);
+    color: aliceblue;
     cursor: pointer;
 }
 
