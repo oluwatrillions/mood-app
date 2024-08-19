@@ -54,7 +54,16 @@ const Posts = () => {
                                     </div>
                                     <div className="post-text">
                                         <h3 className="title">{post.title}</h3>
-                                        <h4 className="text-field">{post.text}</h4>
+                                        <h4 className="text-field">
+                                            {post.text.length > 90 ? 
+                                                <>
+                                                    {post.text.slice(0, 95) + "..."}
+                                                    <span className='text-span'>read more</span>
+                                                </>
+                                             : 
+                                                post.text
+                                            }
+                                        </h4>
                                         <h6>{ formattedDate}</h6>
                                     </div>
                                 </div>

@@ -67,6 +67,10 @@
     flex-direction: column;
 }
 
+.text-span {
+    color: rgb(171, 171, 219);
+}
+
 .post-text h6 {
     color: rgb(184, 186, 187);
     font-weight: 100;
