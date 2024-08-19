@@ -27,7 +27,7 @@ const Posts = () => {
                setIsLoading(false)
             });
             clearTimeout(post)
-        }, 1000)
+        }, 500)
     })
     
     if(isLoading){

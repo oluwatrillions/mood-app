@@ -20,6 +20,14 @@ export const AuthProvider = ({ children }) => {
     const [allUsers, setAllUsers] = useState([])
     const [posts, setPosts] = useState([])
 
+    // let thisUser = allUsers.filter((currentUser)=> currentUser.name === user.name)
+
+    // const thisPerson = thisUser.map((thisCurrent) => thisCurrent._id)
+
+    // console.log(thisPerson);
+    
+    
+
     //    let cookieValue = document.cookie.replace(/(?:(?:^|.*;\s*)user\s*\=\s*([^;]*).*$)|^.*$/, "$1");
     //     // console.log(cookieValue);
 
@@ -55,7 +63,7 @@ export const AuthProvider = ({ children }) => {
     const loginSuccess = () => {
         const timer = setTimeout(() => {
             setNotif('')
-            navigate('/userprofile/')
+            navigate(`/userprofile`)
             const clear = () => {
                 clearTimeout(timer)
             }
