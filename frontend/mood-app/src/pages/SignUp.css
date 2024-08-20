@@ -25,7 +25,6 @@ form {
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    gap: 1em;
 }
 
 .signup {
@@ -50,7 +49,7 @@ form {
     width: 28vw;
     display: flex;
     justify-content: space-between;
-    margin: 1em;
+    margin: .5em;
 }
 
 input {

@@ -6,6 +6,7 @@ const SignUp = () => {
     
     const [name, setName] = useState('')
     const [username, setUsername] = useState('')
+    const [email, setEmail] = useState('')
     const [password, setPassword] = useState('')
     const [avatar, setAvatar] = useState("")
     const [notif, setNotif] = useState(null)
@@ -27,6 +28,7 @@ const SignUp = () => {
             const signupData = new FormData()
             signupData.append('name', name)
             signupData.append('username', username)
+            signupData.append('email', email)
             signupData.append('password', password)
             signupData.append('avatar', avatar)
 
@@ -37,17 +39,19 @@ const SignUp = () => {
                if (res.ok) {
                    setName('')
                    setUsername('')
+                   setEmail('')
                    setPassword('')
                    signupSuccess()
                } else {
                     setName('')
                     setUsername('')
                     setPassword('')
+                    setEmail('')
                }
                return res.json();
            }).then(data => {
                console.log(data);
-               setNotif(data.message)
+               setNotif(data)
            })
        } catch (error) {
         console.log(error);
@@ -77,6 +81,15 @@ const SignUp = () => {
                           value={username}
                           required
                           onChange={ ((e)=> setUsername(e.target.value))} />
+                  </div>
+                  <div className='inputs'>
+                      <label htmlFor="email" id='email'>Email:</label>
+                      <input
+                          type="text"
+                          name='email'
+                          value={email}
+                          required
+                          onChange={ ((e)=> setEmail(e.target.value))} />
                   </div>
                   <div className='inputs'>
                       <label htmlFor="password" id='password'>Password:</label>

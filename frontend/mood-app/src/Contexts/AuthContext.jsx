@@ -58,7 +58,6 @@ export const AuthProvider = ({ children }) => {
                 setNotif(data.message)
             }
         } catch (error) {
-            console.log(data);
         }
     }
 
