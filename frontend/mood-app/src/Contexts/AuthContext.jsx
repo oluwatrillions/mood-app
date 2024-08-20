@@ -54,9 +54,11 @@ export const AuthProvider = ({ children }) => {
                 setUser(jwt_decode(data.accessToken))
                 setNotif(data.message)
                 loginSuccess()
+            } else {
+                setNotif(data.message)
             }
         } catch (error) {
-            console.log(error);
+            console.log(data);
         }
     }
 
@@ -69,16 +71,8 @@ export const AuthProvider = ({ children }) => {
             }
         }, 2000)
     }  
-    const postSuccess = () => {
-        const timer = setTimeout(() => {
-            navigate('/posts')
-            const clear = () => {
-                clearTimeout(timer)
-            }
-        }, 2000)
-    } 
 
-    const editSuccess = () => {
+    const postSuccess = () => {
         const timer = setTimeout(() => {
             navigate('/posts')
             const clear = () => {
@@ -195,9 +189,8 @@ export const AuthProvider = ({ children }) => {
         userComment: userComment,
         setUserComment: setUserComment,
         commmentRef: commmentRef,
-        replyRef: replyRef,
-        editSuccess: editSuccess
-    }
+        replyRef: replyRef
+        }
     
 
     return(
