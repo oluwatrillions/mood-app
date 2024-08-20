@@ -27,7 +27,7 @@ const Posts = () => {
                setIsLoading(false)
             });
             clearTimeout(post)
-        }, 500)
+        }, 1000)
     })
     
     if(isLoading){
@@ -38,8 +38,7 @@ const Posts = () => {
    
     
     dayjs.extend(relativeTime);
-    const formattedDate = dayjs(posts.map(post=> post.postedAt)).fromNow(); 
-    
+    // const formattedDate = dayjs(posts.map(post=> post.postedAt)).fromNow(); 
 
     return (
         <div className='posts-div'>
@@ -57,14 +56,14 @@ const Posts = () => {
                                         <h4 className="text-field">
                                             {post.text.length > 90 ? 
                                                 <>
-                                                    {post.text.slice(0, 95) + "..."}
+                                                    {post.text.slice(0, 90) + "..."}
                                                     <span className='text-span'>read more</span>
                                                 </>
                                              : 
                                                 post.text
                                             }
                                         </h4>
-                                        <h6>{ formattedDate}</h6>
+                                        <h6>{ dayjs(post.postedAt).fromNow()}</h6>
                                     </div>
                                 </div>
                             </Link>

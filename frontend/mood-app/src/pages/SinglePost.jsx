@@ -47,7 +47,7 @@ const SinglePost = ({likes, count}) => {
                    setIsLoading(false)
             });
             clearTimeout(post)
-        }, 500)
+        }, 1000)
     }, [])
 
     if (isLoading){
