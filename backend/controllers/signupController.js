@@ -3,7 +3,7 @@ const bcrypt = require('bcrypt')
 const path = require('path')
 const multer = require('multer')
 const validateEmail = require("email-validator")
-const nodemailer = require("nodemailer")
+const transporter = require("../config/nodemailer")
 
 const storage = multer.diskStorage({
   destination: function(req, file, cb){
@@ -13,7 +13,6 @@ const storage = multer.diskStorage({
     cb( null, Date.now() + '_' + file.originalname);
   },
 })
-
 
 const upload = multer({
     storage: storage,
@@ -50,22 +49,9 @@ const handleSignup = async (req, res) => {
             profileImage: req.file ? req.file.filename : null
         })  
 
-        const transporter = nodemailer.createTransport({
-            host: "smtp.gmail.com",
-            port: 587,
-            secure: false,
-            auth: {
-                user: "oluwatrillions44@gmail.com",
-                pass: "nnyghidoxzwxiwtd",
-            }, 
-            debug: false,
-            logger: true
-        })
-        
-        module.exports = {transporter}
         const messageOptions = {
-            from: "oluwatrillions44@gmail.com",
-            to: "ajosemichaeloluwatobi@yahoo.com",
+            from: process.env.EMAIL,
+            to: email,
             subject: "Welcome to The Mood App",
             text: "Thank you for checking out my portfolio and my work."
         }
@@ -75,7 +61,6 @@ const handleSignup = async (req, res) => {
                 console.log("Erroe", error);
             } else {
                 console.log("Email sent");
-                
             }
         })
         
