@@ -5,6 +5,8 @@ import jwt_decode from 'jwt-decode'
 import AuthContext from '../Contexts/AuthContext'
 import UserImage from '../components/UserImage'
 import { Link } from 'react-router-dom'
+import dayjs from 'dayjs'
+import relativeTime from 'dayjs/plugin/relativeTime';
 
 
 const UserProfile = () => {
@@ -22,6 +24,7 @@ const UserProfile = () => {
     }
     })
   
+    dayjs.extend(relativeTime);
 
   return (
       <div className='profile'>
@@ -33,6 +36,7 @@ const UserProfile = () => {
           <div className="other-activities">
             <div className="liked-posts">
                 <h1>Liked Posts</h1>
+                <div className="liked-items">
                 {posts.map((post)=> post.likeCount.filter(likes=> likes.username === user.username).map((allLikes)=> {
                   return <div key={post._id} className='liked-post'>
                   <Link to={`/posts/${post._id}`}>
@@ -40,13 +44,21 @@ const UserProfile = () => {
                       <img src={`http://localhost:4000/public/images/${post.image}`} alt={post.title} />
                       <div className='liked-detail'>
                           <h3>{post.title}</h3>
-                          <h4>{post.text}</h4>
-                          <h5>{post.postedAt}</h5>
+                          <h4>{post.text.length > 50 ? 
+                                                <>
+                                                    {post.text.slice(0, 50) + "..."}
+                                                    <span className='text-span'>read more</span>
+                                                </>
+                                             : 
+                                                post.text
+                                            }</h4>
+                          <h5>{dayjs(post.postedAt).fromNow()}</h5>
                       </div>
                       </div>
                     </Link>
               </div>
                 }))}
+                </div>
             </div>
             <div className="comments">
                 <h1>Their comments</h1>

@@ -47,29 +47,46 @@ div, * {
     flex-direction: column;
     justify-content: flex-start;
     align-items: flex-start;
+    flex-wrap: wrap;
     width: 70vw;
     height: 80vh;
     gap: 1em;
+    padding-top: 1em;
 }
 
-.liked-post {
-    width: 25vw;
-    height: 50vh;
+.liked-items {
+    width: 60vw;
     display: flex;
     flex-wrap: wrap;
     justify-content: flex-start;
-    align-items: flex-start;
+    gap: 1em;
 }
 
 .liked-posts {
     display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: flex-start;
     flex-wrap: wrap;
     height: fit-content;
     width: 70vw;
+    gap: 1em;
+}
+
+.liked-posts h1 {
+    font-size: 1.2em;
+}
+
+.liked-post {
+    width: 25vw;
+    display: flex;
+    justify-content: flex-start;
+    align-items: flex-start;
 }
 
 .post-section {
     width: 25vw;
+    height: fit-content;
     background-color: rgb(78, 76, 76);
     border-radius: 1em;
 }
