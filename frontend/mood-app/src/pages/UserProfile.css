@@ -8,9 +8,9 @@ div, * {
     width: 100vw;
     min-height: 80vh;
     display: flex;
-    justify-content: center;
+    justify-content: space-between;
     align-items: center;
-    background-color: rgb(71, 68, 68);
+    background-color: rgb(253, 253, 253);
 }
 
 .dashboard {
@@ -19,26 +19,91 @@ div, * {
     display: flex;
     flex-direction: column;
     justify-content: center;
-    align-items: center;
+    align-items: flex-start;
+    margin-left: 1em;
 }
 
 .dashboard img {
-    width: 30vw;
-    height: 50vh;
+    width: 25vw;
+    height: 30vh;
     border-radius: 50%;
 }
 
 .dashboard h2 {
     font-size: 1.9em;
     margin-top: 1em;
-    color: rgb(202, 155, 93);
+    color: rgb(59, 58, 57);
 }
 
 .dashboard h4 {
     font-size: 1.5em;
     font-weight: 400;
     margin-top: .5em;
-    color: aliceblue;
+    color: rgb(52, 53, 54);
+}
+
+.other-activities {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: flex-start;
+    width: 70vw;
+    height: 80vh;
+    gap: 1em;
+}
+
+.liked-post {
+    width: 25vw;
+    height: 50vh;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: flex-start;
+    align-items: flex-start;
+}
+
+.liked-posts {
+    display: flex;
+    flex-wrap: wrap;
+    height: fit-content;
+    width: 70vw;
+}
+
+.post-section {
+    width: 25vw;
+    background-color: rgb(78, 76, 76);
+    border-radius: 1em;
+}
+
+.post-section img {
+    width: 25vw;
+    height: 40vh;
+    border-radius: 1em;
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center center fixed;
+    vertical-align: middle;
+    object-fit: cover;
+}
+
+.post-section h3 {
+    font-family: 'Poppins', sans-serif;
+    color: rgb(231, 231, 231);
+}
+
+.post-section h4 {
+    font-family: 'Poppins', sans-serif;
+    margin: .3em 0;
+    color: azure;
+}
+
+.post-section h5 {
+    color: rgb(175, 177, 177);
+}
+
+.liked-detail {
+    margin: 0 .5em;
+    display: flex;
+    flex-direction: column;
 }
 
 @media screen and (max-width: 480px){
