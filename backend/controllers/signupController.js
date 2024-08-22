@@ -46,7 +46,7 @@ const handleSignup = async (req, res) => {
             username: req.body.username,
             email,
             password: hashedPwd,
-            profileImage: req.file ? req.file.filename : null
+            profileImage: req.file ? req.file.filename : "../../public/no-image/no-avatar.jpg"
         })  
 
         const messageOptions = {
