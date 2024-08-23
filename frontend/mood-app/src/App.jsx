@@ -12,6 +12,7 @@ import SinglePost from './pages/SinglePost'
 import Users from './pages/Users'
 import PrivateRoute from './pages/PrivateRoute'
 import UserPosts from './pages/UserPosts'
+import Likes from './pages/Likes'
 
 function App() {
 
@@ -30,6 +31,7 @@ function App() {
                             <Route path='/post/create' element={<Post/>} />
                             <Route path='/posts' element={<Posts/>} />
                             <Route path='/posts/:_id' element={<SinglePost/>} />
+                            <Route path='/posts/likes' element={<Likes/>} />
                             <Route path='/userprofile' element={<UserProfile />} />
                         </Routes>
                     </Layout>

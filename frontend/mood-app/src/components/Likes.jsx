@@ -8,7 +8,7 @@ const Likes = ({ postId, likeCount, username }) => {
     
     const { user, posts, setPosts } = useContext(AuthContext)
     
-    // Function that is called a user likes a post. It saves the user's username and the post_id of the post
+    // Function that is called when a user likes a post. It saves the user's username and the post_id of the post
     
     const likePost = async () => {
         try {

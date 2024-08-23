@@ -84,15 +84,19 @@ div, * {
     align-items: flex-start;
 }
 
+.no-post {
+    font-size: 1em;
+}
+
 .post-section {
-    width: 25vw;
+    width: 20em;
     height: fit-content;
     background-color: rgb(78, 76, 76);
     border-radius: 1em;
 }
 
 .post-section img {
-    width: 25vw;
+    width: 20em;
     height: 40vh;
     border-radius: 1em;
     background-size: cover;
@@ -111,6 +115,7 @@ div, * {
     font-family: 'Poppins', sans-serif;
     margin: .3em 0;
     color: azure;
+    font-size: .8em;
 }
 
 .post-section h5 {

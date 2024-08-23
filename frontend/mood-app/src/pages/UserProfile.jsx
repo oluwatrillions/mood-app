@@ -26,6 +26,8 @@ const UserProfile = () => {
   
     dayjs.extend(relativeTime);
 
+    const allTheLikes = posts.map((post)=> post.likeCount.filter(likes=> likes.username === user.username))
+
   return (
       <div className='profile'>
           <div className="dashboard">
@@ -37,27 +39,35 @@ const UserProfile = () => {
             <div className="liked-posts">
                 <h1>Liked Posts</h1>
                 <div className="liked-items">
-                {posts.map((post)=> post.likeCount.filter(likes=> likes.username === user.username).map((allLikes)=> {
-                  return <div key={post._id} className='liked-post'>
-                  <Link to={`/posts/${post._id}`}>
-                  <div className='post-section'>
-                      <img src={`http://localhost:4000/public/images/${post.image}`} alt={post.title} />
-                      <div className='liked-detail'>
-                          <h3>{post.title}</h3>
-                          <h4>{post.text.length > 50 ? 
-                                                <>
-                                                    {post.text.slice(0, 50) + "..."}
-                                                    <span className='text-span'>read more</span>
-                                                </>
-                                             : 
-                                                post.text
-                                            }</h4>
-                          <h5>{dayjs(post.postedAt).fromNow()}</h5>
-                      </div>
-                      </div>
-                    </Link>
-              </div>
-                }))}
+                {posts.map((post)=>{
+                  const allTheLikes = post.likeCount.filter(likes=> likes.username === user.username);
+
+                  if(allTheLikes.length > 0){
+                    return allTheLikes.map((allLikes)=>(
+                       <div key={post._id} className='liked-post'>
+                    <Link to={`/posts/${post._id}`}>
+                    <div className='post-section'>
+                        <img src={`http://localhost:4000/public/images/${post.image}`} alt={post.title} />
+                        <div className='liked-detail'>
+                            <h3>{post.title}</h3>
+                            <h4>{post.text.length > 50 ? 
+                                                  <>
+                                                      {post.text.slice(0, 50) + "..."}
+                                                      <span className='text-span'>read more</span>
+                                                  </>
+                                               : 
+                                                  post.text
+                                              }</h4>
+                            <h5>{dayjs(post.postedAt).fromNow()}</h5>
+                        </div>
+                        </div>
+                      </Link>
+                </div>
+                    )) 
+                  } else {
+                    return <h3 key={post._id}>No liked post</h3>
+                  }
+                })}
                 </div>
             </div>
             <div className="comments">
