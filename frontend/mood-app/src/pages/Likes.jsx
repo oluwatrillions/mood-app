@@ -30,10 +30,12 @@ const Likes = () => {
               <div className="liked-post-details">
                 <h2>{post.title}</h2>
                 <h4>{post.text}</h4>
-                <h3>Likes: <span>{userLikes.length}</span></h3>
+                <h3>Likes: <span>{post.likeCount.length}</span></h3>
               </div>
             </div>
           ))
+        } else {
+          return <h3>You have <span>{userLikes.length}</span> liked posts</h3>
         }
         
       })}</div>

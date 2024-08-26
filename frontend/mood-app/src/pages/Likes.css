@@ -7,25 +7,51 @@
 .liked-posts {
     min-height: 100vh;
     width: 100vw;
-    display: flex;
-    flex-wrap: wrap;
 }
 
 .liked-post{
     padding: 2em;
+    width: 100vw;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 2em;
 }
 
 .all-liked-post {
     width: 25vw;
+    background-color: rgb(225, 228, 231);
 }
 
 .all-liked-post img {
     width: 25vw;
     height: 40vh;
+    margin: 0;
+    padding: 0;
+}
+
+.all-liked-post h3 span {
+    color: rgb(51, 151, 238);
 }
 
 .liked-post-details {
     width: 25vw;
     height: fit-content;
+    padding: .5em;
     background-color: rgb(236, 236, 236);
+}
+
+.liked-post-details h3 span {
+    color: rgb(51, 151, 238);
+}
+
+.liked-post-details h2{
+    color: rgb(54, 53, 53);
+}
+
+.liked-post-details h4{
+    color: rgb(54, 53, 53);
+}
+
+.liked-post-details h3 {
+    color: rgb(54, 53, 53);
 }
