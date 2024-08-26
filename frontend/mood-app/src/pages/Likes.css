@@ -13,9 +13,13 @@
     padding: 2em;
     width: 100vw;
     display: flex;
-    flex-direction: column;
     flex-wrap: wrap;
     gap: 2em;
+}
+
+.likes-title {
+    margin-top: 1em;
+    padding-left: 1em;
 }
 
 .all-liked-post {
@@ -55,4 +59,12 @@
 
 .liked-post-details h3 {
     color: rgb(54, 53, 53);
+}
+
+.liked-post-details h3 span {
+    font-size: .8em;
+}
+
+.comment-title {
+    padding-left: 1em;
 }

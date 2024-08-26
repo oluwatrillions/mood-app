@@ -20,8 +20,8 @@ const Likes = () => {
     
   return (
     <div className='liked-posts'>
+        <h2 className='likes-title'>Liked Posts</h2>
       <div className="liked-post">
-        <h2>Liked Posts</h2>
         {posts.some(post => post.likeCount.some(likes => likes.username === user.username)) ? (
           posts.map((post) => {
             const userLikes = post.likeCount.filter(likes => likes.username === user.username);
@@ -46,8 +46,8 @@ const Likes = () => {
         )}
       </div>
       <div className="comments">
+          <h2 className='comment-title'>Comments</h2>
         <div className="liked-post">
-          <h2>Comments</h2>
           {posts.some(post => post.comments.some(likes => likes.username === user.username)) ? (
             posts.map((post) => {
               const userLikes = post.comments.filter(likes => likes.username === user.username);
@@ -59,7 +59,7 @@ const Likes = () => {
                     <div className="liked-post-details">
                       <h2>{post.title}</h2>
                       <h4>{post.text}</h4>
-                      <h3>comments: <span>{post.comments.length}</span></h3>
+                      <h3>comment: <span>{post.comments.map(message=> message.comment)}</span></h3>
                     </div>
                   </div>
                 ));
@@ -68,7 +68,7 @@ const Likes = () => {
               }
             })
           ) : (
-            <h3>You have <span>0</span> liked posts</h3>
+            <h3>You have <span>0</span> comments on posts</h3>
           )}
       </div>
       </div>
