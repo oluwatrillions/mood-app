@@ -1,10 +1,8 @@
 import React, {useContext, useEffect, useState} from 'react'
 import './UserProfile.css'
-import axios from 'axios'
 import jwt_decode from 'jwt-decode'
 import AuthContext from '../Contexts/AuthContext'
 import UserImage from '../components/UserImage'
-import { Link } from 'react-router-dom'
 import dayjs from 'dayjs'
 import relativeTime from 'dayjs/plugin/relativeTime';
 
@@ -12,68 +10,36 @@ import relativeTime from 'dayjs/plugin/relativeTime';
 const UserProfile = () => {
 
     const { user } = useContext(AuthContext)  
-    const [posts, setPosts] = useState([])
+    const [users, setUsers] = useState([])
+
+    console.log();
+    
     
     useEffect(()=>{
       try {
-        fetch('http://localhost:4000/posts')
+        fetch(`http://localhost:4000/users/`)
         .then((res)=> res.json())
-        .then(response=> setPosts(response))
+        .then(response=> setUsers(response.filter((item)=> item.username === user.username)))
     } catch (error) {
         console.log(error);
     }
     })
+
+    const singleUser = users.map(item=> item)
+    console.log();
+    
+    
   
     dayjs.extend(relativeTime);
 
-    const allTheLikes = posts.map((post)=> post.likeCount.filter(likes=> likes.username === user.username))
 
   return (
       <div className='profile'>
           <div className="dashboard">
-              <img src={`http://localhost:4000/public/avatar/${user.avatar}`} alt="" />
-              <h2>{user.name}</h2>
-              <h4> @{ user.username}</h4>
-          </div>
-          <div className="other-activities">
-            <div className="liked-posts">
-                <h1>Liked Posts</h1>
-                <div className="liked-items">
-                {posts.map((post)=>{
-                  const allTheLikes = post.likeCount.filter(likes=> likes.username === user.username);
-
-                  if(allTheLikes.length > 0){
-                    return allTheLikes.map((allLikes)=>(
-                       <div key={post._id} className='liked-post'>
-                    <Link to={`/posts/${post._id}`}>
-                    <div className='post-section'>
-                        <img src={`http://localhost:4000/public/images/${post.image}`} alt={post.title} />
-                        <div className='liked-detail'>
-                            <h3>{post.title}</h3>
-                            <h4>{post.text.length > 50 ? 
-                                                  <>
-                                                      {post.text.slice(0, 50) + "..."}
-                                                      <span className='text-span'>read more</span>
-                                                  </>
-                                               : 
-                                                  post.text
-                                              }</h4>
-                            <h5>{dayjs(post.postedAt).fromNow()}</h5>
-                        </div>
-                        </div>
-                      </Link>
-                </div>
-                    )) 
-                  } else {
-                    return <h3 key={post._id}>No liked post</h3>
-                  }
-                })}
-                </div>
-            </div>
-            <div className="comments">
-                <h1>Their comments</h1>
-
-            </div>
+              <img src={`http://localhost:4000/public/avatar/${users.map(item=> item.profileImage)}`} alt="" />
+              <h2><span>name: </span>{users.map(item=> item.name)}</h2>
+              <h4><span>username</span> @{ users.map(item=> item.username)}</h4>
+              <h5> <span>joined:</span> { dayjs(users.map(item=> item.registeredAt)).fromNow()}</h5>
           </div>
     </div>
   )

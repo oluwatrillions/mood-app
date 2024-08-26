@@ -8,125 +8,49 @@ div, * {
     width: 100vw;
     min-height: 80vh;
     display: flex;
-    justify-content: space-between;
+    justify-content: flex-start;
     align-items: center;
     background-color: rgb(253, 253, 253);
 }
 
 .dashboard {
-    width: 50vw;
+    width: 100vw;
     height: 80vh;
     display: flex;
     flex-direction: column;
     justify-content: center;
-    align-items: flex-start;
+    align-items: center;
     margin-left: 1em;
 }
 
 .dashboard img {
-    width: 25vw;
-    height: 30vh;
+    width: 30vw;
+    height: 45vh;
     border-radius: 50%;
 }
 
 .dashboard h2 {
     font-size: 1.9em;
-    margin-top: 1em;
+    font-weight: 600;
+    margin-top: .5em;
     color: rgb(59, 58, 57);
 }
 
+.dashboard span {
+    font-weight: 200;
+}
+
+
 .dashboard h4 {
     font-size: 1.5em;
-    font-weight: 400;
-    margin-top: .5em;
+    font-weight: 600;
     color: rgb(52, 53, 54);
 }
 
-.other-activities {
-    display: flex;
-    flex-direction: column;
-    justify-content: flex-start;
-    align-items: flex-start;
-    flex-wrap: wrap;
-    width: 70vw;
-    height: 80vh;
-    gap: 1em;
-    padding-top: 1em;
+.dashboard h5{ 
+    font-weight: 600;
 }
 
-.liked-items {
-    width: 60vw;
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: flex-start;
-    gap: 1em;
-}
-
-.liked-posts {
-    display: flex;
-    flex-direction: column;
-    justify-content: flex-start;
-    align-items: flex-start;
-    flex-wrap: wrap;
-    height: fit-content;
-    width: 70vw;
-    gap: 1em;
-}
-
-.liked-posts h1 {
-    font-size: 1.2em;
-}
-
-.liked-post {
-    width: 25vw;
-    display: flex;
-    justify-content: flex-start;
-    align-items: flex-start;
-}
-
-.no-post {
-    font-size: 1em;
-}
-
-.post-section {
-    width: 20em;
-    height: fit-content;
-    background-color: rgb(78, 76, 76);
-    border-radius: 1em;
-}
-
-.post-section img {
-    width: 20em;
-    height: 40vh;
-    border-radius: 1em;
-    background-size: cover;
-    background-repeat: no-repeat;
-    background-position: center center fixed;
-    vertical-align: middle;
-    object-fit: cover;
-}
-
-.post-section h3 {
-    font-family: 'Poppins', sans-serif;
-    color: rgb(231, 231, 231);
-}
-
-.post-section h4 {
-    font-family: 'Poppins', sans-serif;
-    margin: .3em 0;
-    color: azure;
-    font-size: .8em;
-}
-
-.post-section h5 {
-    color: rgb(175, 177, 177);
-}
-
-.liked-detail {
-    margin: 0 .5em;
-    display: flex;
-    flex-direction: column;
-}
 
 @media screen and (max-width: 480px){
     .dashboard img {

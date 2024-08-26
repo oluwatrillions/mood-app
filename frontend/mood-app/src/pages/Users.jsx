@@ -13,7 +13,6 @@ const Users = () => {
 
     const [allUsers, setAllUsers] = useState([]) 
     const [isLoading, setIsLoading] = useState(true)
-    const [userPosts, setUserPosts] = useState({}) 
 
     useEffect(() => {
         setTimeout(()=>{
