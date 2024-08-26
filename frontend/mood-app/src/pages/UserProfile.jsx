@@ -38,8 +38,8 @@ const UserProfile = () => {
           <div className="dashboard">
               <img src={`http://localhost:4000/public/avatar/${users.map(item=> item.profileImage)}`} alt="" />
               <h2><span>name: </span>{users.map(item=> item.name)}</h2>
-              <h4><span>username</span> @{ users.map(item=> item.username)}</h4>
-              <h5> <span>joined:</span> { dayjs(users.map(item=> item.registeredAt)).fromNow()}</h5>
+              <h4><span>username: </span> @{ users.map(item=> item.username)}</h4>
+              <h5> <span>joined: </span> { dayjs(users.map(item=> item.registeredAt)).fromNow()}</h5>
           </div>
     </div>
   )
