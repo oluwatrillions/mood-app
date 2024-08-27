@@ -11,7 +11,6 @@ const Header = () => {
 
     const collapsedRef = useRef()
     const location = useLocation()
-    console.log(location.pathname);
     
 
     const sidebar = () => {

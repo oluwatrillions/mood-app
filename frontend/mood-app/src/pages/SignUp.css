@@ -7,9 +7,11 @@
 }
 
 .register {
-    min-height: 80vh;
+    min-height: 100vh;
     display: flex;
+    flex-direction: column;
     justify-content: center;
+    align-items: center;
 }
 
 .notif {
@@ -27,13 +29,25 @@ form {
     align-items: center;
 }
 
+.google-btn {
+    margin-top: 1em;
+    margin-bottom: 1em;
+    height: 3em;
+    width: 30vw;
+    font-size: 1.2em;
+    background-color: rgb(69, 146, 146);
+    color: aliceblue;
+    border: none;
+    outline: none;
+    cursor: pointer;border-radius: .5em;
+}
+
 .signup {
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
     width: 50vw;
-    height: 80vh;
 }
 
 .signup .sign-in-img {
