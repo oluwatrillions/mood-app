@@ -23,11 +23,11 @@ const upload = multer({
 
 const handleSignup = async (req, res) => {
     let { name, username, email, password} = req.body
-    if (!name || !username || !password) {
+    if (!name || !email || !password) {
         return res.json({message: 'Please enter the following fields'})
     }
 
-    const user = await Users.findOne({ username }).exec()
+    const user = await Users.findOne({ email }).exec()
     if (user) {
         return res.status(409).json({message: 'User exists. Please change your username'})
     }
@@ -37,9 +37,7 @@ const handleSignup = async (req, res) => {
         return res.status(400).json('Invalid email');
     }
     try {
-        const hashedPwd = await bcrypt.hash(password, 12)
-        const userEmail = validateEmail.validate(req.body.email) 
-      
+        const hashedPwd = await bcrypt.hash(password, 12)      
 
         const newUser = await Users.create({
             name: req.body.name,

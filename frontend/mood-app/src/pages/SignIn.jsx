@@ -1,6 +1,5 @@
 import React, { useContext, useState } from 'react'
 import './SignUp.css'
-import { useNavigate, useParams } from "react-router-dom"
 import AuthContext from '../Contexts/AuthContext'
 
 const SignIn = () => {
@@ -14,10 +13,10 @@ const SignIn = () => {
               <h3 className='notif'>{ notif }</h3>
               <form onSubmit={handleLogin}>
                   <div className='inputs'>
-                      <label htmlFor="name" id='username'>Username:</label>
+                      <label htmlFor="email" id='email'>Email:</label>
                       <input
-                          type="text"
-                          name='username'
+                          type="email"
+                          name='email'
                         />
                   </div>
                   <div className='inputs'>

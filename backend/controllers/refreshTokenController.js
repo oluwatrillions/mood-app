@@ -13,12 +13,13 @@ const handleRefreshToken = async (req, res) => {
         refreshToken,
         process.env.REFRESH_TOKEN_SECRET,
         (err, decoded) => {
-            if (err || user.username !== decoded.username) {
+            if (err || user.email !== decoded.email) {
                 return res.status(403).json({message: 'from here'})
             }
             const payload = {
                 name: user.name,
                 username: user.username,
+                email: user.email,
                 avatar: user.profileImage,
             }
             const accessToken = jwt.sign(payload,
