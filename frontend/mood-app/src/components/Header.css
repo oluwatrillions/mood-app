@@ -56,6 +56,18 @@ nav {
     gap: .8em;
 }
 
+.users-btn {
+    background-color: inherit;
+}
+
+.active {
+    background-color: aliceblue;
+    font-size: 1.5em;
+    border-radius: .5em;
+    padding: .5em;
+    color: rgb(24, 23, 23);
+}
+
 .header a {
     font-size: 1em;
     text-decoration: none;
@@ -84,6 +96,7 @@ nav button {
 .close-btn{
     display: none;
 }
+
 
 
 @media screen and (max-width: 375px){    
