@@ -1,44 +1,31 @@
 import React, { useContext, useEffect, useState } from 'react'
 import './SignUp.css'
 import AuthContext from '../Contexts/AuthContext'
-// import {useGoogleLogin} from "@react-oauth/google"
-import { GoogleLogin } from '@react-oauth/google';
+import {useGoogleLogin, GoogleLogin} from "@react-oauth/google"
 import axios from "axios"
 
 const SignIn = () => {
 
     const { notif, handleLogin, loginSuccess } = useContext(AuthContext)
 
-  //   const [googleUser, setGoogleUser] = useState()
-  //   const [profile, setProfile] = useState()
+    const [googleUser, setGoogleUser] = useState([])
+    const [profile, setProfile] = useState([])
 
-  //   const login = useGoogleLogin({
-  //     onSuccess: (codeResponse) => setGoogleUser(codeResponse),
-  //     onError: (error) => console.log('Login Failed:', error)
-  // })
+    const login = useGoogleLogin({
+      onSuccess: (codeResponse) => setGoogleUser(codeResponse),
+      onError: (error) => console.log('Login Failed:', error)
+  })
 
-
-
-//   useEffect(() => {
-//         if (googleUser) {
-//             axios(`https://www.googleapis.com/oauth2/v1/userinfo?access_token=${googleUser.access_token}`, {
-//                     headers: {
-//                         Authorization: `Bearer ${googleUser.access_token}`,
-//                         Accept: 'application/json',
-//                         'Cross-Origin-Embedder-Policy': 'unsafe-none'
-//                     }
-//                 })
-//                 .then((res) => {
-//                   console.log(res.data);
-                  
-//                     setProfile(res.data);
-//                     loginSuccess()
-//                 })
-//                 .catch((err) => console.log(err));
-//         }
-//     },
-//     [ googleUser ]
-// );
+  const googleLogin = useGoogleLogin({
+    onSuccess: async ({ code }) => {
+      const tokens = await axios.post('http://localhost:4000/auth/google', {
+        code,
+      });
+  
+      console.log(tokens);
+    },
+    flow: 'auth-code',
+  })
 
   return (
     <div className='register'>
@@ -63,14 +50,7 @@ const SignIn = () => {
                   <button className='signIn-btn' type='submit'>Sign In</button>
               </form>
           </div>
-        <GoogleLogin
-          onSuccess={credentialResponse => {
-            console.log(credentialResponse);
-          }}
-          onError={() => {
-            console.log('Login Failed');
-          }}
-        />;
+          <button onClick={googleLogin} className='google-btn'>Sign in with Google 🚀</button>
     </div>
   )
 }
