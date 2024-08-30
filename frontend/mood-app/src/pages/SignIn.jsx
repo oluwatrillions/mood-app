@@ -1,20 +1,20 @@
 import React, { useContext, useEffect, useState } from 'react'
 import './SignUp.css'
 import AuthContext from '../Contexts/AuthContext'
-import {useGoogleLogin, GoogleLogin} from "@react-oauth/google"
+import {useGoogleLogin} from "@react-oauth/google"
 import axios from "axios"
+import jwt_decode from 'jwt-decode'
+import { useNavigate } from 'react-router-dom'
 
 const SignIn = () => {
 
-    const { notif, handleLogin, loginSuccess } = useContext(AuthContext)
+    const { notif, handleLogin, loginSuccess, user, setUser, userToken, setUserToken } = useContext(AuthContext)
 
     const [googleUser, setGoogleUser] = useState([])
     const [profile, setProfile] = useState([])
 
-    const login = useGoogleLogin({
-      onSuccess: (codeResponse) => setGoogleUser(codeResponse),
-      onError: (error) => console.log('Login Failed:', error)
-  })
+    const navigate = useNavigate()
+    
 
   const googleLogin = useGoogleLogin({
     onSuccess: async ({ code }) => {
@@ -23,6 +23,19 @@ const SignIn = () => {
       });
   
       console.log(tokens);
+      if(tokens){
+        const decoded = jwt_decode(tokens.data.id_token)
+        console.log(decoded);
+        
+
+        localStorage.setItem('accesstoken', JSON.stringify(tokens.data?.access_token))
+        setUserToken(tokens.data?.access_token)
+        // setUser([decoded])
+        
+        navigate('/posts')
+      } else {
+        console.log(error)
+      }
     },
     flow: 'auth-code',
   })
