@@ -21,7 +21,6 @@ router.post("/", async function(req, res, next){
     )
 
     const {tokens} = await oAuth2Client.getToken(req.body.code);
-    console.log(tokens);
 
     const foundUser = await jwt.decode(tokens.id_token)
 

@@ -24,13 +24,13 @@ const SignIn = () => {
   
       console.log(tokens);
       if(tokens){
-        const decoded = jwt_decode(tokens.data.id_token)
+        const decoded = jwt_decode(tokens.data.access_token)
         console.log(decoded);
         
 
         localStorage.setItem('accesstoken', JSON.stringify(tokens.data?.access_token))
         setUserToken(tokens.data?.access_token)
-        // setUser([decoded])
+        setUser(tokens.data.newFoundUser.name)
         loginSuccess()
       } else {
         console.log(error)
