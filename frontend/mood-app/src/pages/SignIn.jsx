@@ -31,8 +31,7 @@ const SignIn = () => {
         localStorage.setItem('accesstoken', JSON.stringify(tokens.data?.access_token))
         setUserToken(tokens.data?.access_token)
         // setUser([decoded])
-        
-        navigate('/posts')
+        loginSuccess()
       } else {
         console.log(error)
       }
