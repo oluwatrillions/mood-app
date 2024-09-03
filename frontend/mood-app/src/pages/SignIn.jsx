@@ -22,16 +22,14 @@ const SignIn = () => {
         code,
       });
   
-      console.log(tokens);
-      if(tokens){
-        const decoded = jwt_decode(tokens.data.access_token)
-        console.log(decoded);
+      console.log(tokens);   
+      
+      if(tokens.data){
+        const decoded = jwt_decode(tokens.data.accesstoken)
         
-
-        localStorage.setItem('accesstoken', JSON.stringify(tokens.data?.access_token))
-        setUserToken(tokens.data?.access_token)
-        setUser(tokens.data.newFoundUser.name)
-        loginSuccess()
+        localStorage.setItem('accesstoken', JSON.stringify(tokens.data?.accesstoken))
+        setUserToken(tokens.data?.accesstoken)
+        navigate('/posts')
       } else {
         console.log(error)
       }

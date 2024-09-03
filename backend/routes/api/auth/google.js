@@ -34,7 +34,7 @@ router.post("/", async function(req, res, next){
             email: foundUser.email,
             password: foundUser.sub,
             username: foundUser.given_name,
-            profileImage: foundUser.picture,
+            profileImage: foundUser.picture || "../../../public/no-image/no-avatar.jpg",
             refreshToken: tokens.refresh_token
         })
 
