@@ -8,7 +8,7 @@ import { useNavigate } from 'react-router-dom'
 
 const SignIn = () => {
 
-    const { notif, handleLogin, loginSuccess, user, setUser, userToken, setUserToken } = useContext(AuthContext)
+    const { notif, setNotif, handleLogin, loginSuccess, user, setUser, userToken, setUserToken } = useContext(AuthContext)
 
     const [googleUser, setGoogleUser] = useState([])
     const [profile, setProfile] = useState([])
@@ -24,14 +24,16 @@ const SignIn = () => {
   
       console.log(tokens);   
       
-      if(tokens.data){
+      if(tokens.data.accesstoken){
         const decoded = jwt_decode(tokens.data.accesstoken)
         
         localStorage.setItem('accesstoken', JSON.stringify(tokens.data?.accesstoken))
         setUserToken(tokens.data?.accesstoken)
         navigate('/posts')
       } else {
-        console.log(error)
+        
+        setNotif(tokens.data.message)
+        navigate('/posts')
       }
     },
     flow: 'auth-code',
