@@ -10,28 +10,30 @@ const SignIn = () => {
 
     const { notif, setNotif, handleLogin, loginSuccess, user, setUser, userToken, setUserToken } = useContext(AuthContext)
 
-    const [googleUser, setGoogleUser] = useState([])
-    const [profile, setProfile] = useState([])
-
     const navigate = useNavigate()
+
+    console.log(user);
     
+    useEffect(()=>{
+      
+    })
 
   const googleLogin = useGoogleLogin({
     onSuccess: async ({ code }) => {
-      const tokens = await axios.post('http://localhost:4000/auth/google', {
-        code,
+      const tokens = await axios.post('http://localhost:4000/auth/google', {code,
       });
-  
-      console.log(tokens);   
       
-      if(tokens.data.accesstoken){
+      if(tokens?.data?.accesstoken){
         const decoded = jwt_decode(tokens.data.accesstoken)
         
         localStorage.setItem('accesstoken', JSON.stringify(tokens.data?.accesstoken))
         setUserToken(tokens.data?.accesstoken)
+        setUser(jwt_decode(tokens?.data?.accesstoken))
         navigate('/posts')
       } else {
-        
+        localStorage.setItem("accesstoken", JSON.stringify(tokens.data?.token))
+        setUserToken(tokens.data.token)
+        setUser(jwt_decode(tokens?.data?.token))
         setNotif(tokens.data.message)
         navigate('/posts')
       }

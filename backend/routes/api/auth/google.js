@@ -21,13 +21,18 @@ router.post("/", async function(req, res, next){
     )
 
     const {tokens} = await oAuth2Client.getToken(req.body.code);
+    
 
     const foundUser = await jwt.decode(tokens.id_token)
 
     const user = await GoogleUsers.findOne({email: foundUser.email}).exec()
 
+    const token = jwt.sign(user.toJSON(),
+        tokens.access_token
+    )    
+
     if (user){
-        return res.json({message: "user already exists"})
+        return res.json({token, message: "user already exists"})
     } else {
         const newUser = new GoogleUsers({
             name: foundUser.name,
@@ -35,7 +40,7 @@ router.post("/", async function(req, res, next){
             password: foundUser.sub,
             username: foundUser.given_name,
             profileImage: foundUser.picture || "../../../public/no-image/no-avatar.jpg",
-            refreshToken: tokens.refresh_token
+            refreshToken: tokens.refresh_token,
         })
 
         const accesstoken = jwt.sign(newUser.toJSON(),
@@ -43,6 +48,8 @@ router.post("/", async function(req, res, next){
         )
 
         const newFoundUser = await newUser.save()
+        console.log(newFoundUser.refreshToken);
+        
         res.json({accesstoken, newFoundUser, message: "new Google user created"})
     }
 
