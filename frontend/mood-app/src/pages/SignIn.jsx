@@ -5,17 +5,21 @@ import {useGoogleLogin} from "@react-oauth/google"
 import axios from "axios"
 import jwt_decode from 'jwt-decode'
 import { useNavigate } from 'react-router-dom'
+import Loading from '../components/Loading'
 
 const SignIn = () => {
 
     const { notif, setNotif, handleLogin, loginSuccess, user, setUser, userToken, setUserToken } = useContext(AuthContext)
-
+  const [isLoading, setIsLoading] = useState(false)
     const navigate = useNavigate()
 
     console.log(user);
     
     useEffect(()=>{
-      
+      fetch('http://localhost:4000/google')
+      .then((res)=> res.json())
+      .then((data)=> console.log(data)
+      )
     })
 
   const googleLogin = useGoogleLogin({
@@ -28,14 +32,16 @@ const SignIn = () => {
         
         localStorage.setItem('accesstoken', JSON.stringify(tokens.data?.accesstoken))
         setUserToken(tokens.data?.accesstoken)
-        setUser(jwt_decode(tokens?.data?.accesstoken))
+        setUser(jwt_decode(tokens.data.accesstoken))
         navigate('/posts')
       } else {
+        setIsLoading(true)
         localStorage.setItem("accesstoken", JSON.stringify(tokens.data?.token))
         setUserToken(tokens.data.token)
-        setUser(jwt_decode(tokens?.data?.token))
+        setUser(jwt_decode(tokens.data.token))
         setNotif(tokens.data.message)
         navigate('/posts')
+        setIsLoading(false)
       }
     },
     flow: 'auth-code',

@@ -16,7 +16,6 @@ const Posts = () => {
     
    const [isLoading, setIsLoading] = useState(true)
    const [posts, setPosts] = useState([])
-
    
    useEffect(()=>{
        setTimeout(() => {
@@ -28,7 +27,7 @@ const Posts = () => {
             });
             clearTimeout(post)
         }, 1000)
-    })
+    }, posts)
     
     if(isLoading){
  

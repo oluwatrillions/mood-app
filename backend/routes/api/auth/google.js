@@ -63,4 +63,9 @@ router.post("/", async function(req, res, next){
     // res.json({url:authorizeUrl})
 })
 
+router.get('/', async function (req, res){
+    const getGoogleUsers = await GoogleUsers.find()
+    res.json(getGoogleUsers) 
+})
+
 module.exports = router

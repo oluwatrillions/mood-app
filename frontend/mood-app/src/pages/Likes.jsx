@@ -6,7 +6,6 @@ const Likes = () => {
 
   const {user} = useContext(AuthContext)
 
-    const [likes, setLikes] = useState([])
     const [posts, setPosts] = useState([])
 
     useEffect(()=>{
@@ -14,7 +13,7 @@ const Likes = () => {
         .then((res)=> res.json())
         .then((data)=> setPosts(data)
         )
-    })
+    }, posts)
 
     console.log();
     

@@ -10,10 +10,7 @@ import relativeTime from 'dayjs/plugin/relativeTime';
 const UserProfile = () => {
 
     const { user } = useContext(AuthContext)  
-    const [users, setUsers] = useState([])
-
-    console.log();
-    
+    const [users, setUsers] = useState([])    
     
     useEffect(()=>{
       try {
@@ -23,12 +20,7 @@ const UserProfile = () => {
     } catch (error) {
         console.log(error);
     }
-    })
-
-    const singleUser = users.map(item=> item)
-    console.log();
-    
-    
+    }, users)
   
     dayjs.extend(relativeTime);
 
