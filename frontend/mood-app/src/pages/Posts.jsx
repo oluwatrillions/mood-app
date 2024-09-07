@@ -12,10 +12,19 @@ import Loading from '../components/Loading'
 
 const Posts = () => {
 
-    const { user, allUsers, commentOnMessage, userComment, setUserComment, commmentRef, replyRef } = useContext(AuthContext)
+    const { user, setUser, allUsers, commentOnMessage, userComment, setUserComment, commmentRef, replyRef } = useContext(AuthContext)
     
    const [isLoading, setIsLoading] = useState(true)
    const [posts, setPosts] = useState([])
+   console.log();
+   
+
+    // useEffect(()=>{
+    //     fetch('http://localhost:4000/google')
+    //     .then((res)=> res.json())
+    //     .then((data)=> setUser(data.filter(guser=> guser.email === user.email))
+    // )
+    // }, [user])
    
    useEffect(()=>{
        setTimeout(() => {
@@ -26,8 +35,8 @@ const Posts = () => {
                setIsLoading(false)
             });
             clearTimeout(post)
-        }, 1000)
-    }, posts)
+        }, 3000)
+    }, [posts])
     
     if(isLoading){
  

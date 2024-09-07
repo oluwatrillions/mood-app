@@ -10,38 +10,22 @@ import Loading from '../components/Loading'
 const SignIn = () => {
 
     const { notif, setNotif, handleLogin, loginSuccess, user, setUser, userToken, setUserToken } = useContext(AuthContext)
-  const [isLoading, setIsLoading] = useState(false)
     const navigate = useNavigate()
 
-    console.log(user);
-    
-    useEffect(()=>{
-      fetch('http://localhost:4000/google')
-      .then((res)=> res.json())
-      .then((data)=> console.log(data)
-      )
-    })
-
+    // console.log(user);
+  
   const googleLogin = useGoogleLogin({
     onSuccess: async ({ code }) => {
       const tokens = await axios.post('http://localhost:4000/auth/google', {code,
       });
       
-      if(tokens?.data?.accesstoken){
-        const decoded = jwt_decode(tokens.data.accesstoken)
-        
+      if(tokens?.data?.accesstoken){        
         localStorage.setItem('accesstoken', JSON.stringify(tokens.data?.accesstoken))
-        setUserToken(tokens.data?.accesstoken)
-        setUser(jwt_decode(tokens.data.accesstoken))
         navigate('/posts')
       } else {
-        setIsLoading(true)
-        localStorage.setItem("accesstoken", JSON.stringify(tokens.data?.token))
-        setUserToken(tokens.data.token)
-        setUser(jwt_decode(tokens.data.token))
+        localStorage.setItem("accesstoken", JSON.stringify(tokens.data?.accessToken))
         setNotif(tokens.data.message)
         navigate('/posts')
-        setIsLoading(false)
       }
     },
     flow: 'auth-code',

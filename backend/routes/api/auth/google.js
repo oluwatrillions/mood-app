@@ -26,13 +26,12 @@ router.post("/", async function(req, res, next){
     const foundUser = await jwt.decode(tokens.id_token)
 
     const user = await GoogleUsers.findOne({email: foundUser.email}).exec()
-
-    const token = jwt.sign(user.toJSON(),
-        tokens.access_token
-    )    
-
+ 
     if (user){
-        return res.json({token, message: "user already exists"})
+            const accessToken = jwt.sign(user.toJSON(),
+                tokens.access_token
+            )    
+        return res.json({accessToken, message: "user already exists"})
     } else {
         const newUser = new GoogleUsers({
             name: foundUser.name,
@@ -48,13 +47,10 @@ router.post("/", async function(req, res, next){
         )
 
         const newFoundUser = await newUser.save()
-        console.log(newFoundUser.refreshToken);
         
-        res.json({accesstoken, newFoundUser, message: "new Google user created"})
+        res.json({accesstoken, message: "new Google user created"})
     }
-
-
-        
+      
     // const authorizeUrl = oAuth2Client.generateAuthUrl({
     //     access_type: 'offline',
     //     scope: 'https://www.googleapis.com/auth/userinfo.profile  openid ',

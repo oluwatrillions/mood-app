@@ -13,7 +13,7 @@ const Likes = () => {
         .then((res)=> res.json())
         .then((data)=> setPosts(data)
         )
-    }, posts)
+    }, [posts])
 
     console.log();
     
