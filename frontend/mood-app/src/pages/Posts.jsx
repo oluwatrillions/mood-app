@@ -35,8 +35,8 @@ const Posts = () => {
                setIsLoading(false)
             });
             clearTimeout(post)
-        }, 3000)
-    }, [posts])
+        }, 1500)
+    }, [posts, user])
     
     if(isLoading){
  

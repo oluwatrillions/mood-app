@@ -48,7 +48,7 @@ router.post("/", async function(req, res, next){
 
         const newFoundUser = await newUser.save()
         
-        res.json({accesstoken, message: "new Google user created"})
+        res.json({accesstoken, newFoundUser, message: "new Google user created"})
     }
       
     // const authorizeUrl = oAuth2Client.generateAuthUrl({

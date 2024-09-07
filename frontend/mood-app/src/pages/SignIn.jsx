@@ -12,6 +12,8 @@ const SignIn = () => {
     const { notif, setNotif, handleLogin, loginSuccess, user, setUser, userToken, setUserToken } = useContext(AuthContext)
     const navigate = useNavigate()
 
+    const [users, setUsers] = useState()
+
     // console.log(user);
   
   const googleLogin = useGoogleLogin({
