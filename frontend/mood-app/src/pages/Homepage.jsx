@@ -1,8 +1,13 @@
-import React from 'react'
+import React, { useContext } from 'react'
 import './Homepage.css'
 import {Link} from 'react-router-dom'
+import AuthContext from '../Contexts/AuthContext'
 
 const Homepage = () => {
+
+  // const {user} = useContext(AuthContext)
+  // console.log(user);
+  
   return (
       <div className='hero'>
           <div className='left-hero'></div>

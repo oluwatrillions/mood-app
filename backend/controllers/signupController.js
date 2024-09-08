@@ -44,6 +44,7 @@ const handleSignup = async (req, res) => {
             username: req.body.username,
             email,
             password: hashedPwd,
+            scope: req.body.id_token ? 'google' : 'local',
             profileImage: req.file ? req.file.filename : "../../public/no-image/no-avatar.jpg"
         })  
 

@@ -2,7 +2,7 @@ const express = require("express")
 const router = express.Router()
 const dotenv = require("dotenv")
 const jwt = require('jsonwebtoken')
-const GoogleUsers = require('../../../model/google')
+const users = require('../../../model/users')
 dotenv.config()
 
 const {OAuth2Client} = require("google-auth-library")
@@ -20,12 +20,11 @@ router.post("/", async function(req, res, next){
         'postmessage'
     )
 
-    const {tokens} = await oAuth2Client.getToken(req.body.code);
-    
+    const {tokens} = await oAuth2Client.getToken(req.body.code); 
 
     const foundUser = await jwt.decode(tokens.id_token)
 
-    const user = await GoogleUsers.findOne({email: foundUser.email}).exec()
+    const user = await users.findOne({email: foundUser.email}).exec()
  
     if (user){
             const accessToken = jwt.sign(user.toJSON(),
@@ -33,11 +32,11 @@ router.post("/", async function(req, res, next){
             )    
         return res.json({accessToken, message: "user already exists"})
     } else {
-        const newUser = new GoogleUsers({
+        const newUser = new users({
             name: foundUser.name,
             email: foundUser.email,
-            password: foundUser.sub,
             username: foundUser.given_name,
+            scope: tokens.scope === 'https://www.googleapis.com/auth/userinfo.email https://www.googleapis.com/auth/userinfo.profile openid' ? 'google' : 'local',
             profileImage: foundUser.picture || "../../../public/no-image/no-avatar.jpg",
             refreshToken: tokens.refresh_token,
         })
@@ -48,7 +47,7 @@ router.post("/", async function(req, res, next){
 
         const newFoundUser = await newUser.save()
         
-        res.json({accesstoken, newFoundUser, message: "new Google user created"})
+        res.json({accesstoken, message: "new Google user created"})
     }
       
     // const authorizeUrl = oAuth2Client.generateAuthUrl({

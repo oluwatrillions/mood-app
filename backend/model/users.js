@@ -23,7 +23,10 @@ const Users = new userSchema({
         type: String,
         minlength: 4,
         maxlength: 255,
-        required: true,
+    },
+    scope: {
+        type: String,
+        enum: ['local', 'google']
     },
     profileImage: {
         type: String
