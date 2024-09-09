@@ -7,8 +7,6 @@ import UserImage from '../components/UserImage'
 import Loading from '../components/Loading'
 const Users = () => {
 
-    let api = useAxios()
-
     const { userToken, user } = useContext(AuthContext)
 
     const [allUsers, setAllUsers] = useState([]) 

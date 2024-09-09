@@ -1,4 +1,6 @@
 const Posts = require('../../model/post')
+const users = require('../../model/users')
+const Users = require('../../model/users')
 const multer = require('multer')
 const path = require("path")
 
@@ -30,11 +32,17 @@ const upload = multer({
 }).single('images');
 
 
+// Get all the posts
 const getAllPosts = async (req, res) => {
     const allPosts = await Posts.find()
+    const allUsers = await Users.find()    
+    const filteredUsers = await allUsers.map((users)=> users.username)    
+    const filteredPosts = await allPosts.map((post)=> post.username === filteredUsers.username)
     res.json(allPosts)
+    
 }
 
+// Update or edit a post
 const updatePost = async (req, res) => {
     if (!req.params.id) return res.sendStatus(400)            
 
@@ -55,12 +63,14 @@ const updatePost = async (req, res) => {
     }
 }
 
+// Delete a post
 const deletePost = async (req, res) => {
     if (!req.params.id) return res.sendStatus(400)
     const foundPost = await Posts.deleteOne({ _id: req.params.id })
     res.json({message: 'Post deleted successfully. Redirecting...'})
 }
 
+// Get a post by it's id
 const getPost = async (req, res) => {
     if (!req.params.id) return res.sendStatus(400)
     const foundPost = await Posts.findOne({ _id: req.params.id }).exec()
@@ -68,6 +78,7 @@ const getPost = async (req, res) => {
     res.json(foundPost)
 }
 
+// Like a post
 const likePost = async (req, res) => {
     const postId = req.params.id
     const username = req.body.username
@@ -99,6 +110,7 @@ const likePost = async (req, res) => {
     }
 }
 
+// A user's comment on a post
 const userComment = async (req, res) => {
     const postId = req.body.postId
     const { username, comment } = req.body

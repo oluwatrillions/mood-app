@@ -20,7 +20,7 @@ const UserProfile = () => {
     } catch (error) {
         console.log(error);
     }
-    }, [users])
+    }, [])
   
     dayjs.extend(relativeTime);
 

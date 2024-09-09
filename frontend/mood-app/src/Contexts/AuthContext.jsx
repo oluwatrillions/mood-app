@@ -1,6 +1,7 @@
 import { createContext, useEffect, useRef, useState } from "react";
 import jwt_decode from 'jwt-decode'
 import { useNavigate, useParams } from "react-router-dom";
+import Cookies from 'js-cookie'
 
 
 export const AuthContext = createContext()
@@ -19,11 +20,9 @@ export const AuthProvider = ({ children }) => {
     const [notif, setNotif] = useState(null)
     const [allUsers, setAllUsers] = useState([])
     const [posts, setPosts] = useState([])
+    
 
-    //    let cookieValue = document.cookie.replace(/(?:(?:^|.*;\s*)user\s*\=\s*([^;]*).*$)|^.*$/, "$1");
-    //     // console.log(cookieValue);
-
-     const handleLogin = async (e) => {
+    const handleLogin = async (e) => {
         e.preventDefault()
         try {
             const response = await fetch('http://localhost:4000/login', {
@@ -37,9 +36,8 @@ export const AuthProvider = ({ children }) => {
                     'email': e.target.email.value,
                     'pwd': e.target.password.value,
                 })
-            })
+            })            
             const data = await response.json()
-            console.log(data);
             if (data?.accessToken) {
                 localStorage.setItem('accesstoken', JSON.stringify(data.accessToken))
                 setUserToken(data.accessToken)
@@ -104,6 +102,7 @@ export const AuthProvider = ({ children }) => {
                 withCredentials: true
             })
             localStorage.removeItem('accesstoken')
+
             setUser('')
             navigate('/')
         } catch (error) {

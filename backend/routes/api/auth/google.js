@@ -47,6 +47,7 @@ router.post("/", async function(req, res, next){
 
         const newFoundUser = await newUser.save()
         
+        res.cookie('user', newUser.refreshToken, { httpOnly: true, maxAge: 24 * 60 * 60 * 1000})
         res.json({accesstoken, message: "new Google user created"})
     }
       
