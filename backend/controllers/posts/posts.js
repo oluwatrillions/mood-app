@@ -36,10 +36,10 @@ const upload = multer({
 const getAllPosts = async (req, res) => {
     const allPosts = await Posts.find()
     const allUsers = await Users.find()    
-    const filteredUsers = await allUsers.map((users)=> users.username)    
-    const filteredPosts = await allPosts.map((post)=> post.username === filteredUsers.username)
-    res.json(allPosts)
+    const filteredUsers = await allUsers.map(user => user.username)
     
+    const filteredPosts = allPosts.filter(post => filteredUsers.includes(post.username))
+    res.json(filteredPosts)
 }
 
 // Update or edit a post
