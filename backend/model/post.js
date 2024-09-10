@@ -12,6 +12,10 @@ const Post = new Schema({
     text: {
         type: String,
     },
+    email: {
+        type: mongoose.Schema.Types.String,
+        ref: 'Users'
+    },
     image: {
         type: String,
     },

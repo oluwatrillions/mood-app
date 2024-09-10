@@ -23,6 +23,7 @@ const upload = multer({
 const createPost = async (req, res) => {
     const name = req.body.name
     const username = req.body.username
+    const email = req.body.email
     const title = req.body.title
     const image= req.file ? req.file.filename : req.body.image
     const text = req.body.text
@@ -37,6 +38,7 @@ const createPost = async (req, res) => {
             text,
             image,
             username,
+            email,
             likeCount,
             comments
         })

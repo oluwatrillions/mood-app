@@ -36,9 +36,14 @@ const upload = multer({
 const getAllPosts = async (req, res) => {
     const allPosts = await Posts.find()
     const allUsers = await Users.find()    
-    const filteredUsers = await allUsers.map(user => user.username)
+    const filteredUsers = await allUsers.map(user => user.email)
     
-    const filteredPosts = await allPosts.filter(post => filteredUsers.includes(post.username))
+    const filteredPosts = allPosts.filter(post => filteredUsers.includes(post.email))
+
+    // if (filteredPosts){
+    //     const unfiltered = await allPosts.findByIdAndUpdate()
+    // }
+
     res.json(filteredPosts)
 }
 

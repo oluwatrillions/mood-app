@@ -8,6 +8,7 @@ const Post = () => {
 
     const [text, setText] = useState('')
     const [image, setImage] = useState('')
+    const [email, setEmail] = useState('')
     const [avatar, setAvatar] = useState()
     const [title, setTitle] = useState('')
     const [notif, setNotif] = useState(null)
@@ -31,6 +32,7 @@ const Post = () => {
         formData.append('name', user.name)
         formData.append('username', user.username)
         formData.append('posterImage', user.avatar)
+        formData.append('email', user.email)
         formData.append('title', title)
         formData.append('text', text)
         formData.append('images', image)
