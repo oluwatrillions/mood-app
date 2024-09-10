@@ -38,7 +38,7 @@ const getAllPosts = async (req, res) => {
     const allUsers = await Users.find()    
     const filteredUsers = await allUsers.map(user => user.username)
     
-    const filteredPosts = allPosts.filter(post => filteredUsers.includes(post.username))
+    const filteredPosts = await allPosts.filter(post => filteredUsers.includes(post.username))
     res.json(filteredPosts)
 }
 

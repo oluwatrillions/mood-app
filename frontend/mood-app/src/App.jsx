@@ -13,6 +13,7 @@ import Users from './pages/Users'
 import PrivateRoute from './pages/PrivateRoute'
 import UserPosts from './pages/UserPosts'
 import Likes from './pages/Likes'
+import Admin from './pages/Admin'
 
 function App() {
 
@@ -23,8 +24,7 @@ function App() {
               <AuthProvider>
                     <Layout>
                         <Routes>
-                            <Route  path='/users' element={<PrivateRoute><Users/></PrivateRoute>} />
-                            <Route  path='/users/:_id' element={<UserPosts/>} />
+                            <Route path='/users/:_id' element={<UserPosts/>} />
                             <Route path='/' element={<Homepage />} exact/>
                             <Route path='/signup' element={<SignUp/>} />
                             <Route path='/signin' element={<SignIn/>} />
@@ -33,6 +33,8 @@ function App() {
                             <Route path='/posts/:_id' element={<SinglePost/>} />
                             <Route path='/posts/likes' element={<Likes/>} />
                             <Route path='/userprofile' element={<UserProfile />} />
+                            <Route path='/users' element={<PrivateRoute><Users/></PrivateRoute>} />
+                            <Route path='/admin' element={<Admin/>} />
                         </Routes>
                     </Layout>
                 </AuthProvider>

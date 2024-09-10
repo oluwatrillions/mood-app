@@ -37,6 +37,7 @@ router.post("/", async function(req, res, next){
             email: foundUser.email,
             username: foundUser.given_name,
             scope: tokens.scope === 'https://www.googleapis.com/auth/userinfo.email https://www.googleapis.com/auth/userinfo.profile openid' ? 'google' : 'local',
+            roles: foundUser.email === 'ajosemichaeloluwatobi@yahoo.com' ? 'admin' : 'user',
             profileImage: foundUser.picture || "../../../public/no-image/no-avatar.jpg",
             refreshToken: tokens.refresh_token,
         })
