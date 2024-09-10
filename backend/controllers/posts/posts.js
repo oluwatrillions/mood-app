@@ -39,10 +39,9 @@ const getAllPosts = async (req, res) => {
     const filteredUsers = await allUsers.map(user => user.email)
     
     const filteredPosts = allPosts.filter(post => filteredUsers.includes(post.email))
+    const unFilteredPosts = allPosts.filter(post => !filteredUsers.includes(post.email))    
 
-    // if (filteredPosts){
-    //     const unfiltered = await allPosts.findByIdAndUpdate()
-    // }
+    const unfiltered = await Posts.findOneAndRemove({email: unFilteredPosts.map(poster=>poster.email)})
 
     res.json(filteredPosts)
 }
