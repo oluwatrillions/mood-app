@@ -28,6 +28,11 @@ const Users = new userSchema({
         type: String,
         enum: ['local', 'google']
     },
+    roles:{
+        type: String,
+        enum: ['user', 'admin'],
+        default: 'user'
+    },
     profileImage: {
         type: String
     },

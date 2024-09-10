@@ -32,7 +32,7 @@ const upload = multer({
 }).single('images');
 
 
-// Get all the posts
+// Get all the posts from current users
 const getAllPosts = async (req, res) => {
     const allPosts = await Posts.find()
     const allUsers = await Users.find()    
