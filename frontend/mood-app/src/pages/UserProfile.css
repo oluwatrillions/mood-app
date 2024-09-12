@@ -44,6 +44,7 @@ div, * {
 .dashboard h4 {
     font-size: 1.5em;
     font-weight: 600;
+    font-family: 'Poppins';
     color: rgb(52, 53, 54);
 }
 

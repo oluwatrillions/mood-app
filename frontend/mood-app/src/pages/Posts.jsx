@@ -12,18 +12,19 @@ import Loading from '../components/Loading'
 
 const Posts = () => {
 
-    const { user, setUser, allUsers, commentOnMessage, userComment, setUserComment, commmentRef, replyRef } = useContext(AuthContext)
+    const { user, allUsers, commentOnMessage, userComment, setUserComment, commmentRef, replyRef } = useContext(AuthContext)
     
    const [isLoading, setIsLoading] = useState(true)
    const [posts, setPosts] = useState([])
+   const [users, setUsers] = useState([])
    
 
-    // useEffect(()=>{
-    //     fetch('http://localhost:4000/google')
-    //     .then((res)=> res.json())
-    //     .then((data)=> setUser(data.filter(guser=> guser.email === user.email))
-    // )
-    // }, [user])
+    useEffect(()=>{
+        fetch('http://localhost:4000/users')
+        .then((res)=> res.json())
+        .then((data)=> setUsers(data.filter(currentUser => currentUser.email === user.email))
+    )
+    }, [users])
    
    useEffect(()=>{
        setTimeout(() => {
@@ -50,7 +51,7 @@ const Posts = () => {
     return (
         <div className='posts-div'>
             <div className='all-posts'>
-                {user &&
+                {users &&
                     posts.map((post) => {
                         return <div key={post._id} className='posts'>
                             <Link to={`/posts/${post._id}`}>
@@ -112,7 +113,7 @@ const Posts = () => {
                                                         replyAt={post.username}
                                                         userComment={userComment}
                                                         setUserComment={setUserComment}
-                                                        onReply={() => commentOnMessage(post._id, user.username, userComment)}
+                                                        onReply={() => commentOnMessage(post._id, users.username, userComment)}
                                                     />
                                                 </div>
                                                 <div className="users-comments">

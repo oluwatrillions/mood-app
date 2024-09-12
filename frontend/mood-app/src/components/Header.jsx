@@ -9,9 +9,10 @@ const Header = () => {
 
     const { user, handleLogout } = useContext(AuthContext)
 
+    const [users, setUsers] = useState([])
+
     const collapsedRef = useRef()
     const location = useLocation()
-    
 
     const sidebar = () => {
         collapsedRef.current.classList.toggle('show-sidebar')
@@ -25,6 +26,7 @@ const Header = () => {
       <div className='header'>
           {
               user ? 
+              
                   <nav className='logged-in'>
                       <div className="collapse">
                         <AiOutlineMenu className='header-menu' onClick={sidebar}/>

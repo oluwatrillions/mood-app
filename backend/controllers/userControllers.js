@@ -7,22 +7,6 @@ const getUsers = async (req, res) => {
     res.json(allUsers)
 }
 
-// const createUser = async (req, res) => {
-//     if (!req.body.name || !req.body.username || !req.body.password) {
-//         return res.status(400).json({ message: 'please fill the following fields'})
-//     }
-//     try {
-//         const user = await users.create({
-//         name: req.body.name,
-//         username: req.body.username,
-//         password: req.body.password
-//     })
-//     res.status(201).json({ message: 'new user created successfully'})
-//     } catch (error) {
-//         console.log(error);
-//     }  
-// }
-
 const updateUser = async (req, res) => {
     if (!req.params.id) {
         res.json({message: 'Please enter a user ID to update'})
