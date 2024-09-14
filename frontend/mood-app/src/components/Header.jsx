@@ -1,7 +1,7 @@
 import React, { useState, useContext, useEffect, useRef } from 'react'
 import './Header.css'
 import { AiOutlineMenu } from 'react-icons/ai'
-import { Link, useLocation } from 'react-router-dom'
+import { Link, useLocation, useNavigate } from 'react-router-dom'
 import AuthContext from '../Contexts/AuthContext'
 import { IoIosClose } from "react-icons/io";
 
@@ -13,6 +13,18 @@ const Header = () => {
 
     const collapsedRef = useRef()
     const location = useLocation()
+    const navigate = useNavigate()
+
+    useEffect(()=>{
+      fetch('http://localhost:4000/users')
+      .then((res)=> res.json())
+      .then((data)=> setUsers(data.find(currentUser => currentUser.email === user.email))
+  )
+}, [])  
+
+    if(!users) {
+      handleLogout()
+    }
 
     const sidebar = () => {
         collapsedRef.current.classList.toggle('show-sidebar')
@@ -26,7 +38,6 @@ const Header = () => {
       <div className='header'>
           {
               user ? 
-              
                   <nav className='logged-in'>
                       <div className="collapse">
                         <AiOutlineMenu className='header-menu' onClick={sidebar}/>

@@ -102,9 +102,8 @@ export const AuthProvider = ({ children }) => {
                 withCredentials: true
             })
             localStorage.removeItem('accesstoken')
-
             setUser('')
-            navigate('/')
+            navigate('/', {replace: true})
         } catch (error) {
             console.log(error)
         }
