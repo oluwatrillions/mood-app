@@ -103,7 +103,7 @@ export const AuthProvider = ({ children }) => {
             })
             localStorage.removeItem('accesstoken')
             setUser('')
-            navigate('/', {replace: true})
+            navigate('/')
         } catch (error) {
             console.log(error)
         }

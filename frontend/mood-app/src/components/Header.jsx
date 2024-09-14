@@ -1,13 +1,15 @@
 import React, { useState, useContext, useEffect, useRef } from 'react'
 import './Header.css'
 import { AiOutlineMenu } from 'react-icons/ai'
-import { Link, useLocation, useNavigate } from 'react-router-dom'
+import { Link, redirect, useLocation, useNavigate } from 'react-router-dom'
 import AuthContext from '../Contexts/AuthContext'
 import { IoIosClose } from "react-icons/io";
 
 const Header = () => {
 
     const { user, handleLogout } = useContext(AuthContext)
+    console.log();
+    
 
     const [users, setUsers] = useState([])
 

@@ -1,6 +1,6 @@
 import React, { useContext, useEffect, useState, useRef } from 'react'
 import './Posts.css'
-import { Link } from 'react-router-dom'
+import { Link, redirect } from 'react-router-dom'
 import AuthContext from '../Contexts/AuthContext'
 import UserImage from '../components/UserImage'
 import Likes from '../components/Likes'
@@ -16,15 +16,6 @@ const Posts = () => {
     
    const [isLoading, setIsLoading] = useState(true)
    const [posts, setPosts] = useState([])
-   const [users, setUsers] = useState([])
-   
-
-    useEffect(()=>{
-        fetch('http://localhost:4000/users')
-        .then((res)=> res.json())
-        .then((data)=> setUsers(data.filter(currentUser => currentUser.email === user.email))
-    )
-    }, [users])
    
    useEffect(()=>{
        setTimeout(() => {
@@ -51,7 +42,7 @@ const Posts = () => {
     return (
         <div className='posts-div'>
             <div className='all-posts'>
-                {users &&
+                {user &&
                     posts.map((post) => {
                         return <div key={post._id} className='posts'>
                             <Link to={`/posts/${post._id}`}>
@@ -113,7 +104,7 @@ const Posts = () => {
                                                         replyAt={post.username}
                                                         userComment={userComment}
                                                         setUserComment={setUserComment}
-                                                        onReply={() => commentOnMessage(post._id, users.username, userComment)}
+                                                        onReply={() => commentOnMessage(post._id, user.username, userComment)}
                                                     />
                                                 </div>
                                                 <div className="users-comments">
