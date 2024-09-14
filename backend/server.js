@@ -29,6 +29,8 @@ app.use('/logout', require('./routes/api/users/logout'))
 app.use('/posts/likes', require('./routes/api/likes/likes'))
 app.use('/auth/google', require('./routes/api/auth/google'))
 app.use('/google', require('./routes/api/auth/google'))
+app.use('/admin/users', require('./routes/admin'))
+app.use('/admin/posts', require('./routes/admin'))
 
 
 

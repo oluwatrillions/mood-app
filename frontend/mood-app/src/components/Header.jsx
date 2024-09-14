@@ -22,7 +22,7 @@ const Header = () => {
       .then((res)=> res.json())
       .then((data)=> setUsers(data.find(currentUser => currentUser.email === user.email))
   )
-}, [])  
+}, [users])  
 
     if(!users) {
       handleLogout()
@@ -48,10 +48,22 @@ const Header = () => {
                           <div className="close-btn">
                             <IoIosClose onClick={closeSidebar}/>
                           </div>
-                            <Link to='/users'><h3 className={location.pathname.endsWith("/users") ? "users-btn active" : "users-btn"}>Most Recent Users</h3></Link>
+                          {
+                            users.roles === 'admin' ?
+                            <>
+                              <Link to='/admin'><h3 className={location.pathname.endsWith("/admin") ? "users-btn active" : "users-btn"}>Admin</h3></Link>
+                              {/* <Link to='/users'><h3 className={location.pathname.endsWith("/users") ? "users-btn active" : "users-btn"}>Most Recent Users</h3></Link> */}
+                              <Link to='/posts'><h3 className={location.pathname.endsWith("/posts") ? "users-btn active" : "users-btn"}> View Posts</h3></Link> 
+                              <Link to="/post/create"><h3 className={location.pathname.endsWith("/post/create") ? "users-btn active" : "users-btn"}>Post a Message</h3> </Link>
+                              <Link to="/posts/likes"><h3 className={location.pathname.endsWith("/posts/likes") ? "users-btn active" : "users-btn"}>Likes and Comments</h3> </Link>
+                            </>
+                            :
+                            <>
                             <Link to='/posts'><h3 className={location.pathname.endsWith("/posts") ? "users-btn active" : "users-btn"}> View Posts</h3></Link> 
                             <Link to="/post/create"><h3 className={location.pathname.endsWith("/post/create") ? "users-btn active" : "users-btn"}>Post a Message</h3> </Link>
                             <Link to="/posts/likes"><h3 className={location.pathname.endsWith("/posts/likes") ? "users-btn active" : "users-btn"}>Likes and Comments</h3> </Link>
+                            </>
+                          } 
                       </div>
                         <h3 className='desc'>This is a social media app where users air out their moods</h3>
                         <h3 className='welcome'>Welcome <span>{ user.name}</span></h3>

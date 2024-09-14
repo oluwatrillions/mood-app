@@ -34,7 +34,7 @@ function App() {
                             <Route path='/posts/likes' element={<Likes/>} />
                             <Route path='/userprofile' element={<UserProfile />} />
                             <Route path='/users' element={<PrivateRoute><Users/></PrivateRoute>} />
-                            <Route path='/admin' element={<Admin/>} />
+                            <Route path='/admin' element={<PrivateRoute><Admin/></PrivateRoute>} />
                         </Routes>
                     </Layout>
                 </AuthProvider>
