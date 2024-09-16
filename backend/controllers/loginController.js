@@ -18,6 +18,7 @@ const handleLogin = async (req, res, next) => {
             name: foundUser.name,
             username: foundUser.username,
             email: foundUser.email,
+            roles: foundUser.roles,
             avatar: foundUser.profileImage,
         }
 

@@ -15,22 +15,9 @@ const Admin = () => {
 )
 }, [users])
 
-console.log(users);
-
-
   return (
     <div className='admin-page'>
       <h5>ADMIN PAGE MY PEOPLE</h5>
-      {
-        users.roles === 'admin' ? 
-        <div className="admin">
-          This is the admin page
-        </div>
-        : 
-        useEffect(()=>{
-          navigate('posts')
-        })
-      }
     </div>
   )
 }
