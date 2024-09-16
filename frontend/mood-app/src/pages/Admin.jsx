@@ -15,9 +15,16 @@ const Admin = () => {
 )
 }, [users])
 
+if(users.roles === undefined || null) return navigate('/', {replace: true})
+
   return (
     <div className='admin-page'>
-      <h5>ADMIN PAGE MY PEOPLE</h5>
+      {
+        users.roles === 'admin' ?
+        <h5>ADMIN PAGE MY PEOPLE</h5>
+        :
+       null
+      }
     </div>
   )
 }

@@ -28,13 +28,13 @@ function App() {
                             <Route path='/' element={<Homepage />} exact/>
                             <Route path='/signup' element={<SignUp/>} />
                             <Route path='/signin' element={<SignIn/>} />
+                            <Route path='/users' element={<PrivateRoute><Users/></PrivateRoute>} />
+                            <Route path='/admin' element={<PrivateRoute><Admin/></PrivateRoute>} />
                             <Route path='/post/create' element={<Post/>} />
                             <Route path='/posts' element={<Posts/>} />
                             <Route path='/posts/:_id' element={<SinglePost/>} />
                             <Route path='/posts/likes' element={<Likes/>} />
                             <Route path='/userprofile' element={<UserProfile />} />
-                            <Route path='/users' element={<PrivateRoute><Users/></PrivateRoute>} />
-                            <Route path='/admin' element={<PrivateRoute><Admin/></PrivateRoute>} />
                         </Routes>
                     </Layout>
                 </AuthProvider>

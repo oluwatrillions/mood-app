@@ -7,9 +7,7 @@ import { IoIosClose } from "react-icons/io";
 
 const Header = () => {
 
-    const { user, handleLogout } = useContext(AuthContext)
-    console.log();
-    
+    const { user, handleLogout } = useContext(AuthContext)        
 
     const [users, setUsers] = useState([])
 
@@ -17,16 +15,12 @@ const Header = () => {
     const location = useLocation()
     const navigate = useNavigate()
 
-    useEffect(()=>{
-      fetch('http://localhost:4000/users')
-      .then((res)=> res.json())
-      .then((data)=> setUsers(data.find(currentUser => currentUser.email === user.email))
-  )
-}, [users])  
-
-    if(!users) {
-      handleLogout()
-    }
+//     useEffect(()=>{
+//       fetch('http://localhost:4000/users')
+//       .then((res)=> res.json())
+//       .then((data)=> setUsers(data.find(currentUser => currentUser.email === user.email))
+//   )
+// }, [users])     
 
     const sidebar = () => {
         collapsedRef.current.classList.toggle('show-sidebar')
@@ -49,7 +43,7 @@ const Header = () => {
                             <IoIosClose onClick={closeSidebar}/>
                           </div>
                           {
-                            users.roles === 'admin' ?
+                            user.roles === 'admin' ?
                             <>
                               <Link to='/admin'><h3 className={location.pathname.endsWith("/admin") ? "users-btn active" : "users-btn"}>Admin</h3></Link>
                               {/* <Link to='/users'><h3 className={location.pathname.endsWith("/users") ? "users-btn active" : "users-btn"}>Most Recent Users</h3></Link> */}

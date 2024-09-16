@@ -1,4 +1,4 @@
-import { Route, useNavigate } from 'react-router-dom'
+import { redirect, Route, useNavigate } from 'react-router-dom'
 import { useContext, useEffect } from 'react'
 import AuthContext from '../Contexts/AuthContext'
 
@@ -13,9 +13,7 @@ const PrivateRoute = ({ children, ...rest }) => {
                 user.roles === 'admin' ? 
                     children
                 :
-                useEffect(()=>{
-                    navigate('/posts')
-                }, []) 
+                null 
             }
         </div>
     )

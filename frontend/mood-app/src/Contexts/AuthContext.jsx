@@ -92,9 +92,9 @@ export const AuthProvider = ({ children }) => {
     },[])
 
 
-    const handleLogout = async () => {
+    const handleLogout = () => {
         try {
-            const logout = await fetch('http://localhost:4000/logout', {
+            const logout = fetch('http://localhost:4000/logout', {
                 method: 'POST',
                 headers: {
                     "Content-Type": "application/json"
@@ -103,7 +103,7 @@ export const AuthProvider = ({ children }) => {
             })
             localStorage.removeItem('accesstoken')
             setUser('')
-            navigate('/')
+            navigate('/', {replace: true})
         } catch (error) {
             console.log(error)
         }
