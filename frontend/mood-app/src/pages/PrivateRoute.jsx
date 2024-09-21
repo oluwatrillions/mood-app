@@ -10,10 +10,12 @@ const PrivateRoute = ({ children, ...rest }) => {
     return(
         <div {...rest}>
             {
-                user.roles === 'admin' ? 
+                useEffect(()=>{
+                    user.roles === 'admin' ? 
                     children
                 :
-                null 
+                    navigate('/posts') 
+                })
             }
         </div>
     )
