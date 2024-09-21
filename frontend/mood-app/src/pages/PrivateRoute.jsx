@@ -5,18 +5,17 @@ import AuthContext from '../Contexts/AuthContext'
 const PrivateRoute = ({ children, ...rest }) => {
     
     const navigate = useNavigate()
-    let {user} = useContext(AuthContext)    
+    let {user} = useContext(AuthContext)   
+    
+    useEffect(() => {
+        if (!user || user.roles !== 'admin') {
+            navigate('/')
+        }
+    }, [user, navigate])
     
     return(
         <div {...rest}>
-            {
-                useEffect(()=>{
-                    user.roles === 'admin' ? 
-                    children
-                :
-                    navigate('/posts') 
-                })
-            }
+            {children}
         </div>
     )
 }

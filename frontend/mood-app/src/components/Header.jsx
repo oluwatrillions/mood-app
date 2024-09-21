@@ -9,18 +9,9 @@ const Header = () => {
 
     const { user, handleLogout } = useContext(AuthContext)        
 
-    const [users, setUsers] = useState([])
-
     const collapsedRef = useRef()
     const location = useLocation()
-    const navigate = useNavigate()
-
-//     useEffect(()=>{
-//       fetch('http://localhost:4000/users')
-//       .then((res)=> res.json())
-//       .then((data)=> setUsers(data.find(currentUser => currentUser.email === user.email))
-//   )
-// }, [users])     
+    const navigate = useNavigate()   
 
     const sidebar = () => {
         collapsedRef.current.classList.toggle('show-sidebar')

@@ -5,6 +5,9 @@ import { useNavigate } from 'react-router-dom'
 
 const Admin = () => {
 
+  const {user} = useContext(AuthContext)
+  const navigate = useNavigate()
+  
   return (
     <div className='admin-page'>
         <h5>ADMIN PAGE MY PEOPLE</h5>
