@@ -75,7 +75,7 @@ const Posts = () => {
                                                     <Link to={`/users/${_id}`}>
                                                         <UserImage
                                                             username = {username}
-                                                            profileImage={`http://localhost:4000/public/avatar/` + profileImage}
+                                                            profileImage={userImg.scope === 'local' ? `http://localhost:4000/public/avatar/` + profileImage : profileImage}
                                                         />
                                                     </Link>
                                                 </div>

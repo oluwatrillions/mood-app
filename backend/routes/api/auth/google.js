@@ -20,7 +20,7 @@ router.post("/", async function(req, res, next){
         'postmessage'
     )
 
-    const {tokens} = await oAuth2Client.getToken(req.body.code); 
+    const {tokens} = await oAuth2Client.getToken(req.body.code);     
 
     const foundUser = await jwt.decode(tokens.id_token)
 
@@ -36,7 +36,7 @@ router.post("/", async function(req, res, next){
             name: foundUser.name,
             email: foundUser.email,
             username: foundUser.given_name,
-            scope: tokens.scope === 'https://www.googleapis.com/auth/userinfo.email https://www.googleapis.com/auth/userinfo.profile openid' ? 'google' : 'local',
+            scope: tokens ? 'google' : 'local',
             roles: foundUser.email === 'ajosemichaeloluwatobi@yahoo.com' ? 'admin' : 'user',
             profileImage: foundUser.picture || "../../../public/no-image/no-avatar.jpg",
             refreshToken: tokens.refresh_token,

@@ -44,7 +44,7 @@ const Users = () => {
                           <div className="user" key={_id}>
                               <UserImage
                                   username={username}
-                                  profileImage={`http://localhost:4000/public/avatar/` + profileImage} /> 
+                                  profileImage={user.scope === 'local' ? 'http://localhost:4000/public/avatar/' + profileImage : profileImage} /> 
                               <div className="user-info">
                                   <Link to={`/users/${_id}`}>
                                     <h2>{name}</h2>
