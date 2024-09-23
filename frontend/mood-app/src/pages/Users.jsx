@@ -5,6 +5,12 @@ import useAxios from '../utils/useAxios'
 import AuthContext from '../Contexts/AuthContext'
 import UserImage from '../components/UserImage'
 import Loading from '../components/Loading'
+import relativeTime from 'dayjs/plugin/relativeTime';
+import dayjs from 'dayjs'
+
+dayjs.extend(relativeTime);
+
+
 const Users = () => {
 
     const { userToken, user } = useContext(AuthContext)
@@ -45,7 +51,8 @@ const Users = () => {
                                     <h3>{username}</h3>
                                   </Link>
                               </div>
-                              <h5>{registeredAt}</h5>
+                              <h5>{dayjs(registeredAt).fromNow()}</h5>
+                              <button>Delete User</button>
                           </div>
                       )
                   }).reverse()

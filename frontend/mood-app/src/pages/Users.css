@@ -58,6 +58,17 @@ a {
     text-decoration: none;
 }
 
+.user button {
+    font-size: 1em;
+    background-color: rgb(199, 74, 74);
+    border: none;
+    outline: none;
+    padding: .5em;
+    border-radius: .5em;
+    color: aliceblue;
+    cursor: pointer;
+}
+
 @media screen and (min-width: 375px){
     .all-users {
         width: 100vw;

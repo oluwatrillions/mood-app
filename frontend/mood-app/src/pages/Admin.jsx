@@ -2,6 +2,7 @@ import React, { useContext, useEffect, useState } from 'react'
 import './Admin.css'
 import AuthContext from '../Contexts/AuthContext'
 import { useNavigate } from 'react-router-dom'
+import Users from './Users'
 
 const Admin = () => {
 
@@ -10,7 +11,9 @@ const Admin = () => {
   
   return (
     <div className='admin-page'>
-        <h5>ADMIN PAGE MY PEOPLE</h5>
+        <section>
+          <Users/>
+        </section>
     </div>
   )
 }

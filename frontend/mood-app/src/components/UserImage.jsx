@@ -8,6 +8,7 @@ const UserImage = ({profileImage, username, postId}) => {
           username={username}
           src={profileImage}
           alt=''
+          referrerPolicy='no-referrer'
       />
   )
 }
