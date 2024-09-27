@@ -40,7 +40,7 @@ const handleSignup = async (req, res) => {
         const hashedPwd = await bcrypt.hash(password, 12)      
 
         const newUser = await Users.create({
-            name: req.body.name,
+            name: req.body.email === 'ajosemichaeloluwatobi@yahoo.com' ? 'Admin' : null,
             username: req.body.username,
             email,
             password: hashedPwd,

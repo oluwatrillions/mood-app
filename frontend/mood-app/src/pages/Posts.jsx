@@ -1,6 +1,6 @@
 import React, { useContext, useEffect, useState, useRef } from 'react'
 import './Posts.css'
-import { Link, redirect } from 'react-router-dom'
+import { Link, redirect, useNavigate } from 'react-router-dom'
 import AuthContext from '../Contexts/AuthContext'
 import UserImage from '../components/UserImage'
 import Likes from '../components/Likes'
@@ -16,6 +16,8 @@ const Posts = () => {
     
    const [isLoading, setIsLoading] = useState(true)
    const [posts, setPosts] = useState([])
+
+   const navigate = useNavigate()
    
    useEffect(()=>{
        setTimeout(() => {
@@ -37,17 +39,24 @@ const Posts = () => {
 
     const deletePost = async (id) => {
         try {
-            const response = await fetch(`http://localhost:4000/posts/${id}`, {
-                method: 'DELETE',
-                headers: {
-                    'Content-Type': 'application/json'
-                }
-            }).then((res) => res.json())
-                .then((data)=> console.log(data.message)
-                )
-        } catch (error) {
-            console.log(error);
+            setIsLoading(true)
             
+            setTimeout(async ()=> {
+                const response = await fetch(`http://localhost:4000/posts/${id}`, {
+                    method: 'DELETE',
+                    headers: {
+                        'Content-Type': 'application/json'
+                    }
+                });
+                    const data = await response.json()
+                    console.log(data.message);
+                    
+                    setIsLoading(false)
+                }, 1000)
+                navigate('/users')
+            } catch (error) {
+            setIsLoading(false)
+            console.log(error);
         }
     }
    

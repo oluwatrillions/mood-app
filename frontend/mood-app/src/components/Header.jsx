@@ -36,7 +36,7 @@ const Header = () => {
                           {
                             user.roles === 'admin' ?
                             <>
-                              <Link to='/admin'><h3 className={location.pathname.endsWith("/admin") ? "users-btn active" : "users-btn"}>Admin</h3></Link>
+                              <Link to='/admin'><h3 className={location.pathname.endsWith("/admin") ? "users-btn active" : "users-btn"}>Admin Page</h3></Link>
                               {/* <Link to='/users'><h3 className={location.pathname.endsWith("/users") ? "users-btn active" : "users-btn"}>Most Recent Users</h3></Link> */}
                               <Link to='/posts'><h3 className={location.pathname.endsWith("/posts") ? "users-btn active" : "users-btn"}> View Posts</h3></Link> 
                               <Link to="/post/create"><h3 className={location.pathname.endsWith("/post/create") ? "users-btn active" : "users-btn"}>Post a Message</h3> </Link>
