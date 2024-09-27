@@ -13,7 +13,7 @@ dayjs.extend(relativeTime);
 
 const Users = () => {
 
-    const { userToken, user } = useContext(AuthContext)
+    const { userToken, user, deleteSuccess } = useContext(AuthContext)
 
     const [allUsers, setAllUsers] = useState([]) 
     const [isLoading, setIsLoading] = useState(true)
@@ -29,6 +29,24 @@ const Users = () => {
             getUsers()
         }, 1000)
     }, [])
+
+    const deleteUser = async (id) => {
+        try {
+            let response = await fetch(`http://localhost:4000/users/${id}`, {
+                method: 'DELETE',
+                headers: {
+                    'Content-Type': 'application/json'
+                }
+            })
+            .then((res)=> res.json())
+                .then((data)=> console.log(data.message)
+            )
+            deleteSuccess()
+        } catch (error) {
+            console.log(error);
+            
+        }
+    }
 
     if(isLoading){
         return <Loading/>
@@ -52,7 +70,7 @@ const Users = () => {
                                   </Link>
                               </div>
                               <h5>{dayjs(registeredAt).fromNow()}</h5>
-                              <button>Delete User</button>
+                              <button onClick={()=> deleteUser(_id)}>Delete User</button>
                           </div>
                       )
                   }).reverse()
