@@ -142,7 +142,7 @@
 }
 
 .users-comments {
-    width: 3vw;
+    width: 3vw !important;
 }
 
 .comment-div {
@@ -158,7 +158,7 @@
 }
 
 .replies {
-    width: 7vw;
+    width: 2.5vw !important;
 }
 
 .user-cmt {
@@ -241,6 +241,17 @@
     width: 2em;
     height: 2em;
     border-radius: 50%;
+}
+
+.post-detail button {
+    font-size: 1em;
+    background-color: rgb(199, 74, 74);
+    border: none;
+    outline: none;
+    padding: .5em;
+    border-radius: .5em;
+    color: aliceblue;
+    cursor: pointer;
 }
 
 @media screen and (max-width: 375px){

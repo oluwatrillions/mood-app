@@ -12,7 +12,7 @@ import Loading from '../components/Loading'
 
 const Posts = () => {
 
-    const { user, allUsers, commentOnMessage, userComment, setUserComment, commmentRef, replyRef } = useContext(AuthContext)
+    const { user, allUsers, commentOnMessage, userComment, setUserComment, commmentRef, replyRef, deleteSuccess } = useContext(AuthContext)
     
    const [isLoading, setIsLoading] = useState(true)
    const [posts, setPosts] = useState([])
@@ -34,6 +34,22 @@ const Posts = () => {
      return <Loading/>
  
     } 
+
+    const deletePost = async (id) => {
+        try {
+            const response = await fetch(`http://localhost:4000/posts/${id}`, {
+                method: 'DELETE',
+                headers: {
+                    'Content-Type': 'application/json'
+                }
+            }).then((res) => res.json())
+                .then((data)=> console.log(data.message)
+                )
+        } catch (error) {
+            console.log(error);
+            
+        }
+    }
    
     
     dayjs.extend(relativeTime);
@@ -118,6 +134,10 @@ const Posts = () => {
                                                 </div>
                                             </div>
                                         </div>
+                                        {
+                                            user.roles === 'admin' && 
+                                            <button onClick={()=> deletePost(post._id)}>Delete Post</button>
+                                        }
                                 </div>
                             </div>
                     }).reverse()

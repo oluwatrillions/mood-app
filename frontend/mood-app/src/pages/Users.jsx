@@ -13,7 +13,7 @@ dayjs.extend(relativeTime);
 
 const Users = () => {
 
-    const { userToken, user, deleteSuccess } = useContext(AuthContext)
+    const { deleteSuccess } = useContext(AuthContext)
 
     const [allUsers, setAllUsers] = useState([]) 
     const [isLoading, setIsLoading] = useState(true)
