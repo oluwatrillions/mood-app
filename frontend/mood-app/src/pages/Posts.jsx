@@ -12,7 +12,7 @@ import Loading from '../components/Loading'
 
 const Posts = () => {
 
-    const { user, allUsers, commentOnMessage, userComment, setUserComment, commmentRef, replyRef, deleteSuccess } = useContext(AuthContext)
+    const { user, allUsers, commentOnMessage, userComment, setUserComment, commmentRef, replyRef} = useContext(AuthContext)
     
    const [isLoading, setIsLoading] = useState(true)
    const [posts, setPosts] = useState([])
@@ -20,16 +20,29 @@ const Posts = () => {
    const navigate = useNavigate()
    
    useEffect(()=>{
-       setTimeout(() => {
-           const post = fetch(`http://localhost:4000/posts`)
-           .then((response) => response.json())
-           .then((data) => {
-               setPosts(data)
-               setIsLoading(false)
-            });
-            clearTimeout(post)
-        }, 1500)
+           setIsLoading(true)
+            const fetchPosts = async ()=> {
+                try {
+                    const post = await fetch(`http://localhost:4000/posts`)
+                   .then((response) => response.json())
+                   .then((data) => {
+                       setPosts(data)
+                       setIsLoading(false)
+                    });
+                } catch (error) {
+                    console.log(error);
+                }
+            }
+
+            fetchPosts()
+
+            const interval = setInterval(()=>{
+                fetchPosts();
+            }, 5000)
+
+            return ()=> clearInterval(interval)
     }, [])
+    
     
     if(isLoading){
  
