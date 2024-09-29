@@ -8,7 +8,7 @@ const baseURL = 'http://localhost:4000'
 
 const useAxios = () => {
 
-    const { userToken, setUserToken, setUser } = useContext(AuthContext)
+    const { userToken, setUserToken } = useContext(AuthContext)
     
     const axiosConfig = axios.create({
         baseURL,

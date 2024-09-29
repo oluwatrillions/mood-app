@@ -26,9 +26,11 @@ export const AuthProvider = ({ children }) => {
         e.preventDefault()
         try {
             const response = await fetch('http://localhost:4000/login', {
+                
                 method: "POST",
                 headers: {
                     "Content-Type": "application/json",
+                    'Authorization': `Bearer ${userToken}`
                 },
                 credentials: 'include',
                 withCredentials: true,
@@ -38,6 +40,7 @@ export const AuthProvider = ({ children }) => {
                 })
             })            
             const data = await response.json()
+            
             if (data?.accessToken) {
                 localStorage.setItem('accesstoken', JSON.stringify(data.accessToken))
                 setUserToken(data.accessToken)
