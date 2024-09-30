@@ -18,6 +18,18 @@ const Posts = () => {
    const [posts, setPosts] = useState([])
 
    const navigate = useNavigate()
+
+   const refresh = async ()=> {
+    const resp = await fetch('http://localhost:4000/refreshtoken', {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json',
+        }
+    })
+    const data = await resp.json()
+    console.log(data);
+   }
+   refresh()
    
    useEffect(()=>{
            setIsLoading(true)

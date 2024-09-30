@@ -90,7 +90,6 @@ export const AuthProvider = ({ children }) => {
     }
 
     useEffect(() => {
-        AllPosts()
         handleUserImage()   
     },[])
 
@@ -109,16 +108,6 @@ export const AuthProvider = ({ children }) => {
             navigate('/', {replace: true})
         } catch (error) {
             console.log(error)
-        }
-    }
-
-     const AllPosts = async () => {
-        try {
-            const allPosts = await fetch('http://localhost:4000/posts')
-            const response = await allPosts.json();
-            setPosts(response)
-        } catch (error) {
-            console.log(error);
         }
     }
 
@@ -177,7 +166,6 @@ export const AuthProvider = ({ children }) => {
         deleteSuccess: deleteSuccess,
         posts: posts,
         setPosts: setPosts,
-        AllPosts: AllPosts,
         commentOnMessage: commentOnMessage,
         userComment: userComment,
         setUserComment: setUserComment,
