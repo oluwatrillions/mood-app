@@ -11,7 +11,7 @@ const AuthController = async (req, res, next) => {
         token,
         process.env.ACCESS_TOKEN_SECRET,
         (err, decoded) => {
-            if (err) return res.status(403).json({ message: 'error from here' })
+            if (err) return res.status(401).json({ message: 'access expired' })
             req.user = decoded.email
             next();
         }

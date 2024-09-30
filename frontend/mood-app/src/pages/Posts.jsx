@@ -12,7 +12,7 @@ import Loading from '../components/Loading'
 
 const Posts = () => {
 
-    const { user, allUsers, commentOnMessage, userComment, setUserComment, commmentRef, replyRef} = useContext(AuthContext)
+    const { user, allUsers, commentOnMessage, userComment, setUserComment, commmentRef, replyRef, userToken, handleLogout} = useContext(AuthContext)
     
    const [isLoading, setIsLoading] = useState(true)
    const [posts, setPosts] = useState([])
@@ -23,12 +23,20 @@ const Posts = () => {
            setIsLoading(true)
             const fetchPosts = async ()=> {
                 try {
-                    const post = await fetch(`http://localhost:4000/posts`)
-                   .then((response) => response.json())
-                   .then((data) => {
-                       setPosts(data)
-                       setIsLoading(false)
-                    });
+                    const post = await fetch(`http://localhost:4000/posts`, {
+                        method: 'GET',
+                        headers: {
+                            'Content-Type': 'application/json',
+                            'Authorization': `Bearer ${userToken}`
+                        }
+                    })
+                    const data = await post.json()
+                    if(post.status === 200){
+                        setPosts(data)
+                        setIsLoading(false)
+                    } else if(post.statusText === 'Unauthorized'){
+                        handleLogout()
+                    }                   
                 } catch (error) {
                     console.log(error);
                 }
