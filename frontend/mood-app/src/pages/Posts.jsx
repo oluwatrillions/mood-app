@@ -12,59 +12,44 @@ import Loading from '../components/Loading'
 
 const Posts = () => {
 
-    const { user, allUsers, commentOnMessage, userComment, setUserComment, commmentRef, replyRef, userToken, handleLogout} = useContext(AuthContext)
+    const { user, allUsers, commentOnMessage, userComment, setUserComment, commmentRef, replyRef, userToken, setUserToken, handleLogout} = useContext(AuthContext)
     
    const [isLoading, setIsLoading] = useState(true)
    const [posts, setPosts] = useState([])
 
    const navigate = useNavigate()
-
-   const refresh = async ()=> {
-    const resp = await fetch('http://localhost:4000/refreshtoken', {
-        method: 'GET',
-        credentials: 'include',
-        headers: {
-            Accept: 'application/json',
-            'Content-Type': 'application/json',
-        }
-    })
-    const data = await resp.json()
-    console.log(data);
-   }
-   refresh()
    
    useEffect(()=>{
-           setIsLoading(true)
-            const fetchPosts = async ()=> {
-                try {
-                    const post = await fetch(`http://localhost:4000/posts`, {
-                        method: 'GET',
-                        headers: {
-                            'Content-Type': 'application/json',
-                            'Authorization': `Bearer ${userToken}`
-                        }
-                    })
-                    const data = await post.json()
-                    if(post.status === 200){
-                        setPosts(data)
-                        setIsLoading(false)
-                    } else if(post.statusText === 'Unauthorized'){
-                        handleLogout()
-                    }                   
-                } catch (error) {
-                    console.log(error);
-                }
+       setIsLoading(true)
+       const fetchPosts = async ()=> {
+           try {
+               const post = await fetch(`http://localhost:4000/posts`, {
+                   method: 'GET',
+                   headers: {
+                       'Content-Type': 'application/json',
+                       'Authorization': `Bearer ${userToken}`
+                    }
+                })
+                const data = await post.json()
+                if(post.status === 200){
+                    setPosts(data)
+                    setIsLoading(false)
+                } else if(post.statusText === 'Unauthorized'){
+                    handleLogout()
+                }                   
+            } catch (error) {
+                console.log(error);
             }
-
-            fetchPosts()
-
-            const interval = setInterval(()=>{
-                fetchPosts();
-            }, 5000)
-
-            return ()=> clearInterval(interval)
+        }
+        
+        fetchPosts()
+        
+        const interval = setInterval(()=>{
+            fetchPosts();
+        }, 5000)
+        
+        return ()=> clearInterval(interval)
     }, [])
-    
     
     if(isLoading){
  
@@ -98,6 +83,20 @@ const Posts = () => {
     
     dayjs.extend(relativeTime);
     // const formattedDate = dayjs(posts.map(post=> post.postedAt)).fromNow(); 
+
+    const refresh = async ()=> {
+        const resp = await fetch('http://localhost:4000/refreshtoken', {
+            method: 'GET',
+            credentials: 'include',
+            headers: {
+                Accept: 'application/json',
+                'Content-Type': 'application/json',
+            }
+        })
+        const data = await resp.json()
+        setUserToken(data)
+       }
+       refresh()
 
     return (
         <div className='posts-div'>
