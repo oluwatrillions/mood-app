@@ -3,12 +3,11 @@ const jwt = require('jsonwebtoken')
 
 const handleRefreshToken = async (req, res) => {
     const cookies = req.cookies
-    console.log(cookies);
     
-    if (!cookies.user) return res.sendStatus(401)
+    if (!cookies?.user) return res.status(401).json({message: 'no user found in cookie'})
     const refreshToken = cookies.user
+
     const user = await Users.findOne({ refreshToken }).exec()
-    console.log(user.username, 'from client');
     if (!user) return res.sendStatus(403);
 
     jwt.verify(
