@@ -86,7 +86,7 @@ const Posts = () => {
 
     const refresh = async ()=> {
         const resp = await fetch('http://localhost:4000/refreshtoken', {
-            method: 'GET',
+            method: 'POST',
             credentials: 'include',
             headers: {
                 Accept: 'application/json',

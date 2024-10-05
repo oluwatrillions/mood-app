@@ -1,31 +1,31 @@
 import axios from 'axios'
 import jwt_decode from 'jwt-decode'
 import dayjs from 'dayjs'
+import { useContext } from 'react'
+import AuthContext from '../Contexts/AuthContext'
 
 const baseURL = 'http://localhost:4000'
 
-let token = localStorage.getItem('accesstoken') ? JSON.parse(localStorage.getItem('accesstoken')) : null
-// console.log(token);
+const {userToken} = useContext(AuthContext)
 
-//    let cookieValue = document.cookie.replace(/(?:(?:^|.*;\s*)user\s*\=\s*([^;]*).*$)|^.*$/, "$1");
-//         // console.log(cookieValue);
+console.log(userToken);
 
 const axiosInstance = axios.create({
     baseURL,
-    headers: { Authorization: `Bearer ${token}` }
+    headers: { Authorization: `Bearer ${userToken}` }
 });
 
 const CancelToken = axios.CancelToken;
 const source = CancelToken.source();
 axiosInstance.interceptors.request.use(async req => {
-    if (!token) {
+    if (!userToken) {
         token = localStorage.getItem('accesstoken') ? JSON.parse(localStorage.getItem('accesstoken')) : null
         
-        console.log(token);
-        req.headers.Authorization = `Bearer ${token}`
+        console.log(userToken);
+        req.headers.Authorization = `Bearer ${userToken}`
     }
 
-    const user = jwt_decode(token)
+    const user = jwt_decode(userToken)
     const isExpired = dayjs.unix(user.exp).diff(dayjs()) < 1
 
     console.log('isExpired', isExpired);
@@ -34,6 +34,7 @@ axiosInstance.interceptors.request.use(async req => {
 
      const response = await axios.post(`http://localhost:4000/refreshtoken`, null, {
             withCredentials: true,
+            credentials: 'include',
         });
         console.log(response);
         localStorage.setItem('accesstoken', JSON.stringify(response.data))
