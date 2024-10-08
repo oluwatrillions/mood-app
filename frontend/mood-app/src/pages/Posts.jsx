@@ -9,8 +9,8 @@ import ReplyToMessage from './ReplyToMessage'
 import dayjs from 'dayjs'
 import relativeTime from 'dayjs/plugin/relativeTime';
 import Loading from '../components/Loading'
-import axios from 'axios'
 import axiosInterceptor from '../utils/axiosInterceptor'
+import axios from 'axios'
 
 const Posts = () => {
 
@@ -25,11 +25,22 @@ const Posts = () => {
        setIsLoading(true)
        const fetchPosts = async ()=> {
            try {
-                axiosInterceptor.get('/posts')
-                .then((response)=> console.log(response.json()))
-                .then(data => console.log(data))          
+                const response = await axiosInterceptor.get('/posts')
+                console.log(response);
+                
+                
+                if(response.status === 200){
+                    setPosts(response.data)
+                } 
             } catch (error) {
                 console.log(error);
+                
+                if(error.response.status === 401){
+                    handleLogout()
+                }
+            } finally {
+                setIsLoading(false)
+
             }
         }
         
