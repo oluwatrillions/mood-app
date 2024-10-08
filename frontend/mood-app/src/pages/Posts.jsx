@@ -9,6 +9,8 @@ import ReplyToMessage from './ReplyToMessage'
 import dayjs from 'dayjs'
 import relativeTime from 'dayjs/plugin/relativeTime';
 import Loading from '../components/Loading'
+import axios from 'axios'
+import axiosInterceptor from '../utils/axiosInterceptor'
 
 const Posts = () => {
 
@@ -23,20 +25,9 @@ const Posts = () => {
        setIsLoading(true)
        const fetchPosts = async ()=> {
            try {
-               const post = await fetch(`http://localhost:4000/posts`, {
-                   method: 'GET',
-                   headers: {
-                       'Content-Type': 'application/json',
-                       'Authorization': `Bearer ${userToken}`
-                    }
-                })
-                const data = await post.json()
-                if(post.status === 200){
-                    setPosts(data)
-                    setIsLoading(false)
-                } else if(post.statusText === 'Unauthorized'){
-                    handleLogout()
-                }                   
+                axiosInterceptor.get('/posts')
+                .then((response)=> console.log(response.json()))
+                .then(data => console.log(data))          
             } catch (error) {
                 console.log(error);
             }

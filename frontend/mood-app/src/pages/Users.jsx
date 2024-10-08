@@ -1,7 +1,6 @@
 import React, { useContext, useEffect, useState } from 'react'
 import './Users.css'
 import {Link} from 'react-router-dom'
-import useAxios from '../utils/useAxios'
 import AuthContext from '../Contexts/AuthContext'
 import UserImage from '../components/UserImage'
 import Loading from '../components/Loading'
