@@ -4,10 +4,7 @@ import { useNavigate, useParams } from "react-router-dom";
 import Cookies from 'js-cookie'
 
 
-export const AuthContext = createContext()
-
-
-
+const AuthContext = createContext()
 
 export default AuthContext
 

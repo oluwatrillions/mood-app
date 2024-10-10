@@ -45,7 +45,7 @@ const Posts = () => {
         
         const interval = setInterval(()=>{
             fetchPosts();
-        }, 5000)
+        }, 10000)
         
         return ()=> clearInterval(interval)
     }, [])

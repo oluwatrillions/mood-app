@@ -2,7 +2,6 @@ import jwt_decode from 'jwt-decode'
 import dayjs from 'dayjs'
 import { useContext } from 'react'
 import AuthContext from '../Contexts/AuthContext'
-import axiosInstance from './axiosInstance'
 import axios from 'axios'
 
     const baseURL = 'http://localhost:4000'    
@@ -12,6 +11,8 @@ import axios from 'axios'
 
         const axiosInstance = axios.create({
             baseURL,
+            credentials: 'include',
+            withCredentials: true,
             headers: { 
                 'Content-Type': 'application/json',
                 'Accept': 'application/json',
@@ -27,7 +28,7 @@ import axios from 'axios'
             if(!isExpired) return req
     
             const response = await fetch(`${baseURL}/refreshtoken`, {
-                method: 'POST',
+                method: 'GET',
                 withCredentials: true,
                 credentials: 'include',
             })
@@ -36,9 +37,7 @@ import axios from 'axios'
             localStorage.setItem('accesstoken', JSON.stringify(newAccess))
             setUserToken(newAccess)
             setUser(jwt_decode(localStorage.getItem('accesstoken')))
-            if(isExpired) return handleLogout()
             
-    
             req.headers.Authorization = `Bearer ${newAccess}`
             return req
         });
