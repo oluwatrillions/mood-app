@@ -16,14 +16,15 @@ import axios from 'axios'
             headers: { 
                 'Content-Type': 'application/json',
                 'Accept': 'application/json',
-                Authorization: `Bearer ${userToken}`
              },
-        })        
+        })                
 
         axiosInstance.interceptors.request.use(async req => {
-    
+            if(userToken){
+                req.headers.Authorization = `Bearer ${userToken}`
+            };
+
             const isExpired = dayjs.unix(user.exp).diff(dayjs()) < 1
-            console.log(isExpired);            
             
             if(!isExpired) return req
     
@@ -37,9 +38,11 @@ import axios from 'axios'
             localStorage.setItem('accesstoken', JSON.stringify(newAccess))
             setUserToken(newAccess)
             setUser(jwt_decode(localStorage.getItem('accesstoken')))
-            
+
             req.headers.Authorization = `Bearer ${newAccess}`
             return req
+        }, (error)=> {
+            return Promise.reject(error)
         });
 
         return axiosInstance

@@ -17,7 +17,6 @@ export const AuthProvider = ({ children }) => {
     const [notif, setNotif] = useState(null)
     const [allUsers, setAllUsers] = useState([])
     const [posts, setPosts] = useState([])
-    
 
     const handleLogin = async (e) => {
         e.preventDefault()
