@@ -9,7 +9,7 @@ import ReplyToMessage from './ReplyToMessage'
 import dayjs from 'dayjs'
 import relativeTime from 'dayjs/plugin/relativeTime';
 import Loading from '../components/Loading'
-import axiosInterceptor from '../utils/axiosInterceptor'
+import useAxios from '../utils/useAxios'
 import axios from 'axios'
 
 const Posts = () => {
@@ -19,28 +19,23 @@ const Posts = () => {
    const [isLoading, setIsLoading] = useState(true)
    const [posts, setPosts] = useState([])
 
-   const navigate = useNavigate()
+   const navigate = useNavigate()   
    
    useEffect(()=>{
        setIsLoading(true)
        const fetchPosts = async ()=> {
            try {
-                const response = await axiosInterceptor.get('/posts')
-                console.log(response);
+            const post = await useAxios.get('/posts')
+            
+                const data = await post.data
                 
-                
-                if(response.status === 200){
-                    setPosts(response.data)
-                } 
+                if(post.status === 200){
+                    setPosts(data)
+                    setIsLoading(false)
+                }  
+
             } catch (error) {
                 console.log(error);
-                
-                if(error.response.status === 401){
-                    handleLogout()
-                }
-            } finally {
-                setIsLoading(false)
-
             }
         }
         

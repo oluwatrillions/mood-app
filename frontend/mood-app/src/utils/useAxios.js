@@ -1,13 +1,20 @@
 import jwt_decode from 'jwt-decode'
 import dayjs from 'dayjs'
+import { useContext } from 'react'
+import AuthContext from '../Contexts/AuthContext'
 import axios from 'axios'
 
     const baseURL = 'http://localhost:4000'    
         
-    let token = localStorage.getItem('accesstoken') ? JSON.parse(localStorage.getItem('accesstoken')) : null    
+    let token = localStorage.getItem('accesstoken') ? JSON.parse(localStorage.getItem('accesstoken')) : null
+
+    console.log(token);
+    
 
         const axiosConfig = axios.create({
             baseURL,
+            withCredentials: 'true',
+            credentials: 'include',
             headers: { 
                 'Content-Type': 'application/json',
                 'Accept': 'application/json'
@@ -15,6 +22,7 @@ import axios from 'axios'
         })
     
         axiosConfig.interceptors.request.use(async req => {
+            console.log('intercepted');
             if(!token){
                 token = localStorage.getItem('accesstoken') ? JSON.parse(localStorage.getItem('accesstoken')) : null
                 req.headers.Authorization = `Bearer ${token}`
@@ -34,6 +42,7 @@ import axios from 'axios'
             localStorage.setItem('accesstoken', JSON.stringify(newAccess))
             req.headers.Authorization = `Bearer ${newAccess}`
             return req
+            
         });
     
         
