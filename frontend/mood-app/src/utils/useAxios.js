@@ -2,48 +2,48 @@ import jwt_decode from 'jwt-decode'
 import dayjs from 'dayjs'
 import { useContext } from 'react'
 import AuthContext from '../Contexts/AuthContext'
+import axiosInstance from './axiosInstance'
 import axios from 'axios'
 
     const baseURL = 'http://localhost:4000'    
-        
-    let token = localStorage.getItem('accesstoken') ? JSON.parse(localStorage.getItem('accesstoken')) : null
 
-    console.log(token);
-    
+    const useAxios = ()=> {
+        const {userToken, setUserToken, user, setUser, handleLogout} = useContext(AuthContext)
 
-        const axiosConfig = axios.create({
+        const axiosInstance = axios.create({
             baseURL,
-            withCredentials: 'true',
-            credentials: 'include',
             headers: { 
                 'Content-Type': 'application/json',
-                'Accept': 'application/json'
+                'Accept': 'application/json',
+                Authorization: `Bearer ${userToken}`
              },
-        })
+        })        
+
+        axiosInstance.interceptors.request.use(async req => {
     
-        axiosConfig.interceptors.request.use(async req => {
-            console.log('intercepted');
-            if(!token){
-                token = localStorage.getItem('accesstoken') ? JSON.parse(localStorage.getItem('accesstoken')) : null
-                req.headers.Authorization = `Bearer ${token}`
-            }
-            const user = jwt_decode(token)
             const isExpired = dayjs.unix(user.exp).diff(dayjs()) < 1
-            console.log(isExpired);
+            console.log(isExpired);            
             
             if(!isExpired) return req
-
+    
             const response = await fetch(`${baseURL}/refreshtoken`, {
                 method: 'POST',
                 withCredentials: true,
                 credentials: 'include',
             })
             const newAccess = await response.json();
+            
             localStorage.setItem('accesstoken', JSON.stringify(newAccess))
+            setUserToken(newAccess)
+            setUser(jwt_decode(localStorage.getItem('accesstoken')))
+            if(isExpired) return handleLogout()
+            
+    
             req.headers.Authorization = `Bearer ${newAccess}`
             return req
-            
         });
-    
+
+        return axiosInstance
+    } 
         
-    export default axiosConfig
+    export default useAxios

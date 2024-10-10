@@ -154,6 +154,7 @@ export const AuthProvider = ({ children }) => {
     
     const UserContext = {
         user: user,
+        setUser: setUser,
         handleLogin: handleLogin,
         handleLogout: handleLogout,
         loginSuccess: loginSuccess,

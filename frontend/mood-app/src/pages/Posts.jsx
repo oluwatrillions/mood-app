@@ -14,10 +14,12 @@ import axios from 'axios'
 
 const Posts = () => {
 
-    const { user, allUsers, commentOnMessage, userComment, setUserComment, commmentRef, replyRef, userToken, setUserToken, handleLogout} = useContext(AuthContext)
+    const { user, allUsers, commentOnMessage, userComment, setUserComment, commmentRef, replyRef, setUserToken} = useContext(AuthContext)
     
    const [isLoading, setIsLoading] = useState(true)
    const [posts, setPosts] = useState([])
+   
+   let api = useAxios()
 
    const navigate = useNavigate()   
    
@@ -25,7 +27,7 @@ const Posts = () => {
        setIsLoading(true)
        const fetchPosts = async ()=> {
            try {
-            const post = await useAxios.get('/posts')
+            const post = await api.get('/posts')
             
                 const data = await post.data
                 
