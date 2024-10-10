@@ -29,7 +29,7 @@ import axios from 'axios'
             if(!isExpired) return req
     
             const response = await fetch(`${baseURL}/refreshtoken`, {
-                method: 'GET',
+                method: 'POST',
                 withCredentials: true,
                 credentials: 'include',
             })
@@ -40,7 +40,9 @@ import axios from 'axios'
             setUser(jwt_decode(localStorage.getItem('accesstoken')))
 
             req.headers.Authorization = `Bearer ${newAccess}`
+
             return req
+            
         }, (error)=> {
             return Promise.reject(error)
         });
