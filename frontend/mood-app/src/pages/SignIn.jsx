@@ -9,12 +9,8 @@ import Loading from '../components/Loading'
 
 const SignIn = () => {
 
-    const { notif, setNotif, handleLogin, loginSuccess, user, setUser, userToken, setUserToken } = useContext(AuthContext)
+    const { notif, setNotif, handleLogin } = useContext(AuthContext)
     const navigate = useNavigate()
-
-    const [users, setUsers] = useState()
-
-    // console.log(user);
   
   const googleLogin = useGoogleLogin({
     onSuccess: async ({ code }) => {
