@@ -34,10 +34,7 @@ const Posts = () => {
                 if(post.status === 200){
                     setPosts(data)
                     setIsLoading(false)
-                } else if(post.status === 401){
-                    return handleLogout()
-                } 
-
+                }
             } catch (error) {
                 console.log(error.message);
             }

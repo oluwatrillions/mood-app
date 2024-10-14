@@ -10,6 +10,7 @@ import Comments from '../components/Comments'
 import dayjs from 'dayjs'
 import relativeTime from 'dayjs/plugin/relativeTime';
 import Loading from "../components/Loading"
+import useAxios from '../utils/useAxios'
 
 
 
@@ -34,18 +35,19 @@ const SinglePost = ({likes, count}) => {
     
     const formattedDate = dayjs(singlePost.postedAt).fromNow();
 
+    let api = useAxios()
+
     const Back = () => {
         navigate(-1)
     }
 
     useEffect(() => {
         setTimeout(() => {
-           const post = fetch(`http://localhost:4000/posts/${_id}`)
-            .then((response) => response.json())
-               .then((data) => {
-                   setSinglePost(data)
-                   setIsLoading(false)
-            });
+           const post = api.get(`/posts/${_id}`)
+            .then((response) => {
+                setSinglePost(response.data)
+                setIsLoading(false)
+            })
             clearTimeout(post)
         }, 1000)
     }, [])
@@ -77,16 +79,13 @@ const SinglePost = ({likes, count}) => {
 
     const deletePost = async () => {
         try {
-            const response = await fetch(`http://localhost:4000/posts/${_id}`, {
+            const response = await api(`/posts/${_id}`, {
                 method: 'DELETE',
                 headers: {
                     "Content-Type": "application/json"
                 }
             })
-                .then((res) => res.json()
-                    .then((data) => {
-                        setNotif(data.message)
-                    })
+                .then((res) => setNotif(res.data.message)
             )
             deleteSuccess()
         } catch (error) {
