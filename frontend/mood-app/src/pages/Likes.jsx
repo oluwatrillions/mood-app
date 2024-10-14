@@ -1,21 +1,21 @@
 import React, { useContext, useEffect, useState } from 'react'
 import "./Likes.css"
 import AuthContext from '../Contexts/AuthContext'
+import useAxios from '../utils/useAxios'
 
 const Likes = () => {
 
   const {user} = useContext(AuthContext)
 
+  let api = useAxios()
+
     const [posts, setPosts] = useState([])
 
     useEffect(()=>{
-        fetch("http://localhost:4000/posts")
-        .then((res)=> res.json())
-        .then((data)=> setPosts(data)
+        api.get("/posts")
+        .then((res)=> setPosts(res.data)
         )
-    }, [posts])
-
-    console.log();
+    }, [])
     
   return (
     <div className='liked-posts'>

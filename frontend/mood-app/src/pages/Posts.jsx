@@ -14,7 +14,7 @@ import axios from 'axios'
 
 const Posts = () => {
 
-    const { user, allUsers, commentOnMessage, userComment, setUserComment, commmentRef, replyRef, setUserToken} = useContext(AuthContext)
+    const { user, allUsers, commentOnMessage, userComment, setUserComment, commmentRef, replyRef, setUserToken, handleLogout} = useContext(AuthContext)
     
    const [isLoading, setIsLoading] = useState(true)
    const [posts, setPosts] = useState([])
@@ -34,7 +34,9 @@ const Posts = () => {
                 if(post.status === 200){
                     setPosts(data)
                     setIsLoading(false)
-                }  
+                } else if(post.status === 401){
+                    return handleLogout()
+                } 
 
             } catch (error) {
                 console.log(error.message);
@@ -43,11 +45,11 @@ const Posts = () => {
         
         fetchPosts()
         
-        const interval = setInterval(()=>{
-            fetchPosts();
-        }, 10000)
+        // const interval = setInterval(()=>{
+        //     fetchPosts();
+        // }, 10000)
         
-        return ()=> clearInterval(interval)
+        // return ()=> clearInterval(interval)
     }, [])
     
     if(isLoading){
