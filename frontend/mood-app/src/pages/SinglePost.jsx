@@ -64,11 +64,10 @@ const SinglePost = ({likes, count}) => {
             formEdit.append('images', singlePost.image)
         
         try {
-            const updatePost = await fetch(`http://localhost:4000/posts/${_id}`, {
-                method: 'PUT',
-                body: formEdit
-            }).then((res) => res.json())
-                .then((data) => {
+            const updatePost = await api.put(`/posts/${_id}`, formEdit,{
+                headers: {'Content-Type': 'multipart/form-data'}
+            })
+            .then((res) =>  {
                     setSinglePost(data)
                     setNotif(data.message)
                 })
