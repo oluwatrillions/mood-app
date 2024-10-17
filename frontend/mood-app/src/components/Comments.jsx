@@ -5,7 +5,7 @@ import AuthContext from '../Contexts/AuthContext'
 import UserImage from './UserImage'
 
 
-const Comments = ({ replyRef, author, comment, count, postId }) => {
+const Comments = ({ replyRef, author, comment, count, profileImage }) => {
 
     const { allUsers } = useContext(AuthContext)
 
@@ -21,7 +21,7 @@ const Comments = ({ replyRef, author, comment, count, postId }) => {
                             <UserImage
                                 key={user._id}
                                 username={author}
-                                profileImage={`http://localhost:4000/public/avatar/` + user.profileImage}
+                                profileImage={user.scope === 'local' ? `http://localhost:4000/public/avatar/` + user.profileImage : user.profileImage}
                             />
                             : null                            
                         )

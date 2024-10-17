@@ -42,11 +42,11 @@ const Posts = () => {
         
         fetchPosts()
         
-        // const interval = setInterval(()=>{
-        //     fetchPosts();
-        // }, 10000)
+        const interval = setInterval(()=>{
+            fetchPosts();
+        }, 10000)
         
-        // return ()=> clearInterval(interval)
+        return ()=> clearInterval(interval)
     }, [])
     
     if(isLoading){
@@ -170,6 +170,7 @@ const Posts = () => {
                                                             postId={post._id}
                                                             replyRef={()=> replyRef(post._id)}
                                                             count={post.commentCount}
+                                                            profileImage={post.comments.profileImage}
                                                         />
                                                     </div>
                                                 </div>

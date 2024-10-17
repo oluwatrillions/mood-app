@@ -68,8 +68,10 @@ const SinglePost = ({likes, count}) => {
                 headers: {'Content-Type': 'multipart/form-data'}
             })
             .then((res) =>  {
-                    setSinglePost(data)
-                    setNotif(data.message)
+                console.log(res);
+                
+                    setSinglePost(res.data)
+                    setNotif(res.data.message)
                 })
             } catch (error) {
                 console.log(error);
@@ -128,7 +130,7 @@ const SinglePost = ({likes, count}) => {
                                                 <UserImage
                                                     postId={users._id}
                                                     username = {users.username}
-                                                    profileImage={`http://localhost:4000/public/avatar/` + users.profileImage}
+                                                    profileImage={users.scope === 'local' ? `http://localhost:4000/public/avatar/` + users.profileImage : users.profileImage}
                                                 />
                                         </Link>    
                                     </div> 
@@ -228,6 +230,7 @@ const SinglePost = ({likes, count}) => {
                                   postId={singlecomment._id}
                                   author={singlecomment.username}
                                   comment={singlecomment.comment}
+                                  profileImage={singlecomment.profileImage}
                               />
                           </div>
                      )).reverse()
