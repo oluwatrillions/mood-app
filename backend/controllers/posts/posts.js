@@ -44,6 +44,7 @@ const getAllPosts = async (req, res) => {
     const unfiltered = await Posts.findOneAndRemove({email: unFilteredPosts.map(poster=>poster.email)})
 
     res.json(filteredPosts)
+    
 }
 
 // Update or edit a post
@@ -61,7 +62,8 @@ const updatePost = async (req, res) => {
     try {
         const foundPost = await Posts.findByIdAndUpdate(req.params.id, editedPost, { new: true })
         
-        res.json({foundPost, message: 'Post updated successfully' })    
+        res.json({foundPost, message: 'Post updated successfully' }) 
+           
     } catch (error) {
         console.log(error);
     }
@@ -95,7 +97,7 @@ const likePost = async (req, res) => {
         if (likeCheck) {
             const numberOfLikes = [...new Set(postToLike.likeCount.map(post => post.username))]
             return res.json({
-                message: 'User already liked post',
+                message: `You already liked this post`,
                 count: numberOfLikes.length
             })
         }
@@ -109,6 +111,7 @@ const likePost = async (req, res) => {
             message: `${username} liked this post`,
             postToLike: postToLike
         })
+        
     } catch (error) {
         console.log(error);
     }

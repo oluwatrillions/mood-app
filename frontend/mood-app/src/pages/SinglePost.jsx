@@ -59,17 +59,17 @@ const SinglePost = ({likes, count}) => {
     const handleEdit = async () => {
 
         const formEdit = new FormData()
+            formEdit.append('_method', 'put')
             formEdit.append('title', singlePost.title)
             formEdit.append('text', singlePost.text)
             formEdit.append('images', singlePost.image)
         
         try {
             const updatePost = await api.put(`/posts/${_id}`, formEdit,{
-                headers: {'Content-Type': 'multipart/form-data'}
+                'Content-Type': 'multipart/form-data'
             })
             .then((res) =>  {
                 console.log(res);
-                
                     setSinglePost(res.data)
                     setNotif(res.data.message)
                 })

@@ -14,6 +14,7 @@ import axios from 'axios'
             credentials: 'include',
             withCredentials: true,
             headers: { 
+                'Content-Type': 'application/json',
                 'Accept': 'application/json',
              },
         })                

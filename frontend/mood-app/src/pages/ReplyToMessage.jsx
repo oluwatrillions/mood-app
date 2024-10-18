@@ -1,7 +1,12 @@
 import React, { useEffect, useState } from 'react'
 import './Posts.css'
+import { useNavigate } from 'react-router-dom'
 
 const ReplyToMessage = ({ post, replyAt, replyTo, onReply, userComment, setUserComment, replyRef}) => {
+
+  // const back = ()=> {
+  //   navigate('/posts')
+  // }
 
   return (
       <div className='reply-div'>
