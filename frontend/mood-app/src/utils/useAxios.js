@@ -1,4 +1,4 @@
-import jwt_decode from 'jwt-decode'
+import jwtDecode from 'jwt-decode'
 import dayjs from 'dayjs'
 import { useContext } from 'react'
 import AuthContext from '../Contexts/AuthContext'
@@ -9,6 +9,8 @@ import axios from 'axios'
     const useAxios = ()=> {
         const {userToken, setUserToken, user, setUser, handleLogout} = useContext(AuthContext)
 
+        const userAccess = localStorage.getItem('accesstoken')
+
         const axiosInstance = axios.create({
             baseURL,
             credentials: 'include',
@@ -17,7 +19,7 @@ import axios from 'axios'
                 'Content-Type': 'application/json',
                 'Accept': 'application/json',
              },
-        })                
+        })           
 
         axiosInstance.interceptors.request.use(async req => {
             if(userToken){
@@ -36,8 +38,8 @@ import axios from 'axios'
             const newAccess = await response.json();
             
             localStorage.setItem('accesstoken', JSON.stringify(newAccess))
-            setUserToken(newAccess)
-            setUser(jwt_decode(localStorage.getItem('accesstoken')))
+            setUserToken(newAccess)            
+            setUser(jwtDecode(newAccess))
 
             req.headers.Authorization = `Bearer ${newAccess}`
 
