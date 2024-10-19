@@ -108,7 +108,7 @@ const likePost = async (req, res) => {
 
         await postToLike.save()
         res.json({
-            message: `${username} liked this post`,
+            message: `You liked this post`,
             postToLike: postToLike
         })
         

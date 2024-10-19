@@ -15,16 +15,11 @@ const Likes = ({ postId, likeCount, username }) => {
     
     const likePost = async () => {
         try {
-            const response = await api(`/posts/like/${postId}`, {
-                method: 'POST',
-                body: JSON.stringify({postId, username: user.username})
+            const response = await api.post(`/posts/like/${postId}`, {
+                postId, 
+                username: user.username
             })
-            const data = await response.data.message
-            console.log(data);
-            console.log(response);
-            console.log(response.data.message);
-            console.log(response.data.postToLike);            
-            
+            const data = await response.data.message            
 
             // Check if the post id(from the database) is equal to the clicked post(postId), then increment the number of likes in real time
 

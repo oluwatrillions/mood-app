@@ -109,37 +109,6 @@ export const AuthProvider = ({ children }) => {
 
     const [userComment, setUserComment] = useState([])
 
-    const commentOnMessage = async (postId, username, comment) => {        
-        try {
-            const response = await fetch(`http://localhost:4000/posts/comment/${postId}`, {
-                method: 'POST',
-                headers: {
-                    'Content-Type': 'application/json'
-                },
-                body: JSON.stringify({ postId, username, comment })
-            })
-            
-            const data = await response.json()
-            console.log(data);
-
-            console.log(posts);
-
-            const updatedPosts = posts.map((post) => {
-                if (post._id === data.postId) {
-                    console.log(post._id);
-                    console.log(data.postId);
-                return { ...post, commentCount: data.commentCount };
-            }
-                return post;
-            });
-            
-            setPosts(updatedPosts);
-            setUserComment('');
-        } catch (error) {
-            console.log(error);
-        }
-    }
-
      // creating a ref to display the message being commented on 
     const commmentRef = useRef({})
     
@@ -163,7 +132,6 @@ export const AuthProvider = ({ children }) => {
         deleteSuccess: deleteSuccess,
         posts: posts,
         setPosts: setPosts,
-        commentOnMessage: commentOnMessage,
         userComment: userComment,
         setUserComment: setUserComment,
         commmentRef: commmentRef,

@@ -14,7 +14,7 @@ import axios from 'axios'
 
 const Posts = () => {
 
-    const { user, allUsers, commentOnMessage, userComment, setUserComment, commmentRef, replyRef, setUserToken, handleLogout} = useContext(AuthContext)
+    const { user, allUsers, userComment, setUserComment, commmentRef, replyRef, setUserToken, handleLogout} = useContext(AuthContext)
     
    const [isLoading, setIsLoading] = useState(true)
    const [posts, setPosts] = useState([])
@@ -94,7 +94,32 @@ const Posts = () => {
         const data = await resp.json()
         setUserToken(data)
        }
-       refresh()
+
+       const commentOnMessage = async (postId, username, comment) => {        
+        try {
+            const response = await api.post(`/posts/comment/${postId}`, {
+                 postId, 
+                 username, 
+                 comment 
+            })
+            
+            const data = await response.data
+            
+                const updatedPosts = posts.map((post) => {
+                    if (post._id === data.postId) {
+                        console.log(post._id);
+                        console.log(data.postId);
+                    return { ...post, commentCount: data.commentCount };
+                }
+                return post;
+            });
+            
+            setPosts(updatedPosts);
+            setUserComment('');
+        } catch (error) {
+            console.log(error);
+        }
+    }
 
     return (
         <div className='posts-div'>

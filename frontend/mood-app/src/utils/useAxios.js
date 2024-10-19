@@ -32,7 +32,6 @@ import axios from 'axios'
     
             const response = await fetch(`${baseURL}/refreshtoken`, {
                 method: 'POST',
-                withCredentials: true,
                 credentials: 'include',
             })
             const newAccess = await response.json();
