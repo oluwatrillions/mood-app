@@ -37,8 +37,6 @@ import axios from 'axios'
             const newAccess = await response.json();
             
             localStorage.setItem('accesstoken', JSON.stringify(newAccess))
-            setUserToken(newAccess)            
-            setUser(jwtDecode(newAccess))
 
             req.headers.Authorization = `Bearer ${newAccess}`
 

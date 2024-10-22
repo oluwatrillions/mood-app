@@ -6,7 +6,7 @@ import AuthContext from '../Contexts/AuthContext'
 
 const UserPosts = () => {
 
-    const { posts, AllPosts } = useContext(AuthContext)
+    const { posts } = useContext(AuthContext)
     const { _id } = useParams()
     const [clickedUser, setClickedUser] = useState([])
 
@@ -16,10 +16,6 @@ const UserPosts = () => {
             .then((data) => {
                 setClickedUser(data)
         })
-    }, [])
-
-    useEffect(() => {
-        AllPosts()
     }, [])
 
   return (

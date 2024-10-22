@@ -9,7 +9,7 @@ import Loading from '../components/Loading'
 
 const SignIn = () => {
 
-    const { notif, setNotif, handleLogin } = useContext(AuthContext)
+    const { notif, setNotif, handleLogin, user, setUser, setUserToken } = useContext(AuthContext)
     const navigate = useNavigate()
   
   const googleLogin = useGoogleLogin({
@@ -19,6 +19,8 @@ const SignIn = () => {
       
       if(tokens?.data?.accesstoken){        
         localStorage.setItem('accesstoken', JSON.stringify(tokens.data?.accesstoken))
+        setUserToken(tokens.data?.accesstoken)            
+        setUser(jwtDecode(tokens.data?.accesstoken).name)
         navigate('/posts')
       } else {
         localStorage.setItem("accesstoken", JSON.stringify(tokens.data?.accessToken))
@@ -28,6 +30,9 @@ const SignIn = () => {
     },
     flow: 'auth-code',
   })
+
+  console.log(user);
+  
 
   return (
     <div className='register'>

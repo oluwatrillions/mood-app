@@ -42,6 +42,11 @@ div {
     border-radius: 50%;
 }
 
+.username-color {
+    color: rgb(89, 89, 218);
+    text-align: center;
+}
+
 .user-info {
     display: 100%;
     display: flex;
@@ -51,6 +56,10 @@ div {
 
 h2, h3, h5 {
     font-family: 'Poppins', sans-serif;
+}
+
+.user-info h3 {
+    text-align: center;
 }
 
 a {

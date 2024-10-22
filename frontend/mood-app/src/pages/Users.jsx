@@ -64,7 +64,7 @@ const Users = () => {
                                   profileImage={user.scope === 'local' ? 'http://localhost:4000/public/avatar/' + profileImage : profileImage} /> 
                               <div className="user-info">
                                   <Link to={`/users/${_id}`}>
-                                    <h2>{name}</h2>
+                                    <h2 className='username-color'>{name}</h2>
                                     <h3>{username}</h3>
                                   </Link>
                               </div>
