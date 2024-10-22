@@ -58,7 +58,7 @@ const Likes = () => {
                     <div className="liked-post-details">
                       <h2>{post.title}</h2>
                       <h4>{post.text}</h4>
-                      <h3>comment: <span>{post.comments.map(message=> message.comment)}</span></h3>
+                      <h3>comment: <span>{userLikedPost.comment}</span></h3>
                     </div>
                   </div>
                 ));

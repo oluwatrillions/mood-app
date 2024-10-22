@@ -12,7 +12,7 @@ dayjs.extend(relativeTime);
 
 const Users = () => {
 
-    const { deleteSuccess } = useContext(AuthContext)
+    const { deleteSuccess, user } = useContext(AuthContext)
 
     const [allUsers, setAllUsers] = useState([]) 
     const [isLoading, setIsLoading] = useState(true)
@@ -54,7 +54,7 @@ const Users = () => {
   return (
       <div className='users'>
           <div className="all-users">
-              {
+              { user.roles === 'admin' &&
                   allUsers.map((user) => {
                       const { name, username, _id, profileImage, registeredAt } = user
                       return (
