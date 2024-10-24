@@ -3,7 +3,7 @@ import './SignUp.css'
 import AuthContext from '../Contexts/AuthContext'
 import {useGoogleLogin} from "@react-oauth/google"
 import axios from "axios"
-import jwt_decode from 'jwt-decode'
+import jwtDecode from 'jwt-decode'
 import { useNavigate } from 'react-router-dom'
 import Loading from '../components/Loading'
 
@@ -15,24 +15,19 @@ const SignIn = () => {
   const googleLogin = useGoogleLogin({
     onSuccess: async ({ code }) => {
       const tokens = await axios.post('http://localhost:4000/auth/google', {code,
-      });
+      });      
       
-      if(tokens?.data?.accesstoken){        
-        localStorage.setItem('accesstoken', JSON.stringify(tokens.data?.accesstoken))
-        setUserToken(tokens.data?.accesstoken)            
-        setUser(jwtDecode(tokens.data?.accesstoken).name)
+      if(tokens?.data?.accessToken){        
+        localStorage.setItem('accesstoken', JSON.stringify(tokens.data?.accessToken))
+        setUserToken(tokens.data?.accessToken)            
+        setUser(jwtDecode(tokens.data?.accessToken))
         navigate('/posts')
       } else {
-        localStorage.setItem("accesstoken", JSON.stringify(tokens.data?.accessToken))
-        setNotif(tokens.data.message)
-        navigate('/posts')
+        console.log(tokens.data.message);
       }
     },
     flow: 'auth-code',
-  })
-
-  console.log(user);
-  
+  })  
 
   return (
     <div className='register'>

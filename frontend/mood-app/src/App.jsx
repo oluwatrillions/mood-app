@@ -2,7 +2,7 @@ import Layout from './components/Layout'
 import Homepage from './pages/Homepage'
 import {BrowserRouter as Router, Routes, Route} from 'react-router-dom'
 import SignUp from './pages/SignUp'
-import SignIn from './pages/SignIn'
+import SignInWithGoogle from './pages/SignInWithGoogle'
 import Posts from './pages/Posts'
 import Post from './pages/Post'
 import UserProfile from './pages/UserProfile'
@@ -26,7 +26,7 @@ function App() {
                             <Route path='/users/:_id' element={<UserPosts/>} />
                             <Route path='/' element={<Homepage />} exact/>
                             <Route path='/signup' element={<SignUp/>} />
-                            <Route path='/signin' element={<SignIn/>} />
+                            <Route path='/signin' element={<SignInWithGoogle/>} />
                             <Route path='/users' element={<PrivateRoute><Users/></PrivateRoute>} />
                             <Route path='/admin' element={<PrivateRoute><Admin/></PrivateRoute>} />
                             <Route path='/post/create' element={<Post/>} />

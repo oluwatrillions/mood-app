@@ -20,7 +20,7 @@ router.post("/", async function(req, res, next){
         'postmessage'
     )
 
-    const {tokens} = await oAuth2Client.getToken(req.body.code);     
+    const {tokens} = await oAuth2Client.getToken(req.body.code);   
 
     const foundUser = await jwt.decode(tokens.id_token)
 
@@ -39,25 +39,23 @@ router.post("/", async function(req, res, next){
             scope: tokens ? 'google' : 'local',
             roles: foundUser.email === 'ajosemichaeloluwatobi@yahoo.com' ? 'admin' : 'user',
             profileImage: foundUser.picture || "../../../public/no-image/no-avatar.jpg",
-            refreshToken: tokens.refresh_token,
         })
 
-        const accesstoken = jwt.sign(newUser.toJSON(),
+        const accessToken = jwt.sign(newUser.toJSON(),
             tokens.access_token
         )
 
+        const refreshToken = jwt.sign(newUser.toJSON(),
+            tokens.refresh_token
+        )
+
+        newUser.refreshToken = refreshToken
+
         const newFoundUser = await newUser.save()
         
-        res.cookie('user', newUser.refreshToken, { httpOnly: true, maxAge: 24 * 60 * 60 * 1000})
-        res.json({accesstoken, message: "new Google user created"})
+        res.cookie('user', refreshToken, { httpOnly: true, secure: 'true', sameSite: 'none', maxAge: 24 * 60 * 60 * 1000})
+        res.json({accessToken, message: "new Google user created"})
     }
-      
-    // const authorizeUrl = oAuth2Client.generateAuthUrl({
-    //     access_type: 'offline',
-    //     scope: 'https://www.googleapis.com/auth/userinfo.profile  openid ',
-    //     prompt: 'consent'
-    // });
-    // res.json({url:authorizeUrl})
 })
 
 router.get('/', async function (req, res){
