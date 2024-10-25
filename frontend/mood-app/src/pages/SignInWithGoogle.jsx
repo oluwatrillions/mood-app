@@ -9,13 +9,14 @@ import Loading from '../components/Loading'
 
 const SignIn = () => {
 
-    const { notif, setNotif, handleLogin, user, setUser, setUserToken } = useContext(AuthContext)
+    const { notif, setNotif, handleLogin, user, setUser, userToken, setUserToken } = useContext(AuthContext)
     const navigate = useNavigate()
   
   const googleLogin = useGoogleLogin({
     onSuccess: async ({ code }) => {
       const tokens = await axios.post('http://localhost:4000/auth/google', {code,
-      });      
+        headers: {Authorization: `Bearer ${userToken}`}
+      });
       
       if(tokens?.data?.accessToken){        
         localStorage.setItem('accesstoken', JSON.stringify(tokens.data?.accessToken))
@@ -27,6 +28,22 @@ const SignIn = () => {
       }
     },
     flow: 'auth-code',
+
+    // Another way to get user info using flow: implicit
+    
+    // const googleLogin = useGoogleLogin({
+    //   onSuccess: async tokenResponse => {
+    //     console.log(tokenResponse);
+    //     // fetching userinfo can be done on the client or the server
+    //     const userInfo = await axios
+    //       .get('https://www.googleapis.com/oauth2/v3/userinfo', {
+    //         headers: { Authorization: `Bearer ${tokenResponse.access_token}` },
+    //       })
+    //       .then(res => res.data);
+  
+    //     console.log(userInfo);
+    //   },
+    // })  
   })  
 
   return (

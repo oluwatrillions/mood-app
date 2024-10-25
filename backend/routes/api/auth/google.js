@@ -20,7 +20,11 @@ router.post("/", async function(req, res, next){
         'postmessage'
     )
 
-    const {tokens} = await oAuth2Client.getToken(req.body.code);   
+    const {tokens} = await oAuth2Client.getToken({
+        code: req.body.code,
+        access_type: 'offline',
+        prompt: 'consent'
+    });   
 
     const foundUser = await jwt.decode(tokens.id_token)
 
@@ -45,6 +49,14 @@ router.post("/", async function(req, res, next){
             tokens.access_token
         )
 
+        // oAuth2Client.on('tokens', (tokens) => {
+        //     if (tokens.refresh_token) {
+        //       const newRefresh = tokens.refresh_token
+        //       console.log(tokens.refresh_token);
+        //     }
+        //     console.log(tokens.access_token);
+        //   });
+
         const refreshToken = jwt.sign(newUser.toJSON(),
             tokens.refresh_token
         )
@@ -53,7 +65,7 @@ router.post("/", async function(req, res, next){
 
         const newFoundUser = await newUser.save()
         
-        res.cookie('user', refreshToken, { httpOnly: true, secure: 'true', sameSite: 'none', maxAge: 24 * 60 * 60 * 1000})
+        res.cookie('user', refreshToken, { httpOnly: true, maxAge: 24 * 60 * 60 * 1000})
         res.json({accessToken, message: "new Google user created"})
     }
 })
