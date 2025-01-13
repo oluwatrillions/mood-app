@@ -80,7 +80,7 @@ export const AuthProvider = ({ children }) => {
         const userImage = await fetch('http://localhost:4000/users')
         const response = await userImage.json()
         setAllUsers(response)
-    }
+    }    
 
     useEffect(() => {
         handleUserImage()   

@@ -19,7 +19,7 @@ const Posts = () => {
    const [isLoading, setIsLoading] = useState(true)
    const [posts, setPosts] = useState([])
    
-   let api = useAxios()
+   let api = useAxios()   
 
    const navigate = useNavigate()   
    
@@ -150,7 +150,7 @@ const Posts = () => {
                             </Link>
                                     <div className='post-detail'>
                                         {
-                                            allUsers.map((userImg) => {  
+                                            allUsers.map((userImg) => {                                                  
                                                 if (userImg.username === post.username) {
                                                     const {username, _id, profileImage} = userImg
                                                     return <div key={_id} className='poster-image'>
@@ -203,7 +203,7 @@ const Posts = () => {
                                         </div>
                                         {
                                             user.roles === 'admin' && 
-                                            <button onClick={()=> deletePost(post._id)}>Delete Post</button>
+                                            <button type="button" onClick={()=> deletePost(post._id)}>Delete Post</button>
                                         }
                                 </div>
                             </div>
