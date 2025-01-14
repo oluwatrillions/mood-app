@@ -7,12 +7,10 @@ import axios from "axios";
 const baseURL = "http://localhost:4000";
 
 const useAxios = () => {
-  const { userToken, setUserToken, user, setUser, handleLogout } =
-    useContext(AuthContext);
+  const { userToken, setUserToken, handleLogout } = useContext(AuthContext);
 
   const axiosInstance = axios.create({
     baseURL,
-    credentials: "include",
     withCredentials: true,
     headers: {
       "Content-Type": "application/json",
@@ -30,29 +28,32 @@ const useAxios = () => {
       const decodedToken = userToken ? jwtDecode(userToken) : null;
 
       const isExpired =
-        decodedToken && dayjs.unix(decodedToken.exp).diff(dayjs()) < 10;
+        decodedToken && dayjs.unix(decodedToken.exp).diff(dayjs()) < 1;
 
       if (!isExpired) return req;
 
       try {
-        const response = await fetch(`${baseURL}/refreshtoken`, {
-          method: "POST",
-          credentials: "include",
-        });
+        const response = await axios.post(
+          `${baseURL}/refreshtoken`,
+          {},
+          {
+            withCredentials: true,
+          }
+        );
+        // if (!response.ok) {
+        //   handleLogout(); // Logout user if token refresh fails
+        //   throw new Error("Failed to refresh token");
+        // }
+        // const newAccess = response.data;
+        // console.log(newAccess);
 
-        if (!response.ok) {
-          handleLogout(); // Logout user if token refresh fails
-          throw new Error("Failed to refresh token");
-        }
-        const newAccess = await response.json();
-        console.log(newAccess);
+        const { accessToken } = response.data;
+        console.log(accessToken);
 
-        const newAccessToken = newAccess.accessToken;
+        localStorage.setItem("accesstoken", accessToken);
+        setUserToken(accessToken);
 
-        localStorage.setItem("accesstoken", newAccessToken);
-        setUserToken(newAccessToken);
-
-        req.headers.Authorization = `Bearer ${newAccessToken}`;
+        req.headers.Authorization = `Bearer ${accessToken}`;
 
         return req;
       } catch (error) {
