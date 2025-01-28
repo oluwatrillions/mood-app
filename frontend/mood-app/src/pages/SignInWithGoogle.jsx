@@ -15,8 +15,8 @@ const SignIn = () => {
   const googleLogin = useGoogleLogin({
     onSuccess: async ({ code }) => {
       const tokens = await axios.post('http://localhost:4000/auth/google', {code,
-        headers: {Authorization: `Bearer ${userToken}`}
-      });
+        headers: {Authorization: `Bearer ${userToken}`},
+      });      
       
       if(tokens?.data?.accessToken){        
         localStorage.setItem('accesstoken', JSON.stringify(tokens.data?.accessToken))
