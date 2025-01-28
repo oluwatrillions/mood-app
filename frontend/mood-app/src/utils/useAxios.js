@@ -23,12 +23,11 @@ const useAxios = () => {
       if (userToken) {
         req.headers.Authorization = `Bearer ${userToken}`;
       }
-      //   const isExpired = dayjs.unix(user.exp).diff(dayjs()) < 1;
 
       const decodedToken = userToken ? jwtDecode(userToken) : null;
 
       const isExpired =
-        decodedToken && dayjs.unix(decodedToken.exp).diff(dayjs()) < 1;
+        decodedToken && dayjs.unix(decodedToken.exp).diff(dayjs()) < 0;
 
       if (!isExpired) return req;
 
@@ -40,15 +39,8 @@ const useAxios = () => {
             withCredentials: true,
           }
         );
-        // if (!response.ok) {
-        //   handleLogout(); // Logout user if token refresh fails
-        //   throw new Error("Failed to refresh token");
-        // }
-        // const newAccess = response.data;
-        // console.log(newAccess);
 
         const { accessToken } = response.data;
-        console.log(accessToken);
 
         localStorage.setItem("accesstoken", accessToken);
         setUserToken(accessToken);

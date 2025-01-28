@@ -29,7 +29,7 @@ const Posts = () => {
            try {
             const post = await api.get('/posts')
             
-                const data = await post.data
+                const data = post.data
                 
                 if(post.status === 200){
                     setPosts(data)
