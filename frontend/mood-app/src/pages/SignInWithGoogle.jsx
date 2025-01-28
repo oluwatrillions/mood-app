@@ -6,17 +6,21 @@ import axios from "axios"
 import jwtDecode from 'jwt-decode'
 import { useNavigate } from 'react-router-dom'
 import Loading from '../components/Loading'
+import useAxios from '../utils/useAxios'
 
 const SignIn = () => {
 
     const { notif, setNotif, handleLogin, user, setUser, userToken, setUserToken } = useContext(AuthContext)
     const navigate = useNavigate()
+
+    
   
   const googleLogin = useGoogleLogin({
     onSuccess: async ({ code }) => {
-      const tokens = await axios.post('http://localhost:4000/auth/google', {code,
-        headers: {Authorization: `Bearer ${userToken}`},
-      });      
+      const tokens = await axios.post('http://localhost:4000/auth/google', 
+      {code},
+      {withCredentials: true},
+      );    
       
       if(tokens?.data?.accessToken){        
         localStorage.setItem('accesstoken', JSON.stringify(tokens.data?.accessToken))
