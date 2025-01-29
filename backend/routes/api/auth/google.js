@@ -32,6 +32,17 @@ router.post("/", async function (req, res, next) {
 
   if (user) {
     const accessToken = jwt.sign(user.toJSON(), tokens.access_token);
+    const refreshToken = jwt.sign(user.toJSON(), tokens.refresh_token);
+
+    user.refreshToken = refreshToken;
+
+    res.cookie("user", refreshToken, {
+      httpOnly: true,
+      sameSite: "None",
+      secure: true,
+      maxAge: 24 * 60 * 60 * 1000,
+    });
+
     return res.json({ accessToken, message: "user already exists" });
   } else {
     const newUser = new users({
@@ -49,14 +60,6 @@ router.post("/", async function (req, res, next) {
 
     const accessToken = jwt.sign(newUser.toJSON(), tokens.access_token);
 
-    // oAuth2Client.on('tokens', (tokens) => {
-    //     if (tokens.refresh_token) {
-    //       const newRefresh = tokens.refresh_token
-    //       console.log(tokens.refresh_token);
-    //     }
-    //     console.log(tokens.access_token);
-    //   });
-
     const refreshToken = jwt.sign(newUser.toJSON(), tokens.refresh_token);
 
     newUser.refreshToken = refreshToken;
@@ -65,6 +68,7 @@ router.post("/", async function (req, res, next) {
 
     res.cookie("user", refreshToken, {
       httpOnly: true,
+      secure: true,
       maxAge: 24 * 60 * 60 * 1000,
       path: "/",
     });

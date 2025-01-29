@@ -5,8 +5,6 @@ const handleRefreshToken = async (req, res) => {
   try {
     const cookies = req.cookies.user;
 
-    console.log(cookies);
-
     if (!cookies)
       return res.status(401).json({ message: "no user found in cookie" });
     const refreshToken = cookies;
