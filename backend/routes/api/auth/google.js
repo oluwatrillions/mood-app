@@ -76,7 +76,7 @@ router.post("/", async function (req, res, next) {
   }
 });
 
-router.get("/", async function (req, res) {
+router.get("/", async (req, res) => {
   const getGoogleUsers = await GoogleUsers.find();
   res.json(getGoogleUsers);
 });

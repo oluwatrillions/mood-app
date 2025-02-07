@@ -7,29 +7,47 @@ import jwtDecode from 'jwt-decode'
 import { useNavigate } from 'react-router-dom'
 import Loading from '../components/Loading'
 import useAxios from '../utils/useAxios'
+import dayjs from "dayjs";
+
 
 const SignIn = () => {
 
     const { notif, setNotif, handleLogin, user, setUser, userToken, setUserToken } = useContext(AuthContext)
     const navigate = useNavigate()
 
-    
+    let api = useAxios()
   
   const googleLogin = useGoogleLogin({
     onSuccess: async ({ code }) => {
-      const tokens = await axios.post('http://localhost:4000/auth/google', 
+      const tokens = await api.post('http://localhost:4000/auth/google', 
       {code},
       {withCredentials: true},
-      );    
+      );   
+
+      console.log(tokens.data.accessToken);
       
-      if(tokens?.data?.accessToken){        
+      if(tokens?.data?.accessToken){  
+
         localStorage.setItem('accesstoken', JSON.stringify(tokens.data?.accessToken))
-        setUserToken(tokens.data?.accessToken)            
-        setUser(jwtDecode(tokens.data?.accessToken))
+        setUserToken(tokens?.data?.accessToken)            
+        setUser(jwtDecode(tokens?.data?.accessToken))
         navigate('/posts')
-      } else {
-        console.log(tokens.data.message);
-      }
+      } 
+
+      const decodedToken = tokens.data.accessToken ? jwtDecode(tokens.data.accessToken) : null;
+      
+        const isExpired =
+              decodedToken && dayjs.unix(decodedToken.exp).diff(dayjs()) < 0;
+          console.log(isExpired);
+
+          if (!isExpired) {
+
+            const response = await axios.post('http://localhost:4000/auth/refreshtoken', 
+              {refreshToken},
+              {withCredentials: true},
+            );
+            console.log(response);
+          }
     },
     flow: 'auth-code',
 
