@@ -8,9 +8,9 @@ dotenv.config();
 router.post("/refresh-token", async (req, res) => {
   const user = req.cookies.user;
 
-  console.log(refreshToken);
+  console.log(user);
 
-  if (!refreshToken) return res.status(401).json({ message: "no Token found" });
+  if (!user) return res.status(401).json({ message: "no Token found" });
 
   const refreshToken = await verifyRefreshToken(refreshToken);
 

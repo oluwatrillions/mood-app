@@ -19,7 +19,7 @@ const SignIn = () => {
   
   const googleLogin = useGoogleLogin({
     onSuccess: async ({ code }) => {
-      const tokens = await api.post('http://localhost:4000/auth/google', 
+      const tokens = await axios.post('http://localhost:4000/auth/google', 
       {code},
       {withCredentials: true},
       );   
@@ -31,6 +31,8 @@ const SignIn = () => {
         localStorage.setItem('accesstoken', JSON.stringify(tokens.data?.accessToken))
         setUserToken(tokens?.data?.accessToken)            
         setUser(jwtDecode(tokens?.data?.accessToken))
+        console.log(user);
+        
         navigate('/posts')
       } 
 
@@ -42,7 +44,7 @@ const SignIn = () => {
 
           if (!isExpired) {
 
-            const response = await axios.post('http://localhost:4000/auth/refreshtoken', 
+            const response = await api.post('http://localhost:4000/auth/refreshtoken', 
               {refreshToken},
               {withCredentials: true},
             );
