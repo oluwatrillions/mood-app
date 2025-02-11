@@ -23,15 +23,12 @@ const SignIn = () => {
       {code},
       {withCredentials: true},
       );   
-
-      console.log(tokens.data.accessToken);
       
       if(tokens.data.accessToken){  
 
         localStorage.setItem('accesstoken', JSON.stringify(tokens.data.accessToken))
         setUserToken(tokens.data.accessToken)            
         setUser(jwtDecode(tokens.data.accessToken))
-        
         navigate('/posts')
       } 
 
@@ -91,7 +88,7 @@ const SignIn = () => {
                   <button className='signIn-btn' type='submit'>Sign In</button>
               </form>
           </div>
-          <button onClick={googleLogin} className='google-btn'>Sign in with Google 🚀</button>
+          <button onClick={googleLogin} className='google-btn'>Sign in with Google</button>
     </div>
   )
 }

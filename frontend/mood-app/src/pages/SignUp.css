@@ -7,7 +7,7 @@
 }
 
 .register {
-    min-height: 100vh;
+    height: 100vh;
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -27,19 +27,6 @@ form {
     flex-direction: column;
     justify-content: center;
     align-items: center;
-}
-
-.google-btn {
-    margin-top: 1em;
-    margin-bottom: 1em;
-    height: 3em;
-    width: 30vw;
-    font-size: 1.2em;
-    background-color: rgb(69, 146, 146);
-    color: aliceblue;
-    border: none;
-    outline: none;
-    cursor: pointer;border-radius: .5em;
 }
 
 .signup {
@@ -81,17 +68,18 @@ label {
     margin-top: .3em;
 }
 
-.signIn-btn {
+.signIn-btn, .google-btn {
     margin-top: 1em;
     margin-bottom: 1em;
-    height: 3em;
+    padding: .7em;
     width: 30vw;
     font-size: 1.2em;
     background-color: rgb(69, 146, 146);
     color: aliceblue;
     border: none;
     outline: none;
-    cursor: pointer;border-radius: .5em;
+    cursor: pointer;
+    border-radius: .5em;
 }
 
 input[type='file'] {
@@ -110,24 +98,64 @@ input[type='file'] {
 @media screen and (max-width: 375px){
     .signup form {
         width: 85vw !important;
+        margin-top: 10vh;
+    }
+
+    .signup {
+        width: 100vw;
+        height: 65vh !important;
+    }
+
+    form {
+        width: 80vw !important;
+        display: flex;
+        flex-direction: column;
+        justify-content: flex-start;
     }
 
     form .inputs {
-        width: 75vw !important;
+        width: 80vw !important;
+        margin-bottom: 1em;
     }
 
-    .signIn-btn {
-        width: 70vw !important;
-        height: 2em;
+    .google-btn, .signIn-btn {
+        min-width: 80vw;
+        font-size: 1.2em;
+        padding: .4em;
+        background-color: rgb(69, 146, 146);
+        color: aliceblue;
+        border: none;
+        outline: none;
+        cursor: pointer;
+        border-radius: .5em;
+        margin-top: 1em;
+        margin-bottom: 0;
+    }
+
+    .notif {
+        width: 80vw;
+        font-size: 1em;
+        margin: 0;
+    }
+
+    .signup .sign-in-img {
+        width: 12vw;
+        height: 10em;
     }
 }
 
 @media screen and (max-width: 480px){
     .signup {
         width: 100vw;
+        height: 65vh;
         margin-top: 5vh;
         display: flex;
-        justify-content: flex-start;
+        justify-content: space-between;
+        align-items: center;
+    }
+
+    .notif {
+        margin: 0;
     }
 
     .signup img {
@@ -138,7 +166,7 @@ input[type='file'] {
     } 
 
     form {
-        width: 70vw !important;
+        width: 80vw !important;
         display: flex;
         flex-direction: column;
         justify-content: flex-start;
@@ -149,10 +177,11 @@ input[type='file'] {
         padding: 0.5em;
         height: 2em;
         border-radius: .2em;
+        width: 60vw;
     }
 
     .inputs {
-        width: 60vw !important;
+        width: 80vw !important;
         display: flex;
         justify-content: space-between;
         align-items: center;
@@ -168,14 +197,24 @@ input[type='file'] {
         font-size: 1em !important;
     }
 
-    .signIn-btn {
-        width: 70vw;
+    .google-btn, .signIn-btn {
+        min-width: 80vw;
+        font-size: 1.2em;
+        padding: .5em;
+        background-color: rgb(69, 146, 146);
+        color: aliceblue;
+        border: none;
+        outline: none;
+        cursor: pointer;
+        border-radius: .5em;
+        margin-top: 1em;
+        margin-bottom: 0;
     }
 
     .signup .sign-in-img {
         width: 7em;
         height: 12vh;
-        margin-top: 10vh;
+        margin: 5vh;
     }
 }
 
@@ -205,7 +244,7 @@ input[type='file'] {
         font-size: 1em !important;
     }
 
-    .signIn-btn {
+    /* .signIn-btn {
         width: 60vw;
-    }
+    } */
 }

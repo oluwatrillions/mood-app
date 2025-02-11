@@ -7,9 +7,7 @@ import { IoIosClose } from "react-icons/io";
 
 const Header = () => {
 
-    const { user, handleLogout } = useContext(AuthContext)   
-    console.log(user);
-         
+    const { user, handleLogout } = useContext(AuthContext)            
 
     const collapsedRef = useRef()
     const location = useLocation()

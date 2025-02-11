@@ -180,8 +180,18 @@ nav button:hover {
         z-index: 10;
     }
 
-    .logged-out h3{
-        width: 80vw;
+    .logged-out a {
+        font-size: 1.2em;
+        padding: .3em .6em;
+        border-radius: .3em;
+        background-color: rgb(255, 255, 255);
+        color: rgb(82, 82, 199);
+        cursor: pointer;
+        margin-left: 1em;
+    }
+
+    .logged-out{
+        width: 100vw;
     }
 
     .close-btn {
@@ -196,7 +206,7 @@ nav button:hover {
         cursor: pointer;
     }
 }
-
+/* 
 @media screen and (max-width: 414px){
     .header {
         width: 100vw;
@@ -276,7 +286,7 @@ nav button:hover {
         float: right;
         cursor: pointer;
     }
-}
+} */
 
 @media screen and (max-width: 480px){
    nav h3 {
@@ -329,7 +339,9 @@ nav button:hover {
    }
 
     .logged-out h3 {
-        width: 80vw;
+        width: 100vw;
+        display: flex;
+        justify-content: space-around;
     }
 
     .close-btn {
