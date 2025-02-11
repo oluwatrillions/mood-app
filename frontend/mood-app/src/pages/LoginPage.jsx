@@ -19,37 +19,36 @@ const SignIn = () => {
   
   const googleLogin = useGoogleLogin({
     onSuccess: async ({ code }) => {
-      const tokens = await axios.post('http://localhost:4000/auth/google', 
+      const tokens = await api.post('http://localhost:4000/auth/google', 
       {code},
       {withCredentials: true},
       );   
 
       console.log(tokens.data.accessToken);
       
-      if(tokens?.data?.accessToken){  
+      if(tokens.data.accessToken){  
 
-        localStorage.setItem('accesstoken', JSON.stringify(tokens.data?.accessToken))
-        setUserToken(tokens?.data?.accessToken)            
-        setUser(jwtDecode(tokens?.data?.accessToken))
+        localStorage.setItem('accesstoken', JSON.stringify(tokens.data.accessToken))
+        setUserToken(tokens.data.accessToken)            
+        setUser(jwtDecode(tokens.data.accessToken))
         console.log(user);
         
         navigate('/posts')
       } 
 
-      const decodedToken = tokens.data.accessToken ? jwtDecode(tokens.data.accessToken) : null;
+      // const decodedToken = tokens.data.accessToken ? jwtDecode(tokens.data.accessToken) : null;
       
-        const isExpired =
-              decodedToken && dayjs.unix(decodedToken.exp).diff(dayjs()) < 0;
-          console.log(isExpired);
+      //   const isExpired =
+      //         decodedToken && dayjs.unix(decodedToken.exp).diff(dayjs()) < 0;
+      //     console.log(isExpired);
 
-          if (!isExpired) {
+      //     if (!isExpired) {
 
-            const response = await api.post('http://localhost:4000/auth/refreshtoken', 
-              {refreshToken},
-              {withCredentials: true},
-            );
-            console.log(response);
-          }
+      //       const response = await api.post('http://localhost:4000/auth/refreshtoken', 
+      //         {withCredentials: true},
+      //       );
+      //       console.log(response);
+      //     }
     },
     flow: 'auth-code',
 

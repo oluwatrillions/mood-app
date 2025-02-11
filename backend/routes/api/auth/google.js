@@ -31,8 +31,14 @@ router.post("/", async function (req, res, next) {
   const user = await users.findOne({ email: foundUser.email }).exec();
 
   if (user) {
-    const accessToken = jwt.sign(user.toJSON(), tokens.access_token);
-    const refreshToken = jwt.sign(user.toJSON(), tokens.refresh_token);
+    const accessToken = jwt.sign(
+      user.toJSON(),
+      process.env.ACCESS_TOKEN_SECRET
+    );
+    const refreshToken = jwt.sign(
+      user.toJSON(),
+      process.env.REFRESH_TOKEN_SECRET
+    );
 
     user.refreshToken = refreshToken;
 
@@ -58,9 +64,15 @@ router.post("/", async function (req, res, next) {
         foundUser.picture || "../../../public/no-image/no-avatar.jpg",
     });
 
-    const accessToken = jwt.sign(newUser.toJSON(), tokens.access_token);
+    const accessToken = jwt.sign(
+      newUser.toJSON(),
+      process.env.ACCESS_TOKEN_SECRET
+    );
 
-    const refreshToken = jwt.sign(newUser.toJSON(), tokens.refresh_token);
+    const refreshToken = jwt.sign(
+      newUser.toJSON(),
+      process.env.REFRESH_TOKEN_SECRET
+    );
 
     newUser.refreshToken = refreshToken;
 
