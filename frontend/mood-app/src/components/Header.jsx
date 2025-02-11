@@ -7,7 +7,9 @@ import { IoIosClose } from "react-icons/io";
 
 const Header = () => {
 
-    const { user, handleLogout } = useContext(AuthContext)        
+    const { user, handleLogout } = useContext(AuthContext)   
+    console.log(user);
+         
 
     const collapsedRef = useRef()
     const location = useLocation()
@@ -50,14 +52,14 @@ const Header = () => {
                             </>
                           } 
                       </div>
-                        <h3 className='desc'>This is a social media app where users air out their moods</h3>
+                        <h3 className='desc'>Want to air out your mood?</h3>
                         <h3 className='welcome'>Welcome <span>{ user.name}</span></h3>
                         <button onClick={handleLogout}>Logout</button>
                     </nav>
                   :
                     <nav className='logged-out'>
-                        <h3 className='desc'>This is a social media app where users air out their moods</h3>
-                        <button type='submit'> <Link to='/signin'>Login</Link></button>
+                        <h3 className='desc'>Want to air out your mood?</h3>
+                        <Link to='/signin'>Login</Link>
                     </nav>
         }
     </div>

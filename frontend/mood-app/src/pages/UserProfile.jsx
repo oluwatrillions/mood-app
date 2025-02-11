@@ -5,18 +5,23 @@ import AuthContext from '../Contexts/AuthContext'
 import UserImage from '../components/UserImage'
 import dayjs from 'dayjs'
 import relativeTime from 'dayjs/plugin/relativeTime';
+import { useNavigate } from 'react-router-dom'
 
 
 const UserProfile = () => {
 
     const { user } = useContext(AuthContext)  
     const [users, setUsers] = useState([])  
+    const navigate = useNavigate()
     
     useEffect(()=>{
       try {
         fetch(`http://localhost:4000/users/`)
         .then((res)=> res.json())
         .then(response=> setUsers(response.filter((item)=> item.email === user.email)))
+        const timeout = setTimeout(()=>{
+          navigate('/posts')
+        }, 2000)
     } catch (error) {
         console.log(error);
     }

@@ -31,7 +31,6 @@ const SignIn = () => {
         localStorage.setItem('accesstoken', JSON.stringify(tokens.data.accessToken))
         setUserToken(tokens.data.accessToken)            
         setUser(jwtDecode(tokens.data.accessToken))
-        console.log(user);
         
         navigate('/posts')
       } 
