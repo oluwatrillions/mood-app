@@ -33,6 +33,7 @@ const Header = () => {
                           <div className="close-btn">
                             <IoIosClose onClick={closeSidebar}/>
                           </div>
+                          <h3 className='welcome'>Welcome <span>{ user.name}</span></h3>
                           {
                             user.roles === 'admin' ?
                             <>
@@ -50,8 +51,12 @@ const Header = () => {
                             </>
                           } 
                       </div>
-                        <h3 className='desc'>Want to air out your mood?</h3>
-                        <h3 className='welcome'>Welcome <span>{ user.name}</span></h3>
+                      {
+                        user ? 
+                          <h3 className='desc'>Tell us about your mood</h3>
+                        : 
+                          <h3 className='desc'>Want to air out your mood?</h3>
+                      }
                         <button onClick={handleLogout}>Logout</button>
                     </nav>
                   :

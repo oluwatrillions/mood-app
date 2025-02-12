@@ -139,8 +139,9 @@ input[type='file'] {
     }
 
     .signup .sign-in-img {
-        width: 12vw;
-        height: 10em;
+        width: 10em !important;
+        height: 10vh !important;
+        margin: 0 5vh !important;
     }
 }
 
@@ -212,8 +213,8 @@ input[type='file'] {
     }
 
     .signup .sign-in-img {
-        width: 7em;
-        height: 12vh;
+        width: 12em !important;
+        height: 18vh !important;
         margin: 5vh;
     }
 }

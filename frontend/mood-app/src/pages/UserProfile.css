@@ -6,7 +6,7 @@ div, * {
 
 .profile {
     width: 100vw;
-    min-height: 80vh;
+    height: 100vh;
     display: flex;
     justify-content: flex-start;
     align-items: center;
@@ -18,9 +18,8 @@ div, * {
     height: 80vh;
     display: flex;
     flex-direction: column;
-    justify-content: center;
+    justify-content: space-between;
     align-items: center;
-    margin-left: 1em;
 }
 
 .dashboard img {
@@ -54,7 +53,24 @@ div, * {
 
 
 @media screen and (max-width: 480px){
+    .dashboard {
+        height: 70vh;
+    }
+    
     .dashboard img {
-        width: 85vw;
+        width: 17em;
+        height: 18em;
+    }
+
+    .dashboard h2 {
+        font-size: 1em;
+    }
+    
+    .dashboard h4 {
+        font-size: 1em;
+    }
+
+    .dashboard span {
+        font-size: 1em;
     }
 }

@@ -127,13 +127,17 @@ nav button:hover {
 
 
 @media screen and (max-width: 375px){    
-    .logged-in h3 {
-        font-size: .6em;
+    .show-links .users-btn {
+        font-size: .9em;
+        padding: .5em;
+    }
+
+    .active {
+        background-color: rgb(41, 45, 49);
+        color: rgb(250, 250, 250);
     }
 
     .header-menu {
-        width: 1.2em !important;
-        height: 1.2em !important;
         cursor: pointer;
         color: rgb(97, 94, 94);
         visibility: visible;
@@ -141,37 +145,20 @@ nav button:hover {
 
     .logged-in .desc {
         width: 60vw ;
-        font-size: .6em ;
-    }
-
-    nav a {
-        font-size: .8em;
-    }
-
-    .logged-in button {
-        font-size: .7em;
     }
 
     .logged-in .welcome {
-        font-size: .6em !important;
+        font-size: .9em !important;
     }
 
-    .show-links {
-        display: none;
-    }
-
-    .show-links a {
-        font-size: 1em;
-    }
-
-    .show-sidebar {
+    .logged-in .show-sidebar {
         margin-top: 1em;
         padding-top: 1em;
-        padding-left: .5em;
+        padding: .5em;
         display: flex;
         flex-direction: column;
         justify-content: flex-start;
-        gap: 1em;
+        gap: .5em;
         width: 50vw;
         background-color: rgb(236, 238, 240);
         position: absolute;
@@ -196,12 +183,12 @@ nav button:hover {
 
     .close-btn {
         display: block;
-        width: 40vw !important;
+        width: 50vw !important;
     }
 
     .close-btn svg {
-        width: 1.5em;
-        height: 1.5em;
+        width: 2em;
+        height: 2em;
         float: right;
         cursor: pointer;
     }
@@ -289,24 +276,21 @@ nav button:hover {
 } */
 
 @media screen and (max-width: 480px){
-   nav h3 {
-    font-size: .7em;
-   } 
-
    .header-menu {
-       width: 1.3em !important;
-       height: 1.3em !important;
+       width: 1.7em !important;
+       height: 1.7em !important;
        cursor: pointer;
        color: rgb(97, 94, 94);
        visibility: visible;
    }
 
    nav button {
-    font-size: .8em;
+    font-size: 1em !important;
+    margin-right: 1em;
    }
 
    .logged-in .welcome {
-    font-size: .8em;
+    font-size: 1em;
    }
 
    .logged-in .desc {
@@ -325,7 +309,7 @@ nav button:hover {
    .show-sidebar {
        margin-top: 1.5em;
        padding-top: 1em;
-       padding-left: .5em;
+       padding: .5em;
        display: flex;
        flex-direction: column;
        justify-content: flex-start;
@@ -346,12 +330,12 @@ nav button:hover {
 
     .close-btn {
         display: block;
-        width: 40vw !important;
+        width: 50vw !important;
     }
 
     .close-btn svg {
-        width: 1.5em;
-        height: 1.5em;
+        width: 2em;
+        height: 2em;
         float: right;
         cursor: pointer;
     }
@@ -417,27 +401,27 @@ nav button:hover {
 
     .close-btn {
         display: block;
-        width: 40vw !important;
+        width: 40vw;
     }
 
     .close-btn svg {
-        width: 1.5em;
-        height: 1.5em;
+        width: 2em;
+        height: 2em;
         float: right;
         cursor: pointer;
     }
 
     .users-btn {
-        width: 40vw;
         text-align: left;
         padding-left: .5em;
+        font-size: 1em;
     }
 
     .active {
         background-color: rgb(0, 0, 0);
         font-size: 1em;
         border-radius: .5em;
-        padding: .1em;
+        padding: .5em;
         color: rgb(250, 250, 250);
     }
 }
@@ -498,12 +482,12 @@ nav button:hover {
 
     .close-btn {
         display: block;
-        width: 40vw !important;
+        width: 40vw ;
     }
 
     .close-btn svg {
-        width: 1.5em;
-        height: 1.5em;
+        width: 2em;
+        height: 2em;
         float: right;
         cursor: pointer;
     }
@@ -573,8 +557,8 @@ nav button:hover {
     }
 
     .close-btn svg {
-        width: 1.5em;
-        height: 1.5em;
+        width: 2em;
+        height: 2em;
         float: right;
         cursor: pointer;
     }
