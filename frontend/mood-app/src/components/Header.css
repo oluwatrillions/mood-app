@@ -343,7 +343,7 @@ nav button:hover {
 
 @media screen and (max-width: 600px){
     .desc {
-        font-size: .9em !important;
+        font-size: 1em !important;
         width: 50vw;
         text-align: center;
     }
@@ -356,16 +356,8 @@ nav button:hover {
        visibility: visible;
    }
 
-   .header {
-    height: 10vh !important;
-   }
-
     .welcome {
         font-size: .9em;
-    }
-
-    nav a {
-        font-size: .7em;
     }
 
     nav button {
@@ -381,8 +373,6 @@ nav button:hover {
    }
 
    .show-sidebar {
-       margin-top: 1.5em !important;
-       padding-top: 1em !important;
        display: flex;
        flex-direction: column;
        justify-content: flex-start;
@@ -395,13 +385,21 @@ nav button:hover {
        z-index: 10;
    }
 
+   .logged-out {
+    width: 100vw;
+   }
+
     .logged-out h3 {
-        width: 80vw;
+        width: 70vw !important;
+    }
+
+    .logged-out a {
+        padding: .2em .7em;
     }
 
     .close-btn {
         display: block;
-        width: 40vw;
+        width: 50vw !important;
     }
 
     .close-btn svg {
@@ -423,6 +421,7 @@ nav button:hover {
         border-radius: .5em;
         padding: .5em;
         color: rgb(250, 250, 250);
+        width: 40vw;
     }
 }
 
