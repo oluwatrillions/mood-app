@@ -278,11 +278,27 @@
     } 
     
     .comment-div {
-        width: 85vw !important;
+        width: 80vw !important;
     }
 
     .title {
         width: 80vw !important;
+    }
+
+    .commenters {
+        width: 80vw;
+    }
+
+    .comments {
+        width: 80vw;
+    }
+
+    .comment-section {
+        width: 80vw;
+    }
+
+    .each-cmt {
+        width: 80vw;
     }
 }
 
@@ -321,16 +337,16 @@
     .post-detail {
         height: 8vh;
     }
-
-    .comment-div {
-        width: 70vw !important;
-    }
 }
 
 @media screen and (max-width: 480px) {
     .all-posts .posts {
         width: 80vw;
         height: 45vh;
+    }
+
+    .commenters {
+        width: 80vw;
     }
 
     .split .image-div {
@@ -342,7 +358,7 @@
     }
 
     .title {
-        width: 70vw;
+        width: 60vw;
     }
 
     .users-comments {
@@ -352,10 +368,6 @@
     .post-detail {
         height: 8vh;
     }
-
-    .comment-div {
-        width: 85vw !important;
-    }
 }
 
 @media screen and (max-width: 600px){
@@ -364,13 +376,8 @@
    } 
 
    .posts {
-        width: 45vw;
+        width: 25em;
         height: 45vh;
-   }
-
-
-   .comment-div {
-    width: 2.5em;
    }
 
    .msg-img {
@@ -379,19 +386,19 @@
    }
 
    .title {
-    width: 40vw;
+    width: 60vw;
    }
 
    .image-div {
-    width: 45vw;
+    width: 25em;
+   }
+
+   .commenters {
+    width: 80vw;
    }
 
    .image-div img{
-        width: 45vw;
-   }
-
-   .comment-div {
-       width: 60vw !important;
+        width: 25em;
    }
 }
 

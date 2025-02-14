@@ -71,7 +71,7 @@
 .titled {
     color: rgb(219, 225, 231);
     font-weight: 600;
-    width: 25vw !important;
+    width: 25vw;
     text-align: start;
     font-family: 'Poppins', sans-serif;
     word-wrap: break-word;
@@ -262,7 +262,16 @@ hr {
 
 @media screen and (max-width: 375px){
     .poster-detail {
-       gap: 3vw; 
+        width: 80vw;
+        gap: 3vw; 
+    }
+
+    .post-action {
+        width: 60vw;
+    }
+
+    .post-likes {
+        width: 20vw;
     }
 
     .post-action img {
@@ -286,6 +295,18 @@ hr {
         font-size: 1em;
     }
 
+    .comments {
+        width: 10vw;
+    }
+
+    .poster-image {
+        width: 15vw;
+    }
+
+    .poster-image img {
+        width: 15vw;
+    }
+
     .see-comments {
         width: 95vw !important;
     }
@@ -303,58 +324,6 @@ hr {
     }
 
     .commenters {
-        width: 80vw !important;
-    }
-}
-
-@media screen and (max-width: 414px){
-    .single-post .featured-post {
-        width: 90vw;
-    }
-
-    .featured-post .featured-img img {
-        width: 90vw;
-    }
-
-    .single-post .text-detail {
-        width: 90vw;
-    }
-
-    .titled {
-        width: 70vw;
-    }
-
-    .single-post .see-comments {
-        width: 90vw;
-    }
-
-    .single-post .see-all-comments {
-        width: 88vw;
-        margin-left: 0;
-    }
-
-      .poster-detail {
-       gap: 7vw; 
-    }
-
-    .post-action img {
-        width: 3em;
-        height: 3em;
-    }
-
-    .name {
-        font-size: 1.2em;
-    }
-
-    .postime {
-        font-size: .6em;
-    }
-
-    .go-back {
-        font-size: 1em;
-    }
-
-     .commenters {
         width: 80vw !important;
     }
 }
@@ -392,6 +361,7 @@ hr {
     }
 
       .poster-detail {
+        width: 80vw;
        gap: 10vw; 
     }
 
