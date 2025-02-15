@@ -427,19 +427,16 @@
 
 
 }
-@media screen and (min-width: 912px) {
+@media screen and (min-width: 769px) {
     .all-posts {
         gap: 1em;
     }
 
     .posts {
-        width: 30vw;
+        width: 20em;
         height: 28em;
     }
 
-    .post-detail {
-        height: 4em;
-    }
 
     .users-comments {
         width: 5em;
@@ -456,15 +453,20 @@
     }
 
     .image-div img {
-        width: 30vw;
+        width: 20em;
         height: 18em;
     }
 
     .post-text {
         height: 6vh;
     }
+
+    .poster-image img {
+        width: 3em;
+        height: 3em;
+       }
 }
-@media screen and (min-width: 1024px) {
+@media screen and (min-width: 1025px) {
     .all-posts {
         gap: 1em;
     }

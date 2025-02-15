@@ -96,3 +96,48 @@ div, * {
         font-size: 1em;
     }
 }
+@media screen and (max-width: 768px){
+    .dashboard {
+        height: 60vh;
+    }
+    
+    .dashboard img {
+        width: 17em;
+        height: 18em;
+    }
+
+    .dashboard h2 {
+        font-size: 1em;
+    }
+    
+    .dashboard h4 {
+        font-size: 1em;
+    }
+
+    .dashboard span {
+        font-size: 1em;
+    }
+}
+
+@media screen and (min-width: 912px){
+    .dashboard {
+        height: 60vh;
+    }
+    
+    .dashboard img {
+        width: 17em;
+        height: 18em;
+    }
+
+    .dashboard h2 {
+        font-size: 1em;
+    }
+    
+    .dashboard h4 {
+        font-size: 1em;
+    }
+
+    .dashboard span {
+        font-size: 1em;
+    }
+}

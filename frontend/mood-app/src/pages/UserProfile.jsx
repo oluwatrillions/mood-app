@@ -19,9 +19,9 @@ const UserProfile = () => {
         fetch(`http://localhost:4000/users/`)
         .then((res)=> res.json())
         .then(response=> setUsers(response.filter((item)=> item.email === user.email)))
-        const timeout = setTimeout(()=>{
-          navigate('/posts')
-        }, 2000)
+        // const timeout = setTimeout(()=>{
+        //   navigate('/posts')
+        // }, 2000)
     } catch (error) {
         console.log(error);
     }

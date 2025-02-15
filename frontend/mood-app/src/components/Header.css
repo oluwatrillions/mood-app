@@ -508,16 +508,16 @@ nav button:hover {
         width: 100vw;
        }
     
-        .logged-out h3 {
-            width: 70vw !important;
-        }
-    
-        .logged-out a {
-            padding: .2em .7em;
-        }
+    .logged-out h3 {
+        width: 70vw !important;
+    }
+
+    .logged-out a {
+        padding: .2em .7em;
+    }
 }
 
-@media screen and (max-width: 912px) {
+@media screen and (min-width: 769px) {
     .show-links {
        display: none;
    }
@@ -570,8 +570,16 @@ nav button:hover {
         height: 8vh;
     }
 
-     .logged-out h3 {
-        width: 90vw;
+    .logged-out {
+        width: 100vw;
+       }
+    
+    .logged-out h3 {
+        width: 70vw !important;
+    }
+
+    .logged-out a {
+        padding: .2em .7em;
     }
 
     .close-btn {
