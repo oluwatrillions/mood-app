@@ -15,6 +15,9 @@
 }
 
 .notif {
+    display: flex;
+    justify-content: center;
+    text-align: center;
     font-family: 'Poppins', sans-serif;
     font-weight: 100;
     color: rgb(15, 15, 15);
@@ -257,6 +260,69 @@ input[type='file'] {
 
     .notif {
         width: 80vw;
+    }
+
+    .google-btn, .signIn-btn {
+        min-width: 80vw;
+        font-size: 1.2em;
+        padding: .5em;
+        background-color: rgb(69, 146, 146);
+        color: aliceblue;
+        border: none;
+        outline: none;
+        cursor: pointer;
+        border-radius: .5em;
+        margin-top: 1em;
+        margin-bottom: 0;
+    }
+
+    input {
+        font-size: 1em;
+        padding: 0.5em;
+        height: 2em;
+        border-radius: .2em;
+        width: 60vw;
+    }
+}
+@media screen and (max-width:768px){
+    .register {
+        width: 100vw;
+    }
+    
+    .signup {
+        width: 100vw;
+        height: 65vh;
+        margin-top: 5vh;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+    }
+
+    .signup .sign-in-img {
+        width: 12em !important;
+        height: 18vh !important;
+    }
+
+    form {
+        width: 80vw;
+        display: flex;
+        flex-direction: column;
+        justify-content: flex-start;
+        align-items: center;
+        margin: 0;
+    }
+
+    .inputs {
+        width: 80vw;
+    }
+
+    input[type='file'] {
+        font-size: 1em !important;
+    }
+
+    .notif {
+        width: 80vw;
+        justify-content: center;
     }
 
     .google-btn, .signIn-btn {

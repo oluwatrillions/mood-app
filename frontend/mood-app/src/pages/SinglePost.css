@@ -7,13 +7,12 @@
 }
 
 .single-post {
-    min-height: 90vh;
+    height: 90vh;
     width: 100vw;
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    padding: 2em;
     background-color: aliceblue;
 }
 
@@ -287,6 +286,10 @@ hr {
         margin-left: -1em !important;
     }
 
+    .titled {
+        width: 60vw !important;
+    }
+
     .postime {
         font-size: .6em;
     }
@@ -348,6 +351,7 @@ hr {
     }
 
     .text {
+        width: 80vw !important;
         margin-left: 0;
     }
 
@@ -434,7 +438,8 @@ hr {
         width: 60vw;
     }
 }
-@media screen and (min-width: 601px){
+
+@media screen and (max-width: 768px){
     .see-comments {
         width: 60vw;
     }
@@ -443,30 +448,35 @@ hr {
         width: 60vw;
     }
 
-    .featured-img {
-        height: 45vh;
-    }
-
     .featured-img img {
         width: 60vw;
-        height: 45vh;
     }
 
     .text-detail {
-        width: 55vw;
-        margin-left: -1.5em;
+        width: 60vw;
+        margin-left: 0;
+    }
+
+    .poster-detail {
+        margin-right: 0;
+        width: 65vw !important;
     }
 
     .see-all-comments {
-        width: 60vw;
+        width: 58vw;
     }
 
-    .go-back {
+    .name {
         font-size: 1em;
     }
 
-    .titled {
-        width: 55vw;
+    .postime {
+        font-size: .6em;
+    }
+
+    hr {
+        width: 50vw;
+        margin: .5em 1em;
     }
 
     .post-action img {
@@ -474,60 +484,20 @@ hr {
         height: 3em;
     }
 
-    .name {
-        font-size: 1em;
-    }
-
-     .commenters {
-        width: 70vw;
-    }
-}
-@media screen and (min-width: 768px){
-    .see-comments {
-        width: 50vw;
-    }
-    
-    .featured-post {
-        width: 50vw;
-    }
-
-    .featured-img {
-        height: 30vh;
-    }
-
-    .featured-img img {
-        width: 50vw;
-        height: 30vh;
-    }
-
-    .text-detail {
-        width: 45vw;
-        margin-left: -2em;
-    }
-
-    .see-all-comments {
-        width: 50vw;
-    }
-
     .go-back {
         font-size: 1em;
     }
 
     .titled {
-        width: 45vw;
+        width: 50vw;
     }
 
-    .post-action img {
-        width: 3em;
-        height: 3em;
-    }
-
-    .name {
-        font-size: 1em;
+    .text {
+        width: 55vw;
     }
 
      .commenters {
-        width: 45vw;
+        width: 55vw;
     }
 }
 @media screen and (min-width: 912px){
