@@ -283,19 +283,18 @@
     }
 
     .text-field {
-        font-size: .9em !important;
+        font-size: .8em !important;
     }
 
     .post-text {
         display: flex;
         flex-direction: column;
         justify-content: space-between;
-        height: 12vh;
     }
 
     .title {
         width: 80vw !important;
-        font-size: 1em !important;
+        font-size: .9em !important;
     }
 
     .split {
@@ -324,7 +323,7 @@
 
 @media screen and (max-width: 480px) {
     .all-posts .posts {
-        width: 80vw;
+        width: 80vw !important;
         height: 40vh !important;
     }
 
@@ -340,15 +339,15 @@
     }
 
     .split .image-div {
-        width: 80vw;
+        width: 80vw !important;
     }
 
     .split .image-div img {
-        width: 80vw;
+        width: 80vw !important;
     }
 
     .title {
-        width: 60vw;
+        width: 60vw !important;
     }
 
     .users-comments {
@@ -363,8 +362,8 @@
    } 
 
    .posts {
-        width: 42vw;
-        height: 42vh !important;
+        width: 45vw !important;
+        height: 41vh !important;
    }
 
    .msg-img {
@@ -377,7 +376,7 @@
    }
 
    .image-div {
-    width: 25em;
+    width: 45vw !important;
    }
 
    .commenters {
@@ -385,16 +384,20 @@
    }
 
    .image-div img{
-        width: 25em;
+        width: 45vw !important;
    }
 
    .split {
-    height: 35vh !important;
+    height: 34vh !important;
    }
 
    .poster-image img {
     width: 3em;
     height: 3em;
+   }
+
+   .reactions {
+    margin-left: .5em;
    }
 }
 
@@ -405,7 +408,7 @@
 
     .posts {
         width: 40vw;
-        height: 42vh;
+        height: 41vh;
         gap: 0;
     }
 
@@ -415,7 +418,7 @@
 
     .title {
         width: 35vw;
-        font-size: 1em;
+        font-size: .9em;
     }
 
     .text-field {
@@ -430,7 +433,7 @@
         display: flex;
         flex-direction: column;
         justify-content: flex-start;
-        height: 33vh;
+        height: 34vh;
     }
 
     .image-div img {
@@ -440,6 +443,11 @@
     .post-detail {
         padding: 0em;
     }
+
+    .poster-image img {
+        width: 3em;
+        height: 3em;
+       }
 }
 @media screen and (min-width: 769px) {
     .all-posts {

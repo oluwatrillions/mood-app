@@ -565,33 +565,63 @@ hr {
 
 @media screen and (min-width: 1025px){
     .see-comments {
-        width: 35vw;
+        width: 28em;
     }
-
+    
     .featured-post {
-        width: 35vw;
+        width: 28em;
     }
 
     .featured-img {
-        height: 50vh;
-        width: 35vw;
+        height: 20em;
     }
 
     .featured-img img {
-        width: 35vw;
-        height: 50vh;
-    }
-
-     .see-all-comments {
-        width: 35vw;
+        width: 28em;
+        height: 20em;
     }
 
     .text-detail {
-        width: 31.5vw;
+        width: 35vw;
+        margin-left: -2em;
     }
 
-    .commenters {
-        width: 30vw;
+    .see-all-comments {
+        width: 27em;
+        margin-left: 0em;
+    }
+
+    .titled {
+        width: 40vw;
+    }
+
+    .postime {
+        font-size: .7em;
+    }
+
+    .go-back {
+        margin-top: 1.5em;
+        font-size: 1em;
+    }
+
+     .commenters {
+        width: 40vw;
+    }
+
+    .post-action {
+        margin-top: 0em;
+    }
+
+    .name {
+        font-size: 1.2em;
+    }
+
+    .poster-name {
+        padding-top: 1em;
+    }
+
+    .post-likes {
+        margin-top: 1.5em;
     }
 }
 
