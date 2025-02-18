@@ -459,7 +459,7 @@ hr {
 
     .poster-detail {
         margin-right: 0;
-        width: 65vw !important;
+        width: 53vw !important;
     }
 
     .see-all-comments {
@@ -500,13 +500,13 @@ hr {
         width: 55vw;
     }
 }
-@media screen and (min-width: 912px){
+@media screen and (min-width: 769px){
     .see-comments {
-        width: 40vw;
+        width: 28em;
     }
     
     .featured-post {
-        width: 40vw;
+        width: 28em;
     }
 
     .featured-img {
@@ -514,7 +514,7 @@ hr {
     }
 
     .featured-img img {
-        width: 40vw;
+        width: 28em;
         height: 20em;
     }
 
@@ -524,20 +524,43 @@ hr {
     }
 
     .see-all-comments {
-        width: 40vw;
+        width: 27em;
+        margin-left: 0em;
     }
 
     .titled {
-        width: 35vw;
+        width: 40vw;
     }
 
     .postime {
         font-size: .7em;
     }
 
-     .commenters {
-        width: 35vw;
+    .go-back {
+        margin-top: 1.5em;
+        font-size: 1em;
     }
+
+     .commenters {
+        width: 40vw;
+    }
+
+    .post-action {
+        margin-top: 0em;
+    }
+
+    .name {
+        font-size: 1.2em;
+    }
+
+    .poster-name {
+        padding-top: 1em;
+    }
+
+    .post-likes {
+        margin-top: 1.5em;
+    }
+    
 }
 
 @media screen and (min-width: 1280px){
