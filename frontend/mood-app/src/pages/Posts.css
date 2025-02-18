@@ -499,11 +499,17 @@
     }
 
     .posts {
-        height: 30em;
+        height: 49vh;
+        width: 20em;
+    }
+
+    .split {
+        height: 41vh;
     }
 
     .title {
-        font-size: 1.2em;
+        font-size: 1em;
+        width: 15em;
     }
 
     .post-detail {
@@ -511,13 +517,13 @@
     }
 
     .image-div {
-        width: 30vw;
-        height: 20em;
+        width: 20em;
+        height: 33vh;
     }
 
     .image-div img {
-        width: 30vw;
-        height: 20em;
+        width: 20em;
+        height: 33vh;
     }
 }
 

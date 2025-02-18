@@ -613,7 +613,7 @@ nav button:hover {
     }
 }
 
-@media screen and (max-width: 1204px){
+@media screen and (min-width: 1025px){
    .show-links a {
        font-size: 1em;
    }
@@ -634,12 +634,6 @@ nav button:hover {
 
     nav button {
         font-size: 1em;
-    }
-
-    @media screen and (min-width:913px){
-        .close-btn {
-            display: none;
-        }
     }
 }
 
