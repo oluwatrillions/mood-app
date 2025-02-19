@@ -260,8 +260,8 @@ hr {
 }
 
 @media screen and (max-width: 375px){
-    .poster-detail {
-        width: 80vw;
+    .see-comments .see-all-comments .poster-detail {
+        width: 80vw !important;
         gap: 3vw; 
     }
 
@@ -286,8 +286,12 @@ hr {
         margin-left: -1em !important;
     }
 
-    .titled {
-        width: 60vw !important;
+    .see-all-comments .titled {
+        width: 70vw !important;
+    }
+
+    .see-all-comments .text {
+        width: 80vw !important;
     }
 
     .postime {
@@ -310,23 +314,23 @@ hr {
         width: 15vw;
     }
 
-    .see-comments {
-        width: 95vw !important;
+    .single-post .see-comments {
+        width: 90vw !important;
     }
 
-    .see-all-comments {
-        width: 93vw !important;
+    .see-comments .see-all-comments {
+        width: 85vw !important;
     }
     
     .featured-post{
-        width: 95vw !important;
+        width: 90vw !important;
     }
 
-    .featured-img img {
-        width: 95vw !important;
+    .see-comments .featured-img img {
+        width: 90vw !important;
     }
 
-    .commenters {
+    .see-all-comments .commenters {
         width: 80vw !important;
     }
 }
@@ -393,7 +397,7 @@ hr {
 
 @media screen and (max-width: 600px){
     .see-comments {
-        width: 70vw;
+        width: 70vw !important;
     }
     
     .featured-post {
@@ -401,7 +405,7 @@ hr {
     }
 
     .featured-img img {
-        width: 70vw;
+        width: 70vw !important;
     }
 
     .text-detail {
@@ -410,7 +414,7 @@ hr {
     }
 
     .see-all-comments {
-        width: 68vw;
+        width: 68vw !important;
     }
 
     .name {
@@ -431,11 +435,20 @@ hr {
     }
 
     .titled {
-        width: 60vw;
+        width: 60vw !important;
+    }
+
+    .text {
+        width: 65vw !important;
+        font-size: .9em;
     }
 
      .commenters {
-        width: 60vw;
+        width: 60vw !important;
+    }
+
+    .see-all-comments .poster-detail {
+        width: 60vw !important;
     }
 }
 
@@ -592,7 +605,7 @@ hr {
     }
 
     .titled {
-        width: 40vw;
+        width: 20em;
     }
 
     .postime {
@@ -605,7 +618,7 @@ hr {
     }
 
      .commenters {
-        width: 40vw;
+        width: 25em;
     }
 
     .post-action {
