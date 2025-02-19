@@ -58,7 +58,7 @@ const Header = () => {
                           <h3 className='desc'>Want to air out your mood?</h3>
                       }
                         <button onClick={handleLogout}>Logout</button>
-                    </nav>
+                  </nav>
                   :
                     <nav className='logged-out'>
                         <h3 className='desc'>Want to air out your mood?</h3>

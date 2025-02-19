@@ -636,6 +636,56 @@ nav button:hover {
         font-size: 1em;
     }
 }
+@media screen and (min-width: 1280px){
+    .desc {
+        display: none;
+    }
+
+    .welcome {
+        font-size: 1.2em;
+        width: fit-content;
+    }
+
+    nav button {
+        font-size: 1.2em;
+        font-weight: 600;
+    }
+
+    .show-links a {
+        font-size: 1.2em;
+        font-weight: 600;
+    }
+    
+    .show-links {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        font-size: .85em;
+        max-width: 70vw;
+    }
+
+    .show-sidebar {
+        visibility: hidden;
+    }
+
+    .close-btn {
+        display: none;
+    }
+
+    .active {
+        width: fit-content;
+    }
+
+    .users-btn {
+        display: flex;
+        justify-content: center;
+        text-align: center;
+    }
+
+    .header-menu {
+        display: none;
+    }
+}
 
 
 

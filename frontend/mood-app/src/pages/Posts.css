@@ -512,16 +512,12 @@
     }
 
     .split {
-        height: 41vh;
+        height: 41.5vh;
     }
 
     .title {
         font-size: 1em;
         width: 15em;
-    }
-
-    .post-detail {
-        height: 4em;
     }
 
     .image-div {
@@ -536,34 +532,33 @@
 }
 
 @media screen and (min-width: 1280px){
-    .posts {
-        width: 25vw;
-        height: 30em;
-    }
-
     .all-posts {
-        column-gap: 2em;
+        padding: 0 5vw;
+        gap: 1.5em;
     }
 
-    .image-div {
-        width: 25vw;
+    .posts {
+        height: 49vh;
+        width: 20em !important;
     }
 
     .split {
-        height: 25em;
+        height: 41.5vh;
+    }
+
+    .title {
+        font-size: 1em;
+        width: 15em;
+    }
+
+    .image-div {
+        width: 20em;
+        height: 33vh;
     }
 
     .image-div img {
-        width: 25vw;
-        height: 20em;
-    }
-
-    .title{
-        width: 23vw;
-    }
-
-    .post-text {
-        height: 10vh;
+        width: 20em !important;
+        height: 33vh;
     }
 }
 
