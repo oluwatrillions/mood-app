@@ -20,10 +20,12 @@
 .likes-title {
     margin-top: 1em;
     padding-left: 1em;
+    font-size: 1em;
 }
 
 .all-liked-post {
     width: 22em;
+    border-radius: 1em;
     background-color: rgb(225, 228, 231);
 }
 
@@ -52,6 +54,7 @@
 .liked-post-details h2{
     color: rgb(54, 53, 53);
     font-size: 1em;
+    font-weight: 600;
 }
 
 .liked-post-details h4{
@@ -68,4 +71,154 @@
 
 .comment-title {
     padding-left: 1em;
+}
+
+@media screen and (max-width: 375px){
+    .liked-posts {
+        min-height: 80vh;
+        width: 100vw;
+        display: flex;
+        flex-wrap: wrap;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+    }
+
+    .all-liked-post {
+        width: 90vw;
+        height: 50vh;
+        border-radius: 1em;
+    }
+
+    .all-liked-post h3 {
+        padding-left: 1em;
+    }
+
+    .all-liked-post img {
+        width: 90vw;
+        height: 33vh;
+    }
+
+    .liked-post {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        width: 100vw;
+        gap: 1em;
+        padding: 0em .5em;
+        margin-top: 1em;
+    }
+
+    .likes-title {
+        display: flex;
+        justify-content: center;
+        font-style: 1em;
+        padding-left: 0em;
+    }
+
+    .liked-post-details {
+        width: 90vw;
+    }
+
+    .liked-post-details h2 {
+        width: 70vw;
+    }
+
+    .liked-post-details h4 {
+        font-size: .9em;
+        font-weight: 400;
+    }
+
+    .liked-post-details h3 {
+        font-size: .9em;
+        padding-left: 0em;
+    }
+
+    .comment-title {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        font-size: 1em;
+        padding-left: 0em;
+    }
+
+    .liked-posts .comments {
+        margin-top: 2em;
+    }
+}
+
+@media screen and (max-width: 480px){
+    .liked-posts {
+        min-height: 80vh;
+        width: 100vw;
+        display: flex;
+        flex-wrap: wrap;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+    }
+
+    .all-liked-post {
+        width: 90vw;
+        height: 50vh;
+        border-radius: 1em;
+    }
+
+    .all-liked-post h3 {
+        padding-left: 1em;
+    }
+
+    .all-liked-post img {
+        width: 90vw;
+        height: 33vh;
+    }
+
+    .liked-post {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        width: 100vw;
+        gap: 1em;
+        padding: 0em .5em;
+        margin-top: 1em;
+    }
+
+    .likes-title {
+        display: flex;
+        justify-content: center;
+        font-style: 1em;
+        padding-left: 0em;
+    }
+
+    .liked-post-details {
+        width: 90vw;
+    }
+
+    .liked-post-details h2 {
+        width: 70vw;
+    }
+
+    .liked-post-details h4 {
+        font-size: .9em;
+        font-weight: 400;
+    }
+
+    .liked-post-details h3 {
+        font-size: .9em;
+        padding-left: 0em;
+    }
+
+    .comment-title {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        font-size: 1em;
+        padding-left: 0em;
+    }
+
+    .liked-posts .comments {
+        margin-top: 2em;
+    }
 }

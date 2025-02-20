@@ -278,10 +278,6 @@
         padding: .5em 0;
     } 
     
-    .comment-div {
-        width: 80vw !important;
-    }
-
     .text-field {
         font-size: .8em !important;
     }
@@ -302,22 +298,6 @@
         display: flex;
         flex-direction: column;
         justify-content: flex-start;
-    }
-
-    .commenters {
-        width: 80vw;
-    }
-
-    .comments {
-        width: 80vw;
-    }
-
-    .comment-section {
-        width: 80vw;
-    }
-
-    .each-cmt {
-        width: 80vw;
     }
 }
 

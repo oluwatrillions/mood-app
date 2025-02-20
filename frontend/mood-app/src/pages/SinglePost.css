@@ -302,10 +302,6 @@ hr {
         font-size: 1em;
     }
 
-    .comments {
-        width: 10vw;
-    }
-
     .poster-image {
         width: 15vw;
     }
@@ -341,7 +337,7 @@ hr {
     }
 
     .single-post .featured-img img {
-        width: 90vw;
+        width: 90vw !important;
     }
 
     .single-post .text-detail {
@@ -349,27 +345,27 @@ hr {
         margin-left: 0;
     }
 
-    .titled {
-        width: 70vw;
+    .see-all-comments .titled {
+        width: 70vw !important;
         margin-left: 0;
     }
 
-    .text {
+    .see-all-comments .text {
         width: 80vw !important;
         margin-left: 0;
     }
 
     .single-post .see-comments {
-        width: 90vw;
+        width: 90vw !important;
     }
 
     .single-post .see-all-comments {
-        width: 88vw;
+        width: 88vw !important;
         margin-left: 0;
     }
 
-      .poster-detail {
-        width: 80vw;
+     .see-comments .see-all-comments .poster-detail {
+        width: 80vw !important;
        gap: 10vw; 
     }
 
@@ -390,8 +386,8 @@ hr {
         font-size: 1em;
     }
 
-     .commenters {
-        width: 70vw;
+    .see-all-comments .commenters {
+        width: 80vw !important;
     }
 }
 
@@ -418,7 +414,7 @@ hr {
     }
 
     .name {
-        font-size: 1em;
+        font-size: .9em !important;
     }
 
     .postime {
