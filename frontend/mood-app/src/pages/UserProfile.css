@@ -119,7 +119,7 @@ div, * {
     }
 }
 
-@media screen and (min-width: 912px){
+@media screen and (min-width: 769px){
     .dashboard {
         height: 60vh;
     }

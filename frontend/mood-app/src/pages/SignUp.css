@@ -109,15 +109,7 @@ input[type='file'] {
         height: 65vh !important;
     }
 
-
-    form {
-        width: 80vw !important;
-        display: flex;
-        flex-direction: column;
-        justify-content: flex-start;
-    }
-
-    input {
+    .inputs input {
         font-size: 1em;
         padding: 0.5em;
         height: 2em;
@@ -125,7 +117,7 @@ input[type='file'] {
         width: 60vw !important;
     }
 
-    .inputs {
+    form .inputs {
         width: 80vw !important;
         display: flex;
         justify-content: space-between;
@@ -181,7 +173,7 @@ input[type='file'] {
     } 
 
     form {
-        width: 80vw !important;
+        width: 81vw !important;
         display: flex;
         flex-direction: column;
         justify-content: flex-start;
@@ -196,14 +188,14 @@ input[type='file'] {
     }
 
     .inputs {
-        width: 80vw !important;
+        width: 81vw !important;
         display: flex;
         justify-content: space-between;
         align-items: center;
     }
 
     label {
-        font-size: 1em;
+        font-size: .9em;
         color: rgb(61, 61, 60);
         margin-top: .3em;
     }
@@ -213,7 +205,7 @@ input[type='file'] {
     }
 
     .google-btn, .signIn-btn {
-        min-width: 80vw !important;
+        width: 70vw !important;
         font-size: 1.2em;
         padding: .5em;
         background-color: rgb(69, 146, 146);
@@ -253,7 +245,7 @@ input[type='file'] {
     }
 
     form {
-        width: 80vw;
+        width: 70vw;
         display: flex;
         flex-direction: column;
         justify-content: flex-start;
@@ -261,8 +253,12 @@ input[type='file'] {
         margin: 0;
     }
 
+    label {
+        font-size: 1em;
+    }
+
     .inputs {
-        width: 80vw;
+        width: 70vw !important;
     }
 
     input[type='file'] {
@@ -274,7 +270,7 @@ input[type='file'] {
     }
 
     .google-btn, .signIn-btn {
-        min-width: 80vw;
+        width: 70vw !important;
         font-size: 1.2em;
         padding: .5em;
         background-color: rgb(69, 146, 146);
@@ -292,7 +288,7 @@ input[type='file'] {
         padding: 0.5em;
         height: 2em;
         border-radius: .2em;
-        width: 60vw;
+        width: 53vw !important;
     }
 }
 @media screen and (max-width:768px){
@@ -315,7 +311,7 @@ input[type='file'] {
     }
 
     form {
-        width: 80vw;
+        width: 60vw;
         display: flex;
         flex-direction: column;
         justify-content: flex-start;
@@ -324,7 +320,7 @@ input[type='file'] {
     }
 
     .inputs {
-        width: 80vw;
+        width: 58.5vw;
     }
 
     input[type='file'] {
@@ -337,7 +333,7 @@ input[type='file'] {
     }
 
     .google-btn, .signIn-btn {
-        min-width: 80vw;
+        min-width: 60vw;
         font-size: 1.2em;
         padding: .5em;
         background-color: rgb(69, 146, 146);
@@ -350,12 +346,16 @@ input[type='file'] {
         margin-bottom: 0;
     }
 
+    label {
+        font-size: 1.1em;
+    }
+
     input {
         font-size: 1em;
         padding: 0.5em;
         height: 2em;
         border-radius: .2em;
-        width: 60vw;
+        width: 45vw;
     }
 }
 @media screen and (min-width:769px){
@@ -386,8 +386,12 @@ input[type='file'] {
         margin: 0;
     }
 
+    label {
+        font-size: 1.1em;
+    }
+
     .inputs {
-        width: 60vw;
+        width: 50vw;
     }
 
     input[type='file'] {
@@ -395,12 +399,12 @@ input[type='file'] {
     }
 
     .notif {
-        width: 80vw;
+        width: 65vw;
         justify-content: center;
     }
 
     .google-btn, .signIn-btn {
-        min-width: 60vw;
+        min-width: 50vw;
         font-size: 1.2em;
         padding: .5em;
         background-color: rgb(69, 146, 146);
@@ -418,6 +422,69 @@ input[type='file'] {
         padding: 0.5em;
         height: 2em;
         border-radius: .2em;
-        width: 45vw;
+        width: 40vw;
+    }
+}
+@media screen and (min-width:1025px){
+    .register {
+        width: 100vw;
+    }
+    
+    .signup {
+        width: 100vw;
+        height: 65vh;
+        margin-top: 5vh;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+    }
+
+    .signup .sign-in-img {
+        width: 12em !important;
+        height: 18vh !important;
+    }
+
+    form {
+        width: 35em;
+        display: flex;
+        flex-direction: column;
+        justify-content: flex-start;
+        align-items: center;
+        margin: 0;
+    }
+
+    .inputs {
+        width: 30em;
+    }
+
+    input[type='file'] {
+        font-size: 1em !important;
+    }
+
+    .notif {
+        width: 65vw;
+        justify-content: center;
+    }
+
+    .google-btn, .signIn-btn {
+        min-width: 25em;
+        font-size: 1.2em;
+        padding: .5em;
+        background-color: rgb(69, 146, 146);
+        color: aliceblue;
+        border: none;
+        outline: none;
+        cursor: pointer;
+        border-radius: .5em;
+        margin-top: 1em;
+        margin-bottom: 0;
+    }
+
+    input {
+        font-size: 1em;
+        padding: 0.5em;
+        height: 2em;
+        border-radius: .2em;
+        width: 25em;
     }
 }

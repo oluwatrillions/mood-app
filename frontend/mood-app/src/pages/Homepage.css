@@ -65,5 +65,25 @@
 
     .hero-page img {
         width: 95vw;
+        height: 80vh;
+    }
+}
+@media screen and (max-width: 600px){
+    .left-hero, .right-hero {
+        display: none;
+    }
+
+    .hero {
+        height: 100vh;
+    }
+
+    .hero-page {
+        width: 100vw;
+        min-height: 80vh;
+    }
+
+    .hero-page img {
+        width: 95vw;
+        height: 75vh;
     }
 }
