@@ -1,5 +1,7 @@
 import React, { useContext, useEffect, useState } from 'react'
 import "./Likes.css"
+import {FcLike} from 'react-icons/fc'
+import {BiMessageRoundedDots} from 'react-icons/bi'
 import AuthContext from '../Contexts/AuthContext'
 import useAxios from '../utils/useAxios'
 
@@ -32,7 +34,7 @@ const Likes = () => {
                   <div className="liked-post-details">
                     <h2>{post.title}</h2>
                     <h4>{post.text}</h4>
-                    <h3>Likes: <span>{post.likeCount.length}</span></h3>
+                    <h3><FcLike className='likes-img'/> <span>{post.likeCount.length}</span></h3>
                   </div>
                 </div>
               ));
@@ -58,7 +60,7 @@ const Likes = () => {
                     <div className="liked-post-details">
                       <h2>{post.title}</h2>
                       <h4>{post.text}</h4>
-                      <h3>comment: <span>{userLikedPost.comment}</span></h3>
+                      <h3><BiMessageRoundedDots className='cmt-img'/> <span>{userLikedPost.comment}</span></h3>
                     </div>
                   </div>
                 ));
