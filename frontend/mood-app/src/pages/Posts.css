@@ -169,6 +169,18 @@
     position: absolute;
 }
 
+.reply-div .reply-msg {
+    color: black;
+}
+
+.reply-div .reply-to {
+    color: rgb(88, 144, 201);
+}
+
+.reply-to span {
+    color: rgb(83, 197, 197);
+}
+
 .reply-div{
     background-color: rgb(107, 103, 103);
     margin: 5vh 0;
@@ -186,16 +198,9 @@
     justify-content: center;
 }
 
-.reply-div h5 {
-    margin: 0 1em;
-    color: white;
-    font-size: 1em;
-}
-
 .reply-div input {
     display: block;
     width: 26vw;
-    height: 10vh;
     border-radius: .5em;
     word-wrap: break-word;
     white-space: normal;
@@ -204,7 +209,6 @@
 }
 
 .reply-div button {
-    height: 3em;
     width: 25vw;
     outline: none;
     border: none;
@@ -212,7 +216,7 @@
     font-size: 1.3em;
     color: rgb(78, 76, 76);
     border-radius: 1em;
-    background-color: rgb(106, 188, 199);
+    background-color: aqua;
 }
 
 .show-cmt {
@@ -299,6 +303,57 @@
         flex-direction: column;
         justify-content: flex-start;
     }
+
+    .reply-div{
+        background-color: rgb(92, 88, 88);
+        margin: 8vh 0;
+        height: 50vh;
+        border-radius: 1em;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+
+    .reply-div .reply-to {
+        color: rgb(132, 148, 165);
+    }
+    
+    .reply-div form {
+        height: 50vh;
+        width: 36vw;
+        display: flex;
+        justify-content: center;
+    }
+    
+    .reply-div h5 {
+        margin: 0 1em;
+        color: white;
+        font-size: 1em;
+    }
+
+    .reply-div .reply-msg {
+        color: rgb(14, 1, 1);
+    }
+    
+    .reply-div input {
+        display: block;
+        width: 36vw;
+        border-radius: .5em;
+        word-wrap: break-word;
+        white-space: normal;
+        outline: none;
+        border: none;
+    }
+    
+    .reply-div button {
+        outline: none;
+        border: none;
+        margin: .5em auto;
+        font-size: .9em;
+        color: rgb(78, 76, 76);
+        border-radius: 1em;
+        background-color: aqua;
+    }
 }
 
 @media screen and (max-width: 480px) {
@@ -332,6 +387,57 @@
 
     .users-comments {
         width: 10vw;
+    }
+
+    .reply-div{
+        background-color: rgb(92, 88, 88);
+        margin: 8vh 0;
+        height: 50vh;
+        border-radius: 1em;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+
+    .reply-div .reply-to {
+        color: rgb(132, 148, 165);
+    }
+    
+    .reply-div form {
+        height: 50vh;
+        width: 36vw;
+        display: flex;
+        justify-content: center;
+    }
+    
+    .reply-div h5 {
+        margin: 0 1em;
+        color: white;
+        font-size: 1em;
+    }
+
+    .reply-div .reply-msg {
+        color: rgb(14, 1, 1);
+    }
+    
+    .reply-div input {
+        display: block;
+        width: 36vw;
+        border-radius: .5em;
+        word-wrap: break-word;
+        white-space: normal;
+        outline: none;
+        border: none;
+    }
+    
+    .reply-div button {
+        outline: none;
+        border: none;
+        margin: .5em auto;
+        font-size: .9em;
+        color: rgb(78, 76, 76);
+        border-radius: 1em;
+        background-color: aqua;
     }
 }
 
@@ -379,6 +485,58 @@
    .reactions {
     margin-left: .5em;
    }
+
+   .reply-div{
+    background-color: rgb(92, 88, 88);
+    margin: 8vh 0;
+    height: 50vh;
+    width: 70vw;
+    border-radius: 1em;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.reply-div .reply-to {
+    color: rgb(132, 148, 165);
+}
+
+.reply-div form {
+    height: 50vh;
+    width: 70vw;
+    display: flex;
+    justify-content: center;
+}
+
+.reply-div h5 {
+    margin: 0 1em;
+    color: white;
+    font-size: 1em;
+}
+
+.reply-div .reply-msg {
+    color: rgb(14, 1, 1);
+}
+
+.reply-div input {
+    display: block;
+    width: 36vw;
+    border-radius: .5em;
+    word-wrap: break-word;
+    white-space: normal;
+    outline: none;
+    border: none;
+}
+
+.reply-div button {
+    outline: none;
+    border: none;
+    margin: .5em auto;
+    font-size: .9em;
+    color: rgb(78, 76, 76);
+    border-radius: 1em;
+    background-color: aqua;
+}
 }
 
 @media screen and (max-width: 768px) {
@@ -428,6 +586,58 @@
         width: 3em;
         height: 3em;
        }
+
+       .reply-div{
+        background-color: rgb(92, 88, 88);
+        margin: 8vh 0;
+        height: 50vh;
+        width: 70vw;
+        border-radius: 1em;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+    
+    .reply-div .reply-to {
+        color: rgb(132, 148, 165);
+    }
+    
+    .reply-div form {
+        height: 50vh;
+        width: 70vw;
+        display: flex;
+        justify-content: center;
+    }
+    
+    .reply-div h5 {
+        margin: 0 1em;
+        color: white;
+        font-size: 1em;
+    }
+    
+    .reply-div .reply-msg {
+        color: rgb(14, 1, 1);
+    }
+    
+    .reply-div input {
+        display: block;
+        width: 36vw;
+        border-radius: .5em;
+        word-wrap: break-word;
+        white-space: normal;
+        outline: none;
+        border: none;
+    }
+    
+    .reply-div button {
+        outline: none;
+        border: none;
+        margin: .5em auto;
+        font-size: .9em;
+        color: rgb(78, 76, 76);
+        border-radius: 1em;
+        background-color: aqua;
+    }
 }
 @media screen and (min-width: 769px) {
     .all-posts {
@@ -479,7 +689,60 @@
     .poster-image img {
         width: 3em;
         height: 3em;
-       }
+    }
+
+       .reply-div{
+        background-color: rgb(92, 88, 88);
+        margin: 8vh 0;
+        height: 50vh;
+        width: 30em;
+        border-radius: 1em;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+    
+    .reply-div .reply-to {
+        color: rgb(132, 148, 165);
+    }
+    
+    .reply-div form {
+        height: 50vh;
+        width: 30em;
+        display: flex;
+        justify-content: center;
+    }
+    
+    .reply-div h5 {
+        margin: 0 1em;
+        color: white;
+        font-size: 1em;
+    }
+    
+    .reply-div .reply-msg {
+        color: rgb(14, 1, 1);
+    }
+    
+    .reply-div input {
+        display: block;
+        width: 25em;
+        border-radius: .5em;
+        word-wrap: break-word;
+        white-space: normal;
+        outline: none;
+        border: none;
+    }
+    
+    .reply-div button {
+        outline: none;
+        border: none;
+        width: 10em;
+        margin: .5em auto;
+        font-size: .9em;
+        color: rgb(78, 76, 76);
+        border-radius: 1em;
+        background-color: aqua;
+    }
 }
 @media screen and (min-width: 1025px) {
     .all-posts {
