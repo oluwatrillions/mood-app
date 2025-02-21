@@ -540,8 +540,7 @@ nav button:hover {
         display: flex;
         justify-content: space-between;
         align-items: center;
-        font-size: .85em;
-        width: 70vw;
+        min-width: 70vw;
     }
 
     .show-sidebar {
@@ -584,7 +583,7 @@ nav button:hover {
     }
 
     .show-links a {
-        font-size: 1.2em;
+        font-size: 1em;
         font-weight: 600;
     }
     
@@ -592,7 +591,6 @@ nav button:hover {
         display: flex;
         justify-content: space-between;
         align-items: center;
-        font-size: .85em;
         max-width: 70vw;
     }
 
@@ -635,7 +633,7 @@ nav button:hover {
     }
 
     .show-links a {
-        font-size: 1.2em;
+        font-size: 1.1em;
         font-weight: 600;
     }
     
@@ -643,7 +641,6 @@ nav button:hover {
         display: flex;
         justify-content: space-between;
         align-items: center;
-        font-size: .85em;
         max-width: 70vw;
     }
 
