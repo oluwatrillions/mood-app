@@ -2,11 +2,15 @@ import React, { useEffect, useState } from 'react'
 import './Posts.css'
 import { useNavigate } from 'react-router-dom'
 
-const ReplyToMessage = ({ post, replyAt, replyTo, onReply, userComment, setUserComment, replyRef}) => {
+const ReplyToMessage = ({replyAt, replyTo, onReply, userComment, setUserComment}) => {
 
-  // const back = ()=> {
-  //   navigate('/posts')
-  // }
+
+  const navigate = useNavigate()
+  const handleBack = (e)=> {
+    e.preventDefault();
+    navigate('/posts')
+    navigate(0)
+  }
 
   return (
       <div className='reply-div'>
@@ -18,8 +22,14 @@ const ReplyToMessage = ({ post, replyAt, replyTo, onReply, userComment, setUserC
                   name='comment'
                   value={userComment}
                   onChange={(e) => setUserComment(e.target.value)} 
-                  />
-              <button>{ userComment.length > 0 ? <h3>submit</h3> : <h3>Back</h3>}</button>
+              />
+              {userComment.length > 0 ? (
+                  <button type="submit">Submit</button>
+                ) 
+                : 
+                (
+                  <button type="button" onClick={handleBack}>Back</button>
+                )}
           </form>
     </div>
   )

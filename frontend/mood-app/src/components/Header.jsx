@@ -11,7 +11,6 @@ const Header = () => {
 
     const collapsedRef = useRef()
     const location = useLocation()
-    const navigate = useNavigate()   
 
     const sidebar = () => {
         collapsedRef.current.classList.toggle('show-sidebar')

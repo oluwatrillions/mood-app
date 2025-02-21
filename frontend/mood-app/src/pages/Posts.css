@@ -171,6 +171,7 @@
 
 .reply-div .reply-msg {
     color: black;
+    text-align: center;
 }
 
 .reply-div .reply-to {
@@ -209,11 +210,13 @@
 }
 
 .reply-div button {
-    width: 25vw;
+    font-size: 1.5em;
+    padding: .5em 1.5em;
     outline: none;
     border: none;
     margin: 0 auto;
     font-size: 1.3em;
+    font-weight: bold;
     color: rgb(78, 76, 76);
     border-radius: 1em;
     background-color: aqua;
@@ -532,7 +535,8 @@
     outline: none;
     border: none;
     margin: .5em auto;
-    font-size: .9em;
+    font-size: 1em;
+    padding: .5em 1.5em;
     color: rgb(78, 76, 76);
     border-radius: 1em;
     background-color: aqua;
@@ -621,7 +625,7 @@
     
     .reply-div input {
         display: block;
-        width: 36vw;
+        width: 50vw;
         border-radius: .5em;
         word-wrap: break-word;
         white-space: normal;
@@ -633,7 +637,8 @@
         outline: none;
         border: none;
         margin: .5em auto;
-        font-size: .9em;
+        font-size: 1em;
+        padding: .5em 1.5em;
         color: rgb(78, 76, 76);
         border-radius: 1em;
         background-color: aqua;
@@ -691,7 +696,7 @@
         height: 3em;
     }
 
-       .reply-div{
+    .reply-div{
         background-color: rgb(92, 88, 88);
         margin: 8vh 0;
         height: 50vh;
@@ -736,9 +741,10 @@
     .reply-div button {
         outline: none;
         border: none;
-        width: 10em;
         margin: .5em auto;
-        font-size: .9em;
+        font-size: 1em;
+        padding: .5em 1.5em;
+        font-weight: bold;
         color: rgb(78, 76, 76);
         border-radius: 1em;
         background-color: aqua;
