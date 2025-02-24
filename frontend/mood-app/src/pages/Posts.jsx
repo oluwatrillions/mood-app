@@ -203,7 +203,7 @@ const Posts = () => {
                                         </div>
                                         {
                                             user.roles === 'admin' && 
-                                            <button type="button" onClick={()=> deletePost(post._id)}>Delete Post</button>
+                                            <button type="button" onClick={()=> deletePost(post._id)}>delete</button>
                                         }
                                 </div>
                             </div>
