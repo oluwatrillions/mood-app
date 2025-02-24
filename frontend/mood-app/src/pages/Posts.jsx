@@ -114,6 +114,8 @@ const Posts = () => {
                     return { ...post, commentCount: data.commentCount };
                 }
                 return post;
+                console.log(updatedPosts);
+                
             });
             
             setPosts(updatedPosts);

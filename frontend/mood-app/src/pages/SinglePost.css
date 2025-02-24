@@ -283,7 +283,6 @@ hr {
     }
 
     .text-detail {
-        margin-left: -1em !important;
     }
 
     .see-all-comments .titled {
@@ -333,7 +332,7 @@ hr {
 
 @media screen and (max-width: 480px){
     .single-post .featured-post {
-        width: 90vw;
+        width: 90vw !important;
     }
 
     .single-post .featured-img img {
@@ -341,7 +340,7 @@ hr {
     }
 
     .single-post .text-detail {
-        width: 85vw;
+        width: 90vw !important;
         margin-left: 0;
     }
 
@@ -364,9 +363,16 @@ hr {
         margin-left: 0;
     }
 
-     .see-comments .see-all-comments .poster-detail {
+     .text-detail .poster-detail {
         width: 80vw !important;
-       gap: 10vw; 
+    }
+
+    .text-detail .titled {
+        width: 80vw !important;
+    }
+
+    .text-detail .text {
+        width: 85vw !important;
     }
 
     .post-action img {
@@ -397,7 +403,7 @@ hr {
     }
     
     .featured-post {
-        width: 70vw;
+        width: 70vw !important;
     }
 
     .featured-img img {
@@ -405,7 +411,7 @@ hr {
     }
 
     .text-detail {
-        width: 65vw;
+        width: 70vw !important;
         margin-left: 0;
     }
 
@@ -444,7 +450,7 @@ hr {
     }
 
     .see-all-comments .poster-detail {
-        width: 60vw !important;
+        width: 70vw !important;
     }
 }
 
@@ -469,6 +475,8 @@ hr {
     .poster-detail {
         margin-right: 0;
         width: 53vw !important;
+        margin-bottom: 0em;
+        margin-left: .5em;
     }
 
     .see-all-comments {
@@ -528,8 +536,8 @@ hr {
     }
 
     .text-detail {
-        width: 35vw;
-        margin-left: -2em;
+        width: 28em;
+        margin-left: 0em;
     }
 
     .see-all-comments {
@@ -570,6 +578,10 @@ hr {
         margin-top: 1.5em;
     }
     
+    .poster-detail {
+        margin-left: .5em;
+        margin-bottom: 0em;
+    }
 }
 
 @media screen and (min-width: 1025px){
@@ -591,8 +603,8 @@ hr {
     }
 
     .text-detail {
-        width: 35vw;
-        margin-left: -2em;
+        width: 27em;
+        margin-left: 0em;
     }
 
     .see-all-comments {
@@ -632,46 +644,8 @@ hr {
     .post-likes {
         margin-top: 1.5em;
     }
-}
-
-@media screen and (min-width: 1536px){
-    .see-comments {
-        width: 30em;
-    }
-
-    .featured-post {
-        width: 30em;
-    }
-
-    .featured-img {
-        width: 30em;
-    }
-
-    .featured-img img {
-        width: 30em;
-    }
-
-    .see-all-comments {
-        width: 30em;
-    }
-
-    .text-detail {
-        width: 27em;
-    }
-
-    .titled {
-        width: 20em;
-    }
-
-    .text {
-        width: 28em;
-    }
-
-    .commenters {
-        width: 28em;
-    }
 
     .poster-detail {
-        width: 28em;
+        margin-bottom: 0em;
     }
 }
