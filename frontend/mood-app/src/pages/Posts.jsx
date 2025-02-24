@@ -114,13 +114,12 @@ const Posts = () => {
                     return { ...post, commentCount: data.commentCount };
                 }
                 return post;
-                console.log(updatedPosts);
-                
             });
+            console.log(updatedPosts);
             
             setPosts(updatedPosts);
             setUserComment('');
-            navigate('/')
+            // navigate('/posts/')
         } catch (error) {
             console.log(error);
         }
