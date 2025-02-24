@@ -95,7 +95,7 @@ const Post = () => {
                           onChange={(e)=> setImage(e.target.files[0])}
                         />
                   </div>
-                  <button className='signIn-btn' type='submit' onClick={handlePost}>{ title.length > 0 ? <h3>Send Post</h3> : <h3 onClick={back}>Go Back</h3>}</button>
+                  <button className='signIn-btn' type='submit' onClick={handlePost}>{ title.length > 0 ? <h3>Send Post</h3> : <h3 onClick={back}>Back</h3>}</button>
               </form>
           </div>
     </div>

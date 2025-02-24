@@ -104,6 +104,8 @@ const Posts = () => {
             })
             
             const data = await response.data
+            console.log(data);
+            
             
                 const updatedPosts = posts.map((post) => {
                     if (post._id === data.postId) {
@@ -116,6 +118,7 @@ const Posts = () => {
             
             setPosts(updatedPosts);
             setUserComment('');
+            navigate('/')
         } catch (error) {
             console.log(error);
         }
