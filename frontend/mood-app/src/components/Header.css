@@ -536,11 +536,11 @@ nav button:hover {
         font-weight: 600;
     }
     
-    .show-links {
+    .logged-in .show-links {
         display: flex;
         justify-content: space-between;
         align-items: center;
-        min-width: 70vw;
+        width: 70vw !important;
     }
 
     .show-sidebar {
@@ -587,11 +587,11 @@ nav button:hover {
         font-weight: 600;
     }
     
-    .show-links {
+    .logged-in .show-links {
         display: flex;
         justify-content: space-between;
         align-items: center;
-        max-width: 70vw;
+        width: 60vw !important;
     }
 
     .show-sidebar {
@@ -637,11 +637,11 @@ nav button:hover {
         font-weight: 600;
     }
     
-    .show-links {
+    .logged-in .show-links {
         display: flex;
         justify-content: space-between;
         align-items: center;
-        max-width: 70vw;
+        width: 60vw !important;
     }
 
     .show-sidebar {
