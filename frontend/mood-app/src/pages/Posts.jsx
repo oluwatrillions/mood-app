@@ -1,6 +1,6 @@
 import React, { useContext, useEffect, useState, useRef } from 'react'
 import './Posts.css'
-import { Link, redirect, useNavigate } from 'react-router-dom'
+import { Link, redirect, useNavigate, useParams } from 'react-router-dom'
 import AuthContext from '../Contexts/AuthContext'
 import UserImage from '../components/UserImage'
 import Likes from '../components/Likes'
@@ -18,6 +18,7 @@ const Posts = () => {
     
    const [isLoading, setIsLoading] = useState(true)
    const [posts, setPosts] = useState([])
+   const {_id} = useParams()
    
    let api = useAxios()   
 
@@ -82,20 +83,22 @@ const Posts = () => {
     dayjs.extend(relativeTime);
     // const formattedDate = dayjs(posts.map(post=> post.postedAt)).fromNow(); 
 
-    const refresh = async ()=> {
-        const resp = await fetch('http://localhost:4000/refreshtoken', {
-            method: 'POST',
-            credentials: 'include',
-            headers: {
-                Accept: 'application/json',
-                'Content-Type': 'application/json',
-            }
-        })
-        const data = await resp.json()
-        setUserToken(data)
-       }
+    // const refresh = async ()=> {
+    //     const resp = await fetch('http://localhost:4000/refreshtoken', {
+    //         method: 'POST',
+    //         credentials: 'include',
+    //         headers: {
+    //             Accept: 'application/json',
+    //             'Content-Type': 'application/json',
+    //         }
+    //     })
+    //     const data = await resp.json()
+    //     setUserToken(data)
+    //    }
 
-       const commentOnMessage = async (postId, username, comment) => {        
+       const commentOnMessage = async (postId, username, comment) => { 
+        console.log(postId);
+               
         try {
             const response = await api.post(`/posts/comment/${postId}`, {
                  postId, 
@@ -119,11 +122,12 @@ const Posts = () => {
             
             setPosts(updatedPosts);
             setUserComment('');
-            // navigate('/posts/')
+            navigate(`/posts/${postId}`)
         } catch (error) {
             console.log(error);
         }
     }
+
 
     return (
         <div className='posts-div'>

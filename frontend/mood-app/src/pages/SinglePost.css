@@ -7,8 +7,9 @@
 }
 
 .single-post {
-    height: 90vh;
+    min-height: 90vh;
     width: 100vw;
+    padding: 10vh 0em;
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -129,6 +130,7 @@
 
 .notif {
     color: rgb(71, 63, 63)
+    
 }
 
 .action-btn {

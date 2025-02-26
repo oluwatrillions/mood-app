@@ -9,7 +9,6 @@ const ReplyToMessage = ({replyAt, replyTo, onReply, userComment, setUserComment}
   const handleBack = (e)=> {
     e.preventDefault();
     navigate('/posts')
-    navigate(0)
   }
 
   return (
