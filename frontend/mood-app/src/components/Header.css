@@ -48,12 +48,17 @@ nav {
     text-align: center;
 }
 
+.show-links li {
+    list-style-type: none;
+    font-family: 'Poppins', sans-serif;
+}
+
 .show-links a {
     font-size: 1.2em;
     font-weight: 600;
 }
 
-.show-links {
+.show-links ul{
     display: flex;
     justify-content: space-between;
     font-size: .85em;
@@ -62,7 +67,7 @@ nav {
 
 .users-btn {
     background-color: inherit;
-    font-size: 1.2em;
+    font-size: 1.1em;
 }
 
 .active {
@@ -127,9 +132,12 @@ nav button:hover {
 
 
 @media screen and (max-width: 375px){    
-    .show-links .users-btn {
+    .show-links ul{
+        display: flex;
+        flex-direction: column !important;
+        justify-content: flex-start;
+        align-items: flex-start;
         font-size: .9em;
-        padding: .5em;
     }
 
     .active {
@@ -193,87 +201,6 @@ nav button:hover {
         cursor: pointer;
     }
 }
-/* 
-@media screen and (max-width: 414px){
-    .header {
-        width: 100vw;
-    }
-    
-    .logged-in {
-        width: 100vw;
-        gap: .2em;
-    }
-
-    .header-menu {
-        width: 1.2em !important;
-        height: 1.2em !important;
-        cursor: pointer;
-        color: rgb(97, 94, 94);
-        visibility: visible;
-    }
-
-    nav h3 {
-        font-size: .65em;
-    }
-    
-    nav button {
-        font-size: .8em;
-    }
-
-    nav {
-        padding: 3vh .2em;
-    }
-
-    .logged-in .welcome {
-        font-size: .6em;
-    }
-
-    .logged-in .desc {
-        text-align: center;
-        font-size: .6em !important;
-        width: 55vw;
-    }
-
-    .show-links {
-        display: none;
-    }
-
-    .show-links a {
-        font-size: 1.1em;
-    }
-
-    .show-sidebar {
-        margin-top: 1.2em !important;
-        padding-top: 1em;
-        padding-left: .5em;
-        display: flex;
-        flex-direction: column;
-        justify-content: flex-start;
-        gap: 1em;
-        width: 50vw;
-        background-color: rgb(236, 238, 240);
-        position: absolute;
-        height: 30vh;
-        border-radius: .2em;
-        z-index: 10;
-    }
-
-    .logged-out h3 {
-        width: 80vw;
-    }
-
-    .close-btn {
-        display: block;
-        width: 40vw !important;
-    }
-
-    .close-btn svg {
-        width: 1.5em;
-        height: 1.5em;
-        float: right;
-        cursor: pointer;
-    }
-} */
 
 @media screen and (max-width: 480px){
    .header-menu {
@@ -302,9 +229,13 @@ nav button:hover {
        display: none;
    }
 
-   .show-links a {
-       font-size: 1.1em;
-   }
+   .show-links ul{
+    display: flex;
+    flex-direction: column !important;
+    justify-content: flex-start;
+    align-items: flex-start;
+    font-size: .9em;
+}
 
    .show-sidebar {
        margin-top: 1.5em;
@@ -368,9 +299,13 @@ nav button:hover {
        display: none;
    }
 
-   .show-links a {
-       font-size: .9em;
-   }
+   .show-links ul{
+    display: flex;
+    flex-direction: column !important;
+    justify-content: flex-start;
+    align-items: flex-start;
+    font-size: 1em;
+}
 
    .show-sidebar {
        display: flex;
@@ -430,9 +365,13 @@ nav button:hover {
        display: none;
    }
 
-   .show-links a {
-       font-size: .9em;
-   }
+   .show-links ul{
+    display: flex;
+    flex-direction: column !important;
+    justify-content: flex-start;
+    align-items: flex-start;
+    font-size: .9em;
+}
 
    .header-menu {
        width: 2em;
@@ -479,10 +418,6 @@ nav button:hover {
         font-size: 1em;
     }
 
-    nav a {
-        font-size: .7em;
-    }
-
     nav button {
         font-size: 1em;
     }
@@ -521,9 +456,13 @@ nav button:hover {
         display: none;
     }
 
-    .welcome {
-        font-size: 1.2em;
+    .show-links .welcome{
+        font-size: .9em;
         width: fit-content;
+    }
+
+    .welcome span {
+        font-size: 1.1em;
     }
 
     nav button {
@@ -531,20 +470,19 @@ nav button:hover {
         font-weight: 600;
     }
 
-    .show-links a {
+    .show-links ul{
         font-size: .8em;
-        font-weight: 600;
     }
     
     .logged-in .show-links {
         display: flex;
-        justify-content: space-between;
+        justify-content: center;
         align-items: center;
-        width: 70vw !important;
+        width: 75vw !important;
     }
 
     .show-sidebar {
-        visibility: hidden;
+        display: none;
     }
 
     .close-btn {
@@ -582,9 +520,11 @@ nav button:hover {
         font-weight: 600;
     }
 
-    .show-links a {
-        font-size: 1em;
-        font-weight: 600;
+    .show-links ul{
+        display: flex;
+        justify-content: flex-start;
+        align-items: flex-start;
+        font-size: .9em;
     }
     
     .logged-in .show-links {
@@ -595,7 +535,7 @@ nav button:hover {
     }
 
     .show-sidebar {
-        visibility: hidden;
+        display: none;
     }
 
     .close-btn {
@@ -632,9 +572,11 @@ nav button:hover {
         font-weight: 600;
     }
 
-    .show-links a {
-        font-size: 1.1em;
-        font-weight: 600;
+    .show-links ul{
+        display: flex;
+        justify-content: flex-start;
+        align-items: flex-start;
+        font-size: .9em;
     }
     
     .logged-in .show-links {
@@ -645,7 +587,7 @@ nav button:hover {
     }
 
     .show-sidebar {
-        visibility: hidden;
+        display: none;
     }
 
     .close-btn {

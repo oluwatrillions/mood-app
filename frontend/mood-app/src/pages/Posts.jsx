@@ -117,7 +117,6 @@ const Posts = () => {
             
             setPosts(updatedPosts);
             setUserComment('');
-    
         } catch (error) {
             console.log(error);
         }

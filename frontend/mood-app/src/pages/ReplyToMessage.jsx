@@ -10,6 +10,7 @@ const ReplyToMessage = ({replyAt, replyTo, onReply, userComment, setUserComment,
     navigate('/posts')
     navigate(0)
   }
+  
   const handleSubmit = (e)=> {
     e.preventDefault();
     onReply()
