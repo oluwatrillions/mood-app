@@ -151,8 +151,11 @@ const userComment = async (req, res) => {
     commentByUser.commentCount = commentByUser.comments.length;
 
     await commentByUser.save();
+
+    console.log(postId, commentByUser);
+
     res.status(201).json({
-      postId: commentByUser._id,
+      postId,
       commentCount: commentByUser.commentCount,
     });
   } catch (error) {

@@ -10,7 +10,6 @@ import dayjs from 'dayjs'
 import relativeTime from 'dayjs/plugin/relativeTime';
 import Loading from '../components/Loading'
 import useAxios from '../utils/useAxios'
-import axios from 'axios'
 
 const Posts = () => {
 
@@ -19,6 +18,7 @@ const Posts = () => {
    const [isLoading, setIsLoading] = useState(true)
    const [posts, setPosts] = useState([])
    const {_id} = useParams()
+   
    
    let api = useAxios()   
 
@@ -97,7 +97,6 @@ const Posts = () => {
     //    }
 
        const commentOnMessage = async (postId, username, comment) => { 
-        console.log(postId);
                
         try {
             const response = await api.post(`/posts/comment/${postId}`, {
@@ -106,23 +105,19 @@ const Posts = () => {
                  comment 
             })
             
-            const data = await response.data
-            console.log(data);
-            
+            const data = response.data
             
                 const updatedPosts = posts.map((post) => {
                     if (post._id === data.postId) {
-                        console.log(post._id);
-                        console.log(data.postId);
+
                     return { ...post, commentCount: data.commentCount };
                 }
                 return post;
             });
-            console.log(updatedPosts);
             
             setPosts(updatedPosts);
             setUserComment('');
-            navigate(`/posts/${postId}`)
+    
         } catch (error) {
             console.log(error);
         }
