@@ -327,6 +327,35 @@ hr {
     .see-all-comments .commenters {
         width: 80vw !important;
     }
+
+    .editing-post {
+        width: 80vw;
+    }
+
+    .editing-post form {
+        width: 80vw;
+    }
+
+    .editing-post .edit-inputs {
+        width: 80vw;
+    }
+
+    .editing-post .edit-inputs input {
+        width: 60vw;
+    }
+
+    .edit-post {
+        inset: 20vh 5vw !important;
+        background-color: rgb(88, 84, 84);
+        position: absolute;
+        width: 90vw;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        border-radius: 1em;
+        color: rgb(103, 105, 107);
+    }
 }
 
 @media screen and (max-width: 480px){
@@ -394,6 +423,36 @@ hr {
     .see-all-comments .commenters {
         width: 80vw !important;
     }
+
+    .editing-post {
+        width: 80vw;
+    }
+
+    .editing-post form {
+        width: 80vw;
+        margin-top: 10vh;
+    }
+
+    .editing-post .edit-inputs {
+        width: 80vw;
+    }
+
+    .editing-post .edit-inputs input {
+        width: 60vw;
+    }
+
+    .poster-detail .action .edit-post {
+        inset: 20vh 5vw !important;
+        background-color: rgb(88, 84, 84);
+        position: absolute;
+        width: 90vw !important;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        border-radius: 1em;
+        color: rgb(103, 105, 107);
+    }
 }
 
 @media screen and (max-width: 600px){
@@ -450,6 +509,44 @@ hr {
 
     .see-all-comments .poster-detail {
         width: 70vw !important;
+    }
+
+    .editing-post {
+        width: 70vw !important;
+    }
+
+    .editing-post .signup{
+        width: 70vw !important;
+    }
+
+    .editing-post form {
+        width: 70vw;
+        margin-top: 10vh;
+    }
+
+    .editing-post .edit-inputs {
+        width: 65vw;
+    }
+
+    .editing-post .edit-inputs input {
+        width: 55vw;
+    }
+
+    .editing-post .signup button {
+        width: 60vw !important;
+    }
+
+    .action .edit-post {
+        inset: 12vh 15vw !important;
+        background-color: rgb(88, 84, 84);
+        position: absolute;
+        width: 70vw;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        border-radius: 1em;
+        color: rgb(103, 105, 107);
     }
 }
 
@@ -514,6 +611,44 @@ hr {
 
      .commenters {
         width: 55vw;
+    }
+
+    .editing-post {
+        width: 60vw;
+    }
+
+    .editing-post .signup{
+        width: 60vw;
+    }
+
+    .editing-post form {
+        width: 60vw;
+        margin-top: 10vh;
+    }
+
+    .editing-post .edit-inputs {
+        width: 55vw;
+    }
+
+    .editing-post .edit-inputs input {
+        width: 45vw;
+    }
+
+    .editing-post .signup button {
+        width: 55vw !important;
+    }
+
+    .edit-post {
+        inset: 12vh 20vw !important;
+        background-color: rgb(88, 84, 84);
+        position: absolute;
+        width: 60vw;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        border-radius: 1em;
+        color: rgb(103, 105, 107);
     }
 }
 @media screen and (min-width: 769px){
@@ -581,6 +716,45 @@ hr {
         margin-left: .5em;
         margin-bottom: 0em;
     }
+
+    .editing-post {
+        width: 60vw;
+    }
+
+    .editing-post .signup{
+        width: 28em;
+    }
+
+    .editing-post form {
+        width: 28em;
+        margin-top: 10vh;
+    }
+
+    .editing-post .edit-inputs {
+        width: 25em;
+    }
+
+    .editing-post .edit-inputs input {
+        width: 20em;
+    }
+
+    .editing-post .signup button {
+        width: 10em !important;
+    }
+
+    .edit-post {
+        inset: 15vh 10em !important;
+        background-color: rgb(88, 84, 84);
+        position: absolute;
+        width: 60vw;
+        height: 85vh;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        border-radius: 1em;
+        color: rgb(103, 105, 107);
+    }
 }
 
 @media screen and (min-width: 1025px){
@@ -646,5 +820,43 @@ hr {
 
     .poster-detail {
         margin-bottom: 0em;
+    }
+
+    .editing-post {
+        width: 60vw;
+    }
+
+    .editing-post .signup{
+        width: 28em;
+    }
+
+    .editing-post form {
+        width: 28em;
+        margin-top: 10vh;
+    }
+
+    .editing-post .edit-inputs {
+        width: 25em;
+    }
+
+    .editing-post .edit-inputs input {
+        width: 20em;
+    }
+
+    .editing-post .signup button {
+        width: 10em !important;
+    }
+
+    .edit-post {
+        inset: 15vh 16em !important;
+        background-color: rgb(88, 84, 84);
+        position: absolute;
+        max-width: 50vw;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        border-radius: 1em;
+        color: rgb(103, 105, 107);
     }
 }
