@@ -1,6 +1,6 @@
 import React, { useContext, useEffect, useState, useRef } from 'react'
 import './Posts.css'
-import { Link, redirect, useNavigate, useParams } from 'react-router-dom'
+import { Link, useNavigate } from 'react-router-dom'
 import AuthContext from '../Contexts/AuthContext'
 import UserImage from '../components/UserImage'
 import Likes from '../components/Likes'
@@ -17,7 +17,6 @@ const Posts = () => {
     
    const [isLoading, setIsLoading] = useState(true)
    const [posts, setPosts] = useState([])
-   const {_id} = useParams()
    
    
    let api = useAxios()   
