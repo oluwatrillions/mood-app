@@ -37,6 +37,9 @@ const Posts = () => {
                 }
             } catch (error) {
                 console.log(error.message);
+                if(error.message === 'access expired'){
+                    handleLogout();
+                }
             }
         }
         

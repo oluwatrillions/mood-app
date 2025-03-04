@@ -64,9 +64,12 @@ const handleSignup = async (req, res) => {
       text: "Thank you for checking out my portfolio and my work.",
     };
 
+    console.log(messageOptions);
+
     transporter.sendMail(messageOptions, function (error, info) {
       if (error) {
-        console.log("Erroe", error);
+        console.log("Error on line 69", error);
+        console.log("Info on line 70", info);
       } else {
         console.log("Email sent");
       }
