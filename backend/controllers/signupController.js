@@ -3,7 +3,7 @@ const bcrypt = require("bcrypt");
 const path = require("path");
 const multer = require("multer");
 const validateEmail = require("email-validator");
-const transporter = require("../config/nodemailer");
+const sendVerificationEmail = require("../config/nodemailer");
 
 const storage = multer.diskStorage({
   destination: function (req, file, cb) {
@@ -29,15 +29,14 @@ const handleSignup = async (req, res) => {
 
   const user = await Users.findOne({ email }).exec();
   if (user) {
-    return res
-      .status(409)
-      .json({ message: "User exists. Please change your username" });
+    return res.status(409).json({ message: "User exists." });
   }
 
   const userEmail = validateEmail.validate(req.body.email);
   if (!userEmail) {
     return res.status(400).json("Invalid email");
   }
+
   try {
     const hashedPwd = await bcrypt.hash(password, 12);
 
@@ -57,23 +56,26 @@ const handleSignup = async (req, res) => {
         : "../../public/no-image/no-avatar.jpg",
     });
 
-    const messageOptions = {
-      from: process.env.EMAIL,
-      to: email,
-      subject: "Welcome to The Mood App",
-      text: "Thank you for checking out my portfolio and my work.",
-    };
+    if (newUser) {
+      const verificationToken = newUser.generateVerificationToken();
+      await newUser.save({ validateBeforeSave: false });
 
-    console.log(messageOptions);
+      // const verificationUrl = `${req.protocol}://${req.get('host')}/`
+      const message = "Please verify your email by clicking the link";
 
-    transporter.sendMail(messageOptions, function (error, info) {
-      if (error) {
-        console.log("Error on line 69", error);
-        console.log("Info on line 70", info);
-      } else {
-        console.log("Email sent");
-      }
-    });
+      await sendVerificationEmail({
+        email: newUser.email,
+        subject: "Email Verification",
+        message,
+      });
+
+      res.status(201).json({
+        status: "success",
+        message: "Verification email sent",
+      });
+    } else {
+      res.status(400).json({ message: "Invalid user" });
+    }
   } catch (error) {
     console.log(error);
   }
