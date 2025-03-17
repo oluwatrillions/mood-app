@@ -18,7 +18,7 @@ app.use("/public", express.static("public"));
 app.use(bodyParser.urlencoded({ extended: true }), bodyParser.json());
 
 app.use("/signup", require("./routes/api/users/signup"));
-app.use("/:verificationToken", require("./routes/api/auth/verifyToken"));
+app.use("/verify", require("./routes/api/auth/verifyToken"));
 app.use("/login", require("./routes/api/users/login"));
 app.use("/users", require("./routes/api/users/users"));
 app.use("/post/create", require("./routes/api/posts/post"));

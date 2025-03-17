@@ -62,7 +62,7 @@ const handleSignup = async (req, res) => {
 
       const verificationUrl = `${req.protocol}://${req.get(
         "host"
-      )}/routes/api/auth/verifyToken/${verificationToken}`;
+      )}/verify/${verificationToken}`;
       console.log(verificationUrl);
 
       const message = `Please verify your email by clicking the link: ${verificationUrl}`;
