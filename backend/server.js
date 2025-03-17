@@ -27,7 +27,7 @@ app.use("/posts/likes", require("./routes/api/likes/likes"));
 app.use("/refreshtoken", require("./routes/api/users/refreshtoken"));
 app.use("/admin", require("./routes/admin"));
 app.use("/auth/google", require("./routes/api/auth/google"));
-app.use(verifyUser);
+// app.use(verifyUser);
 app.use("/posts", require("./routes/api/posts/posts"));
 
 app.listen(process.env.PORT, "127.0.0.1", () => {

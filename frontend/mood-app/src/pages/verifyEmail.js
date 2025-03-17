@@ -9,7 +9,7 @@ const verifyEmail = () => {
     try {
       const verifyEmail = async () => {
         const response = await fetch(
-          `http://localhost:4000/verify?verificationToken=${verificationToken}`
+          `http://localhost:4000/verify/${verificationToken}`
         );
         const data = await response.json();
         console.log(data);
@@ -21,6 +21,7 @@ const verifyEmail = () => {
       setMessage("An error occurred");
     }
   }, [verificationToken]);
+
   return (
     <div>
       <h3>Email Verification</h3>

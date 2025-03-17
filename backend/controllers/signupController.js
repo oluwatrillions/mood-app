@@ -58,6 +58,7 @@ const handleSignup = async (req, res) => {
 
     if (newUser) {
       const verificationToken = newUser.generateVerificationToken();
+
       await newUser.save({ validateBeforeSave: false });
 
       const verificationUrl = `${req.protocol}://${req.get(
