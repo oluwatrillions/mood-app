@@ -60,8 +60,12 @@ const handleSignup = async (req, res) => {
       const verificationToken = newUser.generateVerificationToken();
       await newUser.save({ validateBeforeSave: false });
 
-      // const verificationUrl = `${req.protocol}://${req.get('host')}/`
-      const message = "Please verify your email by clicking the link";
+      const verificationUrl = `${req.protocol}://${req.get(
+        "host"
+      )}/routes/api/auth/verifyToken/${verificationToken}`;
+      console.log(verificationUrl);
+
+      const message = `Please verify your email by clicking the link: ${verificationUrl}`;
 
       await sendVerificationEmail({
         email: newUser.email,
@@ -79,7 +83,7 @@ const handleSignup = async (req, res) => {
   } catch (error) {
     console.log(error);
   }
-  res.json(`${name}'s account created successfully`);
+  // res.json(`${name}'s account created successfully`);
 };
 
 module.exports = { handleSignup, upload };

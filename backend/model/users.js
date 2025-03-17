@@ -1,5 +1,6 @@
 const mongoose = require("mongoose");
 const userSchema = mongoose.Schema;
+const crypto = require("crypto");
 
 const Users = new userSchema({
   name: {
@@ -46,5 +47,17 @@ const Users = new userSchema({
     default: false,
   },
 });
+
+Users.methods.generateVerificationToken = function () {
+  const verificationToken = crypto.randomBytes(32).toString("hex");
+
+  this.verificationToken = crypto
+    .createHash("sha256")
+    .update(verificationToken)
+    .digest("hex");
+
+  this.verificationTokenExpiry = Date.now() + 10 * 60 * 1000;
+  return verificationToken;
+};
 
 module.exports = mongoose.model("Users", Users);

@@ -1,10 +1,10 @@
-const crpto = require("crypto");
+const crypto = require("crypto");
 const Users = require("../model/users");
 
 const verifyEmail = async (req, res) => {
   const hashedToken = crypto
     .createHash("sha256")
-    .update(req.params.tokem)
+    .update(req.params.verificationToken)
     .digest("hex");
 
   const user = await Users.findOne({
@@ -25,3 +25,5 @@ const verifyEmail = async (req, res) => {
 
   res.status(200).json({ message: "Email verified successfully" });
 };
+
+module.exports = verifyEmail;
