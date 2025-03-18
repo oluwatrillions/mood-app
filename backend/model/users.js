@@ -41,6 +41,8 @@ const Users = new userSchema({
     type: Date,
     default: Date.now(),
   },
+  verificationToken: String,
+  verificationTokenExpiry: Date,
   refreshToken: String,
   isVerified: {
     type: Boolean,

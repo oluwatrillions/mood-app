@@ -4,6 +4,8 @@ const Users = require("../model/users");
 const verifyEmail = async (req, res) => {
   const verificationToken = req.params.verificationToken;
 
+  console.log(verificationToken);
+
   if (!verificationToken) {
     return res.status(400).json({ message: "verification token required" });
   }
@@ -12,6 +14,8 @@ const verifyEmail = async (req, res) => {
     .createHash("sha256")
     .update(verificationToken)
     .digest("hex");
+
+  console.log(hashedToken);
 
   const user = await Users.findOne({
     verificationToken: hashedToken,
