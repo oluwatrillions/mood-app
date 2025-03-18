@@ -64,7 +64,6 @@ const handleSignup = async (req, res) => {
       const verificationUrl = `${req.protocol}://${req.get(
         "host"
       )}/verify/${verificationToken}`;
-      console.log(verificationUrl);
 
       const message = `Please verify your email by clicking the link: ${verificationUrl}`;
 
@@ -76,7 +75,7 @@ const handleSignup = async (req, res) => {
 
       res.status(201).json({
         status: "success",
-        message: "Verification email sent",
+        message: `Verification email sent. Please check your email ${newUser.email}`,
       });
     } else {
       res.status(400).json({ message: "Invalid user" });

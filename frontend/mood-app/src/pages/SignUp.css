@@ -20,7 +20,7 @@
     text-align: center;
     font-family: 'Poppins', sans-serif;
     font-weight: 100;
-    color: rgb(15, 15, 15);
+    color: rgb(22, 115, 168) !important;
     margin-top: 2vh;
     margin-bottom: 2em;
 }
@@ -142,6 +142,7 @@ input[type='file'] {
         width: 80vw;
         font-size: 1em;
         margin: 0;
+        color: rgb(60, 137, 182);
     }
 
     .signup .sign-in-img {
@@ -163,6 +164,7 @@ input[type='file'] {
 
     .notif {
         margin: 0;
+        color: rgb(56, 56, 133);
     }
 
     .signup img {
@@ -330,6 +332,7 @@ input[type='file'] {
     .notif {
         width: 80vw;
         justify-content: center;
+        color: rgb(60, 137, 182);
     }
 
     .google-btn, .signIn-btn {

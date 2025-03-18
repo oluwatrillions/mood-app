@@ -4,8 +4,6 @@ const Users = require("../model/users");
 const verifyEmail = async (req, res) => {
   const verificationToken = req.params.verificationToken;
 
-  console.log(verificationToken);
-
   if (!verificationToken) {
     return res.status(400).json({ message: "verification token required" });
   }
@@ -15,14 +13,10 @@ const verifyEmail = async (req, res) => {
     .update(verificationToken)
     .digest("hex");
 
-  console.log(hashedToken);
-
   const user = await Users.findOne({
     verificationToken: hashedToken,
     verificationTokenExpiry: { $gt: Date.now() },
   });
-
-  console.log(user);
 
   if (!user) {
     res.status(400).json({ message: "Invalid or expired token" });

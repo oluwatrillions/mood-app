@@ -15,10 +15,9 @@ const SignUp = () => {
 
      const signupSuccess = () => {
             const timer = setTimeout(() => {
-                navigate('/signin')
                 const clear = () => {
                     clearTimeout(timer)
-            }
+                }
             }, 3000)
         }
 
@@ -51,7 +50,7 @@ const SignUp = () => {
                return res.json();
            }).then(data => {
                console.log(data);
-               setNotif(data)
+               setNotif(data.message)
            })
        } catch (error) {
         console.log(error);
