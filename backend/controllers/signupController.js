@@ -83,7 +83,6 @@ const handleSignup = async (req, res) => {
   } catch (error) {
     console.log(error);
   }
-  // res.json(`${name}'s account created successfully`);
 };
 
 module.exports = { handleSignup, upload };

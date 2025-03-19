@@ -29,7 +29,7 @@ const verifyEmail = async (req, res) => {
 
   await user.save();
 
-  res.status(200).json({ message: "Email verified successfully" });
+  res.status(200).json({ message: "Email successfully verified" });
 };
 
 module.exports = verifyEmail;

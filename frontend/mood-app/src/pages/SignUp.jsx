@@ -51,6 +51,9 @@ const SignUp = () => {
            }).then(data => {
                console.log(data);
                setNotif(data.message)
+               setTimeout(()=>{
+                navigate('/verify')
+               }, 3000)
            })
        } catch (error) {
         console.log(error);

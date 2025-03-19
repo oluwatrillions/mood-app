@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 
-const verifyEmail = () => {
+const VerifyEmail = () => {
   const [message, setMessage] = useState();
   const searchParams = new URLSearchParams(window.location.search);
   const verificationToken = searchParams.get("verificationToken");
@@ -35,4 +35,4 @@ const verifyEmail = () => {
   );
 };
 
-export default verifyEmail;
+export default VerifyEmail;
