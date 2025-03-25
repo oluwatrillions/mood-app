@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 
 const VerifyEmail = () => {
-  const [message, setMessage] = useState();
+  const [message, setMessage] = useState("Verifying email...");
   const searchParams = new URLSearchParams(window.location.search);
   const verificationToken = searchParams.get("verificationToken");
 
@@ -29,7 +29,6 @@ const VerifyEmail = () => {
 
   return (
     <div>
-      <h3>Email Verification</h3>
       <h2>{message}</h2>
     </div>
   );

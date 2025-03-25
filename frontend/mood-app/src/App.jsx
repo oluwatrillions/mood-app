@@ -27,7 +27,7 @@ function App() {
                             <Route path='/users/:_id' element={<UserPosts/>} />
                             <Route path='/' element={<Homepage />} exact/>
                             <Route path='/signup' element={<SignUp/>} />
-                            <Route path='/verify' element={<VerifyEmail/>} />
+                            <Route path='/verify/:verificationToken' element={<VerifyEmail/>} />
                             <Route path='/signin' element={<LoginPage/>} />
                             <Route path='/users' element={<PrivateRoute><Users/></PrivateRoute>} />
                             <Route path='/admin' element={<PrivateRoute><Admin/></PrivateRoute>} />

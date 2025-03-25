@@ -61,8 +61,8 @@ const handleSignup = async (req, res) => {
 
       await newUser.save({ validateBeforeSave: false });
 
-      const verificationUrl = `${req.protocol}://${req.get(
-        "host"
+      const verificationUrl = `${req.get(
+        "origin"
       )}/verify/${verificationToken}`;
 
       const message = `Please verify your email by clicking the link: ${verificationUrl}`;

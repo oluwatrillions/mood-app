@@ -4,6 +4,8 @@ const Users = require("../model/users");
 const verifyEmail = async (req, res) => {
   const verificationToken = req.params.verificationToken;
 
+  console.log("verificationToken", verificationToken);
+
   if (!verificationToken) {
     return res.status(400).json({ message: "verification token required" });
   }

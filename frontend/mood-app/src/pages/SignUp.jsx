@@ -11,8 +11,6 @@ const SignUp = () => {
     const [avatar, setAvatar] = useState("")
     const [notif, setNotif] = useState(null)
 
-    const navigate = useNavigate()
-
      const signupSuccess = () => {
             const timer = setTimeout(() => {
                 const clear = () => {
@@ -51,9 +49,6 @@ const SignUp = () => {
            }).then(data => {
                console.log(data);
                setNotif(data.message)
-               setTimeout(()=>{
-                navigate('/verify')
-               }, 3000)
            })
        } catch (error) {
         console.log(error);
