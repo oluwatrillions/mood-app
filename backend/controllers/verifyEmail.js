@@ -6,6 +6,10 @@ const verifyEmail = async (req, res) => {
 
   console.log("verificationToken", verificationToken);
 
+  console.log("Full URL:", req.originalUrl);
+  console.log("Params:", req.params);
+  console.log("Query:", req.query);
+
   if (!verificationToken) {
     return res.status(400).json({ message: "verification token required" });
   }

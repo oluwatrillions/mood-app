@@ -11,6 +11,8 @@ const SignUp = () => {
     const [avatar, setAvatar] = useState("")
     const [notif, setNotif] = useState(null)
 
+    const navigate = useNavigate()
+
      const signupSuccess = () => {
             const timer = setTimeout(() => {
                 const clear = () => {
@@ -54,6 +56,26 @@ const SignUp = () => {
         console.log(error);
        }
     }
+
+    setInterval(() => {
+        const verifyUser = async ()=>{
+            const response = await fetch('http://localhost:4000/users');
+            const data = await response.json()
+            // console.log(data);
+            const user = data.filter(user => user.email === email)
+            // console.log(user);
+            // console.log(user.email);
+            
+            // if (user.isVerified === true){
+            //     setNotif('Email verified successfully')
+            //     navigate('/login')
+            // } else {
+            //     setNotif('Email not verified')
+            // }
+        }
+        verifyUser();
+        
+    }, 3000);
 
   return (
       <div className='register'>

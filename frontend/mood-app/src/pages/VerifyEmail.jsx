@@ -1,10 +1,13 @@
 import React, { useEffect, useState } from "react";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 
 const VerifyEmail = () => {
   const [message, setMessage] = useState("Verifying email...");
-  const searchParams = new URLSearchParams(window.location.search);
-  const verificationToken = searchParams.get("verificationToken");
+  
+  const {verificationToken} = useParams();
+
+  console.log(verificationToken);
+  
 
   const navigate = useNavigate();
 
@@ -16,14 +19,16 @@ const VerifyEmail = () => {
         );
         const data = await response.json();
         console.log(data);
-        if (data.message === "Email verified successfully") {
-          setMessage("Email verified successfully");
-          navigate("/login");
-        }
+        // if (data.message === "Email verified successfully") {
+        //   setMessage("Email verified successfully");
+        //   navigate("/login");
+        // }
       };
       verifyEmail();
     } catch {
-      setMessage("An error occurred");
+      // 
+      console.log(error);
+      
     }
   }, [verificationToken]);
 
