@@ -17,15 +17,23 @@ const verifyEmail = async (req, res) => {
   console.log("hashedToken", hashedToken);
 
   const user = await Users.findOne({
-    verificationToken: hashedToken,
-    verificationTokenExpiry: { $gt: Date.now() },
+    $or: [
+      {
+        verificationToken: hashedToken,
+        verificationTokenExpiry: { $gt: Date.now() },
+      },
+      { isVerified: true },
+    ],
   });
 
   console.log(user);
 
   if (!user) {
     res.status(400).json({ message: "Invalid or expired token" });
-    return;
+  }
+
+  if (user.isVerified) {
+    return res.status(400).json({ message: "Email already verified" });
   }
 
   user.isVerified = true;
