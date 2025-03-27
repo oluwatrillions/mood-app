@@ -13,24 +13,24 @@ const VerifyEmail = () => {
 
   useEffect(() => {
     try {
-      const verifyEmail = async () => {
-        const response = await fetch(
-          `http://localhost:4000/verify/${verificationToken}`
-        );
-        const data = await response.json();
-        console.log(data);
-        if (data.message === "Email verified successfully") {
-          setMessage("Email verified successfully");
-          navigate("/login");
-        } else {
-          setMessage("Invalid or expired");
-        }
-      };
-      verifyEmail();
+      setTimeout(()=>{
+        const verifyEmail = async () => {
+          const response = await fetch(
+            `http://localhost:4000/verify/${verificationToken}`
+          );
+          const data = await response.json();
+          console.log(data);
+          if (data.message === "Email verified successfully") {
+            setMessage("Email verified successfully");
+            navigate("/login");
+          } else {
+            setMessage("Invalid or expired");
+          }
+        };
+        verifyEmail();
+      }, 3000)
     } catch {
-      // 
       console.log(error);
-      
     }
   }, [verificationToken, navigate]);
 
