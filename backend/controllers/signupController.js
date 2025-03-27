@@ -61,9 +61,8 @@ const handleSignup = async (req, res) => {
 
       await newUser.save({ validateBeforeSave: false });
 
-      const verificationUrl = `${req.protocol}://${req.get(
-        "host"
-      )}/verify/${verificationToken}`;
+      const frontendURL = "http://localhost:5173";
+      const verificationUrl = `${frontendURL}/verify/${verificationToken}`;
 
       const message = `Please verify your email by clicking the link: ${verificationUrl}`;
 

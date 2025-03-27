@@ -19,10 +19,12 @@ const VerifyEmail = () => {
         );
         const data = await response.json();
         console.log(data);
-        // if (data.message === "Email verified successfully") {
-        //   setMessage("Email verified successfully");
-        //   navigate("/login");
-        // }
+        if (data.message === "Email verified successfully") {
+          setMessage("Email verified successfully");
+          navigate("/login");
+        } else {
+          setMessage("Invalid or expired");
+        }
       };
       verifyEmail();
     } catch {
@@ -30,7 +32,7 @@ const VerifyEmail = () => {
       console.log(error);
       
     }
-  }, [verificationToken]);
+  }, [verificationToken, navigate]);
 
   return (
     <div>

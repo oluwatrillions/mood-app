@@ -57,26 +57,31 @@ const SignUp = () => {
        }
     }
 
-    setInterval(() => {
-        const verifyUser = async ()=>{
-            const response = await fetch('http://localhost:4000/users');
-            const data = await response.json()
-            // console.log(data);
-            const user = data.filter(user => user.email === email)
-            // console.log(user);
-            // console.log(user.email);
+        // const verifyUser = async ()=>{
+        //     const response = await fetch('http://localhost:4000/users');
+        //     const data = await response.json()
+        //     const user = data.filter(user => user.email === email)
+        //     const verified = user.map(user => user.isVerified)            
             
-            // if (user.isVerified === true){
-            //     setNotif('Email verified successfully')
-            //     navigate('/login')
-            // } else {
-            //     setNotif('Email not verified')
-            // }
-        }
-        verifyUser();
+        //     if (verified === true){
+        //         console.log(verified);
+                
+        //         setNotif('Email verified successfully')
+        //         navigate('/signin')
+        //     } else if (verified === false){
+        //         setNotif('Email not verified')
+        //     }
+        // }
         
-    }, 3000);
+        // const routeUser = ()=>{
+        //     const verifiedInterval = setInterval(()=>{
+        //         verifyUser();
+        //     }, 5000)
+        //     return () => clearInterval(verifiedInterval)
+        // }
 
+        // routeUser();
+        
   return (
       <div className='register'>
           <div className='signup'>
