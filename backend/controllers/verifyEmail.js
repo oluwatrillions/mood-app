@@ -13,9 +13,6 @@ const verifyEmail = async (req, res) => {
     .update(verificationToken)
     .digest("hex");
 
-  console.log("verificationToken", verificationToken);
-  console.log("hashedToken", hashedToken);
-
   const user = await Users.findOne({
     $or: [
       {
@@ -25,8 +22,6 @@ const verifyEmail = async (req, res) => {
       { isVerified: true },
     ],
   });
-
-  console.log(user);
 
   if (!user) {
     res.status(400).json({ message: "Invalid or expired token" });
@@ -42,7 +37,9 @@ const verifyEmail = async (req, res) => {
 
   await user.save();
 
-  res.status(200).json({ message: "Email successfully verified" });
+  res
+    .status(200)
+    .json({ message: "Email successfully verified. Redirecting..." });
 };
 
 module.exports = verifyEmail;

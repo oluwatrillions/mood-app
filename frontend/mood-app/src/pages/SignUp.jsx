@@ -18,7 +18,7 @@ const SignUp = () => {
                 const clear = () => {
                     clearTimeout(timer)
                 }
-            }, 3000)
+            }, 2000)
         }
 
     const handleSignup = async (e) => {
@@ -56,31 +56,6 @@ const SignUp = () => {
         console.log(error);
        }
     }
-
-        // const verifyUser = async ()=>{
-        //     const response = await fetch('http://localhost:4000/users');
-        //     const data = await response.json()
-        //     const user = data.filter(user => user.email === email)
-        //     const verified = user.map(user => user.isVerified)            
-            
-        //     if (verified === true){
-        //         console.log(verified);
-                
-        //         setNotif('Email verified successfully')
-        //         navigate('/signin')
-        //     } else if (verified === false){
-        //         setNotif('Email not verified')
-        //     }
-        // }
-        
-        // const routeUser = ()=>{
-        //     const verifiedInterval = setInterval(()=>{
-        //         verifyUser();
-        //     }, 5000)
-        //     return () => clearInterval(verifiedInterval)
-        // }
-
-        // routeUser();
         
   return (
       <div className='register'>
