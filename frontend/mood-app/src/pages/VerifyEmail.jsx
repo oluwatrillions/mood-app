@@ -3,7 +3,6 @@ import { useNavigate, useParams } from "react-router-dom";
 
 const VerifyEmail = () => {
   const [message, setMessage] = useState("Verifying email...");
-  const [isVerified, setIsVerified] = useState(false);
   const {verificationToken} = useParams();
 
   const navigate = useNavigate();
@@ -19,20 +18,22 @@ const VerifyEmail = () => {
           console.log(data);
           if (response.ok) {
             setMessage(data.message);
-            setIsVerified(true);
-            setTimeout(() => {
-              navigate("/signin");
-            }, 2000);            
-          } else {
+            setTimeout(() => navigate("/signin"), 3000);            
+          } else if (data.message === "Email already verified"){
             setMessage(data.message);
+            setTimeout(() => navigate("/signin"), 3000);
+          } else {
+            setMessage(data.message)
           }
         };
+
         verifyEmail();
+
     } catch (error) {
       console.log(error);
       setMessage("An error occurred while verifying your email.");
     }
-  }, [verificationToken, navigate, isVerified]);
+  }, [verificationToken]);
 
   return (
     <div>
