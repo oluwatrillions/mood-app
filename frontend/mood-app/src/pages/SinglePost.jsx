@@ -114,7 +114,7 @@ const SinglePost = ({likes, count}) => {
         <div className="featured-img">
             <img src={`http://localhost:4000/public/images/${singlePost.image}`} alt="" />
         </div>
-        <div className={singlePost.commentCount > 0 ? 'see-all-comments' : 'text-detail'} key={singlePost.name}>
+        <div className={singlePost.commentCount > 0 ? 'see-all-comments' : 'text-detail'} key={singlePost._id}>
             <h3 className="titled">{singlePost.title}</h3>
             <h4 className="text">{singlePost.text}</h4>
             <div className="poster-detail">
@@ -225,7 +225,7 @@ const SinglePost = ({likes, count}) => {
                       //   This is where the comments are displayed on the singlePost component
                       
                       singlePost.comments && singlePost.comments.map((singlecomment) => (
-                          <div className="commenters">
+                          <div className="commenters" key={singlecomment._id}>
                               <Comments
                                   postId={singlecomment._id}
                                   author={singlecomment.username}

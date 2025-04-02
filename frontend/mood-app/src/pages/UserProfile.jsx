@@ -1,8 +1,6 @@
 import React, {useContext, useEffect, useState} from 'react'
 import './UserProfile.css'
-import jwt_decode from 'jwt-decode'
 import AuthContext from '../Contexts/AuthContext'
-import UserImage from '../components/UserImage'
 import dayjs from 'dayjs'
 import relativeTime from 'dayjs/plugin/relativeTime';
 import { useNavigate } from 'react-router-dom'
@@ -28,7 +26,6 @@ const UserProfile = () => {
     }, [])
   
     dayjs.extend(relativeTime);
-
 
   return (
       <div className='profile'>
