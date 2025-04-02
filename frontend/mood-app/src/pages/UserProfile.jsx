@@ -14,7 +14,7 @@ const UserProfile = () => {
     
     useEffect(()=>{
       try {
-        fetch(`http://localhost:4000/users/`)
+        fetch(`${import.meta.env.VITE_APP_BACKEND_URL}users/`)
         .then((res)=> res.json())
         .then(response=> setUsers(response.filter((item)=> item.email === user.email)))
         const timeout = setTimeout(()=>{
@@ -30,7 +30,7 @@ const UserProfile = () => {
   return (
       <div className='profile'>
           <div className="dashboard">
-              <img src={`http://localhost:4000/public/avatar/${users.map(item=> item.profileImage)}`} alt="" />
+              <img src={`${import.meta.env.VITE_APP_BACKEND_URL}public/avatar/${users.map(item=> item.profileImage)}`} alt="" />
               <h2><span>name: </span>{users.map(item=> item.name)}</h2>
               <h4><span>username: </span> @{ users.map(item=> item.username)}</h4>
               <h4><span>email: </span> @{ users.map(item=> item.email)}</h4>

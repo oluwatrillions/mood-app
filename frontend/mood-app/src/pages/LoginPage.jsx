@@ -19,7 +19,7 @@ const SignIn = () => {
   
   const googleLogin = useGoogleLogin({
     onSuccess: async ({ code }) => {
-      const tokens = await api.post('http://localhost:4000/auth/google', 
+      const tokens = await api.post(`${import.meta.env.VITE_APP_BACKEND_URL}auth/google`, 
       {code},
       {withCredentials: true},
       );   
@@ -64,6 +64,9 @@ const SignIn = () => {
     //   },
     // })  
   })  
+
+  console.log(import.meta.env.VITE_APP_BACKEND_URL);
+
 
   return (
     <div className='register'>

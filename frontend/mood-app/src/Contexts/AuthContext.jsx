@@ -21,7 +21,7 @@ export const AuthProvider = ({ children }) => {
     const handleLogin = async (e) => {
         e.preventDefault()
         try {
-            const response = await fetch('http://localhost:4000/login', {
+            const response = await fetch(`${import.meta.env.VITE_APP_BACKEND_URL}login`, {
                 
                 method: "POST",
                 headers: {
@@ -78,7 +78,7 @@ export const AuthProvider = ({ children }) => {
     } 
     
     const handleUserImage = async () => {
-        const userImage = await fetch('http://localhost:4000/users')
+        const userImage = await fetch(`${import.meta.env.VITE_APP_BACKEND_URL}users`)
         const response = await userImage.json()
         setAllUsers(response)
     }    
@@ -90,7 +90,7 @@ export const AuthProvider = ({ children }) => {
 
     const handleLogout = () => {
         try {
-            const logout = fetch('http://localhost:4000/logout', {
+            const logout = fetch(`${import.meta.env.VITE_APP_BACKEND_URL}logout`, {
                 method: 'POST',
                 headers: {
                     "Content-Type": "application/json"
