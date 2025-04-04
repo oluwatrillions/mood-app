@@ -35,6 +35,6 @@ app.use("/auth/google", require("./routes/api/auth/google"));
 app.use(verifyUser);
 app.use("/posts", require("./routes/api/posts/posts"));
 
-app.listen(process.env.PORT, "127.0.0.1", () => {
+app.listen(process.env.PORT, () => {
   console.log(`listening on port ${process.env.PORT}`);
 });
