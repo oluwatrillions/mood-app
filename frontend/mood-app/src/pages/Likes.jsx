@@ -30,7 +30,7 @@ const Likes = () => {
               return userLikes.map((userLikedPost) => (
                 <div className="all-liked-post" key={post._id}>
                   <h3>Post by <span>{post.username}</span></h3>
-                  <img src={`${import.meta.env.VITE_APP_BACKEND_URL}public/images/` + post.image} alt='images' />
+                  <img src={`http://localhost:4000/public/images/` + post.image} alt='images' />
                   <div className="liked-post-details">
                     <h2>{post.title}</h2>
                     <h4>{post.text}</h4>
@@ -56,7 +56,7 @@ const Likes = () => {
                 return userLikes.map((userLikedPost) => (
                   <div className="all-liked-post" key={post._id}>
                     <h3>Post by <span>{post.username}</span></h3>
-                    <img src={`${import.meta.env.VITE_APP_BACKEND_URL}public/images/` + post.image} alt='images' />
+                    <img src={`http://localhost:4000/public/images/` + post.image} alt='images' />
                     <div className="liked-post-details">
                       <h2>{post.title}</h2>
                       <h4>{post.text}</h4>

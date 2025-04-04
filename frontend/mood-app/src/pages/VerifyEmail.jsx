@@ -12,7 +12,7 @@ const VerifyEmail = () => {
     try {
         const verifyEmail = async () => {
           const response = await fetch(
-            `${import.meta.env.VITE_APP_BACKEND_URL}verify/${verificationToken}`
+            `http://localhost:4000/verify/${verificationToken}`
           );
           const data = await response.json();
           console.log(data);

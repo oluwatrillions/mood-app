@@ -21,7 +21,7 @@ const Comments = ({ replyRef, author, comment, count, profileImage }) => {
                             <UserImage
                                 key={user._id}
                                 username={author}
-                                profileImage={user.scope === 'local' ? `${import.meta.env.VITE_APP_BACKEND_URL}public/avatar/` + user.profileImage : user.profileImage}
+                                profileImage={user.scope === 'local' ? `http://localhost:4000/public/avatar/` + user.profileImage : user.profileImage}
                             />
                             : null                            
                         )
