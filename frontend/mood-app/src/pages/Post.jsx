@@ -39,7 +39,7 @@ const Post = () => {
         formData.append('likes', likes)
         
        try {
-           const postBtn = await fetch('http://localhost:4000/post/create', {
+           const postBtn = await fetch(`${import.meta.env.VITE_APP_BACKEND_URL}/post/create`, {
                method: 'POST',
                body: formData,
            }).then((res) => {

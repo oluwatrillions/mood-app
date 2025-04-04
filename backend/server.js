@@ -17,9 +17,9 @@ app.use(express.urlencoded({ extended: true }));
 app.use("/public", express.static("public"));
 app.use(bodyParser.urlencoded({ extended: true }), bodyParser.json());
 
-app.use("/", (req, res) => {
-  res.send("Welcome to the Mood App API");
-});
+// app.use("/", (req, res) => {
+//   res.send("Welcome to the Mood App API");
+// });
 
 app.use("/signup", require("./routes/api/users/signup"));
 app.use("/verify", require("./routes/api/auth/verifyToken"));

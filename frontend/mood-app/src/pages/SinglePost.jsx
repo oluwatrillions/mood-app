@@ -112,7 +112,7 @@ const SinglePost = ({likes, count}) => {
         <h3 className='notif'>{notif}</h3>
         <div className={singlePost.commentCount > 0 ? 'see-comments' : 'featured-post'}>
         <div className="featured-img">
-            <img src={`http://localhost:4000/public/images/${singlePost.image}`} alt="" />
+            <img src={`${import.meta.env.VITE_APP_BACKEND_URL}/public/images/${singlePost.image}`} alt="" />
         </div>
         <div className={singlePost.commentCount > 0 ? 'see-all-comments' : 'text-detail'} key={singlePost._id}>
             <h3 className="titled">{singlePost.title}</h3>
@@ -130,7 +130,7 @@ const SinglePost = ({likes, count}) => {
                                                 <UserImage
                                                     postId={users._id}
                                                     username = {users.username}
-                                                    profileImage={users.scope === 'local' ? `http://localhost:4000/public/avatar/` + users.profileImage : users.profileImage}
+                                                    profileImage={users.scope === 'local' ? `${import.meta.env.VITE_APP_BACKEND_URL}/public/avatar/` + users.profileImage : users.profileImage}
                                                 />
                                         </Link>    
                                     </div> 

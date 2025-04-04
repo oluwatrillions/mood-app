@@ -1,4 +1,7 @@
-const whitelist = ["http://localhost:5173"];
+const whitelist = [
+  "http://localhost:5173",
+  "https://mood-app-v1-server.vercel.app",
+];
 const corsOptions = {
   origin: whitelist,
   credentials: true,

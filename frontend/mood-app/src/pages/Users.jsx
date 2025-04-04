@@ -20,7 +20,7 @@ const Users = () => {
     useEffect(() => {
         setTimeout(()=>{
             const getUsers = async () => {
-                let response = await fetch('http://localhost:4000/users')
+                let response = await fetch(`${import.meta.env.VITE_APP_BACKEND_URL}/users`)
                 let data = await response.json()
                 setAllUsers(data)
                 setIsLoading(false)
@@ -31,7 +31,7 @@ const Users = () => {
 
     const deleteUser = async (id) => {
         try {
-            let response = await fetch(`http://localhost:4000/users/${id}`, {
+            let response = await fetch(`${import.meta.env.VITE_APP_BACKEND_URL}/users/${id}`, {
                 method: 'DELETE',
                 headers: {
                     'Content-Type': 'application/json'
@@ -61,7 +61,7 @@ const Users = () => {
                           <div className="user" key={_id}>
                               <UserImage
                                   username={username}
-                                  profileImage={user.scope === 'local' ? 'http://localhost:4000/public/avatar/' + profileImage : profileImage} /> 
+                                  profileImage={user.scope === 'local' ? `${import.meta.env.VITE_APP_BACKEND_URL}/public/avatar/` + profileImage : profileImage} /> 
                               <div className="user-info">
                                   <Link to={`/users/${_id}`}>
                                     <h2 className='username-color'>{name}</h2>

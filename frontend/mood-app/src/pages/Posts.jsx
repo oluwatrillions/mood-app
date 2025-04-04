@@ -63,7 +63,7 @@ const Posts = () => {
             setIsLoading(true)
             
             setTimeout(async ()=> {
-                const response = await fetch(`http://localhost:4000/posts/${id}`, {
+                const response = await fetch(`${import.meta.env.VITE_APP_BACKEND_URL}/posts/${id}`, {
                     method: 'DELETE',
                     headers: {
                         'Content-Type': 'application/json'
@@ -122,9 +122,7 @@ const Posts = () => {
         } catch (error) {
             console.log(error);
         }
-    }
-    console.log(`${import.meta.env.VITE_APP_BACKEND_URL}login`);
-    
+    }    
 
     return (
         <div className='posts-div'>
@@ -135,7 +133,7 @@ const Posts = () => {
                             <Link to={`/posts/${post._id}`}>
                                 <div className='split'>
                                     <div className='image-div'>
-                                        <img src={`http://localhost:4000/public/images/` + post.image} alt='images'  />
+                                        <img src={`${import.meta.env.VITE_APP_BACKEND_URL}/public/images/` + post.image} alt='images'  />
                                     </div>
                                     <div className="post-text">
                                         <h3 className="title">{post.title}</h3>
@@ -162,7 +160,7 @@ const Posts = () => {
                                                     <Link to={`/users/${_id}`}>
                                                         <UserImage
                                                             username = {username}
-                                                            profileImage={userImg.scope === 'local' ? `http://localhost:4000/public/avatar/` + profileImage : profileImage}
+                                                            profileImage={userImg.scope === 'local' ? `${import.meta.env.VITE_APP_BACKEND_URL}/public/avatar/` + profileImage : profileImage}
                                                         />
                                                     </Link>
                                                 </div>

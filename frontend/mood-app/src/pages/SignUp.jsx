@@ -31,7 +31,7 @@ const SignUp = () => {
             signupData.append('password', password)
             signupData.append('avatar', avatar)
 
-           const userDetails = await fetch('http://localhost:4000/signup', {
+           const userDetails = await fetch(`${import.meta.env.VITE_APP_BACKEND_URL}/signup`, {
                method: 'POST',
                body: signupData,
            }).then(res => {

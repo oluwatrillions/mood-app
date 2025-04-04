@@ -4,7 +4,7 @@ import { useContext } from "react";
 import AuthContext from "../Contexts/AuthContext";
 import axios from "axios";
 
-const baseURL = "http://localhost:4000";
+const baseURL = `${import.meta.env.VITE_APP_BACKEND_URL}`;
 
 const useAxios = () => {
   const { userToken, setUserToken, handleLogout } = useContext(AuthContext);
