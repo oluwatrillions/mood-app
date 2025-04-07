@@ -15,15 +15,6 @@ export default defineConfig({
         global: true,
         process: true,
       },
-      build: {
-        rollupOptions: {
-          output: {
-            entryFileNames: `assets/[name]-[hash].js`,
-            chunkFileNames: `assets/[name]-[hash].js`,
-            assetFileNames: `assets/[name]-[hash].[ext]`,
-          },
-        },
-      },
       // Whether to polyfill `node:` protocol imports.
       protocolImports: true,
     }),
