@@ -20,7 +20,7 @@ const Homepage = () => {
             <>
               <div className='left-hero'></div>
               <section className='hero-page'>
-              <img src="./images/moods.jpg" alt="" /> 
+              <img src="../public/images/moods.jpg" alt="" /> 
               <div className='hero-prompts'>
                   <h5>Care to tell us about your day? <Link to={'/signup'}>Sign Up</Link></h5>
                   <h5>Member? <Link to={'/signin'}>Sign In</Link></h5>
