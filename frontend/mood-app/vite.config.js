@@ -21,10 +21,15 @@ export default defineConfig({
     emptyOutDir: true,
     rollupOptions: {
       output: {
-        assetFileNames: "assets/[name].[hash].[ext]",
+        assetFileNames: "assets/[name].[hash].[extname]",
         chunkFileNames: "assets/[name].[hash].js",
         entryFileNames: "assets/[name].[hash].js",
       },
+    },
+  },
+  preview: {
+    headers: {
+      "Cache-Control": "public, max-age=600",
     },
   },
   server: {
