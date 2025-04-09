@@ -71,7 +71,7 @@ const SignIn = () => {
   return (
     <div className='register'>
           <div className='signup'>
-              <img src="../public/images/signin.jpg" alt="" className='sign-in-img'/>
+              <img src="../images/signin.jpg" alt="" className='sign-in-img'/>
               <h3 className='notif'>{ notif }</h3>
               <form onSubmit={handleLogin}>
                   <div className='inputs'>

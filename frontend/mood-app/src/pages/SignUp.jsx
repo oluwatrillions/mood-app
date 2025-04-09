@@ -60,7 +60,7 @@ const SignUp = () => {
   return (
       <div className='register'>
           <div className='signup'>
-              <img src="../public/images/smiley.png" alt=""  className='signup-avatar'/>
+              <img src="../images/smiley.png" alt=""  className='signup-avatar'/>
               <h3 className='notif'>{ notif }</h3>
               <form onSubmit={handleSignup}>
                   <div className='inputs'>
