@@ -12,24 +12,24 @@
   ],
   "routes": [
     {
-      "src": "/images/(.*)",
-      "dest": "/images/$1",
-      "headers": [
-  {
-    "source": "/(.*)",
-    "headers": [
-      {
-        "key": "Cache-Control",
-        "value": "no-cache, no-store, must-revalidate"
-      }
-    ]
-  }
-]
+      "src": "/assets/(.*)",
+      "dest": "/assets/$1"
     },
     {
       "src": "/(.*)",
       "dest": "/index.html",
       "status": 200
+    }
+  ],
+  "headers": [
+    {
+      "source": "/(.*)",
+      "headers": [
+        {
+          "key": "Cache-Control",
+          "value": "no-cache, no-store, must-revalidate"
+        }
+      ]
     }
   ]
 }
