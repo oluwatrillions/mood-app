@@ -5,20 +5,14 @@
       "src": "package.json",
       "use": "@vercel/static-build",
       "config": {
-        "distDir": "dist",
-        "cleanDistDir": true
+        "distDir": "dist"
       }
     }
   ],
-  "routes": [
+  "rewrites": [
     {
-      "src": "/assets/(.*)",
-      "dest": "/assets/$1"
-    },
-    {
-      "src": "/(.*)",
-      "dest": "/index.html",
-      "status": 200
+      "source": "/(.*)",
+      "destination": "/index.html"
     }
   ],
   "headers": [
